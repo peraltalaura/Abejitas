@@ -15,11 +15,33 @@
 	padding:2vw;
 	margin:2vw;
 }
+input[type='text'] {
+	border-radius:5vw;
+	padding:1vw;
+	margin:2vw;
+	outline:none;
+}
+input[type='password'] {
+	border-radius:5vw;
+	padding:1vw;
+	margin:2vw;
+	outline:none;
+}
+input[type='submit'] {
+	border-radius:5vw;
+	padding:1vw;
+	margin:2vw;
+	outline:none;
+}
 p {
-	font-size:2vw;
+	font-size:1.75vw;
 	line-height:5vw;
 }
-h2{
-	font-size:4vw;
+h2 {
+	font-size:5vw;
 	margin:3vw;
+	font-weight:normal;
+}
+nav a:hover {
+	
 }

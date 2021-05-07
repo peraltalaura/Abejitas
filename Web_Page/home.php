@@ -45,27 +45,57 @@
 				<li class="nav-item flex-fill">
 					<a class="nav-link text-warning Center" href="SD_EXAMPLE2.html">MY ACCOUNT</a>
 				</li>
+				<?php
+					session_start();
+					if(isset($_SESSION['globaluser'])){
+					?>
+					<li class="nav-item flex-fill">
+						<a class="nav-link text-warning Center" href="close_session.php">LOGOUT</a>
+					</li>
+					<?php
+						
+						} else {
+					?>
+					<li class="nav-item flex-fill">
+						<a class="nav-link text-warning Center" href="login.php">LOGIN</a>
+					</li>
+					<?php
+					}
+				?>	
 			</ul>
 		</nav>
-		<br>
+		<?php
+			if(isset($_SESSION['globaluser'])){
+				$user=$_SESSION['globaluser'];	
+				print("<div class='container bg-dark text-white' style='border-radius:2vw;padding:3vw;margin:auto;width:50%;margin-top:5%;text-align:center;box-shadow: 10px 5px 5px 5px rgba(0, 0, 0, 0.5)'>
+				<h2 class='display-4 text-white'>Welcome: $user</h2><br></div>");	
+			}
+			
+			if(isset($_GET['icorrect'])){
+				if($_GE['incorrect']=="yes"){
+					printf("<p class='text-danger'>WRONG DATA INTRODUCED</p>");
+				}
+			}
+			
+		?>
 		<div class="container Center">
-			<h2 class="display-4">LEARN ABOUT OUR PURPOSE AND ACTIVITIES</h2>
+			<h2>LEARN ABOUT OUR PURPOSE AND ACTIVITIES</h2>
 			<div class="bg-dark text-warning RB">
 				<p>Read information about how everything works and why we like being in this community, how to become a part of this and how to contact us for further information</p>
 			</div>
-			<button type="button" class="btn btn-dark text-warning BRB">GO TO INFORMATION</button>
-			<h2 class="display-4 ">SEE DIFFERENT ISSUES DISCUSSED IN OUR COMMUNITY</h2>
+			<a href="" type="button" class="btn btn-dark text-warning BRB">GO TO INFORMATION</a>
+			<h2>SEE DIFFERENT ISSUES DISCUSSED IN OUR COMMUNITY</h2>
 			<div class="bg-dark text-warning RB">
 				<p>Everyone can enter and see the questions, answers and discussions of our forum</p>
 				<p>Members can also participate actively in the community and post comments</p>
 			</div>
 			<button type="button" class="btn btn-dark text-warning BRB">GO TO FORUM</button>
-			<h2 class="display-4 ">BOOK OUR EXTRACTOR AND METAL BINS</h2>
+			<h2>BOOK OUR EXTRACTOR AND METAL BINS</h2>
 			<div class="bg-dark text-warning RB">
-				<p>Only members: See de days available to book the extractor and the metalbins available to us that we provide</p>
+			<p>Only members: See de days available to book the extractor and the metalbins available to us that we provide</p>
 			</div>
 			<button type="button" class="btn btn-dark text-warning BRB">BOOK NOW</button>
-			<h2 class="display-4 ">CONSULT YOUR PERSONAL INFORMATION</h2>
+			<h2>CONSULT YOUR PERSONAL INFORMATION</h2>
 			<div class="bg-dark text-warning RB">
 				<p>Only members: Have access to your personal information and be able to modify it, make a transfer, see your bookings, productions and account status at any time</p>
 			</div>
