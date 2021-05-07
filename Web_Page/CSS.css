@@ -1,0 +1,25 @@
+.Center {
+	display: flex;              
+    flex-direction: column;     
+    justify-content: center;    
+    align-items: center;  
+	text-align:center;
+}
+.RB {
+	border-radius:5vw;
+	padding:3vw;
+	margin:2vw;
+}
+.BRB {
+	border-radius:5vw;
+	padding:2vw;
+	margin:2vw;
+}
+p {
+	font-size:2vw;
+	line-height:5vw;
+}
+h2{
+	font-size:4vw;
+	margin:3vw;
+}
