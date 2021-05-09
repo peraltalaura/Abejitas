@@ -33,8 +33,11 @@
 		</div>
 		<nav class="navbar navbar-expand-sm bg-dark sticky-top p-4">
 			<ul class="navbar-nav nav-pills flex-fill">
+				<li class="nav-item flex-fill">
+					<a class="nav-link dropdown-toggle text-center" href="home.php">HOME</a>
+				</li>
 				<li class="nav-item flex-fill actual">
-					<a class="nav-link dropdown-toggle text-center" href="home.php" data-toggle="dropdown">HOME</a>
+					<a class="nav-link dropdown-toggle text-center" href="info.php" data-toggle="dropdown">INFORMATION</a>
 					<div class="dropdown-menu bg-dark">
 						<a class="dropdown-item text-warning" href="home.php#">Purpose</a>
 						<a class="dropdown-item text-warning" href="home.php#">How does it work?</a>
@@ -42,9 +45,6 @@
 						<a class="dropdown-item text-warning" href="home.php#">How to become a member</a>
 						<a class="dropdown-item text-warning" href="home.php#">Contact us</a>
 					</div>
-				</li>
-				<li class="nav-item flex-fill">
-					<a class="nav-link dropdown-toggle text-center" href="info.php">INFORMATION</a>
 				</li>
 				<li class="nav-item flex-fill">
 					<a class="nav-link Center" href="SD_EXAMPLE.html">FORUM</a>
@@ -87,7 +87,7 @@
 			}
 			
 		?>
-		<div class="container Center bg-warning" style="box-shadow: 0px 0px 50px 0px rgb(255, 204, 0)">
+		<div class="container Center">
 			<h2>LEARN ABOUT OUR PURPOSE AND ACTIVITIES</h2>
 			<div class="bg-dark text-warning RB">
 				<p>Read information about how everything works and why we like being in this community, how to become a part of this and how to contact us for further information</p>
@@ -98,20 +98,20 @@
 				<p>Everyone can enter and see the questions, answers and discussions of our forum</p>
 				<p>Members can also participate actively in the community and post comments</p>
 			</div>
-			<a type="button" class="btn btn-dark text-warning BRB">GO TO FORUM</a>
+			<button type="button" class="btn btn-dark text-warning BRB">GO TO FORUM</button>
 			<h2>BOOK OUR EXTRACTOR AND METAL BINS</h2>
 			<div class="bg-dark text-warning RB">
 				<p>Only members: See de days available to book the extractor and the metalbins available to us that we provide</p>
 			</div>
-			<a type="button" class="btn btn-dark text-warning BRB">BOOK NOW</a>
+			<button type="button" class="btn btn-dark text-warning BRB">BOOK NOW</button>
 			<h2>CONSULT YOUR PERSONAL INFORMATION</h2>
 			<div class="bg-dark text-warning RB">
 				<p>Only members: Have access to your personal information and be able to modify it, make a transfer, see your bookings, productions and account status at any time</p>
 			</div>
-			<a type="button" class="btn btn-dark text-warning BRB">YOUR ACCOUNT</a>
+			<button type="button" class="btn btn-dark text-warning BRB">YOUR ACCOUNT</button>
 		</div>
 		<div class="bg-dark p-4">
 			<address></address>
 		</div>
 	</body>
-</html>			
+</html>							
