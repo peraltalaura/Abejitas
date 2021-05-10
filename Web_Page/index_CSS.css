@@ -1,0 +1,67 @@
+p, button {
+	font-size:2.5em;
+	line-height:1.2em;
+}
+h1 {
+	font-size:10em;
+	text-shadow: 0.1em 0.1em 0.1em black; 
+}
+h2 {
+	font-size:4em;  
+}
+h3 {
+	font-size:2em;
+	margin:0.5em;
+	font-weight:normal;
+}
+.Center {
+	display: flex;              
+    flex-direction: column;     
+    justify-content: center;    
+    align-items: center;  
+	text-align:center;
+}
+.RB {
+	border-radius:0.5em;
+	padding:1em;
+	margin:1em;
+}
+.BRB {
+	border-radius:2em;
+	padding:1em;
+	margin:1em;
+	font-size:1em;
+}
+.actual {
+	border-radius:2em;
+	background:rgb(255, 204, 0);
+	box-shadow: 0em 0em 1em 0em rgb(255, 204, 0);  
+}
+
+div, .btn, ul{
+	box-shadow:0em 0em 3em 0em black;
+}
+ul{
+	border-radius:2em;
+}
+nav li {
+	font-size:2vw;
+	background:rgb(255, 204, 0,0.7);
+	margin:0em 1em 0em 1em;
+	border-radius:2em;
+}
+nav li a {
+	color:black;
+	font-size:0.8em;
+	transition:font-size 0.4s linear;
+}
+nav li:hover{
+	border-radius:2em;
+	box-shadow: 0em 0em 1em 0em rgb(255, 204, 0);  
+}
+a:hover {
+	font-size:1em;
+	font-weight:bolder;
+	color:black; 
+	border-radius:2em; 
+}
