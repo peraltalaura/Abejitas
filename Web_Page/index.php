@@ -33,23 +33,23 @@
 		<nav class="navbar navbar-expand-sm bg-dark sticky-top p-4">
 			<ul class="navbar-nav nav-pills flex-fill">
 				<li class="nav-item flex-fill actual">
-					<a class="nav-link dropdown-toggle text-center" href="index.php" data-toggle="dropdown">HOME</a>
+					<a class="nav-link dropdown-toggle text-center" href="index.php">HOME</a>
 					<div class="dropdown-menu bg-dark">
-						<a class="dropdown-item text-warning" href="index.php#">Purpose</a>
-						<a class="dropdown-item text-warning" href="index.php#">How does it work?</a>
-						<a class="dropdown-item text-warning" href="index.php#">Rules</a>
-						<a class="dropdown-item text-warning" href="index.php#">How to become a member</a>
-						<a class="dropdown-item text-warning" href="index.php#">Contact us</a>
+						<a class="dropdown-item text-warning" href="info.php#">Purpose</a>
+						<a class="dropdown-item text-warning" href="info.php#">How does it work?</a>
+						<a class="dropdown-item text-warning" href="info.php#">Rules</a>
+						<a class="dropdown-item text-warning" href="info.php#">How to become a member</a>
+						<a class="dropdown-item text-warning" href="info.php#">Contact us</a>
 					</div>
 				</li>
 				<li class="nav-item flex-fill">
-					<a class="nav-link dropdown-toggle text-center" href="info.php">INFORMATION</a>
+					<a class="nav-link text-center" href="info.php">INFORMATION</a>
 				</li>
 				<li class="nav-item flex-fill">
 					<a class="nav-link Center" href="SD_EXAMPLE.html">FORUM</a>
 				</li>
 				<li class="nav-item flex-fill">
-					<a class="nav-link Center" href="SD_GOALS.html">BOOKINGS</a>
+					<a class="nav-link Center" href="bookings.php">BOOKINGS</a>
 				</li>
 				<li class="nav-item flex-fill">
 					<a class="nav-link Center" href="SD_EXAMPLE2.html">MY ACCOUNT</a>
@@ -72,20 +72,6 @@
 				?>	
 			</ul>
 		</nav>
-		<?php
-			if(isset($_SESSION['globaluser'])){
-				$user=$_SESSION['globaluser'];	
-				print("<div class='container bg-dark text-white' style='border-radius:2vw;padding:3vw;margin:auto;width:50%;margin-top:5%;text-align:center;box-shadow: 10px 5px 5px 5px rgba(0, 0, 0, 0.5)'>
-				<h2 class='display-4 text-white'>Welcome: $user</h2><br></div>");	
-			}
-			
-			if(isset($_GET['icorrect'])){
-				if($_GE['incorrect']=="yes"){
-					printf("<p class='text-danger'>WRONG DATA INTRODUCED</p>");
-				}
-			}
-			
-		?>
 		<div class="container Center bg-warning" style="box-shadow: 0px 0px 50px 0px rgb(255, 204, 0)">
 			<h2>LEARN ABOUT OUR PURPOSE AND ACTIVITIES</h2>
 			<div class="bg-dark text-warning RB">

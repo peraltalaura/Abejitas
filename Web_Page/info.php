@@ -33,7 +33,7 @@
 		<nav class="navbar navbar-expand-sm bg-dark sticky-top p-4">
 			<ul class="navbar-nav nav-pills flex-fill">
 				<li class="nav-item flex-fill">
-					<a class="nav-link dropdown-toggle text-center" href="index.php">HOME</a>
+					<a class="nav-link text-center" href="index.php">HOME</a>
 				</li>
 				<li class="nav-item flex-fill actual">
 					<a class="nav-link dropdown-toggle text-center" href="info.php" data-toggle="dropdown">INFORMATION</a>
@@ -49,7 +49,7 @@
 					<a class="nav-link Center" href="SD_EXAMPLE.html">FORUM</a>
 				</li>
 				<li class="nav-item flex-fill">
-					<a class="nav-link Center" href="SD_GOALS.html">BOOKINGS</a>
+					<a class="nav-link Center" href="bookings.php">BOOKINGS</a>
 				</li>
 				<li class="nav-item flex-fill">
 					<a class="nav-link Center" href="SD_EXAMPLE2.html">MY ACCOUNT</a>
@@ -86,31 +86,53 @@
 			}
 			
 		?>
-		<div class="container Center">
-			<h2>LEARN ABOUT OUR PURPOSE AND ACTIVITIES</h2>
+		<div class="container Center bg-warning" style="box-shadow: 0px 0px 50px 0px rgb(255, 204, 0)">
+			<br><h2>GENERAL INFORMATION</h2><br>
 			<div class="bg-dark text-warning RB">
-				<p>Read information about how everything works and why we like being in this community, how to become a part of this and how to contact us for further information</p>
+				<p>In 2018 some small beekeepers from the area of Durango founded “Erlete”. 
+					An association whose main goal is to provide members with an appropriate 
+				installation to extract and bottle the honey from their bees.</p>
 			</div>
-			<a href="" type="button" class="btn btn-dark text-warning BRB">GO TO INFORMATION</a>
-			<h2>SEE DIFFERENT ISSUES DISCUSSED IN OUR COMMUNITY</h2>
+			<br><h2>PURPOSE</h2><br>
 			<div class="bg-dark text-warning RB">
-				<p>Everyone can enter and see the questions, answers and discussions of our forum</p>
-				<p>Members can also participate actively in the community and post comments</p>
+				<p>Knowing how important it is to have a significant population of bees to 
+					guarantee good pollination of plants and crops of a territory, the city
+					council of Atxondo, lent to Erlete a room next to the court hall in Axpe.</p>
+					<p>When harvesting time arrives, beekeepers bring their beehives, use the 
+					centrifuge extractor, and put the honey to rest in some big metal bins.
+					Two weeks later the honey is ready to be bottled.</p><br>
 			</div>
-			<button type="button" class="btn btn-dark text-warning BRB">GO TO FORUM</button>
-			<h2>BOOK OUR EXTRACTOR AND METAL BINS</h2>
+			<br><h2>WHAT CAN YOU DO BECOMING A MEMEBER?</h2><br>
 			<div class="bg-dark text-warning RB">
-				<p>Only members: See de days available to book the extractor and the metalbins available to us that we provide</p>
+				<p>You can bring your hives to our facilities to use our machinery 
+					(we have several centrifugal extractors), to be able to extract the 
+				honey from the hives, and deposit it in large metal containers.</p><br>
+				<p>We also have a large warehouse where you can leave the honey deposited
+				for two weeks until it is ready to be bottled.</p><br>
 			</div>
-			<button type="button" class="btn btn-dark text-warning BRB">BOOK NOW</button>
-			<h2>CONSULT YOUR PERSONAL INFORMATION</h2>
+			<br><h2>HOW DOES THIS ASSOSIATION WORK?</h2><br>
 			<div class="bg-dark text-warning RB">
-				<p>Only members: Have access to your personal information and be able to modify it, make a transfer, see your bookings, productions and account status at any time</p>
+				<p>The process is simple, if you want to use our facilities the first 
+				thing you should do is contact us so you can become a member.</p><br>
+				<p>Once our administrator creates your account you will be inside our 
+					database, and the program administrator will send you a default
+				password for you to login in the webpage.</p><br>
+				<p>*We highly recommend to change the password the first time you login.</p><br>
 			</div>
-			<button type="button" class="btn btn-dark text-warning BRB">YOUR ACCOUNT</button>
+			<a type="button" class="btn btn-dark text-warning BRB">BECOME A MEMBER</a>
+			<br><h2>RULES: HOW TO MANTAIN A POSITIVE COMMUNITY</h2><br>
+			<div class="bg-dark text-warning RB text-left" style="font-size:1.7em">
+				<ol>
+					<li>To make use of our services you must become a member</li><br>
+					<li>The membership has an annual fee of 30€</li><br>
+					<li>Members must pay a fee of 0.25 cents per kg of honey they produce</li><br>
+					<li>It is also important to make a good use of the material and installations</li><br>
+					<li>You must also have a respectful attitude towards the rest of the members</li><br>
+				</ol>
+			</div>
 		</div>
 		<div class="bg-dark p-4">
 			<address></address>
 		</div>
 	</body>
-</html>							
+</html>									

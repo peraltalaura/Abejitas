@@ -43,28 +43,27 @@
 					<a class="nav-link Center" href="SD_EXAMPLE.html">FORUM</a>
 				</li>
 				<li class="nav-item flex-fill">
-					<a class="nav-link Center" href="SD_GOALS.html">BOOKINGS</a>
+					<a class="nav-link Center" href="bookings.php">BOOKINGS</a>
 				</li>
 				<li class="nav-item flex-fill">
 					<a class="nav-link Center" href="SD_EXAMPLE2.html">MY ACCOUNT</a>
 				</li>
-				<?php
+					<?php
 					session_start();
 					if(isset($_SESSION['globaluser'])){
 					?>
-					<li class="nav-item flex-fill actual">
+					<li class="nav-item flex-fill">
 						<a class="nav-link Center" href="close_session.php">LOGOUT</a>
 					</li>
 					<?php
-						
 						} else {
 					?>
-					<li class="nav-item flex-fill actual">
-						<a class="nav-link Center" href="close_session.php">LOGOUT</a>
+					<li class="nav-item flex-fill">
+						<a class="nav-link Center" href="login.php">LOGIN</a>
 					</li>
 					<?php
 					}
-				?>	
+				?>
 			</ul>
 		</nav>
 		<div class="container bg-dark text-warning RB Center login">

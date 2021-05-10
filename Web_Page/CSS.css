@@ -7,7 +7,7 @@ h1 {
 	text-shadow: 0.1em 0.1em 0.1em black; 
 }
 h2 {
-	font-size:5em;
+	font-size:4em;
 	text-shadow: 0.1em 0.1em 0.1em black;  
 }
 h3 {
@@ -69,9 +69,9 @@ input[type='submit'] {
 	padding:1em 0.5em 1em 0.5em;
 	width:4em;
 	margin:1em 0.5em 0em 0.5em;
+	transition:font-size 0.5s;
 }
 input[type='submit']:hover{
-	transition:font-size 0.5s;
 	font-size:1.2em;
 	font-weight:bolder;
 	text-shadow: 0.1em 0.1em 0.2em rgb(0,0,0);
@@ -83,8 +83,11 @@ input[type='submit']:hover{
 	box-shadow: 0em 0em 1em 0em rgb(255, 204, 0);  
 }
 
-div, .btn,ul{
+div, .btn, ul{
 	box-shadow:0em 0em 3em 0em black;
+}
+ul{
+	border-radius:2em;
 }
 nav li {
 	font-size:2vw;
@@ -95,14 +98,14 @@ nav li {
 nav li a {
 	color:black;
 	font-size:0.8em;
+	transition:font-size 0.4s linear;
 }
 nav li:hover{
 	border-radius:2em;
 	box-shadow: 0em 0em 1em 0em rgb(255, 204, 0);  
 }
 a:hover {
-	transition:font-size 0.4s;
-	font-size:1.1em;
+	font-size:1em;
 	font-weight:bolder;
 	color:black; 
 	border-radius:2em; 

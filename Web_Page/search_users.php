@@ -10,6 +10,6 @@
 		} else {
 		session_start();
 		$_SESSION['globaluser']=$user;
-		header("Location:home.php");
+		header("Location:index.php");
 	}
 ?>
