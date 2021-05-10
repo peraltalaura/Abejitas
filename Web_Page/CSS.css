@@ -1,20 +1,20 @@
 p, button {
-	font-size:4vw;
-	line-height:5vw;
+	font-size:2.5em;
+	line-height:1.2em;
 }
 h1 {
-	font-size:3em;
-	text-shadow: 0.1em 0.1em 0.2em rgb(255, 204, 0); 
+	font-size:10em;
+	text-shadow: 0.1em 0.1em 0.1em black; 
 }
 h2 {
-	font-size:1.5em;
-	text-shadow: 0.1em 0.1em 0.4em rgb(255, 204, 0);  
+	font-size:5em;
+	text-shadow: 0.1em 0.1em 0.1em black;  
 }
 h3 {
-	font-size:0.5em;
+	font-size:2em;
 	margin:0.5em;
 	font-weight:normal;
-	text-shadow: 0.1em 0.1em 0.4em rgb(255, 204, 0); 
+	text-shadow: 0.1em 0.1em 0.1em black;  
 }
 .Center {
 	display: flex;              
@@ -24,87 +24,94 @@ h3 {
 	text-align:center;
 }
 .RB {
-	border-radius:5vw;
-	padding:3vw;
-	margin:2vw;
+	border-radius:0.5em;
+	padding:1em;
+	margin:1em;
 }
 .BRB {
-	border-radius:5vw;
-	padding:3vw 6vw 3vw 6vw;
-	margin:2vw;
-}
-input[type='text'] {
-	border-radius:5em;
-	border:none;
-	outline:none;
-	background:linear-gradient(rgb(255, 204, 0,0.1),rgb(255, 204, 0,0.3),rgb(255, 204, 0,0.5),rgb(255, 204, 0,0.7),rgb(255, 204, 0),rgb(255, 204, 0,0.7),rgb(255, 204, 0,0.5),rgb(255, 204, 0,0.3),rgb(255, 204, 0,0.1));  
-	color:black;
-	text-align:center;
-	margin: 0 auto;
-	width:5em;
+	border-radius:2em;
+	padding:1em;
+	margin:1em;
 	font-size:1em;
 }
-input[type='password'] {
-	border-radius:5em;
+input[type='text'] {
+	border-radius:2em;
 	border:none;
 	outline:none;
 	background:linear-gradient(rgb(255, 204, 0,0.1),rgb(255, 204, 0,0.3),rgb(255, 204, 0,0.5),rgb(255, 204, 0,0.7),rgb(255, 204, 0),rgb(255, 204, 0,0.7),rgb(255, 204, 0,0.5),rgb(255, 204, 0,0.3),rgb(255, 204, 0,0.1));  
 	color:black;
 	text-align:center;
 	margin: 0 auto;
-	width:5em;
+	font-size:1.5em;
 }
-input[type='submit'] {
-	border-radius:5em;
+input[type='password'] {
+	border-radius:2em;
 	border:none;
 	outline:none;
-	box-shadow: 0em 0em 1em 0em rgb(255, 204, 0);
+	background:linear-gradient(rgb(255, 204, 0,0.1),rgb(255, 204, 0,0.3),rgb(255, 204, 0,0.5),rgb(255, 204, 0,0.7),rgb(255, 204, 0),rgb(255, 204, 0,0.7),rgb(255, 204, 0,0.5),rgb(255, 204, 0,0.3),rgb(255, 204, 0,0.1));  
+	color:black;
+	text-align:center;
+	margin: 0 auto;
+	font-size:1.5em;
+}
+input[type='password']:focus,input[type='text']:focus{
+	transition:box-shadow 0.8s;
+	box-shadow: 0em 0em 1em 0em black; 
+}
+input[type='submit'] {
+	border-radius:2em;
+	border:none;
+	outline:none;
+	box-shadow: 0em 0em 0.5em 0em rgb(255, 204, 0);  
 	background-image:linear-gradient(rgb(255, 204, 0,0.5),rgb(255, 204, 0),rgb(255, 204, 0,0.5));  
 	color:black;
-	font-size:0.5em;
+	font-size:1.1em;
 	padding:1em 0.5em 1em 0.5em;
 	width:4em;
+	margin:1em 0.5em 0em 0.5em;
 }
 input[type='submit']:hover{
 	transition:font-size 0.5s;
-	font-size:0.7em;
+	font-size:1.2em;
 	font-weight:bolder;
-	text-shadow: 0.1em 0.1em 0.2em rgb(0,0,0); 
+	text-shadow: 0.1em 0.1em 0.2em rgb(0,0,0);
+	box-shadow: 0em 0em 1em 0em rgb(255, 204, 0);  
 }
 .actual {
-	border-radius:5vw;
+	border-radius:2em;
 	background:rgb(255, 204, 0);
-	box-shadow: 0px 0px 30px 0px rgb(255, 204, 0);  
+	box-shadow: 0em 0em 1em 0em rgb(255, 204, 0);  
 }
 
-div, .btn{
-	box-shadow: 0px 0px 30px 0px black;
+div, .btn,ul{
+	box-shadow:0em 0em 3em 0em black;
 }
 nav li {
 	font-size:2vw;
 	background:rgb(255, 204, 0,0.7);
-	margin:0vw 1vw 0vw 1vw;
-	border-radius:5vw;
+	margin:0em 1em 0em 1em;
+	border-radius:2em;
 }
 nav li a {
 	color:black;
+	font-size:0.8em;
 }
 nav li:hover{
-	border-radius:5vw;
-	box-shadow: 0px 0px 30px 0px rgb(255, 204, 0); 
+	border-radius:2em;
+	box-shadow: 0em 0em 1em 0em rgb(255, 204, 0);  
 }
 a:hover {
 	transition:font-size 0.4s;
-	font-size:2.2vw;
+	font-size:1.1em;
 	font-weight:bolder;
 	color:black; 
-	border-radius:5vw; 
-	text-shadow: 0.1em 0.1em 0.2em rgb(255, 204, 0); 
+	border-radius:2em; 
 }
 .login {
-	box-shadow:0em 0em 1em 0em rgb(255, 204, 0);
+	box-shadow:0em 0em 3em 0em rgb(255, 204, 0);
 	margin:auto; 
-	margin-top:2em;
-	margin-bottom:3em;
-	width:8em;
+	margin-top:4em;
+	margin-bottom:4em;
+	width:20em;
+	padding:2em;
 }

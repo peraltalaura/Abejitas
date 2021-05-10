@@ -23,7 +23,6 @@
 		<style>
 			body {
 			font-family: 'Dancing Script', cursive;
-			font-size:6vw;
 			}
 		</style>
 	</head>
@@ -72,9 +71,9 @@
 			<h2>LOGIN</h2>
 			<form class="form-group" action="search_users.php" method="post">
 				<h3>NAME:</h3>
-				<input type="text" name="user"><br>
+				<input class="mb-2" type="text" name="user">
 				<h3>PASSWORD:</h3>
-				<input class="mb-4" type="password" name="password"><br>
+				<input class="mb-2" type="password" name="password"><br>
 				<input class="text-dark bg-warning" type="submit" value="LOGIN">
 			</form>
 		</div>
