@@ -23,7 +23,6 @@
 		<style>
 			body {
 			font-family: 'Dancing Script', cursive;
-			font-size:6vw;
 			}
 		</style>
 	</head>
