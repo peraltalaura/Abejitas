@@ -34,16 +34,16 @@
 		<nav class="navbar navbar-expand-sm bg-dark sticky-top p-4">
 			<ul class="navbar-nav nav-pills flex-fill">
 				<li class="nav-item flex-fill">
-					<a class="nav-link dropdown-toggle text-center" href="home.php">HOME</a>
+					<a class="nav-link dropdown-toggle text-center" href="index.php">HOME</a>
 				</li>
 				<li class="nav-item flex-fill actual">
 					<a class="nav-link dropdown-toggle text-center" href="info.php" data-toggle="dropdown">INFORMATION</a>
 					<div class="dropdown-menu bg-dark">
-						<a class="dropdown-item text-warning" href="home.php#">Purpose</a>
-						<a class="dropdown-item text-warning" href="home.php#">How does it work?</a>
-						<a class="dropdown-item text-warning" href="home.php#">Rules</a>
-						<a class="dropdown-item text-warning" href="home.php#">How to become a member</a>
-						<a class="dropdown-item text-warning" href="home.php#">Contact us</a>
+						<a class="dropdown-item text-warning" href="info.php#">Purpose</a>
+						<a class="dropdown-item text-warning" href="info.php#">How does it work?</a>
+						<a class="dropdown-item text-warning" href="info.php#">Rules</a>
+						<a class="dropdown-item text-warning" href="info.php#">How to become a member</a>
+						<a class="dropdown-item text-warning" href="info.php#">Contact us</a>
 					</div>
 				</li>
 				<li class="nav-item flex-fill">

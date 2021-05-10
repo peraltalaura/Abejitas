@@ -34,7 +34,7 @@
 		<nav class="navbar navbar-expand-sm bg-dark sticky-top p-4">
 			<ul class="navbar-nav nav-pills flex-fill">
 				<li class="nav-item flex-fill">
-					<a class="nav-link dropdown-toggle text-center" href="home.php">HOME</a>
+					<a class="nav-link dropdown-toggle text-center" href="index.php">HOME</a>
 				</li>
 				<li class="nav-item flex-fill">
 					<a class="nav-link dropdown-toggle text-center" href="info.php">INFORMATION</a>
@@ -68,14 +68,14 @@
 				?>	
 			</ul>
 		</nav>
-		<div class="bg-dark text-warning RB Center" style="box-shadow:0px 0px 50px 0px rgb(255, 204, 0);margin:10vw">
-			<h1>LOGIN</h1><br>
+		<div class="container bg-dark text-warning RB Center login">
+			<h2>LOGIN</h2>
 			<form class="form-group" action="search_users.php" method="post">
-				<h2>NAME:</h2>
-				<input type="text" name="user"><br><br>
-				<h2>PASSWORD:</h2>
-				<input type="password" name="password"><br><br>
-				<input class="text-dark bg-warning p-3" type="submit" value="LOGIN">
+				<h3>NAME:</h3>
+				<input type="text" name="user"><br>
+				<h3>PASSWORD:</h3>
+				<input class="mb-4" type="password" name="password"><br>
+				<input class="text-dark bg-warning" type="submit" value="LOGIN">
 			</form>
 		</div>
 		<div class="bg-dark p-4">

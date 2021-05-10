@@ -1,16 +1,20 @@
 p, button {
-	font-size:3vw;
+	font-size:4vw;
 	line-height:5vw;
 }
 h1 {
-	font-size:15vw;
+	font-size:3em;
 	text-shadow: 0.1em 0.1em 0.2em rgb(255, 204, 0); 
 }
 h2 {
-	font-size:6vw;
-	margin:3vw;
+	font-size:1.5em;
+	text-shadow: 0.1em 0.1em 0.4em rgb(255, 204, 0);  
+}
+h3 {
+	font-size:0.5em;
+	margin:0.5em;
 	font-weight:normal;
-	text-shadow: 0.1em 0.1em 0.2em rgb(0,0,0); 
+	text-shadow: 0.1em 0.1em 0.4em rgb(255, 204, 0); 
 }
 .Center {
 	display: flex;              
@@ -30,35 +34,40 @@ h2 {
 	margin:2vw;
 }
 input[type='text'] {
-	border-radius:5vw;
+	border-radius:5em;
 	border:none;
-	padding:1vw;
 	outline:none;
 	background:linear-gradient(rgb(255, 204, 0,0.1),rgb(255, 204, 0,0.3),rgb(255, 204, 0,0.5),rgb(255, 204, 0,0.7),rgb(255, 204, 0),rgb(255, 204, 0,0.7),rgb(255, 204, 0,0.5),rgb(255, 204, 0,0.3),rgb(255, 204, 0,0.1));  
 	color:black;
+	text-align:center;
+	margin: 0 auto;
+	width:5em;
+	font-size:1em;
 }
 input[type='password'] {
-	border-radius:5vw;
+	border-radius:5em;
 	border:none;
-	padding:1vw;
 	outline:none;
 	background:linear-gradient(rgb(255, 204, 0,0.1),rgb(255, 204, 0,0.3),rgb(255, 204, 0,0.5),rgb(255, 204, 0,0.7),rgb(255, 204, 0),rgb(255, 204, 0,0.7),rgb(255, 204, 0,0.5),rgb(255, 204, 0,0.3),rgb(255, 204, 0,0.1));  
 	color:black;
+	text-align:center;
+	margin: 0 auto;
+	width:5em;
 }
 input[type='submit'] {
-	border-radius:5vw;
+	border-radius:5em;
 	border:none;
-	padding:1vw;
-	margin:2vw;
 	outline:none;
-	box-shadow: 0px 0px 15px 0px rgb(255, 204, 0);
+	box-shadow: 0em 0em 1em 0em rgb(255, 204, 0);
 	background-image:linear-gradient(rgb(255, 204, 0,0.5),rgb(255, 204, 0),rgb(255, 204, 0,0.5));  
 	color:black;
-	font-size:5vw;
+	font-size:0.5em;
+	padding:1em 0.5em 1em 0.5em;
+	width:4em;
 }
 input[type='submit']:hover{
 	transition:font-size 0.5s;
-	font-size:7vw;
+	font-size:0.7em;
 	font-weight:bolder;
 	text-shadow: 0.1em 0.1em 0.2em rgb(0,0,0); 
 }
@@ -91,4 +100,11 @@ a:hover {
 	color:black; 
 	border-radius:5vw; 
 	text-shadow: 0.1em 0.1em 0.2em rgb(255, 204, 0); 
+}
+.login {
+	box-shadow:0em 0em 1em 0em rgb(255, 204, 0);
+	margin:auto; 
+	margin-top:2em;
+	margin-bottom:3em;
+	width:8em;
 }
