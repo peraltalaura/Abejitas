@@ -5,7 +5,7 @@ ul.sidenav {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
-	width: 25%;
+	width: 20%;
 	position: fixed;
 	height: 100%;
 	overflow: auto;
@@ -35,7 +35,7 @@ ul.sidenav li a:hover:not(.active) {
 }
 
 div.content {
-	margin-left: 25%;
+	margin-left: 20%;
 	padding: 1px 16px;
 }
 
@@ -54,11 +54,12 @@ div.content {
 	div.content {margin-left: 0;}
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 400px) {
 	ul.sidenav li a {
 		text-align: center;
 		float: none;
 	}
+	div.content {margin-left: 0;}
 }
 /*end of responsive navigation var*/
 /* OLD NAV CSS
@@ -89,7 +90,7 @@ div.content {
 	}
 */
 div.content {
-	font-size:1.2vw;
+	font-size:1.1vw;
 	line-height:3vw;
 }
 h1 {
@@ -99,8 +100,8 @@ h1 {
 	box-shadow:0em 0em 1.5em 0em rgb(0,0,0,0.5);
 }
 h2 {
-	font-size:3vw;  
-	margin-top:3vw;
+	font-size:2vw;  
+	margin-top:1vw;
 }
 h3 {
 	font-size:3vw;

@@ -41,13 +41,13 @@
 				<a class="Center active" href="info.php">INFORMATION</a>
 			</li>
 			<li>
-				<a class="Center" href="my_account.php">FORUM</a>
+				<a class="Center" href="SD_EXAMPLE.html">FORUM</a>
 			</li>
 			<li>
 				<a class="Center" href="bookings.php">BOOKINGS</a>
 			</li>
 			<li>
-				<a class="Center" href="my_account.php">MY ACCOUNT</a>
+				<a class="Center" href="SD_EXAMPLE2.html">MY ACCOUNT</a>
 			</li>
 			<?php
 				session_start();
@@ -66,7 +66,7 @@
 				}
 			?>	
 		</ul>
-		<div class="content Center bg-warning">
+		<div class="content Center bg-warning info">
 			<br><h2>GENERAL INFORMATION</h2><br>
 			<div class="bg-dark text-warning RB">
 				<p>In 2018 some small beekeepers from the area of Durango founded “Erlete”. 
@@ -101,13 +101,13 @@
 			</div>
 			<a type="button" class="btn btn-dark text-warning BRB">BECOME A MEMBER</a>
 			<br><h2>RULES: HOW TO MANTAIN A POSITIVE COMMUNITY</h2><br>
-			<div class="bg-dark text-warning RB text-left" style="font-size:1.7em">
+			<div class="bg-dark text-warning RB text-left">
 				<ol>
-					<li>To make use of our services you must become a member</li><br>
-					<li>The membership has an annual fee of 30€</li><br>
-					<li>Members must pay a fee of 0.25 cents per kg of honey they produce</li><br>
-					<li>It is also important to make a good use of the material and installations</li><br>
-					<li>You must also have a respectful attitude towards the rest of the members</li><br>
+					<li>To make use of our services you must become a member</li>
+					<li>The membership has an annual fee of 30€</li>
+					<li>Members must pay a fee of 0.25 cents per kg of honey they produce</li>
+					<li>It is also important to make a good use of the material and installations</li>
+					<li>You must also have a respectful attitude towards the rest of the members</li>
 				</ol>
 			</div>
 		</div>
