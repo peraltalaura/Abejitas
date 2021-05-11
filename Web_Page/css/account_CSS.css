@@ -67,21 +67,19 @@ div.content {
 }
 /*end of responsive navigation var*/
 /*My account nav */
-#accountNav{
+#accountNav {
 	list-style-type:none;
-	margin-left: 15%;
-}
-ul#accountNav li a{
-	background:rgb(255, 204, 0);
-	color:black;
+	padding:0;
+	width:80%;
+	margin:auto;
 }
 ul#accountNav li a.active {
 	background:black;
 	color:rgb(255, 204, 0);
 	box-shadow: 0vw 0vw 1vw 0vw rgb(255, 204, 0);  
 }
-ul.sidenav li a:hover:not(.active) {
-	background-color: black;
+#accountNav li a:hover:not(.active) {
+	background: black;
 	color: rgb(255, 204, 0);
 	font-size:1.1vw;
 	transition:font-size 0.4s linear;

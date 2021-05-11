@@ -69,7 +69,7 @@
 		<div class="container content Center bg-dark text-warning">
 			<div class="container Center login">
 				<h2>LOGIN</h2>
-				<form class="form-group" action="search_users.php" method="post" >
+				<form class="form-group" action="search_users.php" method="post">
 					<h3>NAME:</h3>
 					<input class="mb-2" type="text" name="user">
 					<h3>PASSWORD:</h3>

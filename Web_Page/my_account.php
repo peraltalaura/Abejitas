@@ -28,6 +28,11 @@
 			body {
 			font-family: 'Lato', sans-serif;
 			}
+			.active {
+			background:black;
+			color:rgb(255, 204, 0);
+			box-shadow: 0vw 0vw 1vw 0vw rgb(255, 204, 0);
+			}
 		</style>
 		
 	</head>
@@ -56,22 +61,22 @@
 					?>
 					<ul id="accountNav">
 						<li>
-							<a class="Center active" href="">EDIT</a>
+							<a id="edit" class="Center active" href="" >EDIT</a>
 						</li>
 						<li>
-							<a class="Center" href="">BALANCE</a>
+							<a id="bal" class="Center" href="">BALANCE</a>
 						</li>
 						<li>
-							<a class="Center" href="">TRANSACTION</a>
+							<a id="trans" class="Center" href="">TRANSACTION</a>
 						</li>
 						<li>
-							<a class="Center" href="">BOOKINGS</a>
+							<a id="book" class="Center" href="">BOOKINGS</a>
 						</li>
 						<li>
-							<a class="Center" href="">ACTIVITY</a>
+							<a id="act" class="Center" href="">ACTIVITY</a>
 						</li>
 						<li>
-							<a class="Center" href="">NOTIFICATIONS</a>
+							<a id="not" class="Center" href="">NOTIFICATIONS</a>
 						</li>
 					</ul>
 					<?php
@@ -86,20 +91,87 @@
 				</li>
 				<?php
 					} else {
-					?>
-					<li>
-				<a class="Center" href="login.php">LOGIN</a>
+				?>
+				<li>
+					<a class="Center" href="login.php">LOGIN</a>
 				</li>
 				<?php
 				}
-				?>	
-			</ul>
+			?>	
+		</ul>
+		<?php
+			include("test_connect_db.php");
+			$link=connectDataBase();			
+			$user=$_SESSION['globaluser'];
+			$emaitza=mysqli_query($link,"select* from member where name='$user'");
+			$data=mysqli_fetch_array($emaitza);
 			
-			<div class="content">
-				
+		?>
+		<form class="form-group" action="update_data.php" method="post">
+			<div class="content text-warning Center">
+				<h2 class="mt-4">MY PROFILE</h2>
+				<div class="row RB">
+					<div class="col-sm-2">
+						NAME:
+					</div>
+					<?php
+						printf("<div class='col-sm-3'><input type='text' name='uname' value='%s'></div>",$data[2]);
+					?>
+					<div class="col-sm-2">
+						SURNAME:
+					</div>
+					<?php
+						printf("<div class='col-sm-3'><input type='text' name='usurname' value='%s'></div>",$data[3]);
+					?>
+				</div>
+				<div class="row RB">
+					<div class="col-sm-2">
+						E-MAIL:
+					</div>
+					<?php
+						printf("<div class='col-sm-3'><input type='text' name='mail' value='%s'></div>",$data[1]);
+					?>
+					<div class="col-sm-3">
+						BIRTH DATE:
+						</div>
+						<?php
+						printf("<div class='col-sm-3'><input type='text' name='birth' value='%d'></div>",$data[5]);
+					?>
+				</div>
+				<div class="row RB">
+					<div class="col-sm-2">
+						CITY:
+					</div>
+					<?php
+						printf("<div class='col-sm-3'><input type='text' name='city' value='%s'></div>",$data[6]);
+					?>
+					<div class="col-sm-3">
+						POST CODE:
+					</div>
+					<?php
+						printf("<div class='col-sm-3'><input type='text' name='post' value='%d'></div>",$data[7]);
+					?>
+				</div>
+				<div class="row RB">
+					<div class="col-sm-2">
+						ADDRESS:
+					</div>
+					<?php
+						printf("<div class='col-sm-5'><input type='text' name='address' value='%s'></div>",$data[8]);
+					?>
+					<div class="col-sm-3">
+						PHONE NUMBER:
+					</div>
+					<?php
+						printf("<div class='col-sm-2'><input type='text' name='phone' value='%d'></div>",$data[9]);
+					?>
+				</div>
+				<input class="text-dark bg-warning" type="submit" value="MODIFY DATA">
 			</div>
-			<div class="bg-dark p-4">
-				<address></address>
-			</div>
-		</body>
-	</html>																						
+		</form>
+		<div class="bg-dark p-4">
+			<address></address>
+		</div>
+		
+	</body>
+</html>																								
