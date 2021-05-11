@@ -29,10 +29,7 @@
 			}
 		</style>
 	</head>
-	<body class="bg-dark">
-		<div>
-			<h1 class="text-warning Center">ERLETE</h1>
-		</div>
+	<body class="bg-dark">	
 		<ul class="sidenav">
 			<li>
 				<a class="Center active" href="index.php">HOME</a>
@@ -41,13 +38,13 @@
 				<a class="Center" href="info.php">INFORMATION</a>
 			</li>
 			<li>
-				<a class="Center" href="SD_EXAMPLE.html">FORUM</a>
+				<a class="Center" href="forum.php">FORUM</a>
 			</li>
 			<li>
 				<a class="Center" href="bookings.php">BOOKINGS</a>
 			</li>
 			<li>
-				<a class="Center" href="SD_EXAMPLE2.html">MY ACCOUNT</a>
+				<a class="Center" href="my_account.php">MY ACCOUNT</a>
 			</li>
 			<?php
 				session_start();
@@ -63,11 +60,14 @@
 					<a class="nav-link Center" href="login.php">LOGIN</a>
 				</li>
 				<?php
-					}
+				}
 			?>	
 		</ul>
 		
-		<div class="content Center bg-warning" >
+		<div class="content Center bg-warning">
+			<div id="title" class="Center text-warning bg-dark">
+				<h1>ERLETE</h1>
+			</div>
 			<h2>LEARN ABOUT OUR PURPOSE AND ACTIVITIES</h2>
 			<div class="bg-dark text-warning RB">
 				<p>Read information about how everything works and why we like being in this community, how to become a part of this and how to contact us for further information</p>

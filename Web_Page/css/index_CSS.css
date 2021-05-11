@@ -93,11 +93,11 @@ div.content {
 	font-size:1.1vw;
 	line-height:3vw;
 }
-h1 {
-	font-size:7vw;
+#title {
+	width:100%;
+	font-size:8vw;
 	text-shadow: 0.1em 0.1em 0.1em black;
-	padding-bottom:2vw;
-	box-shadow:0em 0em 1.5em 0em rgb(0,0,0,0.5);
+	padding:2vw;
 }
 h2 {
 	font-size:2vw;  

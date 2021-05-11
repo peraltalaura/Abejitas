@@ -19,7 +19,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<!--<Link rel="stylesheet" href="CSS.css">-->
-		<Link rel="stylesheet" href="css//index_CSS.css">
+		<Link rel="stylesheet" href="css//login_CSS.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
 			h1 {
@@ -68,9 +68,8 @@
 			}
 		?>	
 	</ul>
-	
-	<div class="content">
-		
+	<div class="content Center text-warning">
+		<h2 style="margin-top:7%">LATEST DISCUSSIONS</h2>
 	</div>
 	<div class="bg-dark p-4">
 		<address></address>

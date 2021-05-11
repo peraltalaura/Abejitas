@@ -1,0 +1,122 @@
+/*start of responsive navigation var*/
+body {margin: 0;}
+
+ul.sidenav {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 20%;
+	position: fixed;
+	height: 100%;
+	overflow: auto;
+	box-shadow:0em 0em 2em 0em rgb(0,0,0,0.5);
+}
+ul.sidenav li {
+	margin:0.7vw;
+}
+ul.sidenav li a {
+	display: block;
+	color: rgb(255, 204, 0);
+	padding: 8px 16px;
+	text-decoration: none;
+	font-size:1vw;
+}
+
+ul.sidenav li a.active {
+	background:rgb(255, 204, 0);
+	color:black;
+	box-shadow: 0vw 0vw 1vw 0vw rgb(255, 204, 0);  
+}
+
+ul.sidenav li a:hover:not(.active) {
+	background-color: rgb(255, 204, 0);
+	color: black;
+	font-size:1.1vw;
+	transition:font-size 0.4s linear;
+	box-shadow: 0vw 0vw 1vw 0vw rgb(255, 204, 0);  
+}
+div.content {
+	margin-left: 20%;
+	padding: 1px 16px;
+}
+@media screen and (max-width: 900px) {
+	ul.sidenav {
+		width: 100%;
+		height: auto;
+		position: relative;
+	}
+	
+	ul.sidenav li a {
+		float: left;
+		padding: 15px;
+	}
+	
+	div.content {
+		margin-left:0;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	ul.sidenav li a {
+		text-align: center;
+		float: none;
+	}
+	div.content {
+		margin-left: 0;
+	}
+}
+/*end of responsive navigation var*/
+/*My account nav */
+#accountNav{
+	list-style-type:none;
+	margin-left: 15%;
+}
+ul#accountNav li a{
+	background:rgb(255, 204, 0);
+	color:black;
+}
+ul#accountNav li a.active {
+	background:black;
+	color:rgb(255, 204, 0);
+	box-shadow: 0vw 0vw 1vw 0vw rgb(255, 204, 0);  
+}
+ul.sidenav li a:hover:not(.active) {
+	background-color: black;
+	color: rgb(255, 204, 0);
+	font-size:1.1vw;
+	transition:font-size 0.4s linear;
+	box-shadow: 0vw 0vw 1vw 0vw rgb(255, 204, 0);  
+}
+
+/*My account nav end*/
+div.content {
+	font-size:1.1vw;
+	line-height:3vw;
+}
+.Center {
+	display: flex;              
+	flex-direction: column;     
+	justify-content: center;    
+	align-items: center;  
+	text-align:center;
+}
+.RB {
+	border-radius:2em;
+	padding:2vw;
+	margin:3vw;
+	text-align:justify;
+	width:75%;
+	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0,0.5);
+}
+.BRB {
+	border-radius:5vw;
+	padding:1vw;
+	margin:1vw;
+	font-size:0.7vw;
+	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0,0.5);
+}
+a:hover{
+	transition:box-shadow 0.4s linear, font-size 0.4s;
+	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0);
+	font-size:0.8vw;
+}

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		
+	<head>		
 		<title>Bookings</title>
 		<link rel="preconnect" href="https://fonts.gstatic.com"><link>
 		<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lato&display=swap" rel="stylesheet">
@@ -36,8 +35,11 @@
 		</script>
 		
 		<style>
-			body {
+			h1 {
 			font-family: 'Dancing Script', cursive;
+			}
+			body {
+			font-family: 'Lato', sans-serif;
 			}
 		</style>
 		
@@ -55,13 +57,13 @@
 			<a class="Center" href="info.php">INFORMATION</a>
 		</li>
 		<li>
-			<a class="Center" href="SD_EXAMPLE.html">FORUM</a>
+			<a class="Center" href="forum.php">FORUM</a>
 		</li>
 		<li>
-			<a class="Center active" href="bookings.php">BOOKINGS</a>
+			<a class="Center" href="bookings.php">BOOKINGS</a>
 		</li>
 		<li>
-			<a class="Center" href="SD_EXAMPLE2.html">MY ACCOUNT</a>
+			<a class="Center" href="my_account.php">MY ACCOUNT</a>
 		</li>
 		<?php
 			session_start();
@@ -81,8 +83,10 @@
 		?>	
 	</ul>
 	
-	<div class="content">
+	<div class="content text-warning">
+		<h2 class="Center mt-4">BOOK OUR EXTRACTOR</h2>
 		<div id='calendar'></div>
+		<h2 class="Center mt-4">CONSULT THE AVAILABILITY OF OUR METAL BINS</h2>
 	</div>
 	<div class="bg-dark p-4">
 		<address></address>
