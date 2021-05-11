@@ -41,13 +41,13 @@
 				<a class="Center" href="info.php">INFORMATION</a>
 			</li>
 			<li>
-				<a class="Center" href="SD_EXAMPLE.html">FORUM</a>
+				<a class="Center" href="my_account.php">FORUM</a>
 			</li>
 			<li>
 				<a class="Center" href="bookings.php">BOOKINGS</a>
 			</li>
 			<li>
-				<a class="Center" href="SD_EXAMPLE2.html">MY ACCOUNT</a>
+				<a class="Center" href="my_account.php">MY ACCOUNT</a>
 			</li>
 			<?php
 				session_start();

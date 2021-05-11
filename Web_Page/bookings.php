@@ -36,13 +36,14 @@
 		</script>
 		
 		<style>
-			body {
+			h1 {
 			font-family: 'Dancing Script', cursive;
 			}
+			body {
+			font-family: 'Lato', sans-serif;
+			}
 		</style>
-		
-	</style>
-</head>
+		</head>
 <body class="bg-dark">
 	<ul class="sidenav">
 		<li>
@@ -55,13 +56,13 @@
 			<a class="Center" href="info.php">INFORMATION</a>
 		</li>
 		<li>
-			<a class="Center" href="SD_EXAMPLE.html">FORUM</a>
+			<a class="Center" href="my_account.php">FORUM</a>
 		</li>
 		<li>
 			<a class="Center active" href="bookings.php">BOOKINGS</a>
 		</li>
 		<li>
-			<a class="Center" href="SD_EXAMPLE2.html">MY ACCOUNT</a>
+			<a class="Center" href="my_account.php">MY ACCOUNT</a>
 		</li>
 		<?php
 			session_start();
@@ -82,7 +83,7 @@
 	</ul>
 	
 	<div class="content">
-		<div id='calendar'></div>
+		<div id='calendar' style="width: 50vw; margin: auto"></div>
 	</div>
 	<div class="bg-dark p-4">
 		<address></address>
