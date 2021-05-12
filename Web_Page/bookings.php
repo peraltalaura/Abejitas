@@ -98,10 +98,55 @@
 	<div class="content text-warning">
 		<h2 class="Center mt-4">BOOK OUR EXTRACTOR</h2>
 		<div id='calendar'></div>
+		<div class="container Center mt-4">
+			<form class="form-group mt-4" action="book.php" method="post">
+				<div class="row">
+					<div class="col-sm-3">
+						Select entry date:
+					</div>
+					<div class="col-sm-3">
+						<input type='date' name="entry">
+					</div>
+					<div class="col-sm-3">
+						Select exit date:
+					</div>
+					<div class="col-sm-3">
+						<input type='date' name="exit">
+					</div>
+				</div>
+				<BR>
+				<input class="text-dark bg-warning" style="padding-right:6vw" type="submit" value="TRANSFER">
+			</form>
+			
+		</div>
 		<h2 class="Center mt-4">CONSULT THE AVAILABILITY OF OUR METAL BINS</h2>
+		<?php		
+			include("test_connect_db.php");
+			$link=connectDataBase();
+			$id=$_SESSION['memberID'];
+			$result=mysqli_query($link,"SELECT * FROM metalbin");
+		?>
+		<div class="table-responsive">
+			<table class="table bg-dark text-warning Center">
+				<tr>
+					<th>METAL BIN</th>
+					<th>CAPACITY</th>
+					<th>AVAILABILITY</th>
+				</tr>
+				<?php
+					while($data=mysqli_fetch_array($result)){
+						if($data[2]==1){
+							printf("<tr><td>%d</td><td>%d KG</td><td>available</td></tr>",$data[0],$data[1]);
+							} else {
+							printf("<tr><td>%d</td><td>%d KG</td><td>occupied</td></tr>",$data[0],$data[1]);
+						}
+					}
+				?>
+			</table>
+		</div>
 	</div>
 	<div class="bg-dark p-4">
 		<address></address>
 	</div>
 </body>
-</html>							
+</html>									

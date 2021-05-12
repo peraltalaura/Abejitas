@@ -188,11 +188,23 @@
 						<th>TOTAL</th>
 					</tr>
 					<?php
+						$balance=0;
 						while($data=mysqli_fetch_array($result)){
 							printf("<tr><td>%d</td><td>%s</td><td>%s</td><td>%d</td></tr>",$data[0],$data[1],$data[3],$data[2]);
+							$balance=$balance+$data[2];
 						}
 					?>
 				</table>
+			</div>
+			<div class="row RB">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-4">
+					MY BALANCE:
+				</div>
+					<?php
+						printf("<div class='col-sm-4'>%d €</div>",$balance);
+					?>
+					<div class="col-sm-2"></div>
 			</div>
 		</div>
 		
@@ -202,11 +214,11 @@
 			<form class="form-group" action="transfer.php" method="post">
 				<div class="row RB">
 					<div class="col-sm-5">
-						DESCRIPTION:
+					DESCRIPTION:
 					</div>
 					<div class='col-sm-7'>
-						<input type='text' name='desc'>
-					</div>
+					<input type='text' name='desc'>
+				</div>
 				</div>
 				<div class="row RB">
 					<div class="col-sm-4">
@@ -252,10 +264,86 @@
 				</table>
 			</div>
 		</div>
+		
+		<div class="content text-warning Center">
+			<h2 class="mt-4">MY ACTIVITY</h2>
+			<br>
+			<?php			
+				$id=$_SESSION['memberID'];
+				$result=mysqli_query($link,"SELECT production_id,kilos,total FROM production WHERE booking_id IN (SELECT booking_id FROM booking WHERE member_id=$id)");
+			?>
+			<div class="table-responsive">
+				<table class="table bg-dark text-warning Center">
+					<tr>
+						<th>PRODUCTION ID</th>
+						<th>KILOS PRODUCED</th>
+						<th>TOTAL TO PAY</th>
+					</tr>
+					<?php
+						while($data=mysqli_fetch_array($result)){
+							printf("<tr><td>%d</td><td>%d KG</td><td>%d €</td></tr>",$data[0],$data[1],$data[2]);
+						}
+					?>
+				</table>
+			</div>
+			<h2 class="mt-4">REGISTER PRODUCTION</h2>
+			<form class="form-group container Center" action="produce.php" method="post">
+				<div class="row RB">
+					<div class="col-sm-4">
+						BOOKING ID:
+					</div>
+					<div class='col-sm-6'>
+						<input type='number' name='bookID'>
+					</div>
+				</div>
+				<div class="row RB">
+					<div class="col-sm-4">
+						KILOS:
+					</div>
+					<div class='col-sm-8'>
+						<input type='number' name='kilos'>
+					</div>
+				</div>
+				<div class="row RB">
+					<div class="col-sm-4">
+						CUANTITY:
+					</div>
+					<div class='col-sm-8'>
+						<input type='number' name='total'>
+					</div>
+				</div>
+				<div class="row RB">
+					<div class="col-sm-6">
+						ENTER THE ID OF OUR METALBIN:
+					</div>
+					<div class='col-sm-4'>
+						<input type='number' name='metalID'>
+					</div>
+				</div>
+				<input class="text-dark bg-warning" type="submit" value="REGISTER">
+			</form>
+		</div>
 	</div>
+	<div class="content text-warning Center">
+		<h2 class="mt-4">NOTIFICATIONS</h2>
+		<br>
+		<?php			
+			$id=$_SESSION['memberID'];
+			$result=mysqli_query($link,"SELECT message,notification_date FROM notification INNER JOIN notify ON notify.notification_id=notification.notification_id WHERE member_id=$id");
+			
+			while($data=mysqli_fetch_array($result)){
+				printf("<div class='row RB'>
+				<div class='col-sm-6'>%s</div>
+				<div class='col-sm-6'>%s</div>
+				</div>",$data[0],$data[1]);
+			}
+		?>
+		
+	</div>
+	
 	<div class="bg-dark p-4">
 		<address></address>
 	</div>
 	
-	</body>
+</body>
 </html>																								

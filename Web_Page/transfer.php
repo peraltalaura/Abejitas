@@ -10,7 +10,6 @@
 	$id=$_SESSION['memberID'];
 	
 	$sql="INSERT INTO payment(description,total,pay_date,member_id) VALUES('$desc',$import,'$date',$id)";
-	mysqli_query($link,$sql);
 	if(mysqli_query($link,$sql)){
 		$id=$_SESSION['memberID'];
 		header("Location:my_account.php ? insert=yes");
