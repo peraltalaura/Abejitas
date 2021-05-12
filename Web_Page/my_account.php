@@ -131,13 +131,13 @@
 						E-MAIL:
 					</div>
 					<?php
-						printf("<div class='col-sm-3'><input type='text' name='mail' value='%s'></div>",$data[1]);
+						printf("<div class='col-sm-3'><input type='email' name='mail' value='%s'></div>",$data[1]);
 					?>
 					<div class="col-sm-3">
 						BIRTH DATE:
-						</div>
-						<?php
-						printf("<div class='col-sm-3'><input type='text' name='birth' value='%s'></div>",$data[5]);
+					</div>
+					<?php
+						printf("<div class='col-sm-3'><input type='date' name='birth' value='%s'></div>",$data[5]);
 					?>
 				</div>
 				<div class="row RB">
@@ -151,7 +151,7 @@
 						POST CODE:
 					</div>
 					<?php
-						printf("<div class='col-sm-3'><input type='text' name='post' value='%d'></div>",$data[7]);
+						printf("<div class='col-sm-3'><input type='number' name='post' value='%d'></div>",$data[7]);
 					?>
 				</div>
 				<div class="row RB">
@@ -165,17 +165,97 @@
 						PHONE NUMBER:
 					</div>
 					<?php
-						printf("<div class='col-sm-2'><input type='text' name='phone' value='%d'></div>",$data[9]);
+						printf("<div class='col-sm-2'><input type='tel' name='phone' value='%d'></div>",$data[9]);
 					?>
 				</div>
 				<input class="text-dark bg-warning" type="submit" value="MODIFY DATA">
 			</div>
 		</form>
 		
-		
-		<div class="bg-dark p-4">
-			<address></address>
+		<div class="content text-warning Center">
+			<h2 class="mt-4">MY MOVEMENTS</h2>
+			<br>
+			<?php			
+				$id=$_SESSION['memberID'];
+				$result=mysqli_query($link,"SELECT* from payment where member_id=$id");
+			?>
+			<div class="table-responsive">
+				<table class="table bg-dark text-warning Center">
+					<tr>
+						<th>PAYMENT ID</th>
+						<th>DESCRIPTION</th>
+						<th>DATE</th>
+						<th>TOTAL</th>
+					</tr>
+					<?php
+						while($data=mysqli_fetch_array($result)){
+							printf("<tr><td>%d</td><td>%s</td><td>%s</td><td>%d</td></tr>",$data[0],$data[1],$data[3],$data[2]);
+						}
+					?>
+				</table>
+			</div>
 		</div>
 		
+		
+		<div class="content text-warning Center">
+			<h2 class="mt-4">TRANSFER</h2>
+			<form class="form-group" action="transfer.php" method="post">
+				<div class="row RB">
+					<div class="col-sm-5">
+						DESCRIPTION:
+					</div>
+					<div class='col-sm-7'>
+						<input type='text' name='desc'>
+					</div>
+				</div>
+				<div class="row RB">
+					<div class="col-sm-4">
+						DATE:
+					</div>
+					<div class='col-sm-8'>
+						<input type='datetime-local' name='date'>
+					</div>
+				</div>
+				<div class="row RB">
+					<div class="col-sm-4">
+						CUANTITY:
+					</div>
+					<div class='col-sm-8'>
+						<input type='text' name='import'>
+					</div>
+				</div>
+				<input class="text-dark bg-warning" type="submit" value="TRANSFER">
+			</form>
+		</div>
+		
+		<div class="content text-warning Center">
+			<h2 class="mt-4">MY BOOKINGS</h2>
+			<br>
+			<?php			
+				$id=$_SESSION['memberID'];
+				$result=mysqli_query($link,"SELECT* from booking where member_id=$id");
+			?>
+			<div class="table-responsive">
+				<table class="table bg-dark text-warning Center">
+					<tr>
+						<th>BOOKING ID</th>
+						<th>ENTRY DATE</th>
+						<th>EXIT DATE</th>
+						<th>KILOS PRODUCED</th>
+						<th>TOTAL TO PAY</th>
+					</tr>
+					<?php
+						while($data=mysqli_fetch_array($result)){
+							printf("<tr><td>%d</td><td>%s</td><td>%s</td><td>%d KG</td><td>%d €</td></tr>",$data[0],$data[1],$data[2],$data[3],$data[4]);
+						}
+					?>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="bg-dark p-4">
+		<address></address>
+	</div>
+	
 	</body>
 </html>																								

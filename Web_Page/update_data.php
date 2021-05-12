@@ -13,7 +13,9 @@
 	$phone=$_POST['phone'];
 	$id=$_SESSION['memberID'];
 	
-	$sql="UPDATE member SET name='$user', surname='$surname', email='$email', birthdate='$birth', city='$city', address='$address', phone=$phone WHERE member_id=$id";
+	$sql="UPDATE member SET name='$user', surname='$surname', email='$email', 
+	birthdate='$birth', city='$city', address='$address',postcode=$post, 
+	phone=$phone WHERE member_id=$id";
 	mysqli_query($link,$sql);
 	if(mysqli_query($link,$sql)){
 		$id=$_SESSION['memberID'];
