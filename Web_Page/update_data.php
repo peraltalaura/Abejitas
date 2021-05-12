@@ -10,10 +10,9 @@
 	$post=$_POST['post'];
 	$address=$_POST['address'];
 	$phone=$_POST['phone'];
-	$id=mysqli_query($link,"SELECT member_id FROM member WHERE email='$email'");
-	$data=mysqli_fetch_array($id);
+	$id=$_SESSION['memberID'];
 	
-	$sql="UPDATE member SET name='$user', surname='$surname', email='$email', birthdate=$birth, city='$city', address='$address', phone=$phone WHERE member_id=$data[0]";
+	$sql="UPDATE member SET name='$user', surname='$surname', email='$email', birthdate='$birth', city='$city', address='$address', phone=$phone WHERE member_id=$id";
 	mysqli_query($link,$sql);
 	
 	if(mysqli_query($link,$sql)){

@@ -57,7 +57,7 @@
 				<a class="Center active" href="">MY ACCOUNT</a>
 				<?php
 					session_start();
-					if(isset($_SESSION['globaluser'])){
+					if(isset($_SESSION['memberID'])){
 					?>
 					<ul id="accountNav">
 						<li>
@@ -84,7 +84,7 @@
 				?>
 			</li>
 			<?php
-				if(isset($_SESSION['globaluser'])){
+				if(isset($_SESSION['memberID'])){
 				?>
 				<li>
 					<a class="Center" href="close_session.php">LOGOUT</a>
@@ -102,11 +102,13 @@
 		<?php
 			include("test_connect_db.php");
 			$link=connectDataBase();			
-			$user=$_SESSION['globaluser'];
-			$emaitza=mysqli_query($link,"select* from member where name='$user'");
-			$data=mysqli_fetch_array($emaitza);
+			$id=$_SESSION['memberID'];
+			$result=mysqli_query($link,"select* from member where member_id=$id");
+			$data=mysqli_fetch_array($result);
 			
 		?>
+		
+		
 		<form class="form-group" action="update_data.php" method="post">
 			<div class="content text-warning Center">
 				<h2 class="mt-4">MY PROFILE</h2>
@@ -135,7 +137,7 @@
 						BIRTH DATE:
 						</div>
 						<?php
-						printf("<div class='col-sm-3'><input type='text' name='birth' value='%d'></div>",$data[5]);
+						printf("<div class='col-sm-3'><input type='text' name='birth' value='%s'></div>",$data[5]);
 					?>
 				</div>
 				<div class="row RB">
@@ -157,7 +159,7 @@
 						ADDRESS:
 					</div>
 					<?php
-						printf("<div class='col-sm-5'><input type='text' name='address' value='%s'></div>",$data[8]);
+						printf("<div class='col-sm-4'><input type='text' name='address' value='%s'></div>",$data[8]);
 					?>
 					<div class="col-sm-3">
 						PHONE NUMBER:
@@ -169,6 +171,8 @@
 				<input class="text-dark bg-warning" type="submit" value="MODIFY DATA">
 			</div>
 		</form>
+		
+		
 		<div class="bg-dark p-4">
 			<address></address>
 		</div>

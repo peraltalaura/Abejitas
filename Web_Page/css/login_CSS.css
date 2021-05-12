@@ -64,33 +64,6 @@ div.content {
 	}
 }
 /*end of responsive navigation var*/
-/* OLD NAV CSS
-	}
-	ul{
-	border-radius:2em;
-	}
-	nav li {
-	font-size:2vw;
-	background:rgb(255, 204, 0,0.7);
-	margin:0em 1em 0em 1em;
-	border-radius:2em;
-	}
-	nav li a {
-	color:black;
-	font-size:0.8em;
-	transition:font-size 0.4s linear;
-	}
-	nav li:hover{
-	border-radius:2em;
-	box-shadow: 0em 0em 1em 0em rgb(255, 204, 0);  
-	}
-	a:hover {
-	font-size:1em;
-	font-weight:bolder;
-	color:black; 
-	border-radius:2em; 
-	}
-*/
 div.content {
 	font-size:1.1vw;
 	line-height:3vw;

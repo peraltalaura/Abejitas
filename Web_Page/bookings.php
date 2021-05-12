@@ -62,12 +62,24 @@
 		<li>
 			<a class="Center" href="bookings.php">BOOKINGS</a>
 		</li>
-		<li>
-			<a class="Center" href="my_account.php">MY ACCOUNT</a>
-		</li>
 		<?php
 			session_start();
-			if(isset($_SESSION['globaluser'])){
+			if(isset($_SESSION['memberID'])){
+			?>
+			<li>
+				<a class="Center" href="my_account.php">MY ACCOUNT</a>
+			</li>
+			<?php
+				} else {
+			?>
+			<li>
+				<a class="Center" href="login.php">MY ACCOUNT</a>
+			</li>
+			<?php
+			}
+		?>
+		<?php
+			if(isset($_SESSION['memberID'])){
 			?>
 			<li>
 				<a class="Center" href="close_session.php">LOGOUT</a>
@@ -92,4 +104,4 @@
 		<address></address>
 	</div>
 </body>
-</html>					
+</html>							
