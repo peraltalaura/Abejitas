@@ -119,7 +119,7 @@ a:hover{
 	font-size:0.8vw;
 }
 /*Modify data*/
-input[type="text"] {
+input[type="text"], input[type="date"], input[type="number"], input[type="tel"], input[type="email"], input[type="datetime-local"] {
 	border-radius:5vw;
 	border:none;
 	outline:none;

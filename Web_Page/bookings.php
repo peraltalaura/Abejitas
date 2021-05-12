@@ -123,7 +123,6 @@
 		<?php		
 			include("test_connect_db.php");
 			$link=connectDataBase();
-			$id=$_SESSION['memberID'];
 			$result=mysqli_query($link,"SELECT * FROM metalbin");
 		?>
 		<div class="table-responsive">
