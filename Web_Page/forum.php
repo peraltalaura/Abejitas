@@ -56,7 +56,7 @@
 					} else {
 				?>
 				<li>
-					<a class="Center" href="login.php">MY ACCOUNT</a>
+					<a class="Center" href="login.php">BOOKINGS</a>
 				</li>
 				<?php
 				}
