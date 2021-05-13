@@ -19,7 +19,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<!--<Link rel="stylesheet" href="CSS.css">-->
-		<Link rel="stylesheet" href="css//account_CSS.css">
+		<Link rel="stylesheet" href="css/account_CSS.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
 			h1 {
@@ -291,11 +291,11 @@
 			<h2 id="production" class="mt-4">REGISTER PRODUCTION</h2>
 			<form class="form-group container Center" action="produce.php" method="post">
 				<div class="row RB">
-					<div class="col-sm-4">
-						BOOKING ID:
+					<div class="col-sm-4 Center">
+						SELECT YOUR BOOKING:
 					</div>
-					<div class='col-sm-6'>
-						<select class="form-select" aria-label="Default select example" name="bookID">
+					<div class='col-sm-2 Center' style="margin:0">
+						<select class="custom-select" name="bookID">
 							<?php
 							$id=$_SESSION['memberID'];
 							$result=mysqli_query($link,"SELECT booking_id from booking where member_id=$id");
@@ -317,11 +317,11 @@
 				</div>
 				
 				<div class="row RB">
-					<div class="col-sm-6">
+					<div class="col-sm-6 Center">
 						SELECT THE METALBIN:
 					</div>
-					<div class='col-sm-4'>
-						<select class="form-select" aria-label="Default select example" name='metalID'>
+					<div class='col-sm-4 Center'>
+						<select class="custom-select" aria-label="Default select example" name='metalID'>
 							<option>my own bin</option>
 							<?php
 							$id=$_SESSION['memberID'];
@@ -334,7 +334,7 @@
 						</select>
 					</div>
 				</div>
-				<input class="text-dark bg-warning" type="submit" value="REGISTER">
+				<input class="text-dark bg-warning" style="padding-right:6.2vw" type="submit" value="REGISTER">
 			</form>
 		</div>
 	</div>
