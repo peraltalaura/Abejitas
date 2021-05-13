@@ -9,7 +9,7 @@
 	
 	$sql="INSERT INTO booking(entrydate,exitdate,member_id,kilos,total) VALUES('$entry','$exit',$id,0,0)";
 	
-	if(mysqli_num_rows()){
+	if(mysqli_query($link,$sql)){
 		$id=$_SESSION['memberID'];
 		header("Location:bookings.php ? insert=yes");
 		} else {

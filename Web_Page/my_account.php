@@ -111,6 +111,7 @@
 		
 		<form id="data" class="form-group" action="update_data.php" method="post">
 			<div class="content text-warning Center">
+
 				<h2 class="mt-4">MY PROFILE</h2>
 				<div class="row RB">
 					<div class="col-sm-2">
@@ -220,14 +221,7 @@
 					<input type='text' name='desc'>
 				</div>
 				</div>
-				<div class="row RB">
-					<div class="col-sm-4">
-						DATE:
-					</div>
-					<div class='col-sm-8'>
-						<input type='datetime-local' name='date'>
-					</div>
-				</div>
+				
 				<div class="row RB">
 					<div class="col-sm-4">
 						CUANTITY:
@@ -270,7 +264,7 @@
 			<br>
 			<?php			
 				$id=$_SESSION['memberID'];
-				$result=mysqli_query($link,"SELECT production_id,kilos,total FROM production WHERE booking_id IN (SELECT booking_id FROM booking WHERE member_id=$id)");
+				$result=mysqli_query($link,"SELECT production_id,kilos,total,production_date FROM production WHERE booking_id IN (SELECT booking_id FROM booking WHERE member_id=$id)");
 			?>
 			<div class="table-responsive">
 				<table class="table bg-dark text-warning Center">
@@ -281,9 +275,16 @@
 						<th>FINISH</th>
 					</tr>
 					<?php
+						
 						while($data=mysqli_fetch_array($result)){
-							printf("<tr><td>%d</td><td>%d KG</td><td>%d €</td><td><button class='btn btn-dark text-warning BRB'>END</button></tr>",$data[0],$data[1],$data[2]);
-						}
+							if($data[3]== null){
+								printf("<tr><td>%d</td><td>%d KG</td><td>%d €</td><td>Finished</tr>",$data[0],$data[1],$data[2]);
+							}else{
+								printf("<tr><td>%d</td><td>%d KG</td><td>%d €</td><td><a type='button' href='setAvailable.php?productid=$data[0]' class='btn btn-dark text-warning BRB'>END</a></tr>",$data[0],$data[1],$data[2]);
+								}
+							}
+							
+						
 					?>
 				</table>
 			</div>
@@ -294,7 +295,16 @@
 						BOOKING ID:
 					</div>
 					<div class='col-sm-6'>
-						<input type='number' name='bookID'>
+						<select class="form-select" aria-label="Default select example" name="bookID">
+							<?php
+							$id=$_SESSION['memberID'];
+							$result=mysqli_query($link,"SELECT booking_id from booking where member_id=$id");
+
+							while($data=mysqli_fetch_array($result)){
+								printf("<option>%d</option>",$data[0]);
+							}
+							?>
+						</select>
 					</div>
 				</div>
 				<div class="row RB">
@@ -305,20 +315,23 @@
 						<input type='number' name='kilos'>
 					</div>
 				</div>
-				<div class="row RB">
-					<div class="col-sm-4">
-						CUANTITY:
-					</div>
-					<div class='col-sm-8'>
-						<input type='number' name='total'>
-					</div>
-				</div>
+				
 				<div class="row RB">
 					<div class="col-sm-6">
-						ENTER THE ID OF OUR METALBIN:
+						SELECT THE METALBIN:
 					</div>
 					<div class='col-sm-4'>
-						<input type='number' name='metalID'>
+						<select class="form-select" aria-label="Default select example" name='metalID'>
+							<option>my own bin</option>
+							<?php
+							$id=$_SESSION['memberID'];
+							$result=mysqli_query($link,"SELECT metalbin_id, name from metalbin where available=1");
+
+							while($data=mysqli_fetch_array($result)){
+								printf("<option value='%d'>%d liter bin</option>",$data[0],$data[1]);
+							}
+							?>
+						</select>
 					</div>
 				</div>
 				<input class="text-dark bg-warning" type="submit" value="REGISTER">

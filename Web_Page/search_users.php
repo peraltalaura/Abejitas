@@ -4,7 +4,7 @@
 	$pass=$_POST["password"];
 	$link=connectDataBase();
 	
-	$result=mysqli_query($link,"SELECT name,password,member_id FROM member WHERE name='$user' AND password='$pass'");
+	$result=mysqli_query($link,"SELECT name,password,member_id FROM member WHERE name='$user' AND password='$pass' AND active=1");
 	$data=mysqli_fetch_array($result);
 	
 	if(mysqli_num_rows($result)==0){
