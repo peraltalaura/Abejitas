@@ -61,22 +61,22 @@
 					?>
 					<ul id="accountNav">
 						<li>
-							<a id="edit" class="Center active" href="" >EDIT</a>
+							<a class="Center active" href="#data" >EDIT</a>
 						</li>
 						<li>
-							<a id="bal" class="Center" href="">BALANCE</a>
+							<a class="Center" href="#movement">BALANCE</a>
 						</li>
 						<li>
-							<a id="trans" class="Center" href="">TRANSACTION</a>
+							<a class="Center" href="#transfer">TRANSACTION</a>
 						</li>
 						<li>
-							<a id="book" class="Center" href="">BOOKINGS</a>
+							<a class="Center" href="#bookings">BOOKINGS</a>
 						</li>
 						<li>
-							<a id="act" class="Center" href="">ACTIVITY</a>
+							<a class="Center" href="#activity">ACTIVITY</a>
 						</li>
 						<li>
-							<a id="not" class="Center" href="">NOTIFICATIONS</a>
+							<a class="Center" href="#notification">NOTIFICATIONS</a>
 						</li>
 					</ul>
 					<?php
@@ -109,7 +109,7 @@
 		?>
 		
 		
-		<form class="form-group" action="update_data.php" method="post">
+		<form id="data" class="form-group" action="update_data.php" method="post">
 			<div class="content text-warning Center">
 				<h2 class="mt-4">MY PROFILE</h2>
 				<div class="row RB">
@@ -173,7 +173,7 @@
 		</form>
 		
 		<div class="content text-warning Center">
-			<h2 class="mt-4">MY MOVEMENTS</h2>
+			<h2 id="movement" class="mt-4">MY MOVEMENTS</h2>
 			<br>
 			<?php			
 				$id=$_SESSION['memberID'];
@@ -196,7 +196,7 @@
 					?>
 				</table>
 			</div>
-			<div class="row RB">
+			<div id="balance" class="row RB">
 				<div class="col-sm-2"></div>
 				<div class="col-sm-4">
 					MY BALANCE:
@@ -210,7 +210,7 @@
 		
 		
 		<div class="content text-warning Center">
-			<h2 class="mt-4">TRANSFER</h2>
+			<h2 id="transfer" class="mt-4">TRANSFER</h2>
 			<form class="form-group" action="transfer.php" method="post">
 				<div class="row RB">
 					<div class="col-sm-5">
@@ -241,7 +241,7 @@
 		</div>
 		
 		<div class="content text-warning Center">
-			<h2 class="mt-4">MY BOOKINGS</h2>
+			<h2 id="bookings" class="mt-4">MY BOOKINGS</h2>
 			<br>
 			<?php			
 				$id=$_SESSION['memberID'];
@@ -258,7 +258,7 @@
 					</tr>
 					<?php
 						while($data=mysqli_fetch_array($result)){
-							printf("<tr><td>%d</td><td>%s</td><td>%s</td><td>%d KG</td><td>%d €</td></tr>",$data[0],$data[1],$data[2],$data[3],$data[4]);
+							printf("<tr><td class='id'>%d</td><td>%s</td><td>%s</td><td>%d KG</td><td>%d €</td></tr>",$data[0],$data[1],$data[2],$data[3],$data[4]);
 						}
 					?>
 				</table>
@@ -266,7 +266,7 @@
 		</div>
 		
 		<div class="content text-warning Center">
-			<h2 class="mt-4">MY ACTIVITY</h2>
+			<h2 id="activity" class="mt-4">MY ACTIVITY</h2>
 			<br>
 			<?php			
 				$id=$_SESSION['memberID'];
@@ -278,15 +278,16 @@
 						<th>PRODUCTION ID</th>
 						<th>KILOS PRODUCED</th>
 						<th>TOTAL TO PAY</th>
+						<th>FINISH</th>
 					</tr>
 					<?php
 						while($data=mysqli_fetch_array($result)){
-							printf("<tr><td>%d</td><td>%d KG</td><td>%d €</td></tr>",$data[0],$data[1],$data[2]);
+							printf("<tr><td>%d</td><td>%d KG</td><td>%d €</td><td><button class='btn btn-dark text-warning BRB'>END</button></tr>",$data[0],$data[1],$data[2]);
 						}
 					?>
 				</table>
 			</div>
-			<h2 class="mt-4">REGISTER PRODUCTION</h2>
+			<h2 id="production" class="mt-4">REGISTER PRODUCTION</h2>
 			<form class="form-group container Center" action="produce.php" method="post">
 				<div class="row RB">
 					<div class="col-sm-4">
@@ -325,7 +326,7 @@
 		</div>
 	</div>
 	<div class="content text-warning Center">
-		<h2 class="mt-4">NOTIFICATIONS</h2>
+		<h2 id="notification" class="mt-4">NOTIFICATIONS</h2>
 		<br>
 		<?php			
 			$id=$_SESSION['memberID'];
@@ -340,7 +341,15 @@
 		?>
 		
 	</div>
-	
+	<script>
+		$(document).ready(function(){
+			$("button").click(function(){
+				<?php
+					
+				?>
+			});
+		});
+	</script>
 	<div class="bg-dark p-4">
 		<address></address>
 	</div>

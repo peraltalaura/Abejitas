@@ -115,7 +115,7 @@
 					</div>
 				</div>
 				<BR>
-				<input class="text-dark bg-warning" style="padding-right:6vw" type="submit" value="TRANSFER">
+				<input class="text-dark bg-warning" type="submit" value="BOOK">
 			</form>
 			
 		</div>
@@ -131,13 +131,14 @@
 					<th>METAL BIN</th>
 					<th>CAPACITY</th>
 					<th>AVAILABILITY</th>
+					<th>DATE AVAILABLE</th>
 				</tr>
 				<?php
 					while($data=mysqli_fetch_array($result)){
 						if($data[2]==1){
-							printf("<tr><td>%d</td><td>%d KG</td><td>available</td></tr>",$data[0],$data[1]);
+							printf("<tr><td>%d</td><td>%d KG</td><td>available</td><td>NOW</td></tr>",$data[0],$data[1]);
 							} else {
-							printf("<tr><td>%d</td><td>%d KG</td><td>occupied</td></tr>",$data[0],$data[1]);
+							printf("<tr><td>%d</td><td>%d KG</td><td>occupied</td><td>%s</td></tr>",$data[0],$data[1],$data[3]);
 						}
 					}
 				?>

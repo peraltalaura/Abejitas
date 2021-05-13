@@ -45,11 +45,23 @@
 			<li>
 				<a class="Center active" href="">FORUM</a>
 			</li>
-			<li>
-				<a class="Center" href="bookings.php">BOOKINGS</a>
-			</li>
 			<?php
 				session_start();
+				if(isset($_SESSION['memberID'])){
+				?>
+				<li>
+					<a class="Center" href="bookings.php">BOOKINGS</a>
+				</li>
+				<?php
+					} else {
+				?>
+				<li>
+					<a class="Center" href="login.php">MY ACCOUNT</a>
+				</li>
+				<?php
+				}
+			?>
+			<?php
 				if(isset($_SESSION['memberID'])){
 				?>
 				<li>
@@ -87,4 +99,4 @@
 			<address></address>
 		</div>
 	</body>
-</html>							
+</html>										
