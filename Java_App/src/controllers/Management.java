@@ -23,9 +23,9 @@ import java.util.ArrayList;
 public class Management {
 
     //private String url = "204.204.2.1:80/erlete_db";
-    private String db = "/erlete_db";
-    private String ip = "localhost";
-    private String url = "jdbc:mariadb://";
+    //private String db = "/erlete_db";
+//    private String ip = "localhost";
+//    private String url = "jdbc:mariadb://";
 
     private Connection connect() {
         Connection con = null;
@@ -33,7 +33,7 @@ public class Management {
         try {
             //con = DriverManager.getConnection(url, "root", "dam1");
             //con = DriverManager.getConnection(url + ip + db, "root", "dam1");
-            con = DriverManager.getConnection(url + ip + db, "root", "");
+            con = DriverManager.getConnection("jdbc:mariadb://localhost/erlete_db","root", "");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("error in the db");
@@ -45,9 +45,9 @@ public class Management {
      *
      * @param ip
      */
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
+//    public void setIp(String ip) {
+//        this.ip = ip;
+//    }
 
     /**
      * A method which takes an ArrayList of the type object and the name of the
@@ -170,7 +170,8 @@ public class Management {
         boolean done = false;
         //LocalDateTime data = newMember.getDate; falta por crear birthday
         String sql = "INSERT INTO member(email, name, surname, password, city, postcode, address, phone, active) VALUES (?,?,?,?,?,?,?,?,?)";
-        try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql)) {
+        try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+            
             pstmt.setString(1, newMember.getEmail());
             pstmt.setString(2, newMember.getName());
             pstmt.setString(3, newMember.getSurname());
@@ -181,6 +182,9 @@ public class Management {
             pstmt.setInt(8, newMember.getPhone());
             pstmt.setBoolean(9, newMember.isActive());
             pstmt.executeUpdate();
+            
+           
+            
             done = true;
         } catch (SQLException e) {
             System.out.println("fail on insert");
@@ -203,12 +207,22 @@ public class Management {
         boolean done = false;
         String sql = "UPDATE member SET active=?"
                 + " WHERE member_id = ?";
-
-        try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql)) {
+         String sql2="INSERT INTO payment(description,total,pay_date,member_id) VALUES(?,?,?,?)";
+        try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql); PreparedStatement pstmt2=con.prepareStatement(sql2);) {
 
             pstmt.setBoolean(1, true);
             pstmt.setInt(2, id);
             pstmt.executeUpdate();
+            
+            pstmt2.setString(1, "Annual fee");
+            pstmt2.setInt(2, -30);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = LocalDateTime.now().format(formatter);
+
+            pstmt2.setString(3, formattedDateTime);
+            pstmt2.setInt(4, id);
+            pstmt2.executeUpdate();
+            
             return true;
 
         } catch (SQLException e) {
