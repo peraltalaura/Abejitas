@@ -119,13 +119,13 @@
 						Select entry date:
 					</div>
 					<div class="col-sm-3">
-						<input type="date" name="entry">
+						<input type="date" required="required" name="entry">
 					</div>
 					<div class="col-sm-3">
 						Select exit date:
 					</div>
 					<div class="col-sm-3">
-						<input type="date" name="exit">
+						<input type="date" required="required" name="exit">
 					</div>
 				</div>
 				<BR>

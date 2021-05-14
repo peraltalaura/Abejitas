@@ -60,7 +60,7 @@
 		} else {
 			?>
 			<li>
-				<a class="Center" href="login.php">BOOKINGS</a>
+				<a class="Center" href="bookings.php">BOOKINGS</a>
 			</li>
 			<?php
 		}
@@ -121,10 +121,23 @@
 	?>
 	
 	
-	<form id="data" class="form-group" action="update_data.php" method="post">
+	<form id="data" class="form-group" action="update_data.php" method="post" enctype="multipart/form-data">
 		<div class="content text-warning Center">
 
 			<h2 class="mt-4">MY PROFILE</h2>
+			<div style="">
+				<?php
+					printf("<img src='%s' width='250px'/>",$data['picture']);
+				?>
+			</div>
+			<div class="row RB">
+				<div class="col-sm-3">
+					PROFILE PICTURE:
+				</div>
+				<div class='col-sm-4'>
+					<input type="file" name="pic">
+				</div>
+			</div>
 			<div class="row RB">
 				<div class="col-sm-2">
 					NAME:
@@ -230,7 +243,7 @@
 					DESCRIPTION:
 				</div>
 				<div class='col-sm-7'>
-					<input type='text' name='desc'>
+					<input type='text' required="required" name='desc'>
 				</div>
 			</div>
 			
@@ -239,7 +252,7 @@
 					CUANTITY:
 				</div>
 				<div class='col-sm-8'>
-					<input type='text' name='import'>
+					<input type='text'required="required" name='import'>
 				</div>
 			</div>
 			<input class="text-dark bg-warning" type="submit" value="TRANSFER">
@@ -324,7 +337,7 @@
 					KILOS:
 				</div>
 				<div class='col-sm-8'>
-					<input type='number' name='kilos'>
+					<input type='number'required="required" name='kilos'>
 				</div>
 			</div>
 			

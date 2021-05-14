@@ -95,9 +95,9 @@
 			<h2>LOGIN</h2>
 			<form class="form-group" action="search_users.php" method="post">
 				<h3>NAME:</h3>
-				<input class="mb-2" type="text" name="user">
+				<input class="mb-2" required="required" type="text" name="user">
 				<h3>PASSWORD:</h3>
-				<input class="mb-2" type="password" name="password"><br>
+				<input class="mb-2" type="password" required="required" name="password"><br>
 				<input class="text-dark bg-warning" type="submit" value="LOGIN">
 			</form>
 		</div>
