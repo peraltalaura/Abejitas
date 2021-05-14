@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import mainclass.*;
 import tables.*;
 import view.*;
@@ -157,11 +158,11 @@ public class HomeController implements ActionListener {
                 System.out.println("filter error");
             }
             break;
-            
+
             case "RESET":
                 this.resetPaymentTable();
                 break;
-                
+
             case "ADD ITEM":
                     try {
                 Inventory in = new Inventory(inventory.jTextFieldModel.getText(), inventory.jTextFieldComment.getText());
@@ -178,38 +179,60 @@ public class HomeController implements ActionListener {
             }
             break;
             case "DELETE COMMENT":
-                    //Aqui meter notify al usuario de esa id de tipo mal comentario?
+                //Aqui meter notify al usuario de esa id de tipo mal comentario?
+                int ic = JOptionPane.showConfirmDialog(inventory, "Are you sure?");
+                if (ic == 0) {
                     try {
-                ArrayList<Comment>c;
-                c = commentsTable.getComments();
-                int dcom = c.get(comments.jTableCommentsTable.getSelectedRow()).getComment_id();
+                        ArrayList<Comment> c;
+                        c = commentsTable.getComments();
+                        int dcom = c.get(comments.jTableCommentsTable.getSelectedRow()).getComment_id();
+                        ArrayList<Object> array = new ArrayList<>();
+                        ArrayList<Notification> not = new ArrayList();
+                        array = man.readData(array, "notification");
+                        for (Object x : array) {
+                            not.add((Notification) x); //notification id 3 (o 3.a posicion es el mensaje del comment)
+                        }
+
+                        int memberId = c.get(comments.jTableCommentsTable.getSelectedRow()).getMember_id();
+                        man.sendWarning(not.get(3), memberId);
 //                ArrayList<Comment> clist = commentsTable.getComments();
 //                LocalDateTime date = clist.get(comments.jTableCommentsTable.getSelectedRow()).getDate();
 
 //                Comment co = new Comment(date, clist.get(comments.jTableCommentsTable.getSelectedRow()).getMessage(), clist.get(comments.jTableCommentsTable.getSelectedRow()).getMember_id());
-                man.deleteComment(dcom);
-                commentsTable = new CommentsTable();
-                comments.jTableCommentsTable.setModel(commentsTable);
-                commentsTable.fireTableDataChanged();
-                System.out.println("Comment succesfully deleted");
-            } catch (Exception E) {
-                System.out.println("something went wrong deleting a comment");
-                System.out.println(E);
-            }
-                    break;
+                        man.deleteComment(dcom);
+                        commentsTable = new CommentsTable();
+                        comments.jTableCommentsTable.setModel(commentsTable);
+                        commentsTable.fireTableDataChanged();
+                        System.out.println("Comment succesfully deleted");
+                    } catch (Exception E) {
+                        System.out.println("something went wrong deleting a comment");
+                        System.out.println(E);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(inventory, "The Operation has been succesfully cancelled");
+                }
+
+                break;
             case "DELETE ITEM":
-                try{
-                    ArrayList<Inventory> i;
-                    i = inventoryTable.getMaterials();
-                    int iId = i.get(inventory.jTable1.getSelectedRow()).getItem_id();
-                    man.deleteInventory(iId);
-                    inventoryTable = new InventoryTable();
-                    inventory.jTable1.setModel(inventoryTable);
-                    inventoryTable.fireTableDataChanged();
-                    System.out.println("Item succesfully deleted");
-                }catch (Exception ex){
-                    System.out.println("Error deleting item");
-                    System.out.println(ex);
+                int i = JOptionPane.showConfirmDialog(inventory, "Are you sure?");
+                if (i == 0) {
+                    try {
+                        ArrayList<Inventory> is;
+                        is = inventoryTable.getMaterials();
+                        int iId = is.get(inventory.jTable1.getSelectedRow()).getItem_id();
+                        man.deleteInventory(iId);
+                        inventoryTable = new InventoryTable();
+                        inventory.jTable1.setModel(inventoryTable);
+                        inventoryTable.fireTableDataChanged();
+                        System.out.println("Item succesfully deleted");
+                        JOptionPane.showMessageDialog(inventory, "The message has been removed");
+                    } catch (Exception ex) {
+                        System.out.println("Error deleting item");
+                        System.out.println(ex);
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(inventory, "The Operation has been succesfully cancelled");
                 }
 
         }
@@ -272,8 +295,8 @@ public class HomeController implements ActionListener {
     public void commentActionListener(ActionListener listener) {
         comments.jButtonDeleteComment.addActionListener(listener);
     }
-    
-    public void resetPaymentTable(){
+
+    public void resetPaymentTable() {
         paymentTable.resetList();
         paymentTable.searchPayments();
         payments.jTablePayments.setModel(paymentTable);
