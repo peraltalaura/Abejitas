@@ -22,7 +22,7 @@
 	$sql="UPDATE member SET name='$user', surname='$surname', email='$email', 
 	birthdate='$birth', city='$city', address='$address',postcode='$post', 
 	phone='$phone', picture='$dir' WHERE member_id=$id";
-/*
+	/*
 	echo $user;
 	echo $surname;
 	echo $email;

@@ -94,6 +94,33 @@
 		</ul>
 		<div class="content Center text-warning">
 			<h2 style="margin-top:7%">LATEST DISCUSSIONS</h2>
+
+			<?php			
+			$id=$_SESSION['memberID'];
+			include("test_connect_db.php");
+			$link=connectDataBase();
+			$result=mysqli_query($link,"SELECT* from comment");
+			?>
+			<div class="table-responsive">
+				<table class="table bg-dark text-warning Center">
+					<tr>
+						<th>MEMBER</th>
+						<th>COMMENT</th>
+						<th>DATE</th>
+					</tr>
+					<?php
+						while($data=mysqli_fetch_array($result)){
+							printf("<tr><td>%d</td><td>%s</td><td>%s</td></tr>",$data[3],$data[2],$data[1]);
+						}
+					?>
+				</table>
+			</div>
+			<p>Write your comment:</p>
+			<form>
+				<div class="row RB">
+					<textarea class="form-control rounded-0" rows="10" required="required" name='txt'></textarea>
+				</div>
+			</form>
 		</div>
 		<div class="bg-dark p-4">
 			<address></address>

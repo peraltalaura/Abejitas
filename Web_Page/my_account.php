@@ -300,7 +300,7 @@
 					<th>FINISH</th>
 				</tr>
 				<?php
-				
+				/* checks if the productions are finished or not and gives you the option to stop them */
 				while($data=mysqli_fetch_array($result)){
 					if($data[3]== null){
 						printf("<tr><td>%d</td><td>%d KG</td><td>%d €</td><td>Finished</tr>",$data[0],$data[1],$data[2]);
@@ -369,7 +369,7 @@
 	<?php			
 	$id=$_SESSION['memberID'];
 	$result=mysqli_query($link,"SELECT message,notification_date FROM notification INNER JOIN notify ON notify.notification_id=notification.notification_id WHERE member_id=$id");
-	
+	/* Select options */
 	while($data=mysqli_fetch_array($result)){
 		printf("<div class='row RB'>
 			<div class='col-sm-6'>%s</div>
