@@ -18,7 +18,7 @@ public class MembersTable extends AbstractTableModel {
 
     private Management man = new Management();
     private int member_count;
-    private ArrayList<Member> members_list = new ArrayList<>();
+    private ArrayList<Member> members_list=new ArrayList<>();
     private final String[] TITLES = {"MEMBER ID", "NAME", "SURNAME", "E-MAIL", "PASSWORD", "POST CODE", "CITY", "ADDRESS", "PHONE", "ACTIVE"};
 
     public MembersTable() {
@@ -30,6 +30,32 @@ public class MembersTable extends AbstractTableModel {
         }
     }
 
+    public void activate(int memberId) {
+         for (Member m : members_list) {
+            if (m.getMember_id() == memberId) {
+                m.setActive(true);
+                break;
+            }
+        }
+         this.fireTableDataChanged();
+    }
+
+    public void disable(int memberId) {
+        for (Member m : members_list) {
+            if (m.getMember_id() == memberId) {
+                m.setActive(false);
+                break;
+            }
+        }
+        this.fireTableDataChanged();
+    }
+    
+    public void addMember(Member m){
+        members_list.add(m);
+        this.fireTableDataChanged();
+        this.member_count++;
+    }
+
     public void setMember_count(int member_count) {
         this.member_count = member_count;
     }
@@ -37,7 +63,6 @@ public class MembersTable extends AbstractTableModel {
     public int getMember_count() {
         return member_count;
     }
- 
 
     public ArrayList<Member> getMembers_list() {
         return members_list;
@@ -57,8 +82,6 @@ public class MembersTable extends AbstractTableModel {
     public String getColumnName(int column) {
         return TITLES[column];
     }
-    
- 
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {

@@ -5,9 +5,6 @@
  */
 package view;
 
-import tables.BookingsTable;
-import tables.MetalbinTable;
-
 /**
  *
  * @author uribe.markel
@@ -166,15 +163,8 @@ public class Availability extends javax.swing.JFrame {
 //            }
 //        });
 //}
-    public static Availability availableSortuBistaratu() {
+    public static Availability createAvailability() {
         Availability v = new Availability();
-        java.awt.EventQueue.invokeLater(() -> {
-            v.setVisible(true);
-            BookingsTable bookingsTable=new BookingsTable();
-            MetalbinTable metalbinTable=new MetalbinTable();
-            jTableBookings.setModel(bookingsTable);
-            jTableMetal.setModel(metalbinTable);
-        });
         return v;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -184,7 +174,7 @@ public class Availability extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    public static javax.swing.JTable jTableBookings;
-    public static javax.swing.JTable jTableMetal;
+    public javax.swing.JTable jTableBookings;
+    public javax.swing.JTable jTableMetal;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,28 +4,25 @@
  * and open the template in the editor.
  */
 package view;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.time.LocalDateTime;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import tables.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 import javax.swing.Timer;
+
 /**
  *
  * @author uribe.markel
  */
 public class Materials extends javax.swing.JFrame {
+
     Timer updateTimer;
     int DELAY = 100;
+
     /**
      * Creates new form ninventory
      */
@@ -38,16 +35,15 @@ public class Materials extends javax.swing.JFrame {
                 String formatTimeStr = "hh:mm:ss";
                 DateFormat formatTime = new SimpleDateFormat(formatTimeStr);
                 String formattedTimeStr = formatTime.format(currentTime);
-                
+
                 jLabelTime.setText(formattedTimeStr);
-                
+
                 setTitle("Time: " + formattedTimeStr);
-                
+
             }
         });
         updateTimer.start();
-      
-      
+
     }
 
     /**
@@ -63,7 +59,7 @@ public class Materials extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableInventory = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -90,8 +86,8 @@ public class Materials extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("INVENTORY");
 
-        jTable1.setModel(new InventoryTable());
-        jScrollPane1.setViewportView(jTable1);
+        jTableInventory.setModel(new InventoryTable());
+        jScrollPane1.setViewportView(jTableInventory);
 
         jLabel2.setText("ADD ITEM:");
 
@@ -218,19 +214,11 @@ public class Materials extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-public static Materials inventorySortuBistaratu() {
+    public static Materials createMaterials() {
         Materials v = new Materials();
-        java.awt.EventQueue.invokeLater(() -> {
-            v.setVisible(true);
-            
-            updateData();
-        });
-        
+
         return v;
     }
-public static void updateData(){
-    
-}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     public javax.swing.JButton jButtonAddItem;
@@ -242,7 +230,7 @@ public static void updateData(){
     private javax.swing.JLabel jLabel5;
     public static javax.swing.JLabel jLabelTime;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable jTable1;
+    public javax.swing.JTable jTableInventory;
     public javax.swing.JTextField jTextFieldComment;
     public javax.swing.JTextField jTextFieldModel;
     // End of variables declaration//GEN-END:variables

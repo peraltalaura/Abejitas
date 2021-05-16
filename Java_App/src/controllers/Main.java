@@ -5,7 +5,13 @@
  */
 package controllers;
 
+import view.Availability;
+import view.Comments;
 import view.Home;
+import view.Materials;
+import view.MemberNotifications;
+import view.Members;
+import view.Payments;
 
 /**
  *
@@ -17,9 +23,15 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Home home = Home.viewaSortuBistaratu();
+        Home home = Home.createView();
+        Comments com = Comments.createComments();
+        Materials mat = Materials.createMaterials();
+        Availability av = Availability.createAvailability();
+        Members mem = Members.createMembers();
+        Payments pay = Payments.createPayments();
         Management man = new Management();
-        HomeController controller = new HomeController(home,man);
+        MemberNotifications nf = MemberNotifications.createNotifications();
+        HomeController controller = new HomeController(home, mem, pay, av, mat, com, man, nf);
     }
-    
+
 }

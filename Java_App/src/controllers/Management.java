@@ -9,6 +9,7 @@ import mainclass.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.*;
+import java.time.Clock;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -26,14 +27,13 @@ public class Management {
     //private String db = "/erlete_db";
 //    private String ip = "localhost";
 //    private String url = "jdbc:mariadb://";
-
     private Connection connect() {
         Connection con = null;
 
         try {
             //con = DriverManager.getConnection(url, "root", "dam1");
             //con = DriverManager.getConnection(url + ip + db, "root", "dam1");
-            con = DriverManager.getConnection("jdbc:mariadb://localhost/erlete_db","root", "");
+            con = DriverManager.getConnection("jdbc:mariadb://localhost/erlete_db", "root", "");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("error in the db");
@@ -48,7 +48,6 @@ public class Management {
 //    public void setIp(String ip) {
 //        this.ip = ip;
 //    }
-
     /**
      * A method which takes an ArrayList of the type object and the name of the
      * table of which to extract the information from the database
@@ -171,7 +170,7 @@ public class Management {
         //LocalDateTime data = newMember.getDate; falta por crear birthday
         String sql = "INSERT INTO member(email, name, surname, password, city, postcode, address, phone, active) VALUES (?,?,?,?,?,?,?,?,?)";
         try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql);) {
-            
+
             pstmt.setString(1, newMember.getEmail());
             pstmt.setString(2, newMember.getName());
             pstmt.setString(3, newMember.getSurname());
@@ -182,9 +181,7 @@ public class Management {
             pstmt.setInt(8, newMember.getPhone());
             pstmt.setBoolean(9, newMember.isActive());
             pstmt.executeUpdate();
-            
-           
-            
+
             done = true;
         } catch (SQLException e) {
             System.out.println("fail on insert");
@@ -207,13 +204,13 @@ public class Management {
         boolean done = false;
         String sql = "UPDATE member SET active=?"
                 + " WHERE member_id = ?";
-         String sql2="INSERT INTO payment(description,total,pay_date,member_id) VALUES(?,?,?,?)";
-        try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql); PreparedStatement pstmt2=con.prepareStatement(sql2);) {
+        String sql2 = "INSERT INTO payment(description,total,pay_date,member_id) VALUES(?,?,?,?)";
+        try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql); PreparedStatement pstmt2 = con.prepareStatement(sql2);) {
 
             pstmt.setBoolean(1, true);
             pstmt.setInt(2, id);
             pstmt.executeUpdate();
-            
+
             pstmt2.setString(1, "Annual fee");
             pstmt2.setInt(2, -30);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -222,7 +219,7 @@ public class Management {
             pstmt2.setString(3, formattedDateTime);
             pstmt2.setInt(4, id);
             pstmt2.executeUpdate();
-            
+
             return true;
 
         } catch (SQLException e) {
@@ -282,19 +279,21 @@ public class Management {
 
         return done;
     }
+
     /**
      * This method Deletes selected item on the inventory table
+     *
      * @param itemId it takes the id of the item you want erase
      * @return a boolean that indicates if the operation has been succesfull
      */
-    public boolean deleteInventory(int itemId){
+    public boolean deleteInventory(int itemId) {
         boolean done = false;
         String sql = "DELETE FROM inventory WHERE item_id = ?";
-        try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql)){
+        try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setInt(1, itemId);
             pstmt.executeUpdate();
-            done =true;
-        }catch(SQLException e){
+            done = true;
+        } catch (SQLException e) {
             System.out.println(e);
         }
         return done;
@@ -310,40 +309,20 @@ public class Management {
      */
     public boolean sendWarning(Notification notification, int member_id) {
         boolean done = false;
-        boolean done2 = false;
-        /*  convert datetime to numbers
-        int dateinnums;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyMMddHHmm");
-        LocalDateTime now = LocalDateTime.now();
-        String date = "" + now.format(formatter);;
-        dateinnums = Integer.parseInt(date);
-         */
-        Notify alert = new Notify(member_id, notification.getNotification_id(), LocalDateTime.now(), false);
-        String sql = "INSERT INTO notification(notification_id, message) VALUES (?,?)";
-        try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql)) {
 
-            pstmt.setInt(1, notification.getNotification_id());
-            pstmt.setString(2, notification.getMessage());
-
-            pstmt.execute();
-            done2 = true;
-
-        } catch (SQLException e) {
-            System.out.println("Error inserting notification");
-            System.out.println(e.getMessage());
-        }
-
-        sql = "INSERT INTO notify(member_id, notification_id, seen) VALUES (?,?,?)";
+        String sql = "INSERT INTO notify(member_id, notification_id, notification_date, seen) VALUES (?,?,?,?)";
 
         try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setInt(1, alert.getMember_id());
-            pstmt.setInt(2, alert.getNotification_id());
-            pstmt.setBoolean(3, false);
+            pstmt.setInt(1, member_id);
+            pstmt.setInt(2, notification.getNotification_id());
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = LocalDateTime.now().format(formatter);
+
+            pstmt.setString(3, formattedDateTime);
+            pstmt.setBoolean(4, false);
             //en la base de datos poner por defecto el valor del tiempo actual con el metodo now()
             pstmt.executeUpdate();
-            if (done2 == true) {
-                done = true;
-            }
+            done = true;
 
         } catch (SQLException e) {
             System.out.println("Error inserting notify");

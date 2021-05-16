@@ -5,24 +5,34 @@ import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import mainclass.Comment;
 
-
 public class CommentsTable extends AbstractTableModel {
-    
-    private Management man= new Management();
+
+    private Management man = new Management();
     public ArrayList<Comment> comments = new ArrayList<>();
     private String[] TITLES = {"COMMENT ID", "COMMENT DATE", "MESSAGE", "MEMBER ID"};
-    public CommentsTable(){
+
+    public CommentsTable() {
         ArrayList<Object> array = new ArrayList<>();
         array = man.readData(array, "comment");
-        for(Object x : array){
-            comments.add((Comment)x);
+        for (Object x : array) {
+            comments.add((Comment) x);
         }
+    }
+
+    public void deleteComment(int cID) {
+        for (Comment c : comments) {
+            if (c.getComment_id() == cID) {
+                comments.remove(c);
+                break;
+            }
+        }
+        this.fireTableDataChanged();
     }
 
     public ArrayList<Comment> getComments() {
         return comments;
     }
-    
+
     @Override
     public int getRowCount() {
         return comments.size();
@@ -32,9 +42,9 @@ public class CommentsTable extends AbstractTableModel {
     public int getColumnCount() {
         return TITLES.length;
     }
-    
+
     @Override
-    public String getColumnName(int column){
+    public String getColumnName(int column) {
         return TITLES[column];
     }
 
@@ -53,5 +63,5 @@ public class CommentsTable extends AbstractTableModel {
                 return null;
         }
     }
-    
+
 }

@@ -31,10 +31,18 @@ public class PaymentsTable extends AbstractTableModel {
             }
         }
         this.payments_list=filterPayments;
+        this.fireTableDataChanged();
+    }
+    
+    public void addPayment(Payment p){
+        payments_list.add(p);
+        this.fireTableDataChanged();
     }
     
     public void resetList() {
        payments_list.removeAll(payments_list);
+       this.searchPayments();
+       this.fireTableDataChanged();
     }
 
     public ArrayList<Payment> getPayments_list() {

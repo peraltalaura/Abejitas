@@ -35,6 +35,7 @@ public class Home extends javax.swing.JFrame {
         MEMBERS = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         members = new javax.swing.JLabel();
+        NOTIFICATIONS = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,58 +70,79 @@ public class Home extends javax.swing.JFrame {
         MEMBERS.setForeground(new java.awt.Color(255, 153, 0));
         MEMBERS.setText("MANAGE MEMBERS");
 
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("MEMBERS:");
+
+        members.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        NOTIFICATIONS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        NOTIFICATIONS.setForeground(new java.awt.Color(255, 153, 0));
+        NOTIFICATIONS.setText("SEE NOTIFICATIONS");
+        NOTIFICATIONS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NOTIFICATIONSActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(162, 162, 162))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(INVENTORY, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PAYMENTS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(76, 76, 76)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(INVENTORY)
-                        .addGap(18, 18, 18)
-                        .addComponent(PAYMENTS)
-                        .addGap(18, 18, 18)
-                        .addComponent(AVAILABILITY)
-                        .addGap(18, 18, 18)
-                        .addComponent(COMMENTS)
-                        .addGap(18, 18, 18)
-                        .addComponent(MEMBERS)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(members, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(740, 740, 740))))
+                        .addGap(45, 45, 45)
+                        .addComponent(members, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(COMMENTS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(MEMBERS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(AVAILABILITY, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(NOTIFICATIONS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(members, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(members, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                    .addComponent(INVENTORY)
+                    .addComponent(MEMBERS)
+                    .addComponent(AVAILABILITY))
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PAYMENTS)
-                    .addComponent(AVAILABILITY)
                     .addComponent(COMMENTS)
-                    .addComponent(MEMBERS)
-                    .addComponent(INVENTORY))
-                .addGap(45, 45, 45))
+                    .addComponent(NOTIFICATIONS, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void NOTIFICATIONSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NOTIFICATIONSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NOTIFICATIONSActionPerformed
+
     /**
      * @param args the command line arguments
+     * @return 
      */
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
@@ -154,11 +176,8 @@ public class Home extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-         public static Home viewaSortuBistaratu() {
+        public static Home createView() {
         Home v = new Home();
-        java.awt.EventQueue.invokeLater(() -> {
-            v.setVisible(true);
-        });
         return v;
     }
 
@@ -167,6 +186,7 @@ public class Home extends javax.swing.JFrame {
     public javax.swing.JButton COMMENTS;
     public javax.swing.JButton INVENTORY;
     public javax.swing.JButton MEMBERS;
+    public javax.swing.JButton NOTIFICATIONS;
     public javax.swing.JButton PAYMENTS;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

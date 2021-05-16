@@ -256,11 +256,8 @@ public class Members extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-        public static Members membersSortuBistaratu() {
+        public static Members createMembers() {
         Members v = new Members();
-        java.awt.EventQueue.invokeLater(() -> {
-            v.setVisible(true);
-        });
         return v;
     }
 

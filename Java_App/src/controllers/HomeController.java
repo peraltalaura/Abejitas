@@ -20,20 +20,32 @@ import view.*;
  */
 public class HomeController implements ActionListener {
 
+    //The home class declaration
     private Home home;
+
+    //The different views class declaration
     private Members members;
     private Payments payments;
     private Availability available;
     private Materials inventory;
     private Comments comments;
+    private MemberNotifications notificationsFrame;
+
     //management class declaration
     private Management man;
-    //jTable model declaration and initialitation
-    private MembersTable userTable = new MembersTable();
-    private PaymentsTable paymentTable = new PaymentsTable();
-    private BookingsTable bookingsTable = new BookingsTable();
-    private InventoryTable inventoryTable = new InventoryTable();
-    private CommentsTable commentsTable = new CommentsTable();
+
+    //jTable model declaration and initialization
+    private MembersTable membersTable;
+    private PaymentsTable paymentTable;
+    private BookingsTable bookingsTable;
+    private InventoryTable inventoryTable;
+    private CommentsTable commentsTable;
+    private MetalbinTable metalbinsTable;
+    private NotificationsTable notificationsTable;
+
+    //declaration of the notifications
+    private ArrayList<Notification> notifications = new ArrayList<>();
+
     private int adminId = 1;
 
     /**
@@ -43,10 +55,19 @@ public class HomeController implements ActionListener {
      * @param man the Management, which will be used for all the functions of
      * the menu
      */
-    public HomeController(Home home, Management man) {
+    public HomeController(Home home, Members members, Payments payments, Availability available, Materials inventory, Comments comments, Management man, MemberNotifications notificationsFrame) {
         this.home = home;
+        this.members = members;
+        this.payments = payments;
+        this.available = available;
+        this.inventory = inventory;
+        this.comments = comments;
+        this.notificationsFrame = notificationsFrame;
         this.man = man;
-        home.members.setText("" + userTable.getMember_count());
+        this.fillNotifications();
+        home.setVisible(true);
+        membersTable = new MembersTable();
+        home.members.setText("" + membersTable.getMember_count());
         homeActionListener(this);
     }
 
@@ -61,74 +82,79 @@ public class HomeController implements ActionListener {
         switch (actionCommand) {
             //each of the manage cases go to their respectfull jframe
             case "MANAGE MEMBERS":
-                members = Members.membersSortuBistaratu();
+                members.memberjTable.setModel(membersTable);
+                members.setVisible(true);
                 memberActionListener(this);
                 break;
 
             case "MANAGE AVAILABILITY":
-                available = Availability.availableSortuBistaratu();
+                bookingsTable = new BookingsTable();
+                metalbinsTable = new MetalbinTable();
+                available.jTableBookings.setModel(bookingsTable);
+                available.jTableMetal.setModel(metalbinsTable);
+                available.setVisible(true);
                 break;
 
             case "MANAGE INVENTORY":
-                inventory = Materials.inventorySortuBistaratu();
+                inventoryTable = new InventoryTable();
+                inventory.jTableInventory.setModel(inventoryTable);
+                inventory.setVisible(true);
                 inventoryActionListener(this);
                 break;
 
             case "MANAGE PAYMENTS":
-                payments = Payments.paymenSortuBistaratu();
+                paymentTable = new PaymentsTable();
+                payments.jTablePayments.setModel(paymentTable);
+                payments.setVisible(true);
                 paymentActionListener(this);
                 break;
 
             case "MANAGE COMMENTS":
-                comments = Comments.commentsSortuBistaratu();
+                commentsTable = new CommentsTable();
+                comments.jTableCommentsTable.setModel(commentsTable);
+                comments.setVisible(true);
+                commentActionListener(this);
+                break;
+
+            case "SEE NOTIFICATIONS":
+                notificationsTable = new NotificationsTable();
+                notificationsFrame.jTableNotifications.setModel(notificationsTable);
+                notificationsFrame.setVisible(true);
                 commentActionListener(this);
                 break;
 
             //when the activate button is clicked it calls the activateMember() function from Management
             case "ACTIVATE":
                 try {
-                ArrayList<Member> d;
-                d = userTable.getMembers_list();
-                int mid = d.get(members.memberjTable.getSelectedRow()).getMember_id();
-                man.activateMember(mid);
-                userTable = new MembersTable();
-                members.memberjTable.setModel(userTable);
-                userTable.fireTableDataChanged();
+                ArrayList<Member> mlist;
+                mlist = membersTable.getMembers_list();
+                int disID = mlist.get(members.memberjTable.getSelectedRow()).getMember_id();
+                man.activateMember(disID);
+                membersTable.activate(disID);
             } catch (Exception E) {
-                System.out.println("error when activating");
+                System.out.println("error when disabling");
             }
             break;
             //when the disable button is clicked it calls the diasbleMember() function from Management
             case "DISABLE":
                 try {
                 ArrayList<Member> mlist;
-                mlist = userTable.getMembers_list();
-                int id = mlist.get(members.memberjTable.getSelectedRow()).getMember_id();
-                man.disableMember(id);
-                userTable = new MembersTable();
-                members.memberjTable.setModel(userTable);
-                userTable.fireTableDataChanged();
+                mlist = membersTable.getMembers_list();
+                int disID = mlist.get(members.memberjTable.getSelectedRow()).getMember_id();
+                man.disableMember(disID);
+                membersTable.disable(disID);
             } catch (Exception E) {
                 System.out.println("error when disabling");
             }
             break;
             //when the activate button is clicked it puts the data from the textfields into a Member object and calls the insertMember()function to add a member to the database
             case "SUBMIT":
-                try {
                 Member mem = new Member(members.jTextFieldName.getText(), members.jTextFieldSurname.getText(), members.jTextFieldEmail.getText(),
                         members.jTextFieldPassword.getText(), Integer.parseInt(members.jTextFieldPostcode.getText()), members.jTextFieldCity.getText(),
                         members.jTextFieldAdress.getText(), Integer.parseInt(members.jTextFieldPhone.getText()), false);
                 man.insertMember(mem);
-                userTable = new MembersTable();
-                members.memberjTable.setModel(userTable);
-                userTable.fireTableDataChanged();
-                userTable.setMember_count(userTable.getMember_count() + 1);
-                System.out.println("Submited");
+                membersTable.addMember(mem);
                 break;
-            } catch (Exception E) {
-                System.out.println("Error when submiting");
-            }
-            break;
             //when it is clicked it takes the description and import and registers a new payment on the database
             case "PAY":
                 try {
@@ -137,9 +163,7 @@ public class HomeController implements ActionListener {
                 float total = Float.parseFloat(payments.jTextFieldPTotal.getText());
                 Payment pay = new Payment(description, now, total, adminId);
                 man.registerPayment(pay);
-                paymentTable = new PaymentsTable();
-                payments.jTablePayments.setModel(paymentTable);
-                paymentTable.fireTableDataChanged();
+                paymentTable.addPayment(pay);
                 System.out.println("payment done");
             } catch (Exception E) {
                 System.out.println("error when paying");
@@ -151,8 +175,6 @@ public class HomeController implements ActionListener {
                 try {
                 int memberID = Integer.parseInt(payments.jTextFieldID.getText());
                 paymentTable.searchMemberPayments(memberID);
-                payments.jTablePayments.setModel(paymentTable);
-                paymentTable.fireTableDataChanged();
                 System.out.println("filter done");
             } catch (Exception E) {
                 System.out.println("filter error");
@@ -160,18 +182,16 @@ public class HomeController implements ActionListener {
             break;
 
             case "RESET":
-                this.resetPaymentTable();
+                paymentTable.resetList();
                 break;
 
             case "ADD ITEM":
-                    try {
+                try {
                 Inventory in = new Inventory(inventory.jTextFieldModel.getText(), inventory.jTextFieldComment.getText());
                 man.addInventory(in);
                 inventory.jTextFieldComment.setText("");
                 inventory.jTextFieldModel.setText("");
-                inventoryTable = new InventoryTable();
-                inventory.jTable1.setModel(inventoryTable);
-                inventoryTable.fireTableDataChanged();
+                inventoryTable.addToInventory(in);
                 System.out.println("update done");
             } catch (Exception E) {
                 System.out.println("Error adding item");
@@ -186,23 +206,10 @@ public class HomeController implements ActionListener {
                         ArrayList<Comment> c;
                         c = commentsTable.getComments();
                         int dcom = c.get(comments.jTableCommentsTable.getSelectedRow()).getComment_id();
-                        ArrayList<Object> array = new ArrayList<>();
-                        ArrayList<Notification> not = new ArrayList();
-                        array = man.readData(array, "notification");
-                        for (Object x : array) {
-                            not.add((Notification) x); //notification id 3 (o 3.a posicion es el mensaje del comment)
-                        }
-
-                        int memberId = c.get(comments.jTableCommentsTable.getSelectedRow()).getMember_id();
-                        man.sendWarning(not.get(3), memberId);
-//                ArrayList<Comment> clist = commentsTable.getComments();
-//                LocalDateTime date = clist.get(comments.jTableCommentsTable.getSelectedRow()).getDate();
-
-//                Comment co = new Comment(date, clist.get(comments.jTableCommentsTable.getSelectedRow()).getMessage(), clist.get(comments.jTableCommentsTable.getSelectedRow()).getMember_id());
+                        int comMember=c.get(comments.jTableCommentsTable.getSelectedRow()).getMember_id();                      
                         man.deleteComment(dcom);
-                        commentsTable = new CommentsTable();
-                        comments.jTableCommentsTable.setModel(commentsTable);
-                        commentsTable.fireTableDataChanged();
+                        man.sendWarning(notifications.get(2), comMember);
+                        commentsTable.deleteComment(dcom);
                         System.out.println("Comment succesfully deleted");
                     } catch (Exception E) {
                         System.out.println("something went wrong deleting a comment");
@@ -219,11 +226,9 @@ public class HomeController implements ActionListener {
                     try {
                         ArrayList<Inventory> is;
                         is = inventoryTable.getMaterials();
-                        int iId = is.get(inventory.jTable1.getSelectedRow()).getItem_id();
+                        int iId = is.get(inventory.jTableInventory.getSelectedRow()).getItem_id();
                         man.deleteInventory(iId);
-                        inventoryTable = new InventoryTable();
-                        inventory.jTable1.setModel(inventoryTable);
-                        inventoryTable.fireTableDataChanged();
+                        inventoryTable.removeFromInventory(iId);
                         System.out.println("Item succesfully deleted");
                         JOptionPane.showMessageDialog(inventory, "The message has been removed");
                     } catch (Exception ex) {
@@ -251,7 +256,7 @@ public class HomeController implements ActionListener {
         home.COMMENTS.addActionListener(listener);
         home.PAYMENTS.addActionListener(listener);
         home.INVENTORY.addActionListener(listener);
-
+        home.NOTIFICATIONS.addActionListener(listener);
     }
 
     /**
@@ -296,10 +301,11 @@ public class HomeController implements ActionListener {
         comments.jButtonDeleteComment.addActionListener(listener);
     }
 
-    public void resetPaymentTable() {
-        paymentTable.resetList();
-        paymentTable.searchPayments();
-        payments.jTablePayments.setModel(paymentTable);
-        paymentTable.fireTableDataChanged();
+    public void fillNotifications() {
+        ArrayList<Object> array = new ArrayList<>();
+        array = man.readData(array, "notification");
+        for (Object x : array) {
+            notifications.add((Notification) x);
+        }
     }
 }

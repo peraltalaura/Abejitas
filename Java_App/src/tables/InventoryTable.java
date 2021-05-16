@@ -6,21 +6,38 @@ import javax.swing.table.AbstractTableModel;
 import mainclass.Inventory;
 
 public class InventoryTable extends AbstractTableModel {
-   
-    private Management man= new Management();
+
+    private Management man = new Management();
     public ArrayList<Inventory> materials = new ArrayList<>();
     private String[] titles = {"ITEM ID", "MODEL", "COMMENT"};
-    public InventoryTable(){
+
+    public InventoryTable() {
         ArrayList<Object> array = new ArrayList<>();
         array = man.readData(array, "inventory");
-        for(Object x : array){
-            materials.add((Inventory)x);
+        for (Object x : array) {
+            materials.add((Inventory) x);
         }
+    }
+
+    public void addToInventory(Inventory i) {
+        materials.add(i);
+        this.fireTableDataChanged();
+    }
+
+    public void removeFromInventory(int iId) {
+        for (Inventory i : materials) {
+            if (i.getItem_id() == iId) {
+                materials.remove(i);
+                break;
+            }
+        }
+        this.fireTableDataChanged();
     }
 
     public ArrayList<Inventory> getMaterials() {
         return materials;
     }
+
     @Override
     public int getRowCount() {
         return materials.size();
@@ -30,9 +47,9 @@ public class InventoryTable extends AbstractTableModel {
     public int getColumnCount() {
         return titles.length;
     }
-    
+
     @Override
-    public String getColumnName(int column){
+    public String getColumnName(int column) {
         return titles[column];
     }
 
@@ -45,10 +62,10 @@ public class InventoryTable extends AbstractTableModel {
                 return materials.get(rowIndex).getModel();
             case 2:
                 return materials.get(rowIndex).getComment();
-            
+
             default:
                 return null;
         }
     }
-    
+
 }

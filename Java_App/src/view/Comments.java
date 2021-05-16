@@ -135,11 +135,8 @@ public class Comments extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-public static Comments commentsSortuBistaratu() {
+public static Comments createComments() {
         Comments v = new Comments();
-        java.awt.EventQueue.invokeLater(() -> {
-            v.setVisible(true);
-        });
         return v;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

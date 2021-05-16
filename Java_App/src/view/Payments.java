@@ -221,11 +221,8 @@ public class Payments extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-public static Payments paymenSortuBistaratu() {
+public static Payments createPayments() {
         Payments v = new Payments();
-        java.awt.EventQueue.invokeLater(() -> {
-            v.setVisible(true);
-        });
         return v;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
