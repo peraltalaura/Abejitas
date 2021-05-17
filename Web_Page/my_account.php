@@ -368,13 +368,21 @@
 	<br>
 	<?php			
 	$id=$_SESSION['memberID'];
-	$result=mysqli_query($link,"SELECT message,notification_date FROM notification INNER JOIN notify ON notify.notification_id=notification.notification_id WHERE member_id=$id");
-	/* Select options */
+	$result=mysqli_query($link,"SELECT message,notification_date,seen,member_id,notify_id FROM notification INNER JOIN notify ON notify.notification_id=notification.notification_id WHERE member_id=$id");
 	while($data=mysqli_fetch_array($result)){
-		printf("<div class='row RB'>
-			<div class='col-sm-6'>%s</div>
-			<div class='col-sm-6'>%s</div>
-			</div>",$data[0],$data[1]);
+		if($data['seen']==0){
+			printf("<div class='row RB'>
+				<div class='col-sm-4'>%s</div>
+				<div class='col-sm-4'>%s</div>
+				<div class='col-sm-4'><a type='button' class='btn btn-dark text-warning BRB' href='setSeen.php?nid=$data[4]'>set as seen</a></div>
+				</div>",$data['message'],$data['notification_date']);
+		}else{
+			printf("<div class='row RB'>
+				<div class='col-sm-4'>%s</div>
+				<div class='col-sm-4'>%s</div>
+				<div class='col-sm-4'>seen</div>
+				</div>",$data[0],$data[1]);
+		}
 	}
 	?>
 	
