@@ -143,13 +143,13 @@
 					NAME:
 				</div>
 				<?php
-				printf("<div class='col-sm-3'><input type='text' name='uname' value='%s'></div>",$data[2]);
+				printf("<div class='col-sm-3'><input type='text' name='uname' value='%s' required></div>",$data[2]);
 				?>
 				<div class="col-sm-2">
 					SURNAME:
 				</div>
 				<?php
-				printf("<div class='col-sm-3'><input type='text' name='usurname' value='%s'></div>",$data[3]);
+				printf("<div class='col-sm-3'><input type='text' name='usurname' value='%s' required></div>",$data[3]);
 				?>
 			</div>
 			<div class="row RB">
@@ -157,7 +157,7 @@
 					E-MAIL:
 				</div>
 				<?php
-				printf("<div class='col-sm-3'><input type='email' name='mail' value='%s'></div>",$data[1]);
+				printf("<div class='col-sm-3'><input type='email' name='mail' value='%s' required></div>",$data[1]);
 				?>
 				<div class="col-sm-3">
 					BIRTH DATE:
@@ -191,7 +191,7 @@
 					PHONE NUMBER:
 				</div>
 				<?php
-				printf("<div class='col-sm-2'><input type='tel' name='phone' value='%d'></div>",$data[9]);
+				printf("<div class='col-sm-2'><input type='tel' name='phone' value='%d' required></div>",$data[9]);
 				?>
 			</div>
 			<input class="text-dark bg-warning" type="submit" value="MODIFY DATA">
