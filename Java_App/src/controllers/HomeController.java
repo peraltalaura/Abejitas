@@ -149,6 +149,8 @@ public class HomeController implements ActionListener {
             break;
             //when the activate button is clicked it puts the data from the textfields into a Member object and calls the insertMember()function to add a member to the database
             case "SUBMIT":
+                boolean troll = false;
+                //inputcontroll
                 Member mem = new Member(members.jTextFieldName.getText(), members.jTextFieldSurname.getText(), members.jTextFieldEmail.getText(),
                         members.jTextFieldPassword.getText(), Integer.parseInt(members.jTextFieldPostcode.getText()), members.jTextFieldCity.getText(),
                         members.jTextFieldAdress.getText(), Integer.parseInt(members.jTextFieldPhone.getText()), false);
@@ -157,7 +159,19 @@ public class HomeController implements ActionListener {
                 break;
             //when it is clicked it takes the description and import and registers a new payment on the database
             case "PAY":
-                try {
+                boolean troll1= false;
+                for(char c : payments.jTextFieldPDescription.getText().toCharArray()){
+                    if(!Character.isLetterOrDigit(c)){
+                        troll1 = true;
+                    }
+                }
+                for(char c : payments.jTextFieldPTotal.getText().toCharArray()){
+                    if(!Character.isLetterOrDigit(c)){
+                        troll1 = true;
+                    }
+                }
+                if(troll1 = false){
+                    try {
                 String description = payments.jTextFieldPDescription.getText();
                 LocalDateTime now = LocalDateTime.now();
                 float total = Float.parseFloat(payments.jTextFieldPTotal.getText());
@@ -168,6 +182,11 @@ public class HomeController implements ActionListener {
             } catch (Exception E) {
                 System.out.println("error when paying");
             }
+                }else{
+                    JOptionPane.showMessageDialog(payments, "You must write valid characters");
+                }
+                
+                
             break;
 
             //when it is clicked it displays the payments depending on the id introduced
@@ -186,18 +205,37 @@ public class HomeController implements ActionListener {
                 break;
 
             case "ADD ITEM":
-                try {
-                Inventory in = new Inventory(inventory.jTextFieldModel.getText(), inventory.jTextFieldComment.getText());
-                man.addInventory(in);
-                inventory.jTextFieldComment.setText("");
-                inventory.jTextFieldModel.setText("");
-                inventoryTable.addToInventory(in);
-                System.out.println("update done");
-            } catch (Exception E) {
-                System.out.println("Error adding item");
-                System.out.println(E);
-            }
-            break;
+
+                boolean troll2 = false;
+                String getModel = inventory.jTextFieldModel.getText();
+                for (char c : inventory.jTextFieldModel.getText().toCharArray()) {
+                    if (!Character.isLetterOrDigit(c)) {
+
+                        troll2 = true;
+                    }
+                }
+                for (char c : inventory.jTextFieldComment.getText().toCharArray()) {
+                    if (!Character.isLetterOrDigit(c)) {
+                        troll2 = true;
+                    }
+                }
+                if (troll2 = false) {
+                    try {
+                        Inventory in = new Inventory(inventory.jTextFieldModel.getText(), inventory.jTextFieldComment.getText());
+                        man.addInventory(in);
+                        inventory.jTextFieldComment.setText("");
+                        inventory.jTextFieldModel.setText("");
+                        inventoryTable.addToInventory(in);
+                        System.out.println("update done");
+                    } catch (Exception E) {
+                        System.out.println("Error adding item");
+                        System.out.println(E);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(inventory, "You must write valid characters");
+                }
+
+                break;
             case "DELETE COMMENT":
                 //Aqui meter notify al usuario de esa id de tipo mal comentario?
                 int ic = JOptionPane.showConfirmDialog(inventory, "Are you sure?");
@@ -206,7 +244,7 @@ public class HomeController implements ActionListener {
                         ArrayList<Comment> c;
                         c = commentsTable.getComments();
                         int dcom = c.get(comments.jTableCommentsTable.getSelectedRow()).getComment_id();
-                        int comMember=c.get(comments.jTableCommentsTable.getSelectedRow()).getMember_id();                      
+                        int comMember = c.get(comments.jTableCommentsTable.getSelectedRow()).getMember_id();
                         man.deleteComment(dcom);
                         man.sendWarning(notifications.get(2), comMember);
                         commentsTable.deleteComment(dcom);
