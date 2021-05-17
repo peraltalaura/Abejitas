@@ -11,9 +11,9 @@
 	
 	if(mysqli_query($link,$sql)){
 		$id=$_SESSION['memberID'];
-		header("Location:bookings.php ? insert=yes");
+		header("Location:bookings.php?insert=yes");
 		} else {
-		header("Location:bookings.php ? insert=no");
+		header("Location:bookings.php?insert=no");
 	}
 
 ?>
