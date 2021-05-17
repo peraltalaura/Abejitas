@@ -12,29 +12,10 @@
 	$address=$_POST['address'];
 	$phone=$_POST['phone'];
 	$id=$_SESSION['memberID'];
-
-	$dir="profile_pictures";
-	$imagen=$_FILES['pic']['name'];
-	$archivo= $_FILES['pic']['tmp_name'];
-	$dir=$dir."/".$imagen;
-	move_uploaded_file($archivo, $dir);
 	
 	$sql="UPDATE member SET name='$user', surname='$surname', email='$email', 
-	birthdate='$birth', city='$city', address='$address',postcode='$post', 
-	phone='$phone', picture='$dir' WHERE member_id=$id";
-	/*
-	echo $user;
-	echo $surname;
-	echo $email;
-	echo $birth;
-	echo $city;
-	echo $post;
-	echo $address;
-	echo $phone;
-	echo $id;
-	echo $dir;
-
-	*/
+	birthdate='$birth', city='$city', address='$address',postcode=$post, 
+	phone=$phone WHERE member_id=$id";
 	mysqli_query($link,$sql);
 	if(mysqli_query($link,$sql)){
 		$id=$_SESSION['memberID'];

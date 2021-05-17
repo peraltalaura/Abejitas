@@ -45,23 +45,11 @@
 			<li>
 				<a class="Center active" href="">FORUM</a>
 			</li>
+			<li>
+				<a class="Center" href="bookings.php">BOOKINGS</a>
+			</li>
 			<?php
 				session_start();
-				if(isset($_SESSION['memberID'])){
-				?>
-				<li>
-					<a class="Center" href="bookings.php">BOOKINGS</a>
-				</li>
-				<?php
-					} else {
-				?>
-				<li>
-					<a class="Center" href="login.php">BOOKINGS</a>
-				</li>
-				<?php
-				}
-			?>
-			<?php
 				if(isset($_SESSION['memberID'])){
 				?>
 				<li>
@@ -94,51 +82,9 @@
 		</ul>
 		<div class="content Center text-warning">
 			<h2 style="margin-top:7%">LATEST DISCUSSIONS</h2>
-
-			<?php			
-			include("test_connect_db.php");
-			$link=connectDataBase();
-			$result=mysqli_query($link,"SELECT comment.*, member.* from comment INNER JOIN member ON member.member_id = comment.member_id");
-
-			?>
-			<div class="table-responsive">
-				<table class="table bg-dark text-warning Center">
-					<tr>
-						<th>MEMBER</th>
-						<th>COMMENT</th>
-						<th>DATE</th>
-					</tr>
-					<?php
-						while($data=mysqli_fetch_array($result)){
-							printf("<tr><td><img style='width:40px;'src='%s'> %s %s</td><td>%s</td><td>%s</td></tr>",$data[14],$data['name'],$data['surname'],$data['message'],$data['comment_date']);
-							
-						}
-					?>
-				</table>
-			</div>
-			<?php
-			if(isset($_SESSION['memberID'])){
-			?>
-			<p>Write your comment:</p>
-			<form action="send_comment.php" method="post">
-				<div class="row">
-					<textarea maxlength="255" class="rounded-0" style="width: 80vh;height: 28vh" rows="10" required="required" name='txt'></textarea>
-				</div>
-				<input type="submit">
-			</form>
-			<?php
-			}else{
-				?>
-				<?php
-				printf("<br><a href='login.php'>Login to comment</a>")
-				?>
-			<?php
-			}
-			?>
-			
 		</div>
 		<div class="bg-dark p-4">
 			<address></address>
 		</div>
 	</body>
-</html>										
+</html>							
