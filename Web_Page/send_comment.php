@@ -10,9 +10,9 @@
 
 	if(mysqli_query($link,$sql)){
 		$id=$_SESSION['memberID'];
-		header("Location:forum.php ? commented=yes");
+		header("Location:forum.php?commented=yes");
 	} else {
-		header("Location:forum.php ? commented=no");
+		header("Location:forum.php?commented=no");
 	}
 	
 ?>
