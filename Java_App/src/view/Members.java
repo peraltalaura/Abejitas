@@ -57,6 +57,7 @@ public class Members extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButtonHome.setText("HOME");
+        jButtonHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonHomeActionPerformed(evt);
@@ -68,8 +69,10 @@ public class Members extends javax.swing.JFrame {
         jLabel3.setText("ERLETE");
 
         jButtonInsertMember.setText("SUBMIT");
+        jButtonInsertMember.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jButtonDisable.setText("DISABLE");
+        jButtonDisable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel5.setText("MEMBERS:");
 
@@ -94,6 +97,7 @@ public class Members extends javax.swing.JFrame {
 
         jButtonActivate.setText("ACTIVATE");
         jButtonActivate.setToolTipText("");
+        jButtonActivate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel14.setText("PHONE");
 
