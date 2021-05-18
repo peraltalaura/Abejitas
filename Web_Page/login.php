@@ -63,10 +63,16 @@
 				?>
 				<li>
 <<<<<<< HEAD
+<<<<<<< HEAD
 					<a class="Center" href="my_account.php">MY ACCOUNT</a>
 =======
 					<a class="Center" href="profile.php">MY ACCOUNT</a>
 >>>>>>> webLaura
+=======
+
+					<a class="Center" href="profile.php">MY ACCOUNT</a>
+
+>>>>>>> c4b891ba15dc2ba8e8f56ed0e4f6474897990f94
 				</li>
 				<?php
 					} else {

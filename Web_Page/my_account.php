@@ -45,6 +45,9 @@
 				<a class="Center" href="index.php">HOME</a>
 			</li>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c4b891ba15dc2ba8e8f56ed0e4f6474897990f94
 			<?php
 		}
 		?>
@@ -81,8 +84,11 @@
 		<?php
 		if(isset($_SESSION['memberID'])){
 			?>
+<<<<<<< HEAD
 =======
 >>>>>>> webLaura
+=======
+>>>>>>> c4b891ba15dc2ba8e8f56ed0e4f6474897990f94
 			<li>
 				<a class="Center" href="info.php">INFORMATION</a>
 			</li>
@@ -97,15 +103,24 @@
 				</li>
 				<?php
 <<<<<<< HEAD
+<<<<<<< HEAD
 				printf("<div class='col-sm-3'><input type='text' name='uname' value='%s' required></div>",$data[2]);
 =======
 					} else {
 >>>>>>> webLaura
+=======
+
+					} else {
+
+				printf("<div class='col-sm-3'><input type='text' name='uname' value='%s' required></div>",$data[2]);
+
+>>>>>>> c4b891ba15dc2ba8e8f56ed0e4f6474897990f94
 				?>
 				<li>
 					<a class="Center" href="bookings.php">BOOKINGS</a>
 				</li>
 				<?php
+<<<<<<< HEAD
 <<<<<<< HEAD
 				printf("<div class='col-sm-3'><input type='text' name='usurname' value='%s' required></div>",$data[3]);
 				?>
@@ -117,6 +132,9 @@
 				<?php
 				printf("<div class='col-sm-3'><input type='email' name='mail' value='%s' required></div>",$data[1]);
 =======
+=======
+
+>>>>>>> c4b891ba15dc2ba8e8f56ed0e4f6474897990f94
 				}
 			?>
 			<li>
@@ -147,7 +165,21 @@
 					</ul>
 					<?php
 					}
+<<<<<<< HEAD
 >>>>>>> webLaura
+=======
+
+				printf("<div class='col-sm-3'><input type='text' name='usurname' value='%s' required></div>",$data[3]);
+				?>
+			</div>
+			<div class="row RB">
+				<div class="col-sm-2">
+					E-MAIL:
+				</div>
+				<?php
+				printf("<div class='col-sm-3'><input type='email' name='mail' value='%s' required></div>",$data[1]);
+
+>>>>>>> c4b891ba15dc2ba8e8f56ed0e4f6474897990f94
 				?>
 			</li>
 			<?php
@@ -212,9 +244,13 @@
 					?>
 				</div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 				<?php
 				printf("<div class='col-sm-2'><input type='tel' name='phone' value='%d' required></div>",$data[9]);
 =======
+=======
+
+>>>>>>> c4b891ba15dc2ba8e8f56ed0e4f6474897990f94
 				<div class="row RB">
 					<div class="col-sm-2">
 						E-MAIL:
@@ -256,7 +292,14 @@
 					<?php
 						printf("<div class='col-sm-2'>%d</div>",$data[9]);
 					}
+<<<<<<< HEAD
 >>>>>>> webLaura
+=======
+
+				<?php
+				printf("<div class='col-sm-2'><input type='tel' name='phone' value='%d' required></div>",$data[9]);
+
+>>>>>>> c4b891ba15dc2ba8e8f56ed0e4f6474897990f94
 				?>
 			</div>
 			<a class="text-dark bg-warning BRB" href="update_data.php" type="button" value="MODIFY DATA">MODIFY PROFILE</a>
@@ -398,17 +441,27 @@
 					</div>
 				</div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 				<div class='col-sm-8'>
 					<input type='number'required="required" name='import' min="1">
 =======
+=======
+
+>>>>>>> c4b891ba15dc2ba8e8f56ed0e4f6474897990f94
 				<div class="row RB">
 					<div class="col-sm-4">
 						KILOS:
 					</div>
+<<<<<<< HEAD
 					<div class='col-sm-8'>
 						<input type='number'required="required" name='kilos'>
 					</div>
 >>>>>>> webLaura
+=======
+			
+				<div class='col-sm-8'>
+					<input type='number'required="required" name='import' min="1">
+>>>>>>> c4b891ba15dc2ba8e8f56ed0e4f6474897990f94
 				</div>
 				
 				<div class="row RB">
@@ -470,6 +523,10 @@
 		<address></address>
 	</div>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> c4b891ba15dc2ba8e8f56ed0e4f6474897990f94
 </div>
 <div class="content text-warning Center">
 	<h2 id="notification" class="mt-4">NOTIFICATIONS</h2>
@@ -493,8 +550,12 @@
 		}
 	}
 	?>
+<<<<<<< HEAD
 =======
 >>>>>>> webLaura
+=======
+
+>>>>>>> c4b891ba15dc2ba8e8f56ed0e4f6474897990f94
 	
 </body>
 </html>																																		
