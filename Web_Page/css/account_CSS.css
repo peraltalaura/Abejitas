@@ -99,30 +99,45 @@ div.content {
 	text-align:center;
 }
 .RB {
-	border-radius:2em;
+	border-radius:5vw;
 	padding:2vw;
 	margin:3vw;
 	text-align:justify;
 	width:75%;
 	box-shadow:0vw 0vw 2vw 0vw rgb(0, 0, 0.8);
-	background:rgb(0,0,0);
 	color:rgb(255, 204, 0);
+}
+.RBY  {
+	border-radius:5vw;
+	padding:2vw;
+	margin:3vw;
+	text-align:justify;
+	width:75%;
+	box-shadow:0vw 0vw 2vw 0vw rgb(255, 204, 0,0.5);
+	background:rgb(255, 204, 0);
+	color:black;
 }
 .BRB {
 	border-radius:5vw;
-	padding:2vw;
-	margin:2.5vw;
-	font-size:2vw;
-	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0,0.5);
-	background:black;
+	padding:1vw 2vw 1vw 2vw;
 	color:rgb(255, 204, 0);
+	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0,0.5);
 }
+.BRBY {
+	border-radius:5vw;
+	padding:1vw 2vw 1vw 2vw;
+	color:black;
+	box-shadow:0vw 0vw 2vw 0vw rgb(255, 204, 0,0.5);
+	background:rgb(255, 204, 0);
+}
+
 a:hover{
 	text-decoration:none;
 	transition:box-shadow 0.4s linear, font-size 0.4s;
 	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0);
-	font-size:2.1vw;
-	color:rgb(255, 204, 0);
+	font-size:1.1vw;
+	font-weight:bolder;
+	color:black;
 }
 
 /*MY PROFILE STYLE*/
@@ -154,7 +169,7 @@ a:hover{
 	color:rgb(255, 204, 0);
 
 }
-#data input[type="text"], #data input[type="date"], #data input[type="number"],#data input[type="tel"],#data input[type="email"],#data input[type="datetime-local"] {
+input[type="text"], #data input[type="date"], input[type="number"],#data input[type="tel"],#data input[type="email"],#data input[type="datetime-local"] {
 	border-radius:5vw;
 	border:none;
 	outline:none;
@@ -164,7 +179,7 @@ a:hover{
 	text-align:center;
 	transition:box-shadow 0.4s linear; 
 }
-#data input[type="password"]:focus,#data input[type='text']:focus,#data input[type="date"]:focus, #data input[type="number"]:focus,#data input[type="tel"]:focus,#data input[type="email"]:focus,#data input[type="datetime-local"]:focus{
+#data input[type="password"]:focus,input[type='text']:focus,#data input[type="date"]:focus, input[type="number"]:focus,#data input[type="tel"]:focus,#data input[type="email"]:focus,#data input[type="datetime-local"]:focus{
 	box-shadow:0vw 0vw 1vw 0vw rgb(0, 0, 0.4);
 }
 input[type='submit'] {
@@ -183,21 +198,22 @@ input[type='submit']:hover{
 	box-shadow: 0em 0em 1em 0em rgb(255, 204, 0);  
 }
 /*Modify data end*/
+
+
 /*select style*/
 /* The container must be positioned relative: */
 .custom-select {
 	border-radius:5vw;
 	border:none;
 	outline:none;
-	box-shadow: 0em 0em 0.5em 0em rgb(255, 204, 0); 
-	background-color:rgb(255, 204, 0); 
-	color:black;
-	margin:1em 0.5em 0em 0.5em;
+	box-shadow: 0em 0em 0.5em 0em rgb(0, 0, 0); 
+	color:rgb(255, 204, 0);
+	background:linear-gradient(rgb(0, 0, 0,0.1),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.7),rgb(0, 0, 0),rgb(0, 0, 0,0.7),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.1));  
 }
 
 .custom-select:hover {
 	font-weight:bolder;
-	box-shadow: 0em 0em 1em 0em rgb(0, 0, 0);    
+	box-shadow: 0em 0em 0.5em 0em rgb(0, 0, 0);    
 }
 
 /*End of select style*/

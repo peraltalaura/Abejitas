@@ -142,25 +142,25 @@
 									?>
 								</div>
 							</div>
-							<div class="row RB">
+							<div class="row RB bg-dark">
 								<?php
 									printf("<div class='col-sm-7'>NAME:&nbsp;&nbsp; %s</div>",$data['name']);
 									printf("<div class='col-sm-5'>SURNAME:&nbsp;&nbsp;%s</div>",$data[3]);
 								?>
 							</div>
-							<div class="row RB">
+							<div class="row RB bg-dark">
 								<?php
 									printf("<div class='col-sm-7'>E-MAIL:&nbsp;&nbsp;%s</div>",$data[1]);
 									printf("<div class='col-sm-5'>BIRTH-DATE:&nbsp;&nbsp;%s</div>",$data[5]);
 								?>
 							</div>
-							<div class="row RB">
+							<div class="row RB bg-dark">
 								<?php
 									printf("<div class='col-sm-7'>CITY:&nbsp;&nbsp;%s</div>",$data[6]);
 									printf("<div class='col-sm-5'>POST CODE:&nbsp;&nbsp;%d</div>",$data[7]);
 								?>
 							</div>
-							<div class="row RB">
+							<div class="row RB bg-dark">
 								<?php
 									printf("<div class='col-sm-7'>ADDRESS:&nbsp;&nbsp;%s</div>",$data[8]);
 									printf("<div class='col-sm-5'>PHONE:&nbsp;&nbsp;%d</div>",$data[9]);
@@ -168,7 +168,7 @@
 							?>
 						</div>
 						
-						<a class="BRB" href="profile.php?account=mod">MODIFY PROFILE</a>
+						<a class="BRB bg-dark" href="profile.php?account=mod">MODIFY PROFILE</a>
 					</div>	
 					<?php
 						break;
@@ -234,14 +234,14 @@
 									printf("<div class='col-sm-6'>CITY: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' name='city' value='%s'></div>",$data[6]);
 									printf("<div class='col-sm-6'>POST CODE: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='number' name='post' value='%d'></div>",$data[7]);
 								?>
-								</div>
-								<div class="row bg-warning text-dark">
-									<?php
-										printf("<div class='col-sm-6'>ADDRESS: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' name='address' value='%s'></div>",$data[8]);
-										printf("<div class='col-sm-6'>PHONE: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='tel' pattern='[0-9]{9}' name='phone' value='%d' required></div>",$data[9]);
-									?>
-								</div>
-								<input class="text-dark bg-warning BRB" type="submit" value="MODIFY DATA"><br>
+							</div>
+							<div class="row bg-warning text-dark">
+								<?php
+									printf("<div class='col-sm-6'>ADDRESS: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' name='address' value='%s'></div>",$data[8]);
+									printf("<div class='col-sm-6'>PHONE: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='tel' pattern='[0-9]{9}' name='phone' value='%d' required></div>",$data[9]);
+								?>
+							</div>
+							<input class="text-dark bg-warning BRB" type="submit" value="MODIFY DATA"><br>
 						</div>
 					</form>
 					<?php
@@ -249,47 +249,239 @@
 						case 'bal':
 					?>
 					<div class="content text-warning Center">
-					<h2 id="movement" class="mt-4">MY MOVEMENTS</h2>
-					<br>
-					<?php			
-					$id=$_SESSION['memberID'];
-					$result=mysqli_query($link,"SELECT* from payment where member_id=$id");
-					?>
-					<div class="table-responsive">
-					<table class="table bg-dark text-warning Center">
-					<tr>
-					<th>PAYMENT ID</th>
-					<th>DESCRIPTION</th>
-					<th>DATE</th>
-					<th>TOTAL</th>
-					</tr>
+						<h2 id="movement" class="mt-4">MY MOVEMENTS</h2>
+						<br>
+						<?php			
+							$id=$_SESSION['memberID'];
+							$result=mysqli_query($link,"SELECT* from payment where member_id=$id");
+						?>
+						<div class="table-responsive">
+							<table class="table bg-dark text-warning Center">
+								<tr>
+									<th>PAYMENT ID</th>
+									<th>DESCRIPTION</th>
+									<th>DATE</th>
+									<th>TOTAL</th>
+								</tr>
+								<?php
+									$balance=0;
+									while($data=mysqli_fetch_array($result)){
+										printf("<tr><td>%d</td><td>%s</td><td>%s</td><td>%d €</td></tr>",$data[0],$data[1],$data[3],$data[2]);
+										$balance=$balance+$data[2];
+									}
+								?>
+							</table>
+						</div>
+						<div id="balance" class="row RBY">
+							<div class="col-sm-2"></div>
+							<div class="col-sm-4">
+								MY BALANCE:
+							</div>
+							<?php
+								printf("<div class='col-sm-4'>%d €</div>",$balance);
+							?>
+							<div class="col-sm-2"></div>
+						</div>
+					</div>
 					<?php
-					$balance=0;
-					while($data=mysqli_fetch_array($result)){
-					printf("<tr><td>%d</td><td>%s</td><td>%s</td><td>%d €</td></tr>",$data[0],$data[1],$data[3],$data[2]);
-					$balance=$balance+$data[2];
-					}
+						break;
+						case 'trans':
 					?>
-					</table>
-					</div>
-					<div id="balance" class="row RB">
-					<div class="col-sm-2"></div>
-					<div class="col-sm-4">
-					MY BALANCE:
+					<div id="transfer" class="content text-warning Center">
+						<h2 id="transfer" class="mt-4">TRANSFER</h2>
+						<form class="form-group" action="transfer.php" method="post">
+							<div class="row RBY">
+								<div class="col-sm-4 Center">
+									DESCRIPTION:
+								</div>
+								<div class='col-sm-8'>
+									<input type='text' required="required" name='desc'>
+								</div>
+							</div>
+							
+							<div class="row RBY">
+								<div class="col-sm-4 Center">
+									CUANTITY:
+								</div>
+								<div class='col-sm-8'>
+									<input type='text'required="required" name='import'>
+								</div>
+							</div>
+							<input class="text-dark bg-warning BRB" type="submit" value="TRANSFER">
+						</form>
+						<?php
+							if(isset($_GET['insert'])) {
+								if($_GET['insert']=='yes'){
+									printf("<div class='RBY Center'>Your transfer has been completed successfully</div>");
+									} else {
+									printf("<div class='RBY Center'>There was an error during your transfer</div>");
+									
+								}
+							}
+						?>
 					</div>
 					<?php
-					printf("<div class='col-sm-4'>%d €</div>",$balance);
+						break;
+						case 'book':
 					?>
-					<div class="col-sm-2"></div>
+					<div class="content text-warning Center">
+						<h2 id="bookings" class="mt-4">MY BOOKINGS</h2>
+						<br>
+						<?php			
+							$id=$_SESSION['memberID'];
+							$result=mysqli_query($link,"SELECT* from booking where member_id=$id");
+						?>
+						<div class="table-responsive">
+							<table class="table bg-dark text-warning Center">
+								<tr>
+									<th>BOOKING ID</th>
+									<th>ENTRY DATE</th>
+									<th>EXIT DATE</th>
+									<th>KILOS PRODUCED</th>
+									<th>TOTAL TO PAY</th>
+								</tr>
+								<?php
+									while($data=mysqli_fetch_array($result)){
+										printf("<tr><td class='id'>%d</td><td>%s</td><td>%s</td><td>%d KG</td><td>%d €</td></tr>",$data[0],$data[1],$data[2],$data[3],$data[4]);
+									}
+								?>
+							</table>
+						</div>
+						<h2 id="production" class="mt-4">REGISTER PRODUCTION</h2>
+						<form class="form-group container Center" action="produce.php" method="post">
+							<div class="row RBY">
+								<div class="col-sm-4 Center">
+									SELECT YOUR BOOKING:
+								</div>
+								<div class='col-sm-2 Center' style="margin:0">
+									<select class="custom-select" name="bookID">
+										<?php
+											$id=$_SESSION['memberID'];
+											$result=mysqli_query($link,"SELECT booking_id from booking where member_id=$id");
+											
+											while($data=mysqli_fetch_array($result)){
+												printf("<option>%d</option>",$data[0]);
+											}
+										?>
+									</select>
+								</div>
+							</div>
+							<div class="row RBY">
+								<div class="col-sm-6 Center">
+									KILOS:
+								</div>
+								<div class='col-sm-6 Center'>
+									<input type='number'required="required" name='kilos' min="1">
+								</div>
+							</div>
+							<div class="row RBY">
+								<div class="col-sm-6 Center">
+									SELECT THE METALBIN:
+								</div>
+								<div class='col-sm-4 Center'>
+									<select class="custom-select" aria-label="Default select example" name='metalID'>
+										<option>my own bin</option>
+										<?php
+											$id=$_SESSION['memberID'];
+											$result=mysqli_query($link,"SELECT metalbin_id, name from metalbin where available=1");
+											
+											while($data=mysqli_fetch_array($result)){
+												printf("<option value='%d'>%d liter bin</option>",$data[0],$data[1]);
+											}
+										?>
+									</select>
+								</div>
+							</div>
+							<input class="text-dark bg-warning BRB" type="submit" value="REGISTER">
+						</form>
+						<?php
+							if(isset($_GET['insert'])) {
+								if($_GET['insert']=='yes'){
+									printf("<div class='RBY Center'>You have registered your production successfully</div>");
+									} else {
+									printf("<div class='RBY Center'>There was an error during the registraction of the production</div>");
+									
+								}
+							}
+						?>
 					</div>
-					</div>
+					
 					<?php
-					break;
-					default:
-					echo "no hay datos";
+						break;
+						case 'act':
+					?>
+					<div class="content text-warning Center">
+						<h2 id="activity" class="mt-4">MY ACTIVITY</h2>
+						<br>
+						<?php			
+							$id=$_SESSION['memberID'];
+							$result=mysqli_query($link,"SELECT production_id,kilos,total,production_date FROM production WHERE booking_id IN (SELECT booking_id FROM booking WHERE member_id=$id)");
+						?>
+						<div class="table-responsive">
+							<table class="table bg-dark text-warning Center">
+								<tr>
+									<th>PRODUCTION ID</th>
+									<th>KILOS PRODUCED</th>
+									<th>TOTAL TO PAY</th>
+									<th>FINISH</th>
+								</tr>
+								<?php
+									/* checks if the productions are finished or not and gives you the option to stop them */
+									while($data=mysqli_fetch_array($result)){
+										if($data[3]== null){
+											printf("<tr><td>%d</td><td>%d KG</td><td>%d €</td><td>Finished</tr>",$data[0],$data[1],$data[2]);
+											}else{
+											printf("<tr><td>%d</td><td>%d KG</td><td>%d €</td><td><a class='BRBY' type='button' href='setAvailable.php?productid=$data[0]'>END</a></tr>",$data[0],$data[1],$data[2]);
+										}
+									}
+									
+									
+								?>
+							</table>
+						</div>
+						<?php	
+							break;
+							case 'not':
+						?>
+						<div class="content text-warning Center">
+							<h2 id="notification" class="mt-4">NOTIFICATIONS</h2>
+							<br>
+							<?php			
+								$id=$_SESSION['memberID'];
+								$result=mysqli_query($link,"SELECT message,notification_date,seen,member_id,notify_id FROM notification INNER JOIN notify ON notify.notification_id=notification.notification_id WHERE member_id=$id");
+								while($data=mysqli_fetch_array($result)){
+									if($data['seen']==0){
+										printf("<div class='row RB'>
+										<div class='col-sm-4'>%s</div>
+										<div class='col-sm-4'>%s</div>
+										<div class='col-sm-4'><a type='button' class='btn btn-dark text-warning BRB' href='setSeen.php?nid=$data[4]'>set as seen</a></div>
+										</div>",$data['message'],$data['notification_date']);
+										}else{
+										printf("<div class='row RB'>
+										<div class='col-sm-4'>%s</div>
+										<div class='col-sm-4'>%s</div>
+										<div class='col-sm-4'>seen</div>
+										</div>",$data[0],$data[1]);
+									}
+								}
+							?>
+							<?php
+								break;
+							}
 					}
-					}
-					?>	
-					</body>
-					</html>
-										
+				?>	
+				<div class="bg-dark p-4">
+					<address></address>
+				</div>
+				<script>
+					$(document).ready(function(){
+						$("button").click(function(){
+							<?php
+								
+							?>
+						});
+					});
+				</script>
+			</body>
+		</html>
+		

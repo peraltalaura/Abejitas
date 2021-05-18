@@ -44,10 +44,7 @@
 			<li>
 				<a class="Center" href="index.php">HOME</a>
 			</li>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> c4b891ba15dc2ba8e8f56ed0e4f6474897990f94
+
 			<?php
 		}
 		?>

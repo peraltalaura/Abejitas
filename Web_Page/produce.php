@@ -22,9 +22,9 @@
 	}
 	if(mysqli_query($link,$sql1)&&mysqli_query($link,$sql2)&&mysqli_query($link,$sql3)&&mysqli_query($link,$sql4)){
 		$id=$_SESSION['memberID'];
-		header("Location:my_account.php ? insert=yes");
+		header("Location:profile.php?account=book&insert=yes");
 		} else {
-		header("Location:my_account.php ? insert=no");
+		header("Location:profile.php?account=book&insert=no");
 	}
 	
 ?>
