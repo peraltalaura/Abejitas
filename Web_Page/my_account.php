@@ -73,7 +73,7 @@
 				?>
 				<ul id="accountNav">
 					<li>
-						<a class="Center active" href="#data" >EDIT</a>
+						<a class="Center active" href="#data" onclick="edit()">EDIT</a>
 					</li>
 					<li>
 						<a class="Center" href="#movement">BALANCE</a>
@@ -252,7 +252,7 @@
 					CUANTITY:
 				</div>
 				<div class='col-sm-8'>
-					<input type='text'required="required" name='import'>
+					<input type='number'required="required" name='import' min="1">
 				</div>
 			</div>
 			<input class="text-dark bg-warning" type="submit" value="TRANSFER">
