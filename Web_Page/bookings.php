@@ -24,11 +24,11 @@
 	<Link rel="stylesheet" href="css//login_CSS.css">
 	<script src='fullcalendar/main.js'></script>
 	<script>
-
 		document.addEventListener('DOMContentLoaded', function() {
 			var calendarEl = document.getElementById('calendar');
 			var calendar = new FullCalendar.Calendar(calendarEl, {
-				initialView: 'dayGridMonth'
+				initialView: 'dayGridMonth',
+				 events: 'events.php',
 			});
 			calendar.render();
 		});
