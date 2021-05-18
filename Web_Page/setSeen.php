@@ -8,5 +8,5 @@
 	$sql="UPDATE notify SET seen = true WHERE notify_id = $nid";
 
 	mysqli_query($link,$sql);
-	header("Location:my_account.php");
+	header("Location:profile.php?account=not");
 ?>

@@ -288,23 +288,17 @@
 						case 'trans':
 					?>
 					<div id="transfer" class="content text-warning Center">
-						<h2 id="transfer" class="mt-4">TRANSFER</h2>
-						<form class="form-group" action="transfer.php" method="post">
-							<div class="row RBY">
-								<div class="col-sm-4 Center">
-									DESCRIPTION:
-								</div>
-								<div class='col-sm-8'>
-									<input type='text' required="required" name='desc'>
+						<h2 class="mt-4">TRANSFER</h2>
+						<form class="form-group container Center" action="transfer.php" method="post">
+							<div class="row RBY" style="text-align:center">
+								<div class='col-sm-12'>
+									DESCRIPTION:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' required="required" name='desc'>
 								</div>
 							</div>
 							
-							<div class="row RBY">
-								<div class="col-sm-4 Center">
-									CUANTITY:
-								</div>
+							<div class="row RBY Center" style="text-align:center">
 								<div class='col-sm-8'>
-									<input type='text'required="required" name='import'>
+									CUANTITY:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text'required="required" name='import'>
 								</div>
 							</div>
 							<input class="text-dark bg-warning BRB" type="submit" value="TRANSFER">
@@ -465,6 +459,7 @@
 									}
 								}
 							?>
+							
 							<?php
 								break;
 							}
