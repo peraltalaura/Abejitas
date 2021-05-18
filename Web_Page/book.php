@@ -35,16 +35,12 @@
 		$ok=false;
 	}
 
-
-
-
 	if($ok){
 		$sql="INSERT INTO booking(entrydate,exitdate,member_id,kilos,total) VALUES('$entry','$exit',$id,0,0)";
 	}else{
 		$sql="SELECT * FROM members";
 	}
-	
-	
+
 	if(mysqli_query($link,$sql) && $ok == true){
 		$id=$_SESSION['memberID'];
 		header("Location:bookings.php?insert=yes");
