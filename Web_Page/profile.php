@@ -168,7 +168,7 @@
 							?>
 						</div>
 						
-						<a class="BRB bg-dark" href="profile.php?account=mod">MODIFY PROFILE</a>
+						<a class="BRB bg-dark text-warning mt-4 mb-4" href="profile.php?account=mod">MODIFY PROFILE</a>
 					</div>	
 					<?php
 						break;
@@ -343,11 +343,9 @@
 						</div>
 						<h2 id="production" class="mt-4">REGISTER PRODUCTION</h2>
 						<form class="form-group container Center" action="produce.php" method="post">
-							<div class="row RBY">
-								<div class="col-sm-4 Center">
-									SELECT YOUR BOOKING:
-								</div>
-								<div class='col-sm-2 Center' style="margin:0">
+							<div class="row RBY Center" style="text-align:center">
+								<div class='col-sm-4 Center'>
+								<b class='Center'>SELECT YOUR BOOKING:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<select class="custom-select" name="bookID">
 										<?php
 											$id=$_SESSION['memberID'];
@@ -360,19 +358,14 @@
 									</select>
 								</div>
 							</div>
-							<div class="row RBY">
-								<div class="col-sm-6 Center">
-									KILOS:
-								</div>
-								<div class='col-sm-6 Center'>
-									<input type='number'required="required" name='kilos' min="1">
+							<div class="row RBY Center">
+								<div class='col-sm-6'>
+									<b>KILOS:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='number'required="required" name='kilos' min="1">
 								</div>
 							</div>
-							<div class="row RBY">
-								<div class="col-sm-6 Center">
-									SELECT THE METALBIN:
-								</div>
-								<div class='col-sm-4 Center'>
+							<div class="row RBY Center">
+								<div class='col-sm-6'>
+									<b class="Center">SELECT THE METALBIN:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<select class="custom-select" aria-label="Default select example" name='metalID'>
 										<option>my own bin</option>
 										<?php
@@ -445,16 +438,16 @@
 								$result=mysqli_query($link,"SELECT message,notification_date,seen,member_id,notify_id FROM notification INNER JOIN notify ON notify.notification_id=notification.notification_id WHERE member_id=$id");
 								while($data=mysqli_fetch_array($result)){
 									if($data['seen']==0){
-										printf("<div class='row RB'>
-										<div class='col-sm-4'>%s</div>
-										<div class='col-sm-4'>%s</div>
-										<div class='col-sm-4'><a type='button' class='btn btn-dark text-warning BRB' href='setSeen.php?nid=$data[4]'>set as seen</a></div>
+										printf("<div class='row RBY'>
+										<div class='col-sm-4 Center'>%s</div>
+										<div class='col-sm-4 Center'>%s</div>
+										<div class='col-sm-4 Center'><a type='button' class='BRB bg-dark text-warning' href='setSeen.php?nid=$data[4]'>set as seen</a></div>
 										</div>",$data['message'],$data['notification_date']);
 										}else{
-										printf("<div class='row RB'>
-										<div class='col-sm-4'>%s</div>
-										<div class='col-sm-4'>%s</div>
-										<div class='col-sm-4'>seen</div>
+										printf("<div class='row RBY'>
+										<div class='col-sm-4 Center'>%s</div>
+										<div class='col-sm-4 Center'>%s</div>
+										<div class='col-sm-4 Center'>seen</div>
 										</div>",$data[0],$data[1]);
 									}
 								}

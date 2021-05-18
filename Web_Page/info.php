@@ -122,7 +122,7 @@
 				password for you to login in the webpage.</p><br>
 				<p>*We highly recommend to change the password the first time you login.</p><br>
 			</div>
-			<a type="button" class="btn btn-dark text-warning BRB">BECOME A MEMBER</a>
+			<a class="bg-dark BRB" href="contact.php">BECOME A MEMBER</a>
 			<br><h2>RULES: HOW TO MANTAIN A POSITIVE COMMUNITY</h2><br>
 			<div class="bg-dark text-warning RB text-left">
 				<ol>

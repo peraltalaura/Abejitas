@@ -120,7 +120,6 @@ div.content {
 .BRB {
 	border-radius:5vw;
 	padding:1vw 2vw 1vw 2vw;
-	color:rgb(255, 204, 0);
 	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0,0.5);
 }
 .BRBY {
@@ -131,7 +130,23 @@ div.content {
 	background:rgb(255, 204, 0);
 }
 
+.BRB:hover{
+	text-decoration:none;
+	transition:box-shadow 0.4s linear, font-size 0.4s;
+	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0);
+	font-size:1.1vw;
+	font-weight:bolder;
+	color:rgb(255, 204, 0);
+}
 a:hover{
+	text-decoration:none;
+	transition:box-shadow 0.4s linear, font-size 0.4s;
+	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0);
+	font-size:1.1vw;
+	font-weight:bolder;
+	color:rgb(255, 204, 0);
+}
+.BRBY:hover{
 	text-decoration:none;
 	transition:box-shadow 0.4s linear, font-size 0.4s;
 	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0);
