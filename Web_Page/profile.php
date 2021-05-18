@@ -209,39 +209,39 @@
 							}
 						}	
 					?>
-					<form id="data" class="content form-group Center" action="profile.php?account=mod&modify=yes" method="post" enctype="multipart/form-data">
-						<div class="text-warning Center">
+					<div class="text-warning Center content">
+						<form id="data" class="form-group Center" action="profile.php?account=mod&modify=yes" method="post" enctype="multipart/form-data">
 							<h1 class="mt-4">EDIT PROFILE</h1>
-							<div class="row RB Center">
+							<div class="row RB Center bg-warning text-dark">
 								<div class='col-sm-12'>
 									PROFILE PICTURE: <input type="file" name="pic">
 								</div>
 							</div>
-							<div class="row RB">
+							<div class="row bg-warning text-dark">
 								<?php
-									printf("<div class='col-sm-7'>NAME: <input type='text' name='uname' value='%s' required></div>",$data[2]);
-									printf("<div class='col-sm-5'>SURNAME: <input type='text' name='usurname' value='%s' required></div>",$data[3]);
+									printf("<div class='col-sm-6'>NAME: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' name='uname' value='%s' required></div>",$data[2]);
+									printf("<div class='col-sm-6'>SURNAME: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' name='usurname' value='%s' required></div>",$data[3]);
 								?>
 							</div>
-							<div class="row RB">
+							<div class="row bg-warning text-dark">
 								<?php
-									printf("<div class='col-sm-7'>E-MAIL: <input type='email' name='mail' value='%s' required></div>",$data[1]);
-									printf("<div class='col-sm-5'>BIRTH DATE: <input type='date' name='birth' value='%s'></div>",$data[5]);
+									printf("<div class='col-sm-6'>E-MAIL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type='email' name='mail' value='%s' required></div>",$data[1]);
+									printf("<div class='col-sm-6'>BIRTH DATE: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='date' name='birth' value='%s'></div>",$data[5]);
 								?>
 							</div>
-							<div class="row RB">
+							<div class="row bg-warning text-dark">
 								<?php
-									printf("<div class='col-sm-5'>CITY: <input type='text' name='city' value='%s'></div>",$data[6]);
-									printf("<div class='col-sm-7'>POST CODE: <input type='number' name='post' value='%d'></div>",$data[7]);
+									printf("<div class='col-sm-6'>CITY: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' name='city' value='%s'></div>",$data[6]);
+									printf("<div class='col-sm-6'>POST CODE: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='number' name='post' value='%d'></div>",$data[7]);
 								?>
-							</div>
-							<div class="row RB">
-								<?php
-									printf("<div class='col-sm-5'>ADDRESS: <input type='text' name='address' value='%s'></div>",$data[8]);
-									printf("<div class='col-sm-7'>PHONE NUMBER: <input type='tel' pattern='[0-9]{9}' name='phone' value='%d' required></div>",$data[9]);
-								?>
-							</div>
-							<input class="text-dark bg-warning BRB" type="submit" value="MODIFY DATA"><br>
+								</div>
+								<div class="row bg-warning text-dark">
+									<?php
+										printf("<div class='col-sm-6'>ADDRESS: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' name='address' value='%s'></div>",$data[8]);
+										printf("<div class='col-sm-6'>PHONE: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='tel' pattern='[0-9]{9}' name='phone' value='%d' required></div>",$data[9]);
+									?>
+								</div>
+								<input class="text-dark bg-warning BRB" type="submit" value="MODIFY DATA"><br>
 						</div>
 					</form>
 					<?php
@@ -249,46 +249,47 @@
 						case 'bal':
 					?>
 					<div class="content text-warning Center">
-						<h2 id="movement" class="mt-4">MY MOVEMENTS</h2>
-						<br>
-						<?php			
-							$id=$_SESSION['memberID'];
-							$result=mysqli_query($link,"SELECT* from payment where member_id=$id");
-						?>
-						<div class="table-responsive">
-							<table class="table bg-dark text-warning Center">
-								<tr>
-									<th>PAYMENT ID</th>
-									<th>DESCRIPTION</th>
-									<th>DATE</th>
-									<th>TOTAL</th>
-								</tr>
-								<?php
-									$balance=0;
-									while($data=mysqli_fetch_array($result)){
-									printf("<tr><td>%d</td><td>%s</td><td>%s</td><td>%d €</td></tr>",$data[0],$data[1],$data[3],$data[2]);
-									$balance=$balance+$data[2];
-								}
-								?>
-							</table>
-						</div>
-						<div id="balance" class="row RB">
-							<div class="col-sm-2"></div>
-							<div class="col-sm-4">
-								MY BALANCE:
-							</div>
-							<?php
-								printf("<div class='col-sm-4'>%d €</div>",$balance);
-							?>
-							<div class="col-sm-2"></div>
-						</div>
+					<h2 id="movement" class="mt-4">MY MOVEMENTS</h2>
+					<br>
+					<?php			
+					$id=$_SESSION['memberID'];
+					$result=mysqli_query($link,"SELECT* from payment where member_id=$id");
+					?>
+					<div class="table-responsive">
+					<table class="table bg-dark text-warning Center">
+					<tr>
+					<th>PAYMENT ID</th>
+					<th>DESCRIPTION</th>
+					<th>DATE</th>
+					<th>TOTAL</th>
+					</tr>
+					<?php
+					$balance=0;
+					while($data=mysqli_fetch_array($result)){
+					printf("<tr><td>%d</td><td>%s</td><td>%s</td><td>%d €</td></tr>",$data[0],$data[1],$data[3],$data[2]);
+					$balance=$balance+$data[2];
+					}
+					?>
+					</table>
+					</div>
+					<div id="balance" class="row RB">
+					<div class="col-sm-2"></div>
+					<div class="col-sm-4">
+					MY BALANCE:
 					</div>
 					<?php
-						break;
-						default:
-						echo "no hay datos";
+					printf("<div class='col-sm-4'>%d €</div>",$balance);
+					?>
+					<div class="col-sm-2"></div>
+					</div>
+					</div>
+					<?php
+					break;
+					default:
+					echo "no hay datos";
 					}
-				}
-			?>	
-		</body>
-	</html>
+					}
+					?>	
+					</body>
+					</html>
+										
