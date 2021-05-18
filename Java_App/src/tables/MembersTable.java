@@ -10,16 +10,13 @@ import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import mainclass.Member;
 
-/**
- *
- * @author kalboetxeaga.ager
- */
+//this class is the model for the members frame
 public class MembersTable extends AbstractTableModel {
 
     private Management man = new Management();
     private int member_count;
-    private ArrayList<Member> members_list=new ArrayList<>();
-    private final String[] TITLES = {"MEMBER ID", "NAME", "SURNAME", "E-MAIL", "PASSWORD", "POST CODE", "CITY", "ADDRESS", "PHONE", "ACTIVE"};
+    private ArrayList<Member> members_list=new ArrayList<>();//stores data for the table
+    private final String[] TITLES = {"MEMBER ID", "NAME", "SURNAME", "E-MAIL", "PASSWORD", "BIRTHDAY","POST CODE", "CITY", "ADDRESS", "PHONE", "ACTIVE"};//sets table col titles
 
     public MembersTable() {
         ArrayList<Object> array = new ArrayList<>();
@@ -96,15 +93,17 @@ public class MembersTable extends AbstractTableModel {
                 return members_list.get(rowIndex).getEmail();
             case 4:
                 return members_list.get(rowIndex).getPassword();
-            case 5:
-                return members_list.get(rowIndex).getPostCode();
+            case 5: 
+                return members_list.get(rowIndex).getBirthday();
             case 6:
-                return members_list.get(rowIndex).getCity();
+                return members_list.get(rowIndex).getPostCode();
             case 7:
-                return members_list.get(rowIndex).getAddress();
+                return members_list.get(rowIndex).getCity();
             case 8:
-                return members_list.get(rowIndex).getPhone();
+                return members_list.get(rowIndex).getAddress();
             case 9:
+                return members_list.get(rowIndex).getPhone();
+            case 10:
                 return members_list.get(rowIndex).isActive();
             default:
                 return null;

@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import mainclass.Booking;
 
-
+//this class is the model for the booking frame
 public class BookingsTable extends AbstractTableModel {
 
     private Management man= new Management();
-    public ArrayList<Booking> occupied_list = new ArrayList<>();
-    private String[] titles={"ENTRY-DATE","EXIT-DATE"};
+    public ArrayList<Booking> occupied_list = new ArrayList<>();//stores data for the table
+    private String[] titles={"ENTRY-DATE","EXIT-DATE"};//sets table col titles
     
     public BookingsTable(){
         ArrayList<Object> array = new ArrayList<>();

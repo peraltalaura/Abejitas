@@ -5,6 +5,8 @@
  */
 package mainclass;
 
+import java.util.Date;
+
 /**
  *
  * @author kalboetxeaga.ager
@@ -22,8 +24,22 @@ public class Member {
     private int phone;
     private String notifications;
     private boolean active;
-
-    public Member(int member_id, String name, String surname, String email, String password, int postCode, String city, String address, int phone, boolean active) {
+    private Date birthday;
+    /**
+     * constructor
+     * @param member_id
+     * @param name
+     * @param surname
+     * @param email
+     * @param password
+     * @param bithday
+     * @param postCode
+     * @param city
+     * @param address
+     * @param phone
+     * @param active 
+     */
+    public Member(int member_id, String name, String surname, String email, String password, Date bithday,int postCode, String city, String address, int phone, boolean active) {
         this.member_id = member_id;
         this.name = name;
         this.surname = surname;
@@ -34,7 +50,15 @@ public class Member {
         this.address = address;
         this.phone = phone;
         this.active = active;
+        this.birthday = birthday;
+    }
+//getters & setters
+    public Date getBirthday() {
+        return birthday;
+    }
 
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     public void setActive(boolean active) {
@@ -45,7 +69,7 @@ public class Member {
         return active;
     }
 
-    public Member(String name, String surname, String email, String password, int postCode, String city, String address, int phone, boolean active) {
+    public Member(String name, String surname, String email, String password, Date birthday,int postCode, String city, String address, int phone, boolean active) {
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -55,7 +79,7 @@ public class Member {
         this.address = address;
         this.phone = phone;
         this.active = active;
-
+        this.birthday = birthday;
     }
 
     public int getMember_id() {

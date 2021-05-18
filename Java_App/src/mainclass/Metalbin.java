@@ -5,34 +5,39 @@
  */
 package mainclass;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
-/**
- *
- * @author kalboetxeaga.ager
- */
+
+
+
 public class Metalbin {
     private int metalbin_id;
     private String name;
     private boolean available;
-    private LocalDateTime available_date;
-
-    public Metalbin(int metalbin_id, String name, boolean available, LocalDateTime available_date) {
+    private Date available_date;
+    /**
+     * constructor
+     * @param metalbin_id
+     * @param name
+     * @param available
+     * @param available_date 
+     */
+    public Metalbin(int metalbin_id, String name, boolean available, Date available_date) {
         this.metalbin_id = metalbin_id;
         this.name = name;
         this.available = available;
         this.available_date = available_date;
     }
-
+//getters & setters
     public int getMetalbin_id() {
         return metalbin_id;
     }
 
-    public LocalDateTime getAvailable_date() {
+    public Date getAvailable_date() {
         return available_date;
     }
 
-    public void setAvailable_date(LocalDateTime available_date) {
+    public void setAvailable_date(Date available_date) {
         this.available_date = available_date;
     }
 

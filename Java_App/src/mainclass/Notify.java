@@ -16,14 +16,20 @@ public class Notify {
     private int notification_id;
     private LocalDateTime notification_date;
     private boolean seen;
-
+/**
+ * constructor
+ * @param member_id
+ * @param notification_id
+ * @param notification_date
+ * @param seen 
+ */
     public Notify(int member_id, int notification_id, LocalDateTime notification_date, boolean seen) {
         this.member_id = member_id;
         this.notification_id = notification_id;
         this.notification_date = notification_date;
         this.seen = seen;
     }
-
+//getters & setters
     public int getMember_id() {
         return member_id;
     }

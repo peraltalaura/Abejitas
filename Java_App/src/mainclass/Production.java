@@ -12,13 +12,22 @@ import java.time.LocalDateTime;
  * @author kalboetxeaga.ager
  */
 public class Production {
+
     private int production_id;
     private float kilos;
     private float total;
     private int booking_id;
     private int metalbin_id;
     private LocalDateTime production_date;
-
+    /**
+     * constructor
+     * @param production_id
+     * @param kilos
+     * @param total
+     * @param booking_id
+     * @param metalbin_id
+     * @param production_date 
+     */
     public Production(int production_id, float kilos, float total, int booking_id, int metalbin_id, LocalDateTime production_date) {
         this.production_id = production_id;
         this.booking_id = booking_id;
@@ -26,8 +35,9 @@ public class Production {
         this.kilos = kilos;
         this.total = total;
         this.production_date = production_date;
-        
+
     }
+//getters & setters
 
     public LocalDateTime getProduction_date() {
         return production_date;
@@ -40,8 +50,6 @@ public class Production {
     public void setProduction_id(int production_id) {
         this.production_id = production_id;
     }
-
-    
 
     public void setKilos(float kilos) {
         this.kilos = kilos;
@@ -71,8 +79,6 @@ public class Production {
         this.metalbin_id = metalbin_id;
     }
 
-    
-
     public float getKilos() {
         return kilos;
     }
@@ -80,6 +86,5 @@ public class Production {
     public float getTotal() {
         return total;
     }
-    
-    
+
 }

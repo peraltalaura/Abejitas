@@ -27,7 +27,7 @@ public class Comment {
         this.message = message;
         this.member_id = member_id;
     }
-
+//getters & setters
     public int getComment_id() {
         return comment_id;
     }

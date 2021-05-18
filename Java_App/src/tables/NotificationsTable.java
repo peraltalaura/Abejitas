@@ -10,15 +10,12 @@ import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import mainclass.Notify;
 
-/**
- *
- * @author peral
- */
+//this class is the model for the notfications frame
 public class NotificationsTable extends AbstractTableModel {
 
     private Management man = new Management();
-    public ArrayList<Notify> notification_list = new ArrayList<>();
-    private String[] titles = {"MEMBER ID", "NOTIFICATION ID", "DATE", "SEEN"};
+    public ArrayList<Notify> notification_list = new ArrayList<>();//stores data for the table
+    private String[] titles = {"MEMBER ID", "NOTIFICATION ID", "DATE", "SEEN"};//sets table col titles
 
     public NotificationsTable() {
         ArrayList<Object> array = new ArrayList<>();

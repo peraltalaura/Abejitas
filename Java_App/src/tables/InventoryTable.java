@@ -4,12 +4,12 @@ import controllers.Management;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import mainclass.Inventory;
-
+//this class is the model for the inventory frame
 public class InventoryTable extends AbstractTableModel {
 
     private Management man = new Management();
-    public ArrayList<Inventory> materials = new ArrayList<>();
-    private String[] titles = {"ITEM ID", "MODEL", "COMMENT"};
+    public ArrayList<Inventory> materials = new ArrayList<>();//stores data for the table
+    private String[] titles = {"ITEM ID", "MODEL", "COMMENT"};//sets table col titles
 
     public InventoryTable() {
         ArrayList<Object> array = new ArrayList<>();

@@ -9,8 +9,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import mainclass.*;
 import tables.*;
@@ -72,13 +77,13 @@ public class HomeController implements ActionListener {
         membersTable = new MembersTable();
         home.members.setText("" + membersTable.getMember_count());
         homeActionListener(this);
-        
+
     }
 
     /**
      * it will detect the actions from the buttons on the menu
      *
-     * @param e
+     * @param e 
      */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -89,11 +94,9 @@ public class HomeController implements ActionListener {
                 members.memberjTable.setModel(membersTable);
                 members.setVisible(true);
                 members.setLocationRelativeTo(null);
-                home.setVisible(false);
+
                 memberActionListener(this);
-               
-                    
-                
+
                 break;
 
             case "MANAGE AVAILABILITY":
@@ -101,13 +104,13 @@ public class HomeController implements ActionListener {
                 metalbinsTable = new MetalbinTable();
                 available.jTableBookings.setModel(bookingsTable);
                 available.jTableMetal.setModel(metalbinsTable);
-                
+
                 available.setVisible(true);
                 available.setLocationRelativeTo(null);
                 break;
 
             case "MANAGE INVENTORY":
-                
+
                 inventoryTable = new InventoryTable();
                 inventory.jTableInventory.setModel(inventoryTable);
                 inventory.setVisible(true);
@@ -166,7 +169,7 @@ public class HomeController implements ActionListener {
             //when the activate button is clicked it puts the data from the textfields into a Member object and calls the insertMember()function to add a member to the database
             case "SUBMIT":
                 boolean troll = false;
-               
+
                 if (!members.jTextFieldName.getText().isEmpty() || !members.jTextFieldSurname.getText().isEmpty() || !members.jTextFieldAdress.getText().isEmpty() || !members.jTextFieldCity.getText().isEmpty() || !members.jTextFieldPassword.getText().isEmpty() || !members.jTextFieldEmail.getText().isEmpty() || !members.jTextFieldPhone.getText().isEmpty() || !members.jTextFieldPostcode.getText().isEmpty()) {
                     for (char c : members.jTextFieldName.getText().toCharArray()) {
                         if (!Character.isLetter(c)) {
@@ -207,12 +210,18 @@ public class HomeController implements ActionListener {
                             troll = true;
                         }
                     }
+                    String unformatted_date = members.jTextFieldBirthday.getText();
+                    try {
+                        Date date = new SimpleDateFormat("dd/MM/yyyy").parse(unformatted_date);
+                        Member mem = new Member(members.jTextFieldName.getText(), members.jTextFieldSurname.getText(), members.jTextFieldEmail.getText(),
+                                members.jTextFieldPassword.getText(), date, Integer.parseInt(members.jTextFieldPostcode.getText()), members.jTextFieldCity.getText(),
+                                members.jTextFieldAdress.getText(), Integer.parseInt(members.jTextFieldPhone.getText()), false);
+                        man.insertMember(mem);
+                        membersTable.addMember(mem);
+                    } catch (ParseException ex) {
+                        Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
-                    Member mem = new Member(members.jTextFieldName.getText(), members.jTextFieldSurname.getText(), members.jTextFieldEmail.getText(),
-                            members.jTextFieldPassword.getText(), Integer.parseInt(members.jTextFieldPostcode.getText()), members.jTextFieldCity.getText(),
-                            members.jTextFieldAdress.getText(), Integer.parseInt(members.jTextFieldPhone.getText()), false);
-                    man.insertMember(mem);
-                    membersTable.addMember(mem);
                 } else {
                     JOptionPane.showMessageDialog(payments, "You must write valid characters");
                     members.jTextFieldName.setText("");
@@ -223,7 +232,7 @@ public class HomeController implements ActionListener {
                     members.jTextFieldAdress.setText("");
                     members.jTextFieldPhone.setText("");
                     members.jTextFieldPostcode.setText("");
-                    
+
                 }
 
                 break;
@@ -274,7 +283,7 @@ public class HomeController implements ActionListener {
             case "RESET":
                 paymentTable.resetList();
                 break;
-                //when its clicked this case adds the submitted item into items table
+            //when its clicked this case adds the submitted item into items table
             case "ADD ITEM":
 
                 boolean troll2 = false;
@@ -309,7 +318,7 @@ public class HomeController implements ActionListener {
                 }
 
                 break;
-                //in this case when its pressed it deletes the selected comment
+            //in this case when its pressed it deletes the selected comment
             case "DELETE COMMENT":
                 //Aqui meter notify al usuario de esa id de tipo mal comentario?
                 int ic = JOptionPane.showConfirmDialog(inventory, "Are you sure?");
@@ -332,7 +341,7 @@ public class HomeController implements ActionListener {
                 }
 
                 break;
-                //This case deletes the selected item from the item table 
+            //This case deletes the selected item from the item table 
             case "DELETE ITEM":
                 int i = JOptionPane.showConfirmDialog(inventory, "Are you sure?");
                 if (i == 0) {
@@ -354,7 +363,7 @@ public class HomeController implements ActionListener {
                 }
 
         }
-        
+
     }
 
     /**
@@ -399,22 +408,30 @@ public class HomeController implements ActionListener {
     }
 
     /**
-     *
+     *  a method that adds a listener to the availability frame buttons when its initialized (obsolete)
      * @param listener
      */
     public void availabilityActionListener(ActionListener listener) {
 
     }
-
+    /**
+     *  This method adds listeners to the buttons of the inventory frame when its created
+     * @param listener 
+     */
     public void inventoryActionListener(ActionListener listener) {
         inventory.jButtonAddItem.addActionListener(listener);
         inventory.jButtonDeleteItem.addActionListener(listener);
     }
-
+    /**
+     * This method adds a listener to the button of the comments management frame when its created
+     * @param listener 
+     */
     public void commentActionListener(ActionListener listener) {
         comments.jButtonDeleteComment.addActionListener(listener);
     }
-
+    /**
+     * This method will add notifications from the database into the notifications ArrayList
+     */
     public void fillNotifications() {
         ArrayList<Object> array = new ArrayList<>();
         array = man.readData(array, "notification");
@@ -422,7 +439,5 @@ public class HomeController implements ActionListener {
             notifications.add((Notification) x);
         }
     }
-    
-    
-    
+
 }

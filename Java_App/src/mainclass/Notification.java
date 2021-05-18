@@ -5,19 +5,20 @@
  */
 package mainclass;
 
-/**
- *
- * @author kalboetxeaga.ager
- */
+
 public class Notification {
     private int notification_id;
     private String message;
-    
+    /**
+     * constructor
+     * @param notification_id
+     * @param message 
+     */
     public Notification(int notification_id, String message) {
         this.notification_id = notification_id;
         this.message = message;
     }
-
+//getters & setters
     public int getNotification_id() {
         return notification_id;
     }

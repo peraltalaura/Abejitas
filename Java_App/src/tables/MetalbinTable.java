@@ -10,15 +10,12 @@ import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import mainclass.Metalbin;
 
-/**
- *
- * @author peral
- */
+//this class is the model for the metalbin frame
 public class MetalbinTable extends AbstractTableModel {
 
     private Management man = new Management();
-    public ArrayList<Metalbin> production = new ArrayList<>();
-    private String[] titles = {"ID","NAME","AVAILABLE","AVAILABLE DATE"};
+    public ArrayList<Metalbin> production = new ArrayList<>();//stores data for the table
+    private String[] titles = {"ID","NAME","AVAILABLE","AVAILABLE DATE"};//sets table col titles
 
     public MetalbinTable() {
         ArrayList<Object> array = new ArrayList<>();

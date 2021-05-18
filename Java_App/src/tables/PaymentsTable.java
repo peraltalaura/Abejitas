@@ -4,12 +4,12 @@ import controllers.Management;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import mainclass.Payment;
-
+//this class is the model for the payments frame
 public class PaymentsTable extends AbstractTableModel {
 
     private Management man = new Management();
-    private ArrayList<Payment> payments_list = new ArrayList<>();
-    private final String[] TITLES = {"PAYMENT ID", "DESCRIPTION", "DATE", "TOTAL €", "MEMBER ID"};
+    private ArrayList<Payment> payments_list = new ArrayList<>();//stores data for the table
+    private final String[] TITLES = {"PAYMENT ID", "DESCRIPTION", "DATE", "TOTAL €", "MEMBER ID"};//sets table col titles
 
     public PaymentsTable(){
         searchPayments();

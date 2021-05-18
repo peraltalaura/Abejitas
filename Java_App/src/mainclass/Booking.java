@@ -5,7 +5,8 @@
  */
 package mainclass;
 
-import java.time.LocalDateTime;
+
+import java.util.Date;
 
 /**
  *
@@ -13,13 +14,21 @@ import java.time.LocalDateTime;
  */
 public class Booking {
     private int booking_id;
-    private LocalDateTime entryDate;
-    private LocalDateTime exitDate;
+    private Date entryDate;
+    private Date exitDate;
     private int kilos;
     private int total;
     private int member_id;
-
-    public Booking(int booking_id, LocalDateTime entryDate, LocalDateTime exitDate,int kilos, int total, int member_id) {
+    /**
+     * constructor
+     * @param booking_id
+     * @param entryDate
+     * @param exitDate
+     * @param kilos
+     * @param total
+     * @param member_id 
+     */
+    public Booking(int booking_id, Date entryDate, Date exitDate,int kilos, int total, int member_id) {
         this.booking_id = booking_id;
         this.entryDate = entryDate;
         this.exitDate = exitDate;
@@ -28,7 +37,7 @@ public class Booking {
         this.member_id = member_id;
         
     }
-
+    //getters & setters
     public int getKilos() {
         return kilos;
     }
@@ -53,19 +62,19 @@ public class Booking {
         this.booking_id = booking_id;
     }
 
-    public LocalDateTime getEntryDate() {
+    public Date getEntryDate() {
         return entryDate;
     }
 
-    public void setEntryDate(LocalDateTime entryDate) {
+    public void setEntryDate(Date entryDate) {
         this.entryDate = entryDate;
     }
 
-    public LocalDateTime getExitDate() {
+    public Date getExitDate() {
         return exitDate;
     }
 
-    public void setExitDate(LocalDateTime exitDate) {
+    public void setExitDate(Date exitDate) {
         this.exitDate = exitDate;
     }
 

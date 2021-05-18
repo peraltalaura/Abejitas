@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 //import java.util.Date;
 
 /**
@@ -60,15 +61,15 @@ public class Management {
 
         String sql = "SELECT * FROM " + table;
 
-        try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql); ResultSet rs = pstmt.executeQuery();) {
+        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql);  ResultSet rs = pstmt.executeQuery();) {
 
             while (rs.next()) {
                 if (table.equals("member")) {
-                    Member m = new Member(rs.getInt("member_id"), rs.getString("name"), rs.getString("surname"), rs.getString("email"), rs.getString("password"), rs.getInt("postcode"), rs.getString("city"), rs.getString("address"), rs.getInt("phone"), rs.getBoolean("active"));
+                    Member m = new Member(rs.getInt("member_id"), rs.getString("name"), rs.getString("surname"), rs.getString("email"), rs.getString("password"), rs.getDate("birthdate"), rs.getInt("postcode"), rs.getString("city"), rs.getString("address"), rs.getInt("phone"), rs.getBoolean("active"));
                     dataList.add(m);
 
                 } else if (table.equals("comment")) {
-                    Date d = rs.getDate("comment_date");
+                    Timestamp d = rs.getTimestamp("comment_date");
                     LocalDateTime date = Instant
                             .ofEpochMilli(d.getTime())
                             .atZone(ZoneId.systemDefault())
@@ -76,21 +77,11 @@ public class Management {
                     Comment c = new Comment(rs.getInt("comment_id"), date, rs.getString("message"), rs.getInt("member_id"));
                     dataList.add(c);
                 } else if (table.equals("booking")) {
-                    Date edate = rs.getDate("entrydate");
-                    Date exdate = rs.getDate("exitdate");
-                    LocalDateTime entry_date = Instant
-                            .ofEpochMilli(edate.getTime())
-                            .atZone(ZoneId.systemDefault())
-                            .toLocalDateTime();
-                    LocalDateTime exit_date = Instant
-                            .ofEpochMilli(exdate.getTime())
-                            .atZone(ZoneId.systemDefault())
-                            .toLocalDateTime();
 
-                    Booking b = new Booking(rs.getInt("booking_id"), entry_date, exit_date, rs.getInt("kilos"), rs.getInt("total"), rs.getInt("member_id"));
+                    Booking b = new Booking(rs.getInt("booking_id"), rs.getDate("entrydate"), rs.getDate("exitdate"), rs.getInt("kilos"), rs.getInt("total"), rs.getInt("member_id"));
                     dataList.add(b);
                 } else if (table.equals("payment")) {
-                    Date d = rs.getDate("pay_date");
+                    Timestamp d = rs.getTimestamp("pay_date");
                     LocalDateTime data = Instant
                             .ofEpochMilli(d.getTime())
                             .atZone(ZoneId.systemDefault())
@@ -99,17 +90,12 @@ public class Management {
                     dataList.add(p);
                 } else if (table.equals("metalbin")) {
 
-                    Date d = rs.getDate("available_date");
-                    LocalDateTime data = Instant
-                            .ofEpochMilli(d.getTime())
-                            .atZone(ZoneId.systemDefault())
-                            .toLocalDateTime();
-                    Metalbin m = new Metalbin(rs.getInt("metalbin_id"), rs.getString("name"), rs.getBoolean("available"), data);
+                    Metalbin m = new Metalbin(rs.getInt("metalbin_id"), rs.getString("name"), rs.getBoolean("available"), rs.getDate("available_date"));
                     dataList.add(m);
                     dataList.add(m);//aki luego abra k añadir con INSERT INTO metalbin (available_date) VALUES (?) WHERE metalbin_id = ?
 
                 } else if (table.equals("production")) {
-                    Date d = rs.getDate("production_date");
+                    Timestamp d = rs.getTimestamp("production_date");
                     LocalDateTime date = Instant
                             .ofEpochMilli(d.getTime())
                             .atZone(ZoneId.systemDefault())
@@ -117,19 +103,19 @@ public class Management {
 
                     Production p = new Production(rs.getInt("production_id"), (float) rs.getInt("kilos"), (float) rs.getInt("total"), rs.getInt("booking_id"), rs.getInt("metalbin_id"), date);
                     dataList.add(p);
-                } else if (table.equals("booking_1")) {
-                    Date edate = rs.getDate("entrydate");
-                    Date exdate = rs.getDate("exitdate");
-                    LocalDateTime entry_date = Instant
-                            .ofEpochMilli(edate.getTime())
-                            .atZone(ZoneId.systemDefault())
-                            .toLocalDateTime();
-                    LocalDateTime exit_date = Instant
-                            .ofEpochMilli(exdate.getTime())
-                            .atZone(ZoneId.systemDefault())
-                            .toLocalDateTime();
-                    LocalDateTime datak[] = {entry_date, exit_date};
-                    dataList.add(datak);
+//                } else if (table.equals("booking_1")) {
+//                    Timestamp edate = rs.getTimestamp("entrydate");
+//                    Timestamp exdate = rs.getTimestamp("exitdate");
+//                    LocalDateTime entry_date = Instant
+//                            .ofEpochMilli(edate.getTime())
+//                            .atZone(ZoneId.systemDefault())
+//                            .toLocalDateTime();
+//                    LocalDateTime exit_date = Instant
+//                            .ofEpochMilli(exdate.getTime())
+//                            .atZone(ZoneId.systemDefault())
+//                            .toLocalDateTime();
+//                    LocalDateTime datak[] = {entry_date, exit_date};
+//                    dataList.add(datak);
 
                 } else if (table.equals("inventory")) {
                     Inventory in = new Inventory(rs.getInt("Item_Id"), rs.getString("model"), rs.getString("comment"));
@@ -138,11 +124,12 @@ public class Management {
                     Notification no = new Notification(rs.getInt("notification_id"), rs.getString("message"));
                     dataList.add(no);
                 } else if (table.equals("notify")) {
-                    Date d = rs.getDate("notification_date");
+                    Timestamp d = rs.getTimestamp("notification_date");
                     LocalDateTime date = Instant
                             .ofEpochMilli(d.getTime())
                             .atZone(ZoneId.systemDefault())
                             .toLocalDateTime();
+                   
                     Notify not = new Notify(rs.getInt("member_id"), rs.getInt("notification_id"), date, rs.getBoolean("seen"));
                     dataList.add(not);
                 }
@@ -169,7 +156,7 @@ public class Management {
         boolean done = false;
         //LocalDateTime data = newMember.getDate; falta por crear birthday
         String sql = "INSERT INTO member(email, name, surname, password, city, postcode, address, phone, active) VALUES (?,?,?,?,?,?,?,?,?)";
-        try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql);) {
+        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql);) {
 
             pstmt.setString(1, newMember.getEmail());
             pstmt.setString(2, newMember.getName());
@@ -205,7 +192,7 @@ public class Management {
         String sql = "UPDATE member SET active=?"
                 + " WHERE member_id = ?";
         String sql2 = "INSERT INTO payment(description,total,member_id) VALUES(?,?,?)";
-        try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql); PreparedStatement pstmt2 = con.prepareStatement(sql2);) {
+        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql);  PreparedStatement pstmt2 = con.prepareStatement(sql2);) {
 
             pstmt.setBoolean(1, true);
             pstmt.setInt(2, id);
@@ -213,7 +200,7 @@ public class Management {
 
             pstmt2.setString(1, "Annual fee");
             pstmt2.setInt(2, -30);
-           
+
             pstmt2.setInt(3, id);
             pstmt2.executeUpdate();
 
@@ -238,7 +225,7 @@ public class Management {
         boolean done = false;
         String sql = "UPDATE member SET active=? WHERE member_id = ?";
 
-        try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql)) {
+        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql)) {
 
             pstmt.setBoolean(1, false);
             pstmt.setInt(2, id);
@@ -264,7 +251,7 @@ public class Management {
         boolean done = false;
         String sql = "DELETE FROM comment WHERE comment_id = ?";
 
-        try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql)) {
+        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setInt(1, commentId);
             pstmt.executeUpdate();
             done = true;
@@ -286,7 +273,7 @@ public class Management {
     public boolean deleteInventory(int itemId) {
         boolean done = false;
         String sql = "DELETE FROM inventory WHERE item_id = ?";
-        try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql)) {
+        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setInt(1, itemId);
             pstmt.executeUpdate();
             done = true;
@@ -309,11 +296,10 @@ public class Management {
 
         String sql = "INSERT INTO notify(member_id, notification_id, seen) VALUES (?,?,?)";
 
-        try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql)) {
+        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setInt(1, member_id);
             pstmt.setInt(2, notification.getNotification_id());
-            
-          
+
             pstmt.setBoolean(3, false);
             //en la base de datos poner por defecto el valor del tiempo actual con el metodo now()
             pstmt.executeUpdate();
@@ -337,11 +323,10 @@ public class Management {
     public boolean registerPayment(Payment transfer) {
         boolean done = false;
         String sql = "INSERT INTO payment(description, total, member_id) VALUES(?,?,?)";//pay_date: en la base de datos poner por defecto el valor del tiempo actual con el metodo now()
-        try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql)) {
+        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setString(1, transfer.getDescription());
             pstmt.setInt(2, (int) transfer.getTotal());
 
-           
             pstmt.setInt(3, transfer.getMember_id());
             pstmt.executeUpdate();
             done = true;
@@ -367,7 +352,7 @@ public class Management {
 
         String sql = "INSERT INTO inventory(model, comment) VALUES (?,?)";
 
-        try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql)) {
+        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setString(1, material.getModel());
             pstmt.setString(2, material.getComment());
             pstmt.executeUpdate();

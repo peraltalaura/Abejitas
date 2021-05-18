@@ -4,12 +4,12 @@ import controllers.Management;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import mainclass.Production;
-
+//this class is the model for the production frame
 public class ProductionsTable extends AbstractTableModel {
 
     private Management man = new Management();
-    public ArrayList<Production> production = new ArrayList<>();
-    private String[] titles = {"PRODUCTION ID", "TOTAL KG", "BOOKING ID", "METALBIN ID", "PRODUCTION DATE"};
+    public ArrayList<Production> production = new ArrayList<>();//stores data for the table
+    private String[] titles = {"PRODUCTION ID", "TOTAL KG", "BOOKING ID", "METALBIN ID", "PRODUCTION DATE"};//sets table col titles
 
     public ProductionsTable() {
         ArrayList<Object> array = new ArrayList<>();

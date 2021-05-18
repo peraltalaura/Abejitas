@@ -17,7 +17,14 @@ public class Payment {
     private LocalDateTime date;
     private float total;
     private int member_id;
-
+    /**
+     * full constructor
+     * @param payment_id
+     * @param description
+     * @param date
+     * @param total
+     * @param number_id 
+     */
     public Payment(int payment_id, String description, LocalDateTime date, float total, int number_id) {
         this.payment_id = payment_id;
         this.description = description;
@@ -25,13 +32,20 @@ public class Payment {
         this.total = total;
         this.member_id = number_id;
     }
+    /**
+     * a constructor for the payments frame
+     * @param description
+     * @param date
+     * @param total
+     * @param number_id 
+     */
     public Payment( String description, LocalDateTime date, float total, int number_id) {
         this.description = description;
         this.date = date;
         this.total = total;
         this.member_id = number_id;
     }
-
+//getters & setters
     public int getPayment_id() {
         return payment_id;
     }

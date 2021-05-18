@@ -4,12 +4,12 @@ import controllers.Management;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import mainclass.Comment;
-
+//this class is the model for the comments frame
 public class CommentsTable extends AbstractTableModel {
 
     private Management man = new Management();
-    public ArrayList<Comment> comments = new ArrayList<>();
-    private String[] TITLES = {"COMMENT ID", "COMMENT DATE", "MESSAGE", "MEMBER ID"};
+    public ArrayList<Comment> comments = new ArrayList<>();//stores data for the table
+    private String[] TITLES = {"COMMENT ID", "COMMENT DATE", "MESSAGE", "MEMBER ID"};//sets table col titles
 
     public CommentsTable() {
         ArrayList<Object> array = new ArrayList<>();
