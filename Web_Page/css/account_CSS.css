@@ -117,7 +117,7 @@ div.content {
 	background:rgb(255, 204, 0);
 	color:black;
 }
-.BRB {
+.BRB, button {
 	border-radius:5vw;
 	padding:1vw 2vw 1vw 2vw;
 	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0,0.5);
