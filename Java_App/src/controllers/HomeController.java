@@ -7,6 +7,8 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -21,7 +23,7 @@ import view.*;
 public class HomeController implements ActionListener {
 
     //The home class declaration
-    private Home home;
+    public Home home;
 
     //The different views class declaration
     private Members members;
@@ -65,10 +67,12 @@ public class HomeController implements ActionListener {
         this.notificationsFrame = notificationsFrame;
         this.man = man;
         this.fillNotifications();
-        home.setVisible(true);
+        this.home.setVisible(true);
+        this.home.setLocationRelativeTo(null);
         membersTable = new MembersTable();
         home.members.setText("" + membersTable.getMember_count());
         homeActionListener(this);
+        
     }
 
     /**
@@ -84,7 +88,12 @@ public class HomeController implements ActionListener {
             case "MANAGE MEMBERS":
                 members.memberjTable.setModel(membersTable);
                 members.setVisible(true);
+                members.setLocationRelativeTo(null);
+                home.setVisible(false);
                 memberActionListener(this);
+               
+                    
+                
                 break;
 
             case "MANAGE AVAILABILITY":
@@ -92,13 +101,17 @@ public class HomeController implements ActionListener {
                 metalbinsTable = new MetalbinTable();
                 available.jTableBookings.setModel(bookingsTable);
                 available.jTableMetal.setModel(metalbinsTable);
+                
                 available.setVisible(true);
+                available.setLocationRelativeTo(null);
                 break;
 
             case "MANAGE INVENTORY":
+                
                 inventoryTable = new InventoryTable();
                 inventory.jTableInventory.setModel(inventoryTable);
                 inventory.setVisible(true);
+                inventory.setLocationRelativeTo(null);
                 inventoryActionListener(this);
                 break;
 
@@ -106,6 +119,7 @@ public class HomeController implements ActionListener {
                 paymentTable = new PaymentsTable();
                 payments.jTablePayments.setModel(paymentTable);
                 payments.setVisible(true);
+                payments.setLocationRelativeTo(null);
                 paymentActionListener(this);
                 break;
 
@@ -113,6 +127,7 @@ public class HomeController implements ActionListener {
                 commentsTable = new CommentsTable();
                 comments.jTableCommentsTable.setModel(commentsTable);
                 comments.setVisible(true);
+                comments.setLocationRelativeTo(null);
                 commentActionListener(this);
                 break;
 
@@ -120,6 +135,7 @@ public class HomeController implements ActionListener {
                 notificationsTable = new NotificationsTable();
                 notificationsFrame.jTableNotifications.setModel(notificationsTable);
                 notificationsFrame.setVisible(true);
+                notificationsFrame.setLocationRelativeTo(null);
                 commentActionListener(this);
                 break;
 
@@ -149,26 +165,100 @@ public class HomeController implements ActionListener {
             break;
             //when the activate button is clicked it puts the data from the textfields into a Member object and calls the insertMember()function to add a member to the database
             case "SUBMIT":
-                Member mem = new Member(members.jTextFieldName.getText(), members.jTextFieldSurname.getText(), members.jTextFieldEmail.getText(),
-                        members.jTextFieldPassword.getText(), Integer.parseInt(members.jTextFieldPostcode.getText()), members.jTextFieldCity.getText(),
-                        members.jTextFieldAdress.getText(), Integer.parseInt(members.jTextFieldPhone.getText()), false);
-                man.insertMember(mem);
-                membersTable.addMember(mem);
+                boolean troll = false;
+               
+                if (!members.jTextFieldName.getText().isEmpty() || !members.jTextFieldSurname.getText().isEmpty() || !members.jTextFieldAdress.getText().isEmpty() || !members.jTextFieldCity.getText().isEmpty() || !members.jTextFieldPassword.getText().isEmpty() || !members.jTextFieldEmail.getText().isEmpty() || !members.jTextFieldPhone.getText().isEmpty() || !members.jTextFieldPostcode.getText().isEmpty()) {
+                    for (char c : members.jTextFieldName.getText().toCharArray()) {
+                        if (!Character.isLetter(c)) {
+                            troll = true;
+                        }
+                    }
+                    for (char c : members.jTextFieldSurname.getText().toCharArray()) {
+                        if (!Character.isLetter(c)) {
+                            troll = true;
+                        }
+                    }//for(char c : members.jTextFieldEmail.getText().toCharArray()){  email tiene @
+                    // if (!Character.isLetter(c)) {
+                    //     troll = true;
+                    //}
+
+                    for (char c : members.jTextFieldAdress.getText().toCharArray()) {
+                        if (!Character.isLetter(c)) {
+                            troll = true;
+                        }
+                    }
+                    for (char c : members.jTextFieldCity.getText().toCharArray()) {
+                        if (!Character.isLetter(c)) {
+                            troll = true;
+                        }
+                    }
+                    for (char c : members.jTextFieldPassword.getText().toCharArray()) {
+                        if (!Character.isLetter(c)) {
+                            troll = true;
+                        }
+                    }
+                    for (char c : members.jTextFieldPhone.getText().toCharArray()) {
+                        if (!Character.isDigit(c)) {
+                            troll = true;
+                        }
+                    }
+                    for (char c : members.jTextFieldPostcode.getText().toCharArray()) {
+                        if (!Character.isDigit(c)) {
+                            troll = true;
+                        }
+                    }
+
+                    Member mem = new Member(members.jTextFieldName.getText(), members.jTextFieldSurname.getText(), members.jTextFieldEmail.getText(),
+                            members.jTextFieldPassword.getText(), Integer.parseInt(members.jTextFieldPostcode.getText()), members.jTextFieldCity.getText(),
+                            members.jTextFieldAdress.getText(), Integer.parseInt(members.jTextFieldPhone.getText()), false);
+                    man.insertMember(mem);
+                    membersTable.addMember(mem);
+                } else {
+                    JOptionPane.showMessageDialog(payments, "You must write valid characters");
+                    members.jTextFieldName.setText("");
+                    members.jTextFieldSurname.setText("");
+                    members.jTextFieldEmail.setText("");
+                    members.jTextFieldPassword.setText("");
+                    members.jTextFieldCity.setText("");
+                    members.jTextFieldAdress.setText("");
+                    members.jTextFieldPhone.setText("");
+                    members.jTextFieldPostcode.setText("");
+                    
+                }
+
                 break;
             //when it is clicked it takes the description and import and registers a new payment on the database
             case "PAY":
-                try {
-                String description = payments.jTextFieldPDescription.getText();
-                LocalDateTime now = LocalDateTime.now();
-                float total = Float.parseFloat(payments.jTextFieldPTotal.getText());
-                Payment pay = new Payment(description, now, total, adminId);
-                man.registerPayment(pay);
-                paymentTable.addPayment(pay);
-                System.out.println("payment done");
-            } catch (Exception E) {
-                System.out.println("error when paying");
-            }
-            break;
+                boolean troll1 = false;
+                for (char c : payments.jTextFieldPDescription.getText().toCharArray()) {
+                    if (!Character.isLetter(c)) {
+                        troll1 = true;
+                    }
+                }
+                for (char c : payments.jTextFieldPTotal.getText().toCharArray()) {
+                    if (!Character.isDigit(c)) {
+                        troll1 = true;
+                    }
+                }
+                if (troll1 = false) {
+                    try {
+                        String description = payments.jTextFieldPDescription.getText();
+                        LocalDateTime now = LocalDateTime.now();
+                        float total = Float.parseFloat(payments.jTextFieldPTotal.getText());
+                        Payment pay = new Payment(description, now, total, adminId);
+                        man.registerPayment(pay);
+                        paymentTable.addPayment(pay);
+                        System.out.println("payment done");
+                    } catch (Exception E) {
+                        System.out.println("error when paying");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(payments, "You must write valid characters");
+                    payments.jTextFieldPDescription.setText("");
+                    payments.jTextFieldPTotal.setText("");
+                }
+
+                break;
 
             //when it is clicked it displays the payments depending on the id introduced
             case "SEARCH":
@@ -180,24 +270,46 @@ public class HomeController implements ActionListener {
                 System.out.println("filter error");
             }
             break;
-
+            // when its clicked it refresh the table of payments
             case "RESET":
                 paymentTable.resetList();
                 break;
-
+                //when its clicked this case adds the submitted item into items table
             case "ADD ITEM":
-                try {
-                Inventory in = new Inventory(inventory.jTextFieldModel.getText(), inventory.jTextFieldComment.getText());
-                man.addInventory(in);
-                inventory.jTextFieldComment.setText("");
-                inventory.jTextFieldModel.setText("");
-                inventoryTable.addToInventory(in);
-                System.out.println("update done");
-            } catch (Exception E) {
-                System.out.println("Error adding item");
-                System.out.println(E);
-            }
-            break;
+
+                boolean troll2 = false;
+                String getModel = inventory.jTextFieldModel.getText();
+                for (char c : inventory.jTextFieldModel.getText().toCharArray()) {
+                    if (!Character.isLetter(c)) {
+
+                        troll2 = true;
+                    }
+                }
+                for (char c : inventory.jTextFieldComment.getText().toCharArray()) {
+                    if (!Character.isLetter(c)) {
+                        troll2 = true;
+                    }
+                }
+                if (troll2 = false) {
+                    try {
+                        Inventory in = new Inventory(inventory.jTextFieldModel.getText(), inventory.jTextFieldComment.getText());
+                        man.addInventory(in);
+                        inventory.jTextFieldComment.setText("");
+                        inventory.jTextFieldModel.setText("");
+                        inventoryTable.addToInventory(in);
+                        System.out.println("update done");
+                    } catch (Exception E) {
+                        System.out.println("Error adding item");
+                        System.out.println(E);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(inventory, "You must write valid characters");
+                    inventory.jTextFieldComment.setText("");
+                    inventory.jTextFieldModel.setText("");
+                }
+
+                break;
+                //in this case when its pressed it deletes the selected comment
             case "DELETE COMMENT":
                 //Aqui meter notify al usuario de esa id de tipo mal comentario?
                 int ic = JOptionPane.showConfirmDialog(inventory, "Are you sure?");
@@ -206,7 +318,7 @@ public class HomeController implements ActionListener {
                         ArrayList<Comment> c;
                         c = commentsTable.getComments();
                         int dcom = c.get(comments.jTableCommentsTable.getSelectedRow()).getComment_id();
-                        int comMember=c.get(comments.jTableCommentsTable.getSelectedRow()).getMember_id();                      
+                        int comMember = c.get(comments.jTableCommentsTable.getSelectedRow()).getMember_id();
                         man.deleteComment(dcom);
                         man.sendWarning(notifications.get(2), comMember);
                         commentsTable.deleteComment(dcom);
@@ -220,6 +332,7 @@ public class HomeController implements ActionListener {
                 }
 
                 break;
+                //This case deletes the selected item from the item table 
             case "DELETE ITEM":
                 int i = JOptionPane.showConfirmDialog(inventory, "Are you sure?");
                 if (i == 0) {
@@ -241,6 +354,7 @@ public class HomeController implements ActionListener {
                 }
 
         }
+        
     }
 
     /**
@@ -308,4 +422,7 @@ public class HomeController implements ActionListener {
             notifications.add((Notification) x);
         }
     }
+    
+    
+    
 }

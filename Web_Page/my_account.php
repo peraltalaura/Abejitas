@@ -44,6 +44,42 @@
 			<li>
 				<a class="Center" href="index.php">HOME</a>
 			</li>
+			<?php
+		}
+		?>
+		<li>
+			<a class="Center active" href="">MY ACCOUNT</a>
+			<?php
+			session_start();
+			if(isset($_SESSION['memberID'])){
+				?>
+				<ul id="accountNav">
+					<li>
+						<a class="Center active" href="#data" onclick="edit()">EDIT</a>
+					</li>
+					<li>
+						<a class="Center" href="#movement">BALANCE</a>
+					</li>
+					<li>
+						<a class="Center" href="#transfer">TRANSACTION</a>
+					</li>
+					<li>
+						<a class="Center" href="#bookings">MY BOOKINGS</a>
+					</li>
+					<li>
+						<a class="Center" href="#activity">ACTIVITY</a>
+					</li>
+					<li>
+						<a class="Center" href="#notification">NOTIFICATIONS</a>
+					</li>
+				</ul>
+				<?php
+			}
+			?>
+		</li>
+		<?php
+		if(isset($_SESSION['memberID'])){
+			?>
 			<li>
 				<a class="Center" href="info.php">INFORMATION</a>
 			</li>
@@ -57,12 +93,17 @@
 					<a class="Center" href="login.php">BOOKINGS</a>
 				</li>
 				<?php
+
 					} else {
+
+				printf("<div class='col-sm-3'><input type='text' name='uname' value='%s' required></div>",$data[2]);
+
 				?>
 				<li>
 					<a class="Center" href="bookings.php">BOOKINGS</a>
 				</li>
 				<?php
+
 				}
 			?>
 			<li>
@@ -93,6 +134,17 @@
 					</ul>
 					<?php
 					}
+
+				printf("<div class='col-sm-3'><input type='text' name='usurname' value='%s' required></div>",$data[3]);
+				?>
+			</div>
+			<div class="row RB">
+				<div class="col-sm-2">
+					E-MAIL:
+				</div>
+				<?php
+				printf("<div class='col-sm-3'><input type='email' name='mail' value='%s' required></div>",$data[1]);
+
 				?>
 			</li>
 			<?php
@@ -156,6 +208,7 @@
 						printf("<div class='col-sm-3'>%s</div>",$data[3]);
 					?>
 				</div>
+
 				<div class="row RB">
 					<div class="col-sm-2">
 						E-MAIL:
@@ -197,6 +250,10 @@
 					<?php
 						printf("<div class='col-sm-2'>%d</div>",$data[9]);
 					}
+
+				<?php
+				printf("<div class='col-sm-2'><input type='tel' name='phone' value='%d' required></div>",$data[9]);
+
 				?>
 			</div>
 			<a class="text-dark bg-warning BRB" href="update_data.php" type="button" value="MODIFY DATA">MODIFY PROFILE</a>
@@ -337,13 +394,14 @@
 						</select>
 					</div>
 				</div>
+
 				<div class="row RB">
 					<div class="col-sm-4">
 						KILOS:
 					</div>
-					<div class='col-sm-8'>
-						<input type='number'required="required" name='kilos'>
-					</div>
+			
+				<div class='col-sm-8'>
+					<input type='number'required="required" name='import' min="1">
 				</div>
 				
 				<div class="row RB">
@@ -404,6 +462,31 @@
 	<div class="bg-dark p-4">
 		<address></address>
 	</div>
+
+</div>
+<div class="content text-warning Center">
+	<h2 id="notification" class="mt-4">NOTIFICATIONS</h2>
+	<br>
+	<?php			
+	$id=$_SESSION['memberID'];
+	$result=mysqli_query($link,"SELECT message,notification_date,seen,member_id,notify_id FROM notification INNER JOIN notify ON notify.notification_id=notification.notification_id WHERE member_id=$id");
+	while($data=mysqli_fetch_array($result)){
+		if($data['seen']==0){
+			printf("<div class='row RB'>
+				<div class='col-sm-4'>%s</div>
+				<div class='col-sm-4'>%s</div>
+				<div class='col-sm-4'><a type='button' class='btn btn-dark text-warning BRB' href='setSeen.php?nid=$data[4]'>set as seen</a></div>
+				</div>",$data['message'],$data['notification_date']);
+		}else{
+			printf("<div class='row RB'>
+				<div class='col-sm-4'>%s</div>
+				<div class='col-sm-4'>%s</div>
+				<div class='col-sm-4'>seen</div>
+				</div>",$data[0],$data[1]);
+		}
+	}
+	?>
+
 	
 </body>
 </html>																																		

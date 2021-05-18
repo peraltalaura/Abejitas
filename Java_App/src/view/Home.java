@@ -38,6 +38,9 @@ public class Home extends javax.swing.JFrame {
         NOTIFICATIONS = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("ERLETE Home");
+        setBackground(new java.awt.Color(255, 255, 153));
+        setForeground(new java.awt.Color(255, 255, 153));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 204, 0));
@@ -49,35 +52,43 @@ public class Home extends javax.swing.JFrame {
         INVENTORY.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         INVENTORY.setForeground(new java.awt.Color(255, 153, 0));
         INVENTORY.setText("MANAGE INVENTORY");
+        INVENTORY.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         PAYMENTS.setBackground(new java.awt.Color(0, 0, 0));
         PAYMENTS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         PAYMENTS.setForeground(new java.awt.Color(255, 153, 0));
         PAYMENTS.setText("MANAGE PAYMENTS");
+        PAYMENTS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         AVAILABILITY.setBackground(new java.awt.Color(0, 0, 0));
         AVAILABILITY.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         AVAILABILITY.setForeground(new java.awt.Color(255, 153, 0));
         AVAILABILITY.setText("MANAGE AVAILABILITY");
+        AVAILABILITY.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 255, 153)));
+        AVAILABILITY.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         COMMENTS.setBackground(new java.awt.Color(0, 0, 0));
         COMMENTS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         COMMENTS.setForeground(new java.awt.Color(255, 153, 0));
         COMMENTS.setText("MANAGE COMMENTS");
+        COMMENTS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         MEMBERS.setBackground(new java.awt.Color(0, 0, 0));
         MEMBERS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         MEMBERS.setForeground(new java.awt.Color(255, 153, 0));
         MEMBERS.setText("MANAGE MEMBERS");
+        MEMBERS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("MEMBERS:");
 
         members.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        NOTIFICATIONS.setBackground(new java.awt.Color(0, 0, 0));
         NOTIFICATIONS.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         NOTIFICATIONS.setForeground(new java.awt.Color(255, 153, 0));
         NOTIFICATIONS.setText("SEE NOTIFICATIONS");
+        NOTIFICATIONS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         NOTIFICATIONS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NOTIFICATIONSActionPerformed(evt);
@@ -103,14 +114,13 @@ public class Home extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45)
                         .addComponent(members, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(COMMENTS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(MEMBERS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(COMMENTS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(MEMBERS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(AVAILABILITY, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(NOTIFICATIONS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(245, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

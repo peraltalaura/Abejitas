@@ -204,7 +204,7 @@ public class Management {
         boolean done = false;
         String sql = "UPDATE member SET active=?"
                 + " WHERE member_id = ?";
-        String sql2 = "INSERT INTO payment(description,total,pay_date,member_id) VALUES(?,?,?,?)";
+        String sql2 = "INSERT INTO payment(description,total,member_id) VALUES(?,?,?)";
         try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql); PreparedStatement pstmt2 = con.prepareStatement(sql2);) {
 
             pstmt.setBoolean(1, true);
@@ -213,11 +213,8 @@ public class Management {
 
             pstmt2.setString(1, "Annual fee");
             pstmt2.setInt(2, -30);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            String formattedDateTime = LocalDateTime.now().format(formatter);
-
-            pstmt2.setString(3, formattedDateTime);
-            pstmt2.setInt(4, id);
+           
+            pstmt2.setInt(3, id);
             pstmt2.executeUpdate();
 
             return true;
@@ -310,16 +307,14 @@ public class Management {
     public boolean sendWarning(Notification notification, int member_id) {
         boolean done = false;
 
-        String sql = "INSERT INTO notify(member_id, notification_id, notification_date, seen) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO notify(member_id, notification_id, seen) VALUES (?,?,?)";
 
         try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setInt(1, member_id);
             pstmt.setInt(2, notification.getNotification_id());
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            String formattedDateTime = LocalDateTime.now().format(formatter);
-
-            pstmt.setString(3, formattedDateTime);
-            pstmt.setBoolean(4, false);
+            
+          
+            pstmt.setBoolean(3, false);
             //en la base de datos poner por defecto el valor del tiempo actual con el metodo now()
             pstmt.executeUpdate();
             done = true;
@@ -341,16 +336,13 @@ public class Management {
      */
     public boolean registerPayment(Payment transfer) {
         boolean done = false;
-        String sql = "INSERT INTO payment(description, total, pay_date, member_id) VALUES(?,?,?,?)";//pay_date: en la base de datos poner por defecto el valor del tiempo actual con el metodo now()
+        String sql = "INSERT INTO payment(description, total, member_id) VALUES(?,?,?)";//pay_date: en la base de datos poner por defecto el valor del tiempo actual con el metodo now()
         try (Connection con = connect(); PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setString(1, transfer.getDescription());
             pstmt.setInt(2, (int) transfer.getTotal());
 
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            String formattedDateTime = transfer.getDate().format(formatter);
-
-            pstmt.setString(3, formattedDateTime);
-            pstmt.setInt(4, transfer.getMember_id());
+           
+            pstmt.setInt(3, transfer.getMember_id());
             pstmt.executeUpdate();
             done = true;
 

@@ -62,7 +62,9 @@
 				if(isset($_SESSION['memberID'])){
 				?>
 				<li>
+
 					<a class="Center" href="profile.php">MY ACCOUNT</a>
+
 				</li>
 				<?php
 					} else {

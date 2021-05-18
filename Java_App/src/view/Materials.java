@@ -77,6 +77,7 @@ public class Materials extends javax.swing.JFrame {
         jLabel1.setText("ERLETE");
 
         jButton1.setText("HOME");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -96,8 +97,10 @@ public class Materials extends javax.swing.JFrame {
         jLabel5.setText("Comment");
 
         jButtonAddItem.setText("ADD ITEM");
+        jButtonAddItem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jButtonDeleteItem.setText("DELETE ITEM");
+        jButtonDeleteItem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

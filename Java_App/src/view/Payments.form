@@ -138,6 +138,9 @@
     <Component class="javax.swing.JButton" name="jButtonHome">
       <Properties>
         <Property name="text" type="java.lang.String" value="Home"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonHomeActionPerformed"/>
@@ -215,6 +218,9 @@
     <Component class="javax.swing.JButton" name="jButtonPay">
       <Properties>
         <Property name="text" type="java.lang.String" value="PAY"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -238,6 +244,9 @@
     <Component class="javax.swing.JButton" name="jButtonSearch">
       <Properties>
         <Property name="text" type="java.lang.String" value="SEARCH"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -246,6 +255,9 @@
     <Component class="javax.swing.JButton" name="jButtonReset">
       <Properties>
         <Property name="text" type="java.lang.String" value="RESET"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonResetActionPerformed"/>

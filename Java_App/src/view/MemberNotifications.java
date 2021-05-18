@@ -51,6 +51,7 @@ public class MemberNotifications extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableNotifications);
 
         jButtonHome.setText("HOME");
+        jButtonHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonHomeActionPerformed(evt);
