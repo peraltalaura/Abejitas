@@ -79,9 +79,6 @@
 						<a class="Center" href="profile.php?account=bal">BALANCE</a>
 					</li>
 					<li>
-						<a class="Center" href="profile.php?account=trans">TRANSACTION</a>
-					</li>
-					<li>
 						<a class="Center" href="profile.php?account=book">MY BOOKINGS</a>
 					</li>
 					<li>
@@ -489,7 +486,8 @@
 					changeYear: true
 				});
 			} );
-
+		</script>
+		<script>
 			/*Function to show a confirm dialog when changing users data*/
 			function confirmMod(){
 			
@@ -534,7 +532,8 @@
 					changeYear: true
 				});
 			} );
-			
+			</script>
+			<script>
 			/*Function to show a confirm dialog when changing users data*/
 			function confirmTrans(){
 			
@@ -549,7 +548,7 @@
 				buttons: {
 					"Yes": function() {
 						$( this ).dialog( "close" );
-						$("#data")[0].submit();
+						$("#transfer-form")[0].submit();
 
 					},
 					"No": function() {
@@ -562,7 +561,7 @@
 
 			return false;
 		}
-		$( document ).on("submit", "#transfer", confirmTrans);
+		$( document ).on("submit", "#transfer-form", confirmTrans);
 		</script>
 
 		<script>
@@ -571,25 +570,6 @@
 			$("#transfer").toggle();
 		});
 	</script>
-		<script>
-		$( function() {
-			$("#transfer-confirm" )input().click(function(){
-				$(this).dialog({
-					resizable: false,
-					height: "auto",
-					width: 400,
-					modal: true,
-					buttons: {
-						"Make transaction": function() {
-							$('#transfer-form').submit();
-						},
-						Cancel: function() {
-							$( this ).dialog( "close" );
-						}
-					}
-				});
-			});
-		} );
-	</script>
+
 </body>
 </html>

@@ -12,9 +12,9 @@
 	$sql="INSERT INTO payment(description,total,pay_date,member_id) VALUES('$desc',$import,CURRENT_TIMESTAMP,$id)";
 	if(mysqli_query($link,$sql)){
 		$id=$_SESSION['memberID'];
-		header("Location:profile.php?account=trans&insert=yes");
+		header("Location:profile.php?account=bal&insert=yes");
 	} else {
-		header("Location:profile.php?account=trans&insert=no");
+		header("Location:profile.php?account=bal&insert=no");
 	}
 	
 ?>
