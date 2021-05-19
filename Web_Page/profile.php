@@ -25,14 +25,7 @@
 		<script src="jquery/jquery-ui.min.js"></script>
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<style>
-			h1 {
-			font-family: 'Dancing Script', cursive;
-			}
-			body {
-			font-family: 'Lato', sans-serif;
-			}
-		</style>
+		
 		<script type="text/javascript">
 			function prof(){
 				var someElement= document.getElementById("prof");
@@ -55,120 +48,15 @@
 				someElement.className += " active";
 			}
 		</script>
-		<script>
-			$.datepicker.regional[ "eng" ] = {
-				closeText: "Done",
-				prevText: "Prev",
-				nextText: "Next",
-				currentText: "Today",
-				monthNames: [ "January","February","March","April","May","June",
-				"July","August","September","October","November","December" ],
-				monthNamesShort: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-				"Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
-				dayNames: [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ],
-				dayNamesShort: [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ],
-				dayNamesMin: [ "Su","Mo","Tu","We","Th","Fr","Sa" ],
-				weekHeader: "Wk",
-				dateFormat: "yy-mm-dd",
-				firstDay: 1,
-				isRTL: false,
-				showMonthAfterYear: false,
-			yearSuffix: "" };
-			
-			$.datepicker.setDefaults($.datepicker.regional['eng']);
-			
-			$(function () {
-				$("#datepicker").datepicker({
-					yearRange: "-100:+0", // this is the option you're looking for
-					maxDate:new Date(),
-					changeMonth: true,
-					changeYear: true
-				});
-			});
-		</script>
-		<script>
-			/*Function to change the calendar of the data input*/
-			$(document).ready(function(){
-				$("button").click(function(){
-					<?php
-						
-					?>
-				});
-			});
-			
-			$( function() {
-				$( "#datepicker" ).datepicker({
-					changeMonth: true,
-					changeYear: true
-				});
-			} );
-		</script>
-		<script>
-			/*Function to show a confirm dialog when changing users data*/
-			function confirmMod(){
-				
-				var dynamicDialog = $('<div title="Modify data?">'+
-				'<p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>The data will be changed, are you sure?</p></div>');
-				
-				dynamicDialog.dialog({
-					title : "Are you sure?",
-					closeOnEscape: true,
-					modal : true,
-					
-					buttons: {
-						"Yes": function() {
-							$( this ).dialog( "close" );
-							$("#data")[0].submit();
-							
-						},
-						"No": function() {
-							$( this ).dialog( "close" );
-						}
-					}
-				});
-				
-				return false;
+		<style>
+			h1 {
+			font-family: 'Dancing Script', cursive;
 			}
-			$( document ).on("submit", "#data", confirmMod);
-		</script>
-		
-		<script>
-			/*Function to show a confirm dialog when changing users data*/
-			function confirmTrans(){
-				
-				var dynamicDialog = $('<div title="Transfer money?">'+
-				'<p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>The transaction will be made, are you sure?</p></div>');
-				
-				dynamicDialog.dialog({
-					title : "Are you sure?",
-					closeOnEscape: true,
-					modal : true,
-					
-					buttons: {
-						"Yes": function() {
-							$( this ).dialog( "close" );
-							$("#transfer-form")[0].submit();
-							
-						},
-						"No": function() {
-							
-							$( this ).dialog( "close" );
-							
-						}
-					}
-				});
-				
-				return false;
+			body {
+			font-family: 'Lato', sans-serif;
 			}
-			$( document ).on("submit", "#transfer-form", confirmTrans);
-		</script>
+		</style>
 		
-		<script>
-			/*Function to show or hide the transfer form*/
-			$('#trans').click(function(){
-				$("#transfer").toggle();
-			});
-		</script>
 	</head>
 	<body class="bg-dark">
 		<!--menu of the web page-->
@@ -186,16 +74,17 @@
 				<a class="Center" href="forum.php">FORUM</a>
 			</li>
 			<?php
+				session_start();
 				if(isset($_SESSION['memberID'])){
 				?>
 				<li>
-					<a class="Center" href="login.php">BOOKINGS</a>
+					<a class="Center" href="bookings.php">BOOKINGS</a>
 				</li>
 				<?php
 					} else {
 				?>
 				<li>
-					<a class="Center" href="bookings.php">BOOKINGS</a>
+					<a class="Center" href="login.php">BOOKINGS</a>
 				</li>
 				<?php
 				}
@@ -203,7 +92,6 @@
 			<li>
 				<a class="Center active" href="">MY ACCOUNT</a>
 				<?php
-					session_start();
 					if(isset($_SESSION['memberID'])){
 					?>
 					<ul id="accountNav">
@@ -630,5 +518,120 @@
 			</div>
 			
 			
+			<script>
+				$.datepicker.regional[ "eng" ] = {
+					closeText: "Done",
+					prevText: "Prev",
+					nextText: "Next",
+					currentText: "Today",
+					monthNames: [ "January","February","March","April","May","June",
+					"July","August","September","October","November","December" ],
+					monthNamesShort: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+					"Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
+					dayNames: [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ],
+					dayNamesShort: [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ],
+					dayNamesMin: [ "Su","Mo","Tu","We","Th","Fr","Sa" ],
+					weekHeader: "Wk",
+					dateFormat: "yy-mm-dd",
+					firstDay: 1,
+					isRTL: false,
+					showMonthAfterYear: false,
+				yearSuffix: "" };
+				
+				$.datepicker.setDefaults($.datepicker.regional['eng']);
+				
+				$(function () {
+					$("#datepicker").datepicker({
+						yearRange: "-100:+0", // this is the option you're looking for
+						maxDate:new Date(),
+						changeMonth: true,
+						changeYear: true
+					});
+				});
+			</script>
+			<script>
+				/*Function to change the calendar of the data input*/
+				$(document).ready(function(){
+					$("button").click(function(){
+						<?php
+							
+						?>
+					});
+				});
+			</script>
+			<script>
+				$( function() {
+					$( "#datepicker" ).datepicker({
+						changeMonth: true,
+						changeYear: true
+					});
+				} );
+			</script>
+			<script>
+				/*Function to show a confirm dialog when changing users data*/
+				function confirmMod(){
+					
+					var dynamicDialog = $('<div title="Modify data?">'+
+					'<p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>The data will be changed, are you sure?</p></div>');
+					
+					dynamicDialog.dialog({
+						title : "Are you sure?",
+						closeOnEscape: true,
+						modal : true,
+						
+						buttons: {
+							"Yes": function() {
+								$( this ).dialog( "close" );
+								$("#data")[0].submit();
+								
+							},
+							"No": function() {
+								$( this ).dialog( "close" );
+							}
+						}
+					});
+					
+					return false;
+				}
+				$( document ).on("submit", "#data", confirmMod);
+			</script>
+			
+			<script>
+				/*Function to show a confirm dialog when changing users data*/
+				function confirmTrans(){
+					
+					var dynamicDialog = $('<div title="Transfer money?">'+
+					'<p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>The transaction will be made, are you sure?</p></div>');
+					
+					dynamicDialog.dialog({
+						title : "Are you sure?",
+						closeOnEscape: true,
+						modal : true,
+						
+						buttons: {
+							"Yes": function() {
+								$( this ).dialog( "close" );
+								$("#transfer-form")[0].submit();
+								
+							},
+							"No": function() {
+								
+								$( this ).dialog( "close" );
+								
+							}
+						}
+					});
+					
+					return false;
+				}
+				$( document ).on("submit", "#transfer-form", confirmTrans);
+			</script>
+			
+			<script>
+				/*Function to show or hide the transfer form*/
+				$('#trans').click(function(){
+					$("#transfer").toggle();
+				});
+			</script>
 		</body>
 	</html>

@@ -133,10 +133,10 @@
 		<form class="form-group mt-4 content Center" action="book.php" method="post">
 			<div class="row RBY pt-4 pb-4">
 				<div class="col-sm-6" style="text-align:center">
-					Select entry date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="datepicker" id="from" type="text" required="required" name="entry">
+					Select entry date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="datepicker" id="from" type="text" required="required" name="entry" autocomplete="off">
 				</div>
 				<div class="col-sm-6" style="text-align:center">
-					Select exit date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="datepicker" id="to" type="text" required="required" name="exit">
+					Select exit date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="datepicker" id="to" type="text" required="required" name="exit" autocomplete="off">
 				</div>
 			</div>
 			<BR>
