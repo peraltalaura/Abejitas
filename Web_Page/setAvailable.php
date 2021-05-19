@@ -9,5 +9,5 @@
 	$sql2="UPDATE production SET production_date = null WHERE production_id = $id";
 	mysqli_query($link,$sql);
 	mysqli_query($link,$sql2);
-	header("Location:my_account.php ? available=yes");
+	header("Location:my_account.php?available=yes");
 ?>
