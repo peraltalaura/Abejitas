@@ -15,6 +15,7 @@
 	$result = mysqli_query($link,$sql);
 	if($exit>=$entry && $entry>=$cdate){
 		while($data=mysqli_fetch_array($result)){
+			$data['exitdate']=date('Y-m-d', strtotime($data['exitdate']. ' - 1 days'));
 			$p1=-1;
 			$p2=-2;
 			if($data['entrydate']<$exit){
