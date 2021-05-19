@@ -47,6 +47,10 @@
 				var someElement= document.getElementById("not");
 				someElement.className += " active";
 			}
+			function notSeen(){
+				var someElement= document.getElementById("not");
+				someElement.innerHTML = "<img src='images/dot.png' style='border-radius:5vw;'>&nbsp;&nbsp;&nbsp;&nbsp;NOTIFICATIONS";
+			}
 		</script>
 		<style>
 			h1 {
@@ -137,6 +141,15 @@
 			include("test_connect_db.php");
 			$link=connectDataBase();			
 			$id=$_SESSION['memberID'];
+			$result=mysqli_query($link,"SELECT seen FROM notify WHERE member_id=$id");
+			while($data=mysqli_fetch_array($result)){
+				if($data['seen']==0){
+					echo '<script type="text/javascript">',
+     				'notSeen();',
+					'</script>';
+				}
+			}
+						
 			/*switch to change the data displayed*/
 			if(isset($_GET['account'])){
 				$section=$_GET['account'];
