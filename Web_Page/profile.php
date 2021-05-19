@@ -33,6 +33,28 @@
 			font-family: 'Lato', sans-serif;
 		}
 	</style>
+	<script type="text/javascript">
+		function prof(){
+			var someElement= document.getElementById("prof");
+			someElement.className += " active";
+		}
+		function bal(){
+			var someElement= document.getElementById("bal");
+			someElement.className += " active";
+		}
+		function book(){
+			var someElement= document.getElementById("book");
+			someElement.className += " active";
+		}
+		function act(){
+			var someElement= document.getElementById("act");
+			someElement.className += " active";
+		}
+		function not(){
+			var someElement= document.getElementById("not");
+			someElement.className += " active";
+		}
+	</script>
 
 </head>
 <body class="bg-dark">
@@ -73,19 +95,19 @@
 				?>
 				<ul id="accountNav">
 					<li>
-						<a class="Center" href="profile.php?account=prof">EDIT</a>
+						<a class="Center" id="prof" href="profile.php?account=prof" onclick="prof()">EDIT</a>
 					</li>
 					<li>
-						<a class="Center" href="profile.php?account=bal">BALANCE</a>
+						<a class="Center" id="bal" onclick="bal()" href="profile.php?account=bal">BALANCE</a>
 					</li>
 					<li>
-						<a class="Center" href="profile.php?account=book">MY BOOKINGS</a>
+						<a class="Center" id="book" onclick="book()" href="profile.php?account=book">MY BOOKINGS</a>
 					</li>
 					<li>
-						<a class="Center" href="profile.php?account=act">ACTIVITY</a>
+						<a class="Center" id="act" onclick="act()" href="profile.php?account=act">ACTIVITY</a>
 					</li>
 					<li>
-						<a class="Center" href="profile.php?account=not">NOTIFICATIONS</a>
+						<a class="Center" id="not" onclick="not()" href="profile.php?account=not">NOTIFICATIONS</a>
 					</li>
 				</ul>
 				<?php
@@ -120,6 +142,9 @@
 		switch($section){
 			/*Profile section*/
 			case 'prof':
+			echo '<script type="text/javascript">',
+     				'prof();',
+     			'</script>';
 			?>
 			<div class="content text-warning Center">	
 				<h1 class="mt-4">MY PROFILE</h1>
@@ -181,6 +206,9 @@
 
 				/*modify section*/
 				case 'mod':
+				echo '<script type="text/javascript">',
+     				'prof();',
+     			'</script>';
 				$result=mysqli_query($link,"select* from member where member_id=$id");
 				$data=mysqli_fetch_array($result);
 				/*Take data from the form and insert it in the member table of the database*/
@@ -197,14 +225,19 @@
 
 					$dir="profile_pictures";
 					$imagen=$_FILES['pic']['name'];
-					$archivo= $_FILES['pic']['tmp_name'];
-					$dir=$dir."/".$imagen;
-					move_uploaded_file($archivo, $dir);
+					if($imagen!=null){
+						$archivo= $_FILES['pic']['tmp_name'];
+						$dir=$dir."/".$imagen;
+						move_uploaded_file($archivo, $dir);
 
-					$sql="UPDATE member SET name='$user', surname='$surname', email='$email', 
-					birthdate='$birth', city='$city', address='$address',postcode='$post', 
-					phone='$phone', picture='$dir' WHERE member_id=$id";
-
+						$sql="UPDATE member SET name='$user', surname='$surname', email='$email', 
+						birthdate='$birth', city='$city', address='$address',postcode='$post', 
+						phone='$phone', picture='$dir' WHERE member_id=$id";
+					}else{
+						$sql="UPDATE member SET name='$user', surname='$surname', email='$email', 
+						birthdate='$birth', city='$city', address='$address',postcode='$post', 
+						phone='$phone' WHERE member_id=$id";
+					}
 					mysqli_query($link,$sql);
 					if(mysqli_query($link,$sql)){
 						$id=$_SESSION['memberID'];
@@ -255,6 +288,9 @@
 			break;
 			/*Display the balance data with the transactions from the user*/
 			case 'bal':
+			echo '<script type="text/javascript">',
+     				'bal();',
+     			'</script>';
 			?>
 			<div class="content text-warning Center">
 				<h1 id="movement" class="mt-4">MY MOVEMENTS</h1>
@@ -323,6 +359,9 @@
 			break;
 			/*Displays the information of the bookings from the user and lets him add a production to the booking*/
 			case 'book':
+			echo '<script type="text/javascript">',
+     				'book();',
+     			'</script>';
 			?>
 			<div class="content text-warning Center">
 				<h2 id="bookings" class="mt-4">MY BOOKINGS</h2>
@@ -403,6 +442,9 @@
 			break;
 			/*Displays the activity of the user, refering to the productions made*/
 			case 'act':
+			echo '<script type="text/javascript">',
+     				'act();',
+     			'</script>';
 			?>
 			<div class="content text-warning Center">
 				<h2 id="activity" class="mt-4">MY ACTIVITY</h2>
@@ -437,6 +479,9 @@
 				break;
 				/*Displays the notifications sent by the administrator to the user, and marks the ones unseen for him to check*/
 				case 'not':
+				echo '<script type="text/javascript">',
+     				'not();',
+     			'</script>';
 				?>
 				<div class="content text-warning Center">
 					<h2 id="notification" class="mt-4">NOTIFICATIONS</h2>
