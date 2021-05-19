@@ -92,6 +92,7 @@
 			<div id="title" class="Center text-warning bg-dark">
 				<h1>ERLETE</h1>
 			</div>
+		<div class="container Center">
 			<h2>LEARN ABOUT OUR PURPOSE AND ACTIVITIES</h2>
 			<div class="bg-dark text-warning RB">
 				<p>Read information about how everything works and why we like being in this community, how to become a part of this and how to contact us for further information</p>
@@ -127,6 +128,7 @@
 				}?>
 				
 				</div>
+			</div>
 					<div class="bg-dark p-4">
 						<address></address>
 					</div>
