@@ -42,7 +42,7 @@
 	</script>
 	<script>
 		$( function() {
-			var dateFormat = "mm/dd/yy",
+			var dateFormat = "yy-mm-dd",
 			from = $( "#from" )
 			.datepicker({
 				defaultDate: "+1w",
