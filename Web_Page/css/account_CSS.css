@@ -88,8 +88,11 @@ ul#accountNav li a.active {
 
 /*My account nav end*/
 div.content {
-	font-size:1vw;
+	font-size:1.3vw;
 	line-height:3vw;
+}
+b{
+	font-size:1.5vw;
 }
 .Center {
 	display: flex;              
@@ -134,7 +137,7 @@ div.content {
 	text-decoration:none;
 	transition:box-shadow 0.4s linear, font-size 0.4s;
 	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0);
-	font-size:1.1vw;
+	font-size:1.5vw;
 	font-weight:bolder;
 	color:rgb(255, 204, 0);
 }
@@ -153,6 +156,13 @@ a:hover{
 	font-size:1.1vw;
 	font-weight:bolder;
 	color:black;
+}
+.booking:hover {
+		box-shadow:0vw 0vw 2vw 0vw rgb(255, 204, 0,0.5);
+		font-size:1.5vw;
+}
+.booking {
+		transition:box-shadow 0.6s linear, font-size 0.6s;
 }
 
 /*MY PROFILE STYLE*/

@@ -58,6 +58,7 @@
 				firstDay: 1,
 				isRTL: false,
 				showMonthAfterYear: false,
+				minDate: new Date(),
 			yearSuffix: "" };
 			
 			$.datepicker.setDefaults($.datepicker.regional['eng']);

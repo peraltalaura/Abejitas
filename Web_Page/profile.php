@@ -47,10 +47,11 @@
 				var someElement= document.getElementById("not");
 				someElement.className += " active";
 			}
-			function notSeen(){
-				var someElement= document.getElementById("not");
-				someElement.innerHTML = "<img src='images/dot.png' style='border-radius:5vw;'>&nbsp;&nbsp;&nbsp;&nbsp;NOTIFICATIONS";
-			}
+		</script>
+		<script>
+			$( function() {
+				$( "#accordion" ).accordion();
+			} );
 		</script>
 		<style>
 			h1 {
@@ -141,15 +142,6 @@
 			include("test_connect_db.php");
 			$link=connectDataBase();			
 			$id=$_SESSION['memberID'];
-			$result=mysqli_query($link,"SELECT seen FROM notify WHERE member_id=$id");
-			while($data=mysqli_fetch_array($result)){
-				if($data['seen']==0){
-					echo '<script type="text/javascript">',
-     				'notSeen();',
-					'</script>';
-				}
-			}
-						
 			/*switch to change the data displayed*/
 			if(isset($_GET['account'])){
 				$section=$_GET['account'];
@@ -378,29 +370,62 @@
 					'</script>';
 				?>
 				<div class="content text-warning Center">
-					<h2 id="bookings" class="mt-4">MY BOOKINGS</h2>
+					<h1 id="bookings" class="mt-4">MY BOOKINGS</h1>
 					<br>
 					<?php			
 						$id=$_SESSION['memberID'];
 						$result=mysqli_query($link,"SELECT* from booking where member_id=$id");
+						
 					?>
-					<div class="table-responsive">
-						<table class="table bg-dark text-warning Center">
-							<tr>
-								<th>BOOKING ID</th>
-								<th>ENTRY DATE</th>
-								<th>EXIT DATE</th>
-								<th>KILOS PRODUCED</th>
-								<th>TOTAL TO PAY</th>
-							</tr>
-							<?php
-								while($data=mysqli_fetch_array($result)){
-									printf("<tr><td class='id'>%d</td><td>%s</td><td>%s</td><td>%d KG</td><td>%d €</td></tr>",$data[0],$data[1],$data[2],$data[3],$data[4]);
-								}
-							?>
-						</table>
+					<div class="row RB">
+						<div class="col-sm-2 Center"><b>ID</b></div>
+						<div class="col-sm-3 Center"><b>ENTRY</b></div>
+						<div class="col-sm-3 Center"><b>EXIT</b></div>
+						<div class="col-sm-2 Center"><b>KILOS</b></div>
+						<div class="col-sm-2 Center"><b>TOTAL</b></div>
 					</div>
-					<h2 id="production" class="mt-4">REGISTER PRODUCTION</h2>
+					
+					<?php
+						while($data=mysqli_fetch_array($result)){
+						$count=0;
+	
+							printf("
+							<div class='row RB booking'>
+							<div class='col-sm-2 Center'>%d</div>
+							<div class='col-sm-3 Center'>%s</div>
+							<div class='col-sm-3 Center'>%s</div>
+							<div class='col-sm-2 Center'>%d KG</div>
+							<div class='col-sm-2 Center'>%d €</div>
+							</div>",$data[0],$data[1],$data[2],$data[3],$data[4]);
+					printf("
+						<div class='row RBY production' style='display:none'>
+							<div class='col-sm-2 Center'>ID</div>
+							<div class='col-sm-3 Center'>METALBIN</div>
+							<div class='col-sm-3 Center'>DATE</div>
+							<div class='col-sm-2 Center'>KILOS</div>
+							<div class='col-sm-2 Center'>TOTAL</div>
+						</div>
+						");
+							$result2=mysqli_query($link,"SELECT * FROM production 
+														WHERE booking_id=(SELECT booking_id FROM booking 
+																			WHERE booking_id=$data[0])");
+							while($data2=mysqli_fetch_array($result2)){
+								printf("
+								<div class='row RBY production' style='display:none'>
+								<div class='col-sm-2 Center'>%d</div>
+								<div class='col-sm-3 Center'>%s</div>
+								<div class='col-sm-3 Center'>%s</div>
+								<div class='col-sm-2 Center'>%d KG</div>
+								<div class='col-sm-2 Center'>%d €</div>
+								</div>
+								",$data2[0],$data2[1],$data2[4],$data2[2],$data2[3]);
+								
+							}
+							printf("<div id='produce' class='BRBY Center production' style='display:none'><a >REGISTER PRODUCTION</a></div>");
+						}
+					?>
+					
+					<h1 id="production" class="mt-4">REGISTER PRODUCTION</h1>
 					<form class="form-group container Center" action="produce.php" method="post">
 						<div class="row RBY Center" style="text-align:center">
 							<div class='col-sm-4 Center'>
@@ -411,7 +436,7 @@
 										$result=mysqli_query($link,"SELECT booking_id from booking where member_id=$id");
 										
 										while($data=mysqli_fetch_array($result)){
-											printf("<option>%d</option>",$data[0]);
+										printf("<option>%d</option>",$data[0]);
 										}
 									?>
 								</select>
@@ -457,7 +482,7 @@
 					/*Displays the activity of the user, refering to the productions made*/
 					case 'act':
 					echo '<script type="text/javascript">',
-     				'act();',
+					'act();',
 					'</script>';
 				?>
 				<div class="content text-warning Center">
@@ -549,6 +574,7 @@
 					firstDay: 1,
 					isRTL: false,
 					showMonthAfterYear: false,
+					maxDate: new Date(),
 				yearSuffix: "" };
 				
 				$.datepicker.setDefaults($.datepicker.regional['eng']);
@@ -644,6 +670,13 @@
 				/*Function to show or hide the transfer form*/
 				$('#trans').click(function(){
 					$("#transfer").toggle();
+				});
+			</script>
+			
+				<script>
+				/*Function to show or hide the transfer form*/
+				$('.booking').click(function(){
+					$(".production").toggle();
 				});
 			</script>
 		</body>
