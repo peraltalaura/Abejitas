@@ -110,9 +110,6 @@
 							<a class="Center" id="book" onclick="book()" href="profile.php?account=book">MY BOOKINGS</a>
 						</li>
 						<li>
-							<a class="Center" id="act" onclick="act()" href="profile.php?account=act">ACTIVITY</a>
-						</li>
-						<li>
 							<a class="Center" id="not" onclick="not()" href="profile.php?account=not">NOTIFICATIONS</a>
 						</li>
 					</ul>
@@ -368,6 +365,9 @@
 					echo '<script type="text/javascript">',
      				'book();',
 					'</script>';
+					echo '<script type="text/javascript">',
+					'act();',
+					'</script>';
 				?>
 				<div class="content text-warning Center">
 					<h1 id="bookings" class="mt-4">MY BOOKINGS</h1>
@@ -387,8 +387,7 @@
 					
 					<?php
 						while($data=mysqli_fetch_array($result)){
-						$count=0;
-	
+							
 							printf("
 							<div class='row RB booking'>
 							<div class='col-sm-2 Center'>%d</div>
@@ -397,36 +396,47 @@
 							<div class='col-sm-2 Center'>%d KG</div>
 							<div class='col-sm-2 Center'>%d €</div>
 							</div>",$data[0],$data[1],$data[2],$data[3],$data[4]);
-					printf("
-						<div class='row RBY production' style='display:none'>
-							<div class='col-sm-2 Center'>ID</div>
-							<div class='col-sm-3 Center'>METALBIN</div>
-							<div class='col-sm-3 Center'>DATE</div>
+							printf("
+							<div class='row RBY production' style='display:none'>
+							<div class='col-sm-2 Center'>METALBIN</div>
+							<div class='col-sm-4 Center'>DATE/TIME</div>
 							<div class='col-sm-2 Center'>KILOS</div>
 							<div class='col-sm-2 Center'>TOTAL</div>
-						</div>
-						");
+							<div class='col-sm-2 Center'>FINISH</div>
+							</div>
+							");
 							$result2=mysqli_query($link,"SELECT * FROM production 
-														WHERE booking_id=(SELECT booking_id FROM booking 
-																			WHERE booking_id=$data[0])");
+							WHERE booking_id=(SELECT booking_id FROM booking 
+							WHERE booking_id=$data[0])");
+							
 							while($data2=mysqli_fetch_array($result2)){
 								printf("
 								<div class='row RBY production' style='display:none'>
-								<div class='col-sm-2 Center'>%d</div>
-								<div class='col-sm-3 Center'>%s</div>
-								<div class='col-sm-3 Center'>%s</div>
+								<div class='col-sm-2 Center'>%s</div>
+								<div class='col-sm-4 Center'>%s</div>
 								<div class='col-sm-2 Center'>%d KG</div>
 								<div class='col-sm-2 Center'>%d €</div>
-								</div>
-								",$data2[0],$data2[1],$data2[4],$data2[2],$data2[3]);
-								
+								",$data2[1],$data2[4],$data2[2],$data2[3]);
+							/*Select the availability of the metalbin of the production*/
+							$availability="SELECT available FROM metalbin WHERE metalbin_id=$data2[1]";
+							$result3=mysqli_query($link,$availability);
+							$data3=mysqli_fetch_array($result3);
+								if($data3[0]==1){
+									printf("<div class='col-sm-2 Center'>FINISHED</div>
+									</div>");
+									} else {
+									printf("<div class='col-sm-2 Center'><a type='button' 
+									class='BRB bg-dark text-warning' href='setAvailable.php?productid=$data2[0]'>END</a></div>
+									</div>");
+								}
 							}
-							printf("<div id='produce' class='BRBY Center production' style='display:none'><a >REGISTER PRODUCTION</a></div>");
+							printf("<div class='BRBY Center production produce' style='display:none'><a>REGISTER PRODUCTION</a></div>");
 						}
 					?>
 					
-					<h1 id="production" class="mt-4">REGISTER PRODUCTION</h1>
-					<form class="form-group container Center" action="produce.php" method="post">
+					
+					<form id="production" class="form-group container Center" action="produce.php" method="post" style="display:none">
+						<h1 class="mt-4" >REGISTER PRODUCTION</h1>
 						<div class="row RBY Center" style="text-align:center">
 							<div class='col-sm-4 Center'>
 								<b class='Center'>SELECT YOUR BOOKING:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -436,7 +446,7 @@
 										$result=mysqli_query($link,"SELECT booking_id from booking where member_id=$id");
 										
 										while($data=mysqli_fetch_array($result)){
-										printf("<option>%d</option>",$data[0]);
+											printf("<option>%d</option>",$data[0]);
 										}
 									?>
 								</select>
@@ -476,44 +486,7 @@
 						}
 					?>
 				</div>
-				
-				<?php
-					break;
-					/*Displays the activity of the user, refering to the productions made*/
-					case 'act':
-					echo '<script type="text/javascript">',
-					'act();',
-					'</script>';
-				?>
-				<div class="content text-warning Center">
-					<h2 id="activity" class="mt-4">MY ACTIVITY</h2>
-					<br>
-					<?php			
-						$id=$_SESSION['memberID'];
-						$result=mysqli_query($link,"SELECT production_id,kilos,total,production_date FROM production WHERE booking_id IN (SELECT booking_id FROM booking WHERE member_id=$id)");
-					?>
-					<div class="table-responsive">
-						<table class="table bg-dark text-warning Center">
-							<tr>
-								<th>PRODUCTION ID</th>
-								<th>KILOS PRODUCED</th>
-								<th>TOTAL TO PAY</th>
-								<th>FINISH</th>
-							</tr>
-							<?php
-								/* checks if the productions are finished or not and gives you the option to stop them */
-								while($data=mysqli_fetch_array($result)){
-									if($data[3]== null){
-										printf("<tr><td>%d</td><td>%d KG</td><td>%d €</td><td>Finished</tr>",$data[0],$data[1],$data[2]);
-										}else{
-										printf("<tr><td>%d</td><td>%d KG</td><td>%d €</td><td><a class='BRBY' type='button' href='setAvailable.php?productid=$data[0]'>END</a></tr>",$data[0],$data[1],$data[2]);
-									}
-								}
-								
-								
-							?>
-						</table>
-					</div>
+			
 					<?php	
 						break;
 						/*Displays the notifications sent by the administrator to the user, and marks the ones unseen for him to check*/
@@ -673,7 +646,13 @@
 				});
 			</script>
 			
-				<script>
+			<script>
+				/*Function to show or hide the transfer form*/
+				$('.produce').click(function(){
+					$("#production").toggle();
+				});
+			</script>
+			<script>
 				/*Function to show or hide the transfer form*/
 				$('.booking').click(function(){
 					$(".production").toggle();
