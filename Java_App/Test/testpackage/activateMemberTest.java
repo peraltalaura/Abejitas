@@ -48,7 +48,6 @@ public class activateMemberTest {
         boolean result=m.activateMember(m1.getMember_id());
         Assert.assertEquals(expectedResult, result);
     }
-    
     @Test
     public void insertMember() throws ParseException{
         Date data=new SimpleDateFormat("dd/mm/yyyy").parse("01/05/1996");
@@ -57,5 +56,4 @@ public class activateMemberTest {
         boolean result=m.insertMember(m1);
          Assert.assertEquals(expectedResult, result);
     }
-   
 }

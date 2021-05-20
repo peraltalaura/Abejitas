@@ -39,7 +39,7 @@ public class Management {
         try {
             //con = DriverManager.getConnection(url, "root", "dam1");
             //con = DriverManager.getConnection(url + ip + db, "root", "dam1");
-            con = DriverManager.getConnection("jdbc:mariadb://localhost/erlete_db", "root", "dam1");
+            con = DriverManager.getConnection("jdbc:mariadb://localhost/erlete_db", "root", "");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("error in the db");
@@ -134,7 +134,7 @@ public class Management {
                             .ofEpochMilli(d.getTime())
                             .atZone(ZoneId.systemDefault())
                             .toLocalDateTime();
-                   
+
                     Notify not = new Notify(rs.getInt("member_id"), rs.getInt("notification_id"), date, rs.getBoolean("seen"));
                     dataList.add(not);
                 }
@@ -161,14 +161,31 @@ public class Management {
         boolean done = false;
         String img = "";
         String usrpass = newMember.getPassword();
-        String sql = "";
+        String sql = "INSERT INTO member(email, name, surname, password, city, postcode, address, phone, active) VALUES (?,?,?,?,?,?,?,?,?)";
         //LocalDateTime data = newMember.getDate; falta por crear birthday
-        if(usrpass.toCharArray()[0] == '1' && usrpass.toCharArray()[1] == '2' && usrpass.toCharArray()[2] == '3' ){
-             sql = "";
-            
-        }
-         sql = "INSERT INTO member(email, name, surname, password, city, postcode, address, phone, active) VALUES (?,?,?,?,?,?,?,?,?)";
-        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql);) {
+        if (usrpass.toCharArray()[0] == '1' && usrpass.toCharArray()[1] == '2' && usrpass.toCharArray()[2] == '3') { //if the new member has only name, surname, email and password
+            try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql);) {
+
+                pstmt.setString(1, newMember.getEmail());
+                pstmt.setString(2, newMember.getName());
+                pstmt.setString(3, newMember.getSurname());
+                pstmt.setString(4, newMember.getPassword());
+                pstmt.setString(5, "");
+                pstmt.setInt(6, 0);
+                pstmt.setString(7,"");
+                pstmt.setInt(8, 0);
+                pstmt.setBoolean(9, false);
+                pstmt.executeUpdate();
+
+                done = true;
+            } catch (SQLException e) {
+                System.out.println("fail on insert");
+                System.out.println(e.getMessage());
+
+            }
+
+        }else{
+            try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql);) {
 
             pstmt.setString(1, newMember.getEmail());
             pstmt.setString(2, newMember.getName());
@@ -188,6 +205,9 @@ public class Management {
 
         }
 
+        }
+
+        
         return done;
     }
 

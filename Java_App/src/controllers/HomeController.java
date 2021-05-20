@@ -187,29 +187,8 @@ public class HomeController implements ActionListener {
             case "SUBMIT":
                 boolean troll = false;
 
-                if (!members.jTextFieldName.getText().isEmpty() || !members.jTextFieldSurname.getText().isEmpty() || !members.jTextFieldAdress.getText().isEmpty() || !members.jTextFieldCity.getText().isEmpty() || !members.jTextFieldPassword.getText().isEmpty() || !members.jTextFieldEmail.getText().isEmpty() || !members.jTextFieldPhone.getText().isEmpty() || !members.jTextFieldPostcode.getText().isEmpty()) {
-                    if (!members.jTextFieldName.getText().isEmpty() && !members.jTextFieldSurname.getText().isEmpty() && !members.jTextFieldEmail.getText().isEmpty() && members.jTextFieldAdress.getText().isEmpty() && members.jTextFieldCity.getText().isEmpty() && members.jTextFieldPassword.getText().isEmpty() && members.jTextFieldPhone.getText().isEmpty() && members.jTextFieldPostcode.getText().isEmpty()) {
-                        for (char c : members.jTextFieldName.getText().toCharArray()) {
-                            if (!Character.isLetter(c)) {
-                                troll = true;
-                            }
-                        }
-                        for (char c : members.jTextFieldSurname.getText().toCharArray()) {
-                            if (!Character.isLetter(c)) {
-                                troll = true;
-                            }
-                        }
-                        String unformatted_date = "25/12/1999";
-                        try {
-                            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(unformatted_date);
-                            Member mem = new Member(members.jTextFieldName.getText(), members.jTextFieldSurname.getText(), members.jTextFieldEmail.getText());
-                            man.insertMember(mem);
-                            membersTable.addMember(mem);
-                        } catch (ParseException ex) {
-                            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+                if (!members.jTextFieldName.getText().isEmpty() && !members.jTextFieldSurname.getText().isEmpty() && !members.jTextFieldEmail.getText().isEmpty()) {
 
-                    }
                     for (char c : members.jTextFieldName.getText().toCharArray()) {
                         if (!Character.isLetter(c)) {
                             troll = true;
@@ -219,46 +198,108 @@ public class HomeController implements ActionListener {
                         if (!Character.isLetter(c)) {
                             troll = true;
                         }
-                    }//for(char c : members.jTextFieldEmail.getText().toCharArray()){  email tiene @
-                    // if (!Character.isLetter(c)) {
-                    //     troll = true;
-                    //}
 
-                    for (char c : members.jTextFieldAdress.getText().toCharArray()) {
-                        if (!Character.isLetter(c)) {
+                    }
+                    boolean isarroba = false;
+                    if (!members.jTextFieldEmail.getText().equals("")) {
+                        for (char c : members.jTextFieldEmail.getText().toCharArray()) {
+
+                            if (c == '@') {
+                                isarroba = true;
+                            }
+
+                        }
+                        if (isarroba = false) {
                             troll = true;
                         }
                     }
-                    for (char c : members.jTextFieldCity.getText().toCharArray()) {
-                        if (!Character.isLetter(c)) {
-                            troll = true;
+                    if (troll = false) {
+                        if (members.jTextFieldPassword.getText().equals("")) {
+                            String unformatted_date = "25/12/1999";
+                            try {
+                                Date date = new SimpleDateFormat("dd/MM/yyyy").parse(unformatted_date);
+                                Member mem = new Member(members.jTextFieldName.getText(), members.jTextFieldSurname.getText(), members.jTextFieldEmail.getText());
+                                man.insertMember(mem);
+                                membersTable.addMember(mem);
+                            } catch (ParseException ex) {
+                                Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        } else {
+
+                            for (char c : members.jTextFieldName.getText().toCharArray()) {
+                                if (!Character.isLetter(c)) {
+                                    troll = true;
+                                }
+                            }
+                            for (char c : members.jTextFieldSurname.getText().toCharArray()) {
+                                if (!Character.isLetter(c)) {
+                                    troll = true;
+                                }
+                            }//for(char c : members.jTextFieldEmail.getText().toCharArray()){  email tiene @
+                            // if (!Character.isLetter(c)) {
+                            //     troll = true;
+                            //}
+
+                            for (char c : members.jTextFieldAdress.getText().toCharArray()) {
+                                if (!Character.isLetter(c)) {
+                                    troll = true;
+                                }
+                            }
+                            for (char c : members.jTextFieldCity.getText().toCharArray()) {
+                                if (!Character.isLetter(c)) {
+                                    troll = true;
+                                }
+                            }
+                            for (char c : members.jTextFieldPassword.getText().toCharArray()) {
+                                if (!Character.isLetter(c)) {
+                                    troll = true;
+                                }
+                            }
+                            for (char c : members.jTextFieldPhone.getText().toCharArray()) {
+                                if (!Character.isDigit(c)) {
+                                    troll = true;
+                                }
+                            }
+                            for (char c : members.jTextFieldPostcode.getText().toCharArray()) {
+                                if (!Character.isDigit(c)) {
+                                    troll = true;
+                                }
+                            }
+                            if (troll = false) {
+                                String unformatted_date = members.jTextFieldBirthday.getText();
+                                try {
+                                    Date date = new SimpleDateFormat("dd/MM/yyyy").parse(unformatted_date);
+                                    Member mem = new Member(members.jTextFieldName.getText(), members.jTextFieldSurname.getText(), members.jTextFieldEmail.getText(),
+                                            members.jTextFieldPassword.getText(), date, Integer.parseInt(members.jTextFieldPostcode.getText()), members.jTextFieldCity.getText(),
+                                            members.jTextFieldAdress.getText(), Integer.parseInt(members.jTextFieldPhone.getText()));
+                                    man.insertMember(mem);
+                                    membersTable.addMember(mem);
+                                } catch (ParseException ex) {
+                                    Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(payments, "You must write valid characters");
+                                members.jTextFieldName.setText("");
+                                members.jTextFieldSurname.setText("");
+                                members.jTextFieldEmail.setText("");
+                                members.jTextFieldPassword.setText("");
+                                members.jTextFieldCity.setText("");
+                                members.jTextFieldAdress.setText("");
+                                members.jTextFieldPhone.setText("");
+                                members.jTextFieldPostcode.setText("");
+                            }
                         }
-                    }
-                    for (char c : members.jTextFieldPassword.getText().toCharArray()) {
-                        if (!Character.isLetter(c)) {
-                            troll = true;
-                        }
-                    }
-                    for (char c : members.jTextFieldPhone.getText().toCharArray()) {
-                        if (!Character.isDigit(c)) {
-                            troll = true;
-                        }
-                    }
-                    for (char c : members.jTextFieldPostcode.getText().toCharArray()) {
-                        if (!Character.isDigit(c)) {
-                            troll = true;
-                        }
-                    }
-                    String unformatted_date = members.jTextFieldBirthday.getText();
-                    try {
-                        Date date = new SimpleDateFormat("dd/MM/yyyy").parse(unformatted_date);
-                        Member mem = new Member(members.jTextFieldName.getText(), members.jTextFieldSurname.getText(), members.jTextFieldEmail.getText(),
-                                members.jTextFieldPassword.getText(), date, Integer.parseInt(members.jTextFieldPostcode.getText()), members.jTextFieldCity.getText(),
-                                members.jTextFieldAdress.getText(), Integer.parseInt(members.jTextFieldPhone.getText()));
-                        man.insertMember(mem);
-                        membersTable.addMember(mem);
-                    } catch (ParseException ex) {
-                        Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+
+                    } else {
+                        JOptionPane.showMessageDialog(payments, "You must write valid characters");
+                        members.jTextFieldName.setText("");
+                        members.jTextFieldSurname.setText("");
+                        members.jTextFieldEmail.setText("");
+                        members.jTextFieldPassword.setText("");
+                        members.jTextFieldCity.setText("");
+                        members.jTextFieldAdress.setText("");
+                        members.jTextFieldPhone.setText("");
+                        members.jTextFieldPostcode.setText("");
                     }
 
                 } else {
