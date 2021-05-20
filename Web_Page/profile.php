@@ -47,6 +47,10 @@
 				var someElement= document.getElementById("not");
 				someElement.className += " active";
 			}
+			function notSeen(){
+				var someElement= document.getElementById("not");
+				someElement.innerHTML= "<img src='images/dot.png' style='border-radius:50vh;'>&nbsp&nbsp&nbsp NOTIFICATIONS";
+			}
 		</script>
 		<script>
 			$( function() {
@@ -139,6 +143,15 @@
 			include("test_connect_db.php");
 			$link=connectDataBase();			
 			$id=$_SESSION['memberID'];
+			$result=mysqli_query($link,"SELECT seen from notify where member_id=$id");
+			while($data=mysqli_fetch_array($result)){
+				if($data['seen']!=1){
+					echo '<script type="text/javascript">',
+     				'notSeen();',
+					'</script>';
+				}
+			}
+
 			/*switch to change the data displayed*/
 			if(isset($_GET['account'])){
 				$section=$_GET['account'];
@@ -203,6 +216,7 @@
 						</div>
 						
 						<a class="BRB bg-dark text-warning mt-4 mb-4" href="profile.php?account=mod">MODIFY PROFILE</a>
+						<a class="BRB bg-dark text-warning mt-4 mb-4" href="change_password.php">CHANGE PASSWORD</a>
 					</div>	
 					<?php
 						break;
@@ -225,27 +239,35 @@
 							$address=$_POST['address'];
 							$phone=$_POST['phone'];
 							$id=$_SESSION['memberID'];
+							$cpass=$_POST['cpass'];
 							
 							$dir="profile_pictures";
 							$imagen=$_FILES['pic']['name'];
-							if($imagen!=null){
-								$archivo= $_FILES['pic']['tmp_name'];
-								$dir=$dir."/".$imagen;
-								move_uploaded_file($archivo, $dir);
-								
-								$sql="UPDATE member SET name='$user', surname='$surname', email='$email', 
-								birthdate='$birth', city='$city', address='$address',postcode='$post', 
-								phone='$phone', picture='$dir' WHERE member_id=$id";
-								}else{
-								$sql="UPDATE member SET name='$user', surname='$surname', email='$email', 
-								birthdate='$birth', city='$city', address='$address',postcode='$post', 
-								phone='$phone' WHERE member_id=$id";
-							}
-							mysqli_query($link,$sql);
-							if(mysqli_query($link,$sql)){
-								$id=$_SESSION['memberID'];
-								header("Location:profile.php?account=prof&update=yes");
-								} else {
+							$sql="SELECT password FROM member WHERE member_id=$id";
+							$data=mysqli_fetch_array(mysqli_query($link,$sql));
+							if($data['password']==$cpass){
+								if($imagen!=null){
+									$archivo= $_FILES['pic']['tmp_name'];
+									$dir=$dir."/".$imagen;
+									move_uploaded_file($archivo, $dir);
+									
+									$sql="UPDATE member SET name='$user', surname='$surname', email='$email', 
+									birthdate='$birth', city='$city', address='$address',postcode='$post', 
+									phone='$phone', picture='$dir' WHERE member_id=$id";
+									}else{
+									$sql="UPDATE member SET name='$user', surname='$surname', email='$email', 
+									birthdate='$birth', city='$city', address='$address',postcode='$post', 
+									phone='$phone' WHERE member_id=$id";
+								}
+								mysqli_query($link,$sql);
+								if(mysqli_query($link,$sql)){
+									$id=$_SESSION['memberID'];
+									header("Location:profile.php?account=prof&update=yes");
+									} else {
+									header("Location:profile.php?account=prof&update=no");
+								}
+							}else{
+								echo "<script>alert('daasd');</script>";
 								header("Location:profile.php?account=prof&update=no");
 							}
 						}	
@@ -282,6 +304,7 @@
 									printf("<div class='col-sm-6'>PHONE: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='tel' pattern='[0-9]{9}' name='phone' value='%d' required></div>",$data[9]);
 								?>
 							</div>
+							<label>comfirm password:&nbsp&nbsp&nbsp<input type="password" name="cpass"></label>
 							<input id="modify" class="text-dark bg-warning BRB"  type="submit" value="MODIFY DATA"><br>
 							
 						</div>
@@ -582,7 +605,10 @@
 			<script>
 				/*Function to show a confirm dialog when changing users data*/
 				function confirmMod(){
-					
+					<?php
+						$result=mysqli_query($link,"SELECT password FROM member WHERE member_id=$id");
+						$data=mysqli_fetch_array($result);
+					?>
 					var dynamicDialog = $('<div title="Modify data?">'+
 					'<p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>The data will be changed, are you sure?</p></div>');
 					
