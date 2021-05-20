@@ -39,7 +39,7 @@ public class Management {
         try {
             //con = DriverManager.getConnection(url, "root", "dam1");
             //con = DriverManager.getConnection(url + ip + db, "root", "dam1");
-            con = DriverManager.getConnection("jdbc:mariadb://localhost/erlete_db", "root", "dam1");
+            con = DriverManager.getConnection("jdbc:mariadb://localhost/erlete_db", "root", "");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("error in the db");
@@ -159,8 +159,15 @@ public class Management {
      */
     public boolean insertMember(Member newMember) {
         boolean done = false;
+        String img = "";
+        String usrpass = newMember.getPassword();
+        String sql = "";
         //LocalDateTime data = newMember.getDate; falta por crear birthday
-        String sql = "INSERT INTO member(email, name, surname, password, city, postcode, address, phone, active) VALUES (?,?,?,?,?,?,?,?,?)";
+        if(usrpass.toCharArray()[0] == '1' && usrpass.toCharArray()[1] == '2' && usrpass.toCharArray()[2] == '3' ){
+             sql = "";
+            
+        }
+         sql = "INSERT INTO member(email, name, surname, password, city, postcode, address, phone, active) VALUES (?,?,?,?,?,?,?,?,?)";
         try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql);) {
 
             pstmt.setString(1, newMember.getEmail());

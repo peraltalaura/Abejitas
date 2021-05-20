@@ -100,7 +100,7 @@ public class HomeController implements ActionListener {
     /**
      * it will detect the actions from the buttons on the menu
      *
-     * @param e 
+     * @param e
      */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -188,6 +188,28 @@ public class HomeController implements ActionListener {
                 boolean troll = false;
 
                 if (!members.jTextFieldName.getText().isEmpty() || !members.jTextFieldSurname.getText().isEmpty() || !members.jTextFieldAdress.getText().isEmpty() || !members.jTextFieldCity.getText().isEmpty() || !members.jTextFieldPassword.getText().isEmpty() || !members.jTextFieldEmail.getText().isEmpty() || !members.jTextFieldPhone.getText().isEmpty() || !members.jTextFieldPostcode.getText().isEmpty()) {
+                    if (!members.jTextFieldName.getText().isEmpty() && !members.jTextFieldSurname.getText().isEmpty() && !members.jTextFieldEmail.getText().isEmpty() && members.jTextFieldAdress.getText().isEmpty() && members.jTextFieldCity.getText().isEmpty() && members.jTextFieldPassword.getText().isEmpty() && members.jTextFieldPhone.getText().isEmpty() && members.jTextFieldPostcode.getText().isEmpty()) {
+                        for (char c : members.jTextFieldName.getText().toCharArray()) {
+                            if (!Character.isLetter(c)) {
+                                troll = true;
+                            }
+                        }
+                        for (char c : members.jTextFieldSurname.getText().toCharArray()) {
+                            if (!Character.isLetter(c)) {
+                                troll = true;
+                            }
+                        }
+                        String unformatted_date = "25/12/1999";
+                        try {
+                            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(unformatted_date);
+                            Member mem = new Member(members.jTextFieldName.getText(), members.jTextFieldSurname.getText(), members.jTextFieldEmail.getText());
+                            man.insertMember(mem);
+                            membersTable.addMember(mem);
+                        } catch (ParseException ex) {
+                            Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+
+                    }
                     for (char c : members.jTextFieldName.getText().toCharArray()) {
                         if (!Character.isLetter(c)) {
                             troll = true;
@@ -232,7 +254,7 @@ public class HomeController implements ActionListener {
                         Date date = new SimpleDateFormat("dd/MM/yyyy").parse(unformatted_date);
                         Member mem = new Member(members.jTextFieldName.getText(), members.jTextFieldSurname.getText(), members.jTextFieldEmail.getText(),
                                 members.jTextFieldPassword.getText(), date, Integer.parseInt(members.jTextFieldPostcode.getText()), members.jTextFieldCity.getText(),
-                                members.jTextFieldAdress.getText(), Integer.parseInt(members.jTextFieldPhone.getText()), false);
+                                members.jTextFieldAdress.getText(), Integer.parseInt(members.jTextFieldPhone.getText()));
                         man.insertMember(mem);
                         membersTable.addMember(mem);
                     } catch (ParseException ex) {
@@ -254,6 +276,7 @@ public class HomeController implements ActionListener {
 
                 break;
             //when it is clicked it takes the description and import and registers a new payment on the database
+
             case "PAY":
                 boolean troll1 = false;
                 for (char c : payments.jTextFieldPDescription.getText().toCharArray()) {
@@ -426,29 +449,39 @@ public class HomeController implements ActionListener {
     }
 
     /**
-     *  a method that adds a listener to the availability frame buttons when its initialized (obsolete)
+     * a method that adds a listener to the availability frame buttons when its
+     * initialized (obsolete)
+     *
      * @param listener
      */
     public void availabilityActionListener(ActionListener listener) {
 
     }
+
     /**
-     *  This method adds listeners to the buttons of the inventory frame when its created
-     * @param listener 
+     * This method adds listeners to the buttons of the inventory frame when its
+     * created
+     *
+     * @param listener
      */
     public void inventoryActionListener(ActionListener listener) {
         inventory.jButtonAddItem.addActionListener(listener);
         inventory.jButtonDeleteItem.addActionListener(listener);
     }
+
     /**
-     * This method adds a listener to the button of the comments management frame when its created
-     * @param listener 
+     * This method adds a listener to the button of the comments management
+     * frame when its created
+     *
+     * @param listener
      */
     public void commentActionListener(ActionListener listener) {
         comments.jButtonDeleteComment.addActionListener(listener);
     }
+
     /**
-     * This method will add notifications from the database into the notifications ArrayList
+     * This method will add notifications from the database into the
+     * notifications ArrayList
      */
     public void fillNotifications() {
         ArrayList<Object> array = new ArrayList<>();

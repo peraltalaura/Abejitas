@@ -6,6 +6,7 @@
 package model.mainclass;
 
 import java.util.Date;
+import java.lang.Math;
 
 /**
  *
@@ -22,7 +23,7 @@ public class Member {
     private String city;
     private String address;
     private int phone;
-    private boolean active;
+    private boolean active = false;
     private Date birthday;
     /**
      * constructor
@@ -49,7 +50,28 @@ public class Member {
         this.address = address;
         this.phone = phone;
         this.active = active;
+       
         this.birthday = birthday;
+    }
+    public Member(String name, String surname, String email, String password, Date birthday,int postCode, String city, String address, int phone) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.postCode = postCode;
+        this.city = city;
+        this.address = address;
+        this.phone = phone;
+       
+        this.birthday = birthday;
+    }
+    public Member(String name, String surname, String email){
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        int pass = (int)Math.random() * 9999;
+        this.password = "123" + pass;
+        
     }
 //getters & setters
     public Date getBirthday() {
@@ -68,18 +90,7 @@ public class Member {
         return active;
     }
 
-    public Member(String name, String surname, String email, String password, Date birthday,int postCode, String city, String address, int phone, boolean active) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.password = password;
-        this.postCode = postCode;
-        this.city = city;
-        this.address = address;
-        this.phone = phone;
-        this.active = active;
-        this.birthday = birthday;
-    }
+    
     
     public int getMember_id() {
         return member_id;
