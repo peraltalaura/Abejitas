@@ -39,7 +39,7 @@ ul.sidenav li a:hover:not(.active) {
 div.content {
 	margin-left:20%;
 	font-size: calc(0.5em + 0.6vw);
-	line-height: 2em;
+	line-height: 2.2em;
 }
 
 #title {
@@ -55,7 +55,13 @@ h2 {
 	font-size: calc(1em + 0.6vw); 
 	margin-top:1vw;
 	padding:1em 0em 1em 0em;
-	line-height: 2em;
+}
+a:hover{
+	box-shadow:0em 0em 2em 0em rgb(0,0,0);
+	font-size: calc(0.7em + 0.5vw);
+	transition:box-shadow 0.4s linear, font-size 0.4s;
+	color:rgb(255, 204, 0);
+	text-decoration: none;
 }
 /*Small devices like mobile phones*/
 @media screen and (max-width: 900px) {
@@ -82,9 +88,8 @@ h2 {
 }
 h2 {
 	font-size: calc(1em + 1vw); 
-	margin-top:1vw;
-	padding:0.5em 0em 0.5em 0em;
-	line-height: 2em;
+	margin-top:1em;
+	padding:0em 0em 0.5em 0em;
 }
 
 }
@@ -112,7 +117,7 @@ h2 {
 }
 .RB {
 	border-radius:2em;
-	padding:2em;
+	padding:0em 2em 2em 2em;
 	margin:3em;
 	text-align:justify;
 	width:75%;
@@ -123,15 +128,10 @@ h2 {
 	padding:1em;
 	margin:1em;
 	box-shadow:0em 0em 2em 0em rgb(0,0,0,0.5);
+	color:rgb(255, 204, 0);
 }
-.content a{
-	font-size: calc(0.5em + 1vw);
 
-}
-a:hover{
-	box-shadow:0em 0em 2em 0em rgb(0,0,0);
-	font-size: calc(0.6em + 1vw);
-	transition:box-shadow 0.4s linear, font-size 0.4s;
-}
+
+
 
 

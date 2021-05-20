@@ -101,28 +101,28 @@
 			$result=mysqli_query($link,"SELECT comment.*, member.* from comment INNER JOIN member ON member.member_id = comment.member_id");
 
 			?>
-			<div class="table-responsive">
-				<table class="table bg-dark text-warning Center">
-					<tr>
-						<th>MEMBER</th>
-						<th>COMMENT</th>
-						<th>DATE</th>
-					</tr>
 					<?php
 						while($data=mysqli_fetch_array($result)){
-							printf("<tr><td><img style='width:40px;'src='%s'> %s %s</td><td>%s</td><td>%s</td></tr>",$data[14],$data['name'],$data['surname'],$data['message'],$data['comment_date']);
-							
-						}
+							printf("<div class='row RBY'>
+										<div class='col-sm-2 Center'><img style='width:40px;'src='%s'></div>
+										<div class='col-sm-2 Center'>%s</div>
+										<div class='col-sm-2 Center'>%s</div>
+										<div class='col-sm-4 Center'>%s</div>
+									</div>
+									<div class='row RB'>
+										<div class='col-md-12'>%s</div>
+									</div>",$data[14],$data['name'],$data['surname'],$data['comment_date'],$data['message']);
+							}
 					?>
-				</table>
-			</div>
+
+
 			<?php
 			if(isset($_SESSION['memberID'])){
 			?>
-			<p>Write your comment:</p>
+			<h2>WRITE YOUR COMMENT:</h2>
 			<form action="send_comment.php" method="post">
 				<div class="row">
-					<textarea maxlength="255" class="rounded-0" style="width: 80vh;height: 28vh" rows="10" required="required" name='txt'></textarea>
+					<textarea maxlength="255" class="rounded-0" class="Center" rows="10" required="required" name='txt'></textarea>
 				</div>
 				<input type="submit">
 			</form>
@@ -130,7 +130,7 @@
 			}else{
 				?>
 				<?php
-				printf("<br><a href='login.php'>Login to comment</a>")
+				printf("<br><a class='BRBY' href='login.php'>Login to comment</a>")
 				?>
 			<?php
 			}
