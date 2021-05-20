@@ -187,7 +187,7 @@ b{
 	color:rgb(255, 204, 0);
 
 }
-input[type="text"], #data input[type="date"], input[type="number"],#data input[type="tel"],#data input[type="email"],#data input[type="datetime-local"] {
+input[type="text"], #data input[type="date"], input[type="number"],#data input[type="tel"],#data input[type="email"],#data input[type="datetime-local"],#data input[type="password"] {
 	border-radius:5vw;
 	border:none;
 	outline:none;

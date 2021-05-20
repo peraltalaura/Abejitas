@@ -289,7 +289,7 @@
 							<div class="row bg-warning text-dark">
 								<?php
 									printf("<div class='col-sm-6'>E-MAIL:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type='email' name='mail' value='%s' required></div>",$data[1]);
-									printf("<div class='col-sm-6'>BIRTH DATE: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id='datepicker' type='text' name='birth' value='%s'></div>",$data[5]);
+									printf("<div class='col-sm-6'>BIRTH DATE: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input autocomplete='off'id='datepicker' type='text' name='birth' value='%s'></div>",$data[5]);
 								?>
 							</div>
 							<div class="row bg-warning text-dark">
@@ -365,7 +365,7 @@
 						
 						<div class="row RBY Center" style="text-align:center">
 							<div class='col-sm-8'>
-								CUANTITY:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text'required="required" name='import'>
+								CUANTITY:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text'required="required" name='import' min="1">
 							</div>
 						</div>
 						<input class="text-dark bg-warning BRB" type="submit" value="TRANSFER">
