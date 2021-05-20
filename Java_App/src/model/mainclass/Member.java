@@ -22,7 +22,6 @@ public class Member {
     private String city;
     private String address;
     private int phone;
-    private String notifications;
     private boolean active;
     private Date birthday;
     /**
@@ -81,7 +80,7 @@ public class Member {
         this.active = active;
         this.birthday = birthday;
     }
-
+    
     public int getMember_id() {
         return member_id;
     }
@@ -154,12 +153,5 @@ public class Member {
         this.phone = phone;
     }
 
-    public String getNotifications() {
-        return notifications;
-    }
-
-    public void setNotifications(String notifications) {
-        this.notifications = notifications;
-    }
 
 }
