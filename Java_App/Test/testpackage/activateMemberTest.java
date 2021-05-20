@@ -1,7 +1,10 @@
 package testpackage;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import junit.framework.Assert;
 import model.*;
 import model.mainclass.Member;
@@ -45,11 +48,14 @@ public class activateMemberTest {
         boolean result=m.activateMember(m1.getMember_id());
         Assert.assertEquals(expectedResult, result);
     }
-    /* 
+    
     @Test
-    public void insertMember(){
-
-        Member expectedResult=new Member("Laura","Peralta","peralta_laura@hotmail.es","123",20870,"Elgoibar","Bernardo Ezenarro 5 2 izq",622655102,1,);
-    }*/
+    public void insertMember() throws ParseException{
+        Date data=new SimpleDateFormat("dd/mm/yyyy").parse("01/05/1996");
+        Member m1=new Member("Laura","Peralta","peralta_laura@hotmail.es","123",data,20870,"Elgoibar","Bernardo Ezenarro 5 2 izq",622655102);
+        boolean expectedResult=true;
+        boolean result=m.insertMember(m1);
+         Assert.assertEquals(expectedResult, result);
+    }
    
 }
