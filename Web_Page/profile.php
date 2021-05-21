@@ -162,15 +162,31 @@
      				'prof();',
 					'</script>';
 				?>
-				<div class="content text-warning Center">	
+				<div class="content text-warning Center">
+				<?php
+				if(isset($_GET["login"])){
+					printf("<div class='container Center text-warning RB'>Login successfull, Wellcome!</div>");
+					$sql="SELECT * FROM notify WHERE member_id=$id";
+					$result=mysqli_query($link,$sql);
+
+					if (mysqli_num_rows ( $result )>0) {
+						while($data=mysqli_fetch_array($result)){
+							if ($data[4]==0) {
+								printf("<div id='notificationDialog' title='Administration notification'><p>You have unchecked notifications</p></div>");
+							}
+						}
+					}
+				} 
+				
+			?>	
 					<h1 class="mt-4">MY PROFILE</h1>
 					<!--Confirmation message that data has been updated -->
 					<?php
 						if(isset($_GET['update'])){
 							if($_GET['update']=='yes'){
-								printf("<div class='container Center text-warning RB'>Your profile has been changed</div>");
+								printf("<div id='modifyConfirmDialog' title='Profile change'><p>Your profile has been changed</p></div>");
 								} else if($_GET['update']=='no'){
-								printf("<div class='container Center text-warning RB'>There was a problem updating your profile</div>");
+									printf("<div id='modifyConfirmDialog' title='Profile change'><p>There was a problem updating your profile</p></div>");
 							}
 						}
 					?>
@@ -364,13 +380,13 @@
 					<form id="transfer-form" class="form-group container Center" action="transfer.php" method="post">
 						<div class="row RBY" style="text-align:center">
 							<div class='col-sm-12'>
-								DESCRIPTION:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' required="required" name='desc'>
+								DESCRIPTION:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' required="required" name='desc' autocomplete="off">
 							</div>
 						</div>
 						
 						<div class="row RBY Center" style="text-align:center">
 							<div class='col-sm-8'>
-								CUANTITY:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text'required="required" name='import' min="1">
+								CUANTITY:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text'required="required" name='import' min="1" autocomplete="off">
 							</div>
 						</div>
 						<input class="text-dark bg-warning BRB" type="submit" value="TRANSFER">
@@ -378,9 +394,9 @@
 					<?php
 						if(isset($_GET['insert'])) {
 							if($_GET['insert']=='yes'){
-								printf("<div class='RBY Center'>Your transfer has been completed successfully</div>");
+								printf("<div id='transferDialog' title='Transfer'><p>Your transfer has been completed successfully</p></div>");
 								} else {
-								printf("<div class='RBY Center'>There was an error during your transfer</div>");
+									printf("<div id='transferDialog' title='Transfer'><p>There was an error during your transfer</p></div>");
 								
 							}
 						}
@@ -508,9 +524,9 @@
 					<?php
 						if(isset($_GET['insert'])) {
 							if($_GET['insert']=='yes'){
-								printf("<div class='RBY Center'>You have registered your production successfully</div>");
+								printf("<div id='productionDialog' title='Register production'><p>Your productions has been registered successfully</p></div>");
 								} else {
-								printf("<div class='RBY Center'>There was an error during the registration of the production</div>");	
+									printf("<div id='productionDialog' title='Register production'><p>There was an error during the registration of the production</p></div>");
 							}
 						}
 					?>
@@ -691,5 +707,29 @@
 					$(".production").toggle();
 				});
 			</script>
+			<script>
+				 $( function() {
+			    $( "#modifyConfirmDialog" ).dialog();
+			  } );
+			
+		</script>
+		<script>
+				 $( function() {
+			    $( "#transferDialog" ).dialog();
+			  } );
+			
+		</script>
+		<script>
+				 $( function() {
+			    $( "#productionDialog" ).dialog();
+			  } );
+			
+		</script>
+			<script>
+				 $( function() {
+			    $( "#notificationDialog" ).dialog();
+			  } );
+			
+		</script>
 		</body>
 	</html>

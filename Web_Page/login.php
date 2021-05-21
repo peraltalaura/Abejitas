@@ -29,23 +29,19 @@
 		</style>
 	</head>
 	<body class="bg-warning Center">
-		
-			<?php
-				/*if(isset($_SESSION['memberID'])){
-					printf("<div class='container Center text-warning RB'>Login successfull, Wellcome!</div>");
-				} 
-				if(isset($_GET['incorrect'])){
+					<?php 
+		if(isset($_GET['incorrect'])){
 					if($_GET['incorrect']=='yes'){
-						printf("<div class='container Center text-warning RB'>The email or account don't match</div>");
+						printf("<div class='container Center bg-dark text-warning RB'>The email or account don't match</div>");
 						} else if($_GET['incorrect']=='disable'){
-						printf("<div class='container Center text-warning RB'>Your account is disabled</div>");
+						printf("<div class='container Center bg-dark text-warning RB'>Your account is disabled</div>");
 					}
 				}
 				
 				if(isset($_GET['found'])){
-					printf("<div class='container Center text-warning RB'>Email not found</div>");
+					printf("<div class='container Center text-warning bg-dark RB'>Email not found</div>");
 					
-				}*/
+				}
 			?>
 			<div class="Center bg-dark text-warning RB pt-4 pb-4">
 				<h1>LOGIN</h1>
@@ -58,6 +54,7 @@
 				</form>
 				<b>You don't have an account?</b><a class="mt-4 mb-4 BRB" href="contact.php"> Contact us</a>
 			</div>	
+	
 			<a href="index.php" class="BRB bg-dark">RETURN</a>		
 			</body>
 		</html>	

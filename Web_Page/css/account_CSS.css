@@ -37,10 +37,11 @@ ul.sidenav li a:hover:not(.active) {
 }
 
 	div.content {
-		margin-left: 20%;
+		margin:5% 5% 5% 25%;
 		font-size: calc(0.5em + 0.5vw);
 		line-height: 2em;
 	}
+
 	h1 {
 	font-size: calc(3em + 0.5vw);
 }
