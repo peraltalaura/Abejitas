@@ -55,7 +55,9 @@ h2 {
 }
 a:hover{
 	box-shadow:0em 0em 2em 0em rgb(0,0,0);
+
 	font-size: calc(0.5em + 0.5vw);
+
 	transition:box-shadow 0.4s linear, font-size 0.4s;
 	color:rgb(255, 204, 0);
 	text-decoration: none;
@@ -102,7 +104,9 @@ ul#accountNav li a.active {
 	}
 	#profImg{
 	width:calc(15em + 1vw);
+
 } 
+
 
 	h1 {
 	font-size: calc(3em + 1vw);

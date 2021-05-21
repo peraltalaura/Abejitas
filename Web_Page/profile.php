@@ -245,7 +245,9 @@
 							$imagen=$_FILES['pic']['name'];
 							$sql="SELECT password FROM member WHERE member_id=$id";
 							$data=mysqli_fetch_array(mysqli_query($link,$sql));
-							if($data['password']==$cpass){
+
+							if(password_verify($cpass, $data['password'])){
+
 								if($imagen!=null){
 									$archivo= $_FILES['pic']['tmp_name'];
 									$dir=$dir."/".$imagen;
@@ -308,6 +310,7 @@
 							<label>PASSWORD:&nbsp&nbsp&nbsp<input type="password" name="cpass"></label>
 								</div>
 							<input id="modify" class="text-dark bg-warning BRB"  type="submit" value="MODIFY DATA">
+
 							
 						</div>
 					</div>
@@ -455,7 +458,9 @@
 									</div>");
 								}
 							}
+
 							printf("<a class='BRBY Center production produce' style='display:none'>REGISTER PRODUCTION</a>");
+
 						}
 					?>
 					
@@ -505,8 +510,7 @@
 							if($_GET['insert']=='yes'){
 								printf("<div class='RBY Center'>You have registered your production successfully</div>");
 								} else {
-								printf("<div class='RBY Center'>There was an error during the registration of the production</div>");
-								
+								printf("<div class='RBY Center'>There was an error during the registration of the production</div>");	
 							}
 						}
 					?>
@@ -538,6 +542,7 @@
 									<div class='col-sm-6 Center'>%s</div>
 									<div class='col-sm-3 Center'>%s</div>
 									<div class='col-sm-3 Center'>seen</div>
+
 									</div>",$data[0],$data[1]);
 								}
 							}

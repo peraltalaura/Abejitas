@@ -5,13 +5,14 @@
  */
 package controllers;
 
-import view.Availability;
-import view.Comments;
-import view.Home;
-import view.Materials;
-import view.MemberNotifications;
-import view.Members;
-import view.Payments;
+import model.Management;
+import view.Frames.Availability;
+import view.Frames.Comments;
+import view.Frames.Home;
+import view.Frames.Materials;
+import view.Frames.MemberNotifications;
+import view.Frames.Members;
+import view.Frames.Payments;
 
 /**
  *
