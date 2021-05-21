@@ -28,71 +28,10 @@
 			}
 		</style>
 	</head>
-	<body class="bg-dark">
-		<ul class="sidenav">
-			<li>
-				<h1 class="text-warning Center">ERLETE</h1>
-			</li>
-			<li>
-				<a class="Center" href="index.php">HOME</a>
-			</li>
-			<li>
-				<a class="Center" href="info.php">INFORMATION</a>
-			</li>
-			<li>
-				<a class="Center" href="forum.php">FORUM</a>
-			</li>
-			<?php
-				if(isset($_SESSION['memberID'])){
-				?>
-				<li>
-					<a class="Center" href="bookings.php">BOOKINGS</a>
-				</li>
-				<?php
-					} else {
-				?>
-				<li>
-					<a class="Center" href="login.php">BOOKINGS</a>
-				</li>
-				<?php
-				}
-			?>
-			<?php
-				session_start();
-				if(isset($_SESSION['memberID'])){
-				?>
-				<li>
-					<a class="Center" href="profile.php?account=prof">MY ACCOUNT</a>
-				</li>
-				<?php
-					} else {
-				?>
-				<li>
-					<a class="Center" href="login.php">MY ACCOUNT</a>
-				</li>
-				<?php
-				}
-			?>
-			<?php
-				if(isset($_SESSION['memberID'])){
-				?>
-				<li>
-					<a class="Center active" href="close_session.php">LOGOUT</a>
-				</li>
-				<?php
-					} else {
-				?>
-				<li>
-					<a class="Center active" href="login.php">LOGIN</a>
-				</li>
-				<?php
-				}
-			?>	
-		</ul>
+	<body class="bg-warning Center">
 		
-		<div class="container content Center bg-dark text-warning">
 			<?php
-				if(isset($_SESSION['memberID'])){
+				/*if(isset($_SESSION['memberID'])){
 					printf("<div class='container Center text-warning RB'>Login successfull, Wellcome!</div>");
 				} 
 				if(isset($_GET['incorrect'])){
@@ -106,23 +45,20 @@
 				if(isset($_GET['found'])){
 					printf("<div class='container Center text-warning RB'>Email not found</div>");
 					
-				}
+				}*/
 			?>
-			<div class="container Center login">
+			<div class="Center bg-dark text-warning RB pt-4 pb-4">
 				<h1>LOGIN</h1>
-				<form class="form-group" action="search_users.php" method="post">
-					<h3>E-MAIL:</h3>
+				<form class="form-group form-group-sm Center" action="search_users.php" method="post">
+					<LABEL>E-MAIL:</LABEL>
 					<input class="mb-2" required="required" type="email" name="mail">
-					<h3>PASSWORD:</h3>
-					<input class="mb-2" type="password" required="required" name="password"><br>
-					<input class="text-dark bg-warning" type="submit" value="LOGIN">
+					<LABEL>PASSWORD:</LABEL>
+					<input type="password" required="required" name="password"><br>
+					<input class="BRB" type="submit" value="LOGIN">
 				</form>
-			</div>
-			</div>
-		<br>
-		<div class="bg-dark p-4">
-			<address></address>
-			</div>			
+				<b>You don't have an account?</b><a class="mt-4 mb-4 BRB" href="contact.php"> Contact us</a>
+			</div>	
+			<a href="index.php" class="BRB bg-dark">RETURN</a>		
 			</body>
 		</html>	
 				

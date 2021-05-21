@@ -1,5 +1,7 @@
 /*start of responsive navigation var*/
-body {margin: 0;}
+body {
+	margin: 0;
+}
 
 ul.sidenav {
 	list-style-type: none;
@@ -11,15 +13,13 @@ ul.sidenav {
 	overflow: auto;
 	box-shadow:0em 0em 2em 0em rgb(0,0,0,0.5);
 }
-ul.sidenav li {
-	margin:0.7vw;
-}
+
 ul.sidenav li a {
 	display: block;
 	color: rgb(255, 204, 0);
-	padding: 8px 16px;
+	padding: 0.7em;
 	text-decoration: none;
-	font-size:1vw;
+	font-size: calc(0.8em + 0.6vw);
 }
 
 ul.sidenav li a.active {
@@ -31,47 +31,42 @@ ul.sidenav li a.active {
 ul.sidenav li a:hover:not(.active) {
 	background-color: rgb(255, 204, 0);
 	color: black;
-	font-size:1.1vw;
-	transition:font-size 0.4s linear;
 	box-shadow: 0vw 0vw 1vw 0vw rgb(255, 204, 0);  
-}
-div.content {
-	margin-left: 20%;
-	padding: 1px 16px;
-}
-@media screen and (max-width: 900px) {
-	ul.sidenav {
-		width: 100%;
-		height: auto;
-		position: relative;
-	}
-	
-	ul.sidenav li a {
-		float: left;
-		padding: 15px;
-	}
-	
-	div.content {
-		margin-left:0;
-	}
+	font-size: calc(0.9em + 0.6vw);
+	transition:font-size 0.4s linear;
 }
 
-@media screen and (max-width: 400px) {
-	ul.sidenav li a {
-		text-align: center;
-		float: none;
-	}
 	div.content {
-		margin-left: 0;
+		margin-left: 20%;
+		font-size: calc(0.5em + 0.5vw);
+		line-height: 2em;
 	}
+	h1 {
+	font-size: calc(3em + 0.5vw);
 }
-/*end of responsive navigation var*/
+h2 {
+	font-size: calc(1em + 0.5vw); 
+	margin-top:1em;
+	padding:0em 0em 0.5em 0em;
+}
+#profImg{
+	width:calc(15em + 0.5vw);
+	border-radius: 2em;
+}
+a:hover{
+	box-shadow:0em 0em 2em 0em rgb(0,0,0);
+	font-size: calc(0.5em + 0.5vw);
+	transition:box-shadow 0.4s linear, font-size 0.4s;
+	color:rgb(255, 204, 0);
+	text-decoration: none;
+}
 /*My account nav */
 #accountNav {
 	list-style-type:none;
 	padding:0;
 	width:80%;
 	margin:auto;
+	font-size:calc(0.35em + 0.5vw);
 }
 ul#accountNav li a.active {
 	background:black;
@@ -81,16 +76,69 @@ ul#accountNav li a.active {
 #accountNav li a:hover:not(.active) {
 	background: black;
 	color: rgb(255, 204, 0);
-	font-size:1.1vw;
 	transition:font-size 0.4s linear;
 	box-shadow: 0vw 0vw 1vw 0vw rgb(255, 204, 0);  
 }
 
 /*My account nav end*/
-div.content {
-	font-size:1vw;
-	line-height:3vw;
+/*Small devices like mobile phones*/
+@media screen and (max-width: 900px) {
+	ul.sidenav {
+		width: 100%;
+		height: auto;
+		position: relative;
+	}
+	
+	ul.sidenav li a {
+		float: left;
+		padding: 1em;
+
+	}
+	
+	div.content {
+		margin-left: 0;
+		font-size: calc(0.5em + 0.5vw);
+		line-height: 2em;
+	}
+	#profImg{
+	width:calc(15em + 1vw);
+} 
+
+	h1 {
+	font-size: calc(3em + 1vw);
 }
+h2 {
+	font-size: calc(1em + 1vw); 
+	margin-top:1em;
+	padding:0em 0em 0.5em 0em;
+}
+a:hover{
+	box-shadow:0em 0em 2em 0em rgb(0,0,0);
+	font-size: calc(0.5em + 1vw);
+	transition:box-shadow 0.4s linear, font-size 0.4s;
+	color:rgb(255, 204, 0);
+	text-decoration: none;
+}
+#accountNav {
+	font-size:calc(0.5em + 1vw);
+}
+
+}
+
+@media screen and (max-width: 400px) {
+	ul.sidenav li a {
+		text-align: center;
+		float: none;
+
+	}
+	div.content {
+		margin-left: 0;
+
+	}
+}
+/*end of responsive navigation var*/
+
+
 .Center {
 	display: flex;              
 	flex-direction: column;     
@@ -99,28 +147,29 @@ div.content {
 	text-align:center;
 }
 .RB {
-	border-radius:5vw;
-	padding:2vw;
-	margin:3vw;
+	border-radius:2em;
+	padding:1em;
+	margin:2em;
 	text-align:justify;
 	width:75%;
-	box-shadow:0vw 0vw 2vw 0vw rgb(0, 0, 0.8);
+	box-shadow:0em 0em 2em 0em rgb(0,0,0,0.5);
+	color:rgb(255, 204, 0);
+}
+.BRB,button {
+	border-radius:5em;
+	padding:1em;
+	box-shadow:0em 0em 2em 0em rgb(0,0,0,0.5);
 	color:rgb(255, 204, 0);
 }
 .RBY  {
-	border-radius:5vw;
-	padding:1vw 2vw 1vw 2vw;
-	margin:3vw;
+	border-radius:5em;
+	padding:1em 0.5em 0.5em 0.5em;
+	margin:2em;
 	text-align:justify;
 	width:75%;
 	box-shadow:0vw 0vw 2vw 0vw rgb(255, 204, 0,0.5);
 	background:rgb(255, 204, 0);
 	color:black;
-}
-.BRB, button {
-	border-radius:5vw;
-	padding:1vw 2vw 1vw 2vw;
-	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0,0.5);
 }
 .BRBY {
 	border-radius:5vw;
@@ -134,25 +183,22 @@ div.content {
 	text-decoration:none;
 	transition:box-shadow 0.4s linear, font-size 0.4s;
 	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0);
-	font-size:1.1vw;
 	font-weight:bolder;
 	color:rgb(255, 204, 0);
 }
-a:hover{
-	text-decoration:none;
-	transition:box-shadow 0.4s linear, font-size 0.4s;
-	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0);
-	font-size:1.1vw;
-	font-weight:bolder;
-	color:rgb(255, 204, 0);
-}
+
 .BRBY:hover{
 	text-decoration:none;
 	transition:box-shadow 0.4s linear, font-size 0.4s;
 	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0);
-	font-size:1.1vw;
 	font-weight:bolder;
 	color:black;
+}
+.booking:hover {
+		box-shadow:0vw 0vw 2vw 0vw rgb(255, 204, 0,0.5);
+}
+.booking {
+		transition:box-shadow 0.6s linear, font-size 0.6s;
 }
 
 /*MY PROFILE STYLE*/
@@ -166,11 +212,7 @@ a:hover{
 	box-shadow:0vw 0vw 2vw 0vw rgb(255, 204, 0,0.5);
 	color:black;
 }
-#profile img{
-	border-radius:5vw;
-	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0);
-	margin:2vw;
-}
+
 /*END OF PROFILE STYLE*/
 /*Modify data*/
 #data .row{ 
@@ -184,7 +226,7 @@ a:hover{
 	color:rgb(255, 204, 0);
 
 }
-input[type="text"], #data input[type="date"], input[type="number"],#data input[type="tel"],#data input[type="email"],#data input[type="datetime-local"] {
+input[type="text"], #data input[type="date"], input[type="number"],#data input[type="tel"],#data input[type="email"],#data input[type="datetime-local"],#data input[type="password"] {
 	border-radius:5vw;
 	border:none;
 	outline:none;
@@ -232,3 +274,19 @@ input[type='submit']:hover{
 }
 
 /*End of select style*/
+
+/*calendar CSS*/
+.fc-event-title-container{
+	background-color:rgb(255, 204, 0);
+	color:black;
+	text-align: center;
+}
+
+#calendar {
+	width:75%;
+	margin:0 auto;
+	border:rgb(255, 204, 0);
+}
+.fc-daygrid-day-number, .fc-col-header-cell-cushion  {
+	color:rgb(255, 204, 0);
+}

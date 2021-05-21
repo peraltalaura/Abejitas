@@ -19,7 +19,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<!--<Link rel="stylesheet" href="CSS.css">-->
-		<Link rel="stylesheet" href="css//login_CSS.css">
+		<Link rel="stylesheet" href="css//account_CSS.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
 			h1 {
@@ -93,7 +93,7 @@
 			?>	
 		</ul>
 		<div class="content Center text-warning">
-			<h2 style="margin-top:7%">LATEST DISCUSSIONS</h2>
+			<h1 style="margin-top:7%">LATEST DISCUSSIONS</h1>
 
 			<?php			
 			include("test_connect_db.php");
@@ -101,28 +101,28 @@
 			$result=mysqli_query($link,"SELECT comment.*, member.* from comment INNER JOIN member ON member.member_id = comment.member_id");
 
 			?>
-			<div class="table-responsive">
-				<table class="table bg-dark text-warning Center">
-					<tr>
-						<th>MEMBER</th>
-						<th>COMMENT</th>
-						<th>DATE</th>
-					</tr>
 					<?php
 						while($data=mysqli_fetch_array($result)){
-							printf("<tr><td><img style='width:40px;'src='%s'> %s %s</td><td>%s</td><td>%s</td></tr>",$data[14],$data['name'],$data['surname'],$data['message'],$data['comment_date']);
-							
-						}
+							printf("<div class='row RBY'>
+										<div class='col-sm-2 Center'><img style='width:40px;border-radius:5em'src='%s'></div>
+										<div class='col-sm-2 Center'>%s</div>
+										<div class='col-sm-2 Center'>%s</div>
+										<div class='col-sm-4 Center'>%s</div>
+									</div>
+									<div class='row RB'>
+										<div class='col-md-12'>%s</div>
+									</div>",$data[14],$data['name'],$data['surname'],$data['comment_date'],$data['message']);
+							}
 					?>
-				</table>
-			</div>
+
+
 			<?php
 			if(isset($_SESSION['memberID'])){
 			?>
-			<p>Write your comment:</p>
+			<h2>WRITE YOUR COMMENT:</h2>
 			<form action="send_comment.php" method="post">
 				<div class="row">
-					<textarea maxlength="255" class="rounded-0" style="width: 80vh;height: 28vh" rows="10" required="required" name='txt'></textarea>
+					<textarea maxlength="255" class="rounded-0" class="Center" rows="10" required="required" name='txt'></textarea>
 				</div>
 				<input type="submit">
 			</form>
@@ -130,7 +130,7 @@
 			}else{
 				?>
 				<?php
-				printf("<br><a href='login.php'>Login to comment</a>")
+				printf("<br><a class='BRBY' href='login.php'>Login to comment</a>")
 				?>
 			<?php
 			}

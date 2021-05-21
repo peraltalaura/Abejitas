@@ -92,33 +92,36 @@
 			<div id="title" class="Center text-warning bg-dark">
 				<h1>ERLETE</h1>
 			</div>
-			<h2>LEARN ABOUT OUR PURPOSE AND ACTIVITIES</h2>
-			<div class="bg-dark text-warning RB">
+		<div class="container Center">
+			<div class="bg-dark text-warning RB Center">
+				<h2>LEARN ABOUT OUR PURPOSE AND ACTIVITIES</h2>
 				<p>Read information about how everything works and why we like being in this community, how to become a part of this and how to contact us for further information</p>
 			</div>
-			<a href="info.php" type="button" class="btn btn-dark text-warning BRB">GO TO INFORMATION</a>
-			<h2>SEE DIFFERENT ISSUES DISCUSSED IN OUR COMMUNITY</h2>
-			<div class="bg-dark text-warning RB">
-				<p>Everyone can enter and see the questions, answers and discussions of our forum</p>
-				<p>Members can also participate actively in the community and post comments</p>
+			<a href="info.php" class="bg-dark BRB">GO TO INFORMATION</a>
+			
+			<div class="bg-dark text-warning RB Center">
+				<h2>SEE DIFFERENT ISSUES DISCUSSED IN OUR COMMUNITY</h2>
+				<p>Everyone can enter and see the questions, answers and discussions of our forum, where members can also participate actively by posting comments.
 			</div>
-			<a type="button" class="btn btn-dark text-warning BRB" href="forum.php">GO TO FORUM</a>
-			<h2>BOOK OUR EXTRACTOR AND METAL BINS</h2>
-			<div class="bg-dark text-warning RB">
+			<a class="bg-dark BRB" href="forum.php">GO TO FORUM</a>
+			
+			<div class="bg-dark text-warning RB Center">
+				<h2>BOOK OUR EXTRACTOR AND METAL BINS</h2>
 				<p>Only members: See de days available to book the extractor and the metalbins available to us that we provide</p>
 			</div>
-			<a type="button" class="btn btn-dark text-warning BRB" 
+			<a class="bg-dark BRB" href="forum.php" 
 			<?php if(isset($_SESSION['memberID'])){
 				printf("href='bookings.php'");
 				}else{
 				printf("href='login.php'");
 			}?>
 			>BOOK NOW</a>
-			<h2>CONSULT YOUR PERSONAL INFORMATION</h2>
-			<div class="bg-dark text-warning RB">
+			
+			<div class="bg-dark text-warning RB Center">
+				<h2>CONSULT YOUR PERSONAL INFORMATION</h2>
 				<p>Only members: Have access to your personal information and be able to modify it, make a transfer, see your bookings, productions and account status at any time</p>
 			</div>
-			<a type="button" class="btn btn-dark text-warning BRB mb-4" 
+			<a class="bg-dark BRB" href="forum.php" 
 			<?php 
 				if(isset($_SESSION['memberID'])){
 					printf("href='profile.php?account=prof'>YOUR ACCOUNT</a>");
@@ -127,6 +130,8 @@
 				}?>
 				
 				</div>
+				<br>
+			</div>
 					<div class="bg-dark p-4">
 						<address></address>
 					</div>
