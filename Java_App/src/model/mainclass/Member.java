@@ -6,7 +6,7 @@
 package model.mainclass;
 
 import java.util.Date;
-import java.lang.Math;
+import java.lang.*;
 
 /**
  *
@@ -69,8 +69,8 @@ public class Member {
         this.name = name;
         this.surname = surname;
         this.email = email;
-        int pass = (int)Math.random() * 9999;
-        this.password = "123" + pass;
+        int pass = (int)(Math.random() * 1000);
+        this.password = "123" + "" + pass;
         
     }
 //getters & setters

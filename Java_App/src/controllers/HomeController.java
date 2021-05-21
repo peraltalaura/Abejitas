@@ -37,6 +37,9 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  *
@@ -93,7 +96,13 @@ public class HomeController implements ActionListener {
         this.home.setLocationRelativeTo(null);
         membersTable = new MembersTable();
         home.members.setText("" + membersTable.getMember_count());
+        //adding listeners
         homeActionListener(this);
+        memberActionListener(this);
+        inventoryActionListener(this);
+        paymentActionListener(this);
+        commentActionListener(this);
+        commentActionListener(this);
 
     }
 
@@ -111,9 +120,6 @@ public class HomeController implements ActionListener {
                 members.memberjTable.setModel(membersTable);
                 members.setVisible(true);
                 members.setLocationRelativeTo(null);
-
-                memberActionListener(this);
-
                 break;
 
             case "MANAGE AVAILABILITY":
@@ -121,18 +127,16 @@ public class HomeController implements ActionListener {
                 metalbinsTable = new MetalbinTable();
                 available.jTableBookings.setModel(bookingsTable);
                 available.jTableMetal.setModel(metalbinsTable);
-
                 available.setVisible(true);
                 available.setLocationRelativeTo(null);
                 break;
 
             case "MANAGE INVENTORY":
-
                 inventoryTable = new InventoryTable();
                 inventory.jTableInventory.setModel(inventoryTable);
                 inventory.setVisible(true);
                 inventory.setLocationRelativeTo(null);
-                inventoryActionListener(this);
+
                 break;
 
             case "MANAGE PAYMENTS":
@@ -140,7 +144,7 @@ public class HomeController implements ActionListener {
                 payments.jTablePayments.setModel(paymentTable);
                 payments.setVisible(true);
                 payments.setLocationRelativeTo(null);
-                paymentActionListener(this);
+
                 break;
 
             case "MANAGE COMMENTS":
@@ -148,7 +152,7 @@ public class HomeController implements ActionListener {
                 comments.jTableCommentsTable.setModel(commentsTable);
                 comments.setVisible(true);
                 comments.setLocationRelativeTo(null);
-                commentActionListener(this);
+
                 break;
 
             case "SEE NOTIFICATIONS":
@@ -156,7 +160,7 @@ public class HomeController implements ActionListener {
                 notificationsFrame.jTableNotifications.setModel(notificationsTable);
                 notificationsFrame.setVisible(true);
                 notificationsFrame.setLocationRelativeTo(null);
-                commentActionListener(this);
+
                 break;
 
             //when the activate button is clicked it calls the activateMember() function from Management
@@ -185,21 +189,27 @@ public class HomeController implements ActionListener {
             break;
             //when the activate button is clicked it puts the data from the textfields into a Member object and calls the insertMember()function to add a member to the database
             case "SUBMIT":
+//                System.out.println(members.jButtonInsertMember.getActionListeners().length);
+//                
+//                members.jButtonInsertMember.removeActionListener(members.jButtonInsertMember.getActionListeners()[1]);
+//                System.out.println(members.jButtonInsertMember.getActionListeners().length);
                 boolean troll = false;
 
                 if (!members.jTextFieldName.getText().isEmpty() && !members.jTextFieldSurname.getText().isEmpty() && !members.jTextFieldEmail.getText().isEmpty()) {
-
+                    //name comprobation
                     for (char c : members.jTextFieldName.getText().toCharArray()) {
-                        if (!Character.isLetter(c)) {
+                        if (!Character.isLetterOrDigit(c)) {
                             troll = true;
                         }
                     }
+                    //surname comprobation
                     for (char c : members.jTextFieldSurname.getText().toCharArray()) {
                         if (!Character.isLetter(c)) {
                             troll = true;
                         }
 
                     }
+                    //email comprobation
                     boolean isarroba = false;
                     if (!members.jTextFieldEmail.getText().equals("")) {
                         for (char c : members.jTextFieldEmail.getText().toCharArray()) {
@@ -209,11 +219,13 @@ public class HomeController implements ActionListener {
                             }
 
                         }
-                        if (isarroba = false) {
+                        if (isarroba == false) {
                             troll = true;
                         }
+
                     }
-                    if (troll = false) {
+                    //simple insert of member
+                    if (troll == false) {
                         if (members.jTextFieldPassword.getText().equals("")) {
                             String unformatted_date = "25/12/1999";
                             try {
@@ -221,35 +233,31 @@ public class HomeController implements ActionListener {
                                 Member mem = new Member(members.jTextFieldName.getText(), members.jTextFieldSurname.getText(), members.jTextFieldEmail.getText());
                                 man.insertMember(mem);
                                 membersTable.addMember(mem);
+                                members.jTextFieldName.setText("");
+                                members.jTextFieldSurname.setText("");
+                                members.jTextFieldEmail.setText("");
+                                members.jTextFieldPassword.setText("");
+                                members.jTextFieldCity.setText("");
+                                members.jTextFieldAdress.setText("");
+                                members.jTextFieldPhone.setText("");
+                                members.jTextFieldPostcode.setText("");
                             } catch (ParseException ex) {
                                 Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
                             }
                         } else {
-
-                            for (char c : members.jTextFieldName.getText().toCharArray()) {
-                                if (!Character.isLetter(c)) {
-                                    troll = true;
-                                }
-                            }
-                            for (char c : members.jTextFieldSurname.getText().toCharArray()) {
-                                if (!Character.isLetter(c)) {
-                                    troll = true;
-                                }
-                            }//for(char c : members.jTextFieldEmail.getText().toCharArray()){  email tiene @
-                            // if (!Character.isLetter(c)) {
-                            //     troll = true;
-                            //}
-
+                            //adress comprobation
                             for (char c : members.jTextFieldAdress.getText().toCharArray()) {
                                 if (!Character.isLetter(c)) {
                                     troll = true;
                                 }
                             }
+                            //city comprobation
                             for (char c : members.jTextFieldCity.getText().toCharArray()) {
                                 if (!Character.isLetter(c)) {
                                     troll = true;
                                 }
                             }
+                            //
                             for (char c : members.jTextFieldPassword.getText().toCharArray()) {
                                 if (!Character.isLetter(c)) {
                                     troll = true;
@@ -265,7 +273,8 @@ public class HomeController implements ActionListener {
                                     troll = true;
                                 }
                             }
-                            if (troll = false) {
+                            //complete member adding
+                            if (troll == false) {
                                 String unformatted_date = members.jTextFieldBirthday.getText();
                                 try {
                                     Date date = new SimpleDateFormat("dd/MM/yyyy").parse(unformatted_date);
@@ -274,6 +283,14 @@ public class HomeController implements ActionListener {
                                             members.jTextFieldAdress.getText(), Integer.parseInt(members.jTextFieldPhone.getText()));
                                     man.insertMember(mem);
                                     membersTable.addMember(mem);
+                                    members.jTextFieldName.setText("");
+                                    members.jTextFieldSurname.setText("");
+                                    members.jTextFieldEmail.setText("");
+                                    members.jTextFieldPassword.setText("");
+                                    members.jTextFieldCity.setText("");
+                                    members.jTextFieldAdress.setText("");
+                                    members.jTextFieldPhone.setText("");
+                                    members.jTextFieldPostcode.setText("");
                                 } catch (ParseException ex) {
                                     Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
                                 }
@@ -314,10 +331,10 @@ public class HomeController implements ActionListener {
                     members.jTextFieldPostcode.setText("");
 
                 }
-
+                System.out.println("eouu");
                 break;
-            //when it is clicked it takes the description and import and registers a new payment on the database
 
+            //when it is clicked it takes the description and import and registers a new payment on the database
             case "PAY":
                 boolean troll1 = false;
                 for (char c : payments.jTextFieldPDescription.getText().toCharArray()) {
@@ -471,7 +488,7 @@ public class HomeController implements ActionListener {
      * @param listener
      */
     public void memberActionListener(ActionListener listener) {
-        //payments.jButtonPay.addActionListener(listener);
+
         members.jButtonInsertMember.addActionListener(listener);
         members.jButtonDisable.addActionListener(listener);
         members.jButtonActivate.addActionListener(listener);
