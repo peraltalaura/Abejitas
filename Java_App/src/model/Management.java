@@ -98,7 +98,7 @@ public class Management {
                     dataList.add(p);
                 } else if (table.equals("metalbin")) {
 
-                    Metalbin m = new Metalbin(rs.getInt("metalbin_id"), rs.getString("name"), rs.getBoolean("available"), rs.getDate("available_date"));
+                    Metalbin m = new Metalbin(rs.getInt("metalbin_id"), rs.getInt("name"), rs.getBoolean("available"), rs.getDate("available_date"));
                     dataList.add(m);
                     dataList.add(m);//aki luego abra k añadir con INSERT INTO metalbin (available_date) VALUES (?) WHERE metalbin_id = ?
 
@@ -399,6 +399,11 @@ public class Management {
 
         return done;
     }
+    /**
+     * Encryption method (SHA250). Takes a String and returns it encrypted
+     * @param input
+     * @return 
+     */
      public static String encryptThisString(String input) 
     { 
         try { 

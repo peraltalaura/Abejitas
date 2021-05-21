@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class Metalbin {
     private int metalbin_id;
-    private String name;
+    private int name;
     private boolean available;
     private Date available_date;
     /**
@@ -22,7 +22,7 @@ public class Metalbin {
      * @param available
      * @param available_date 
      */
-    public Metalbin(int metalbin_id, String name, boolean available, Date available_date) {
+    public Metalbin(int metalbin_id, int name, boolean available, Date available_date) {
         this.metalbin_id = metalbin_id;
         this.name = name;
         this.available = available;
@@ -45,11 +45,11 @@ public class Metalbin {
         this.metalbin_id = metalbin_id;
     }
 
-    public String getName() {
+    public int getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(int name) {
         this.name = name;
     }
 
