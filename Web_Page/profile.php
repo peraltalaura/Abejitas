@@ -245,7 +245,7 @@
 							$imagen=$_FILES['pic']['name'];
 							$sql="SELECT password FROM member WHERE member_id=$id";
 							$data=mysqli_fetch_array(mysqli_query($link,$sql));
-							if($data['password']==$cpass){
+							if(password_verify($cpass, $data['password'])){
 								if($imagen!=null){
 									$archivo= $_FILES['pic']['tmp_name'];
 									$dir=$dir."/".$imagen;

@@ -12,7 +12,7 @@
 	
 	if($result =  $stmt->get_result()){
 		while ($data= $result->fetch_assoc()) {
-			if (($user == $data["email"]) && ($pass == $data["password"])) { 
+			if (($user == $data["email"]) && (password_verify($pass, $data["password"]))) { 
 				if($data["active"]==1){
 					session_start();
 					$_SESSION['memberID'] = $data["member_id"];

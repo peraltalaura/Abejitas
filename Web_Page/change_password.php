@@ -50,8 +50,8 @@
 		if(count($_POST)>0) {
 		$result = mysqli_query($con,"SELECT* from member WHERE member_id='" . $id . "'");
 		$row=mysqli_fetch_array($result);
-		if($_POST["opass"] == $row["password"] && $_POST["npass"] == $_POST["cnpass"] ) {
-		mysqli_query($con,"UPDATE member set password='" . $_POST["npass"] . "' WHERE member_id='" . $id . "'");
+		if(password_verify($_POST["opass"], $row["password"]) && $_POST["npass"] == $_POST["cnpass"] ) {
+		mysqli_query($con,"UPDATE member set password='" . password_hash($_POST["npass"], PASSWORD_DEFAULT) . "' WHERE member_id='" . $id . "'");
 		
 		header("Location:profile.php?account=prof");
 		} else{
