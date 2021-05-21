@@ -37,7 +37,7 @@ ul.sidenav li a:hover:not(.active) {
 }
 
 	div.content {
-		margin:5% 5% 5% 25%;
+		margin:0% 5% 5% 25%;
 		font-size: calc(0.5em + 0.5vw);
 		line-height: 2em;
 	}
@@ -108,7 +108,9 @@ ul#accountNav li a.active {
 
 } 
 
-
+.nav2{
+	background: ;
+}
 	h1 {
 	font-size: calc(3em + 1vw);
 }

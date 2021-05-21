@@ -105,16 +105,16 @@
 					?>
 					<ul id="accountNav">
 						<li>
-							<a class="Center" id="prof" href="profile.php?account=prof" onclick="prof()">EDIT</a>
+							<a class="Center nav2" id="prof" href="profile.php?account=prof" onclick="prof()">EDIT</a>
 						</li>
 						<li>
-							<a class="Center" id="bal" onclick="bal()" href="profile.php?account=bal">BALANCE</a>
+							<a class="Center nav2" id="bal" onclick="bal()" href="profile.php?account=bal">BALANCE</a>
 						</li>
 						<li>
-							<a class="Center" id="book" onclick="book()" href="profile.php?account=book">MY BOOKINGS</a>
+							<a class="Center nav2" id="book" onclick="book()" href="profile.php?account=book">MY BOOKINGS</a>
 						</li>
 						<li>
-							<a class="Center" id="not" onclick="not()" href="profile.php?account=not">NOTIFICATIONS</a>
+							<a class="Center nav2" id="not" onclick="not()" href="profile.php?account=not">NOTIFICATIONS</a>
 						</li>
 					</ul>
 					<?php
@@ -199,7 +199,7 @@
 						?>
 						<div id="profile" class="container Center">
 							<div class="row">
-								<div class="col-sm-12">
+								<div class="col-sm-12 mt-4 mb-4">
 									<?php
 										printf("<img id='profImg' src='%s'>",$data['picture']);
 									?>
@@ -421,7 +421,7 @@
 						$result=mysqli_query($link,"SELECT* from booking where member_id=$id");
 						
 					?>
-					<div class="row RB">
+					<div class="row RB" sytyle="">
 						<div class="col-sm-2 Center"><b>ID</b></div>
 						<div class="col-sm-3 Center"><b>ENTRY</b></div>
 						<div class="col-sm-3 Center"><b>EXIT</b></div>

@@ -18,7 +18,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<!--<Link rel="stylesheet" href="CSS.css">-->
-		
+			<Link rel="stylesheet" href="css//account_CSS.css">
 		<!-- Full Calendar links -->
 		<link href='fullcalendar/main.css' rel='stylesheet'/>
 		<script src='fullcalendar/main.js'></script>
@@ -27,8 +27,6 @@
 		<link rel="stylesheet" href="jquery/jquery-ui.min.css">
 		<script src="jquery/external/jquery/jquery.js"></script>
 		<script src="jquery/jquery-ui.min.js"></script>
-		
-		<Link rel="stylesheet" href="css//account_CSS.css">
 		
 		<script>
 			document.addEventListener('DOMContentLoaded', function() {
