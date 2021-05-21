@@ -16,7 +16,7 @@
 				if($data["active"]==1){
 					session_start();
 					$_SESSION['memberID'] = $data["member_id"];
-					header("Location:login.php");
+					header("Location:profile.php?account=prof");
 					}else if($data["active"]==0) {
 					header("Location:login.php?incorrect=disable");
 				}
