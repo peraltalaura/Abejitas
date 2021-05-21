@@ -29,6 +29,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -40,6 +42,9 @@ import javax.swing.JOptionPane;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -92,6 +97,11 @@ public class HomeController implements ActionListener {
         this.notificationsFrame = notificationsFrame;
         this.man = man;
         this.fillNotifications();
+//         try {
+//            this.home.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("C:\\Users\\kalboetxeaga.ager\\Downloads\\Boton_Muestra-20210519T060314Z-001\\Abejitas\\Java_App\\src\\Prueba.jpg")))));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         this.home.setVisible(true);
         this.home.setLocationRelativeTo(null);
         membersTable = new MembersTable();

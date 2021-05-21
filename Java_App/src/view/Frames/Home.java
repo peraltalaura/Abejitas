@@ -5,6 +5,16 @@
  */
 package view.Frames;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 /**
  *
  * @author uribe.markel
@@ -14,8 +24,13 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form nhome
      */
-    public Home() {
+    public Home() throws IOException {
+        
+
         initComponents();
+        //jLabelImage = new JLabel(new ImageIcon("C:\\Users\\kalboetxeaga.ager\\Downloads\\Boton_Muestra-20210519T060314Z-001\\Abejitas\\Java_App\\src\\PRUEBA.jpg"));
+
+        //setContentPane(new JLabel(new ImageIcon("C:\\Users\\kalboetxeaga.ager\\Downloads\\Boton_Muestra-20210519T060314Z-001\\Abejitas\\Java_App\\src\\Prueba.jpg")));
     }
 
     /**
@@ -38,6 +53,7 @@ public class Home extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         members = new javax.swing.JLabel();
+        jLabelImage = new javax.swing.JLabel();
 
         button1.setText("button1");
 
@@ -45,12 +61,14 @@ public class Home extends javax.swing.JFrame {
         setTitle("ERLETE Home");
         setBackground(new java.awt.Color(255, 255, 153));
         setForeground(new java.awt.Color(255, 255, 153));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 204, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ERLETE");
         jLabel1.setToolTipText("");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 12, 779, 55));
 
         MEMBERS.setBorder(null);
         MEMBERS.setText("MANAGE MEMBERS");
@@ -58,6 +76,7 @@ public class Home extends javax.swing.JFrame {
         MEMBERS.setLineColor(new java.awt.Color(0, 0, 255));
         MEMBERS.setLinePainted(true);
         MEMBERS.setRounded(true);
+        getContentPane().add(MEMBERS, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 163, 169, 29));
 
         PAYMENTS.setBorder(null);
         PAYMENTS.setText("MANAGE PAYMENTS");
@@ -65,6 +84,7 @@ public class Home extends javax.swing.JFrame {
         PAYMENTS.setLineColor(new java.awt.Color(0, 0, 255));
         PAYMENTS.setLinePainted(true);
         PAYMENTS.setRounded(true);
+        getContentPane().add(PAYMENTS, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 219, 169, 29));
 
         INVENTORY.setBorder(null);
         INVENTORY.setText("MANAGE INVENTORY");
@@ -72,13 +92,16 @@ public class Home extends javax.swing.JFrame {
         INVENTORY.setLineColor(new java.awt.Color(0, 0, 255));
         INVENTORY.setLinePainted(true);
         INVENTORY.setRounded(true);
+        getContentPane().add(INVENTORY, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 161, 169, 29));
 
+        COMMENTS.setBackground(new java.awt.Color(153, 153, 153));
         COMMENTS.setBorder(null);
         COMMENTS.setText("MANAGE COMMENTS");
         COMMENTS.setGradientLineColor(new java.awt.Color(255, 0, 255));
         COMMENTS.setLineColor(new java.awt.Color(0, 0, 255));
         COMMENTS.setLinePainted(true);
         COMMENTS.setRounded(true);
+        getContentPane().add(COMMENTS, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 219, 169, 29));
 
         AVAILABILITY.setBorder(null);
         AVAILABILITY.setText("MANAGE AVAILABILITY");
@@ -86,6 +109,7 @@ public class Home extends javax.swing.JFrame {
         AVAILABILITY.setLineColor(new java.awt.Color(0, 0, 255));
         AVAILABILITY.setLinePainted(true);
         AVAILABILITY.setRounded(true);
+        getContentPane().add(AVAILABILITY, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 163, 169, 29));
 
         NOTIFICATIONS.setBorder(null);
         NOTIFICATIONS.setText("SEE NOTIFICATIONS");
@@ -93,6 +117,7 @@ public class Home extends javax.swing.JFrame {
         NOTIFICATIONS.setLineColor(new java.awt.Color(0, 0, 255));
         NOTIFICATIONS.setLinePainted(true);
         NOTIFICATIONS.setRounded(true);
+        getContentPane().add(NOTIFICATIONS, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 219, 169, 29));
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
@@ -127,62 +152,17 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(PAYMENTS, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(COMMENTS, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(MEMBERS, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(87, 87, 87)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(AVAILABILITY, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NOTIFICATIONS, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(115, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 779, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(46, 46, 46)
-                    .addComponent(INVENTORY, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(614, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MEMBERS, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AVAILABILITY, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PAYMENTS, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(COMMENTS, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NOTIFICATIONS, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(58, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(161, Short.MAX_VALUE)
-                    .addComponent(INVENTORY, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(116, 116, 116)))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(302, 73, -1, -1));
+
+        jLabelImage.setIcon(new javax.swing.ImageIcon("C:\\Users\\kalboetxeaga.ager\\Downloads\\Boton_Muestra-20210519T060314Z-001\\Abejitas\\Java_App\\src\\PRUEBA.jpg")); // NOI18N
+        getContentPane().add(jLabelImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 310));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     /**
      * @param args the command line arguments
-     * @return 
+     * @return
      */
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
@@ -216,7 +196,7 @@ public class Home extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-        public static Home createView() {
+    public static Home createView() throws IOException  {
         Home v = new Home();
         return v;
     }
@@ -231,6 +211,7 @@ public class Home extends javax.swing.JFrame {
     private view.frameComponents.Button button1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelImage;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JLabel members;
     // End of variables declaration//GEN-END:variables
