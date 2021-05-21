@@ -185,7 +185,7 @@
 							<div class="row">
 								<div class="col-sm-12">
 									<?php
-										printf("<img src='%s' width='250vw'>",$data['picture']);
+										printf("<img id='profImg' src='%s'>",$data['picture']);
 									?>
 								</div>
 							</div>

@@ -49,7 +49,7 @@ div.content {
 	margin: 0em 1em 2em 1em;
 }
 h1 {
-	font-size: calc(4em + 0.6vw);
+	font-size: calc(3em + 0.6vw);
 }
 h2 {
 	font-size: calc(1em + 0.6vw); 
@@ -90,6 +90,13 @@ h2 {
 	font-size: calc(1em + 1vw); 
 	margin-top:1em;
 	padding:0em 0em 0.5em 0em;
+}
+a:hover{
+	box-shadow:0em 0em 2em 0em rgb(0,0,0);
+	font-size: calc(0.8em + 1vw);
+	transition:box-shadow 0.4s linear, font-size 0.4s;
+	color:rgb(255, 204, 0);
+	text-decoration: none;
 }
 
 }

@@ -50,12 +50,13 @@
 			<div class="Center bg-dark text-warning RB pt-4 pb-4">
 				<h1>LOGIN</h1>
 				<form class="form-group form-group-sm Center" action="search_users.php" method="post">
-					<h2>E-MAIL:</h2>
+					<LABEL>E-MAIL:</LABEL>
 					<input class="mb-2" required="required" type="email" name="mail">
-					<h2>PASSWORD:</h2>
-					<input class="mb-2" type="password" required="required" name="password"><br>
-					<input class="BRBY" type="submit" value="LOGIN">
+					<LABEL>PASSWORD:</LABEL>
+					<input type="password" required="required" name="password"><br>
+					<input class="BRB" type="submit" value="LOGIN">
 				</form>
+				<b>You don't have an account?</b><a class="mt-4 mb-4 BRB" href="contact.php"> Contact us</a>
 			</div>	
 			<a href="index.php" class="BRB bg-dark">RETURN</a>		
 			</body>

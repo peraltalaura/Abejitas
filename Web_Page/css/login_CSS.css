@@ -2,10 +2,10 @@
 body{
 	font-size: calc(0.5em + 0.6vw);
 	line-height: 2.2em;
-	margin:7% 30% 5% 30%;
+	margin:3% 30% 5% 30%;
 }
 h1 {
-	font-size: calc(4em + 0.6vw);
+	font-size: calc(2em + 0.6vw);
 }
 h2 {
 	font-size: calc(1em + 0.6vw); 
@@ -26,7 +26,7 @@ input{
 @media screen and (max-width: 900px) {
 	
 	h1 {
-	font-size: calc(4.2em + 1vw);
+	font-size: calc(2em + 0.5vw);
 }
 h2 {
 	font-size: calc(1em + 1vw); 
@@ -34,12 +34,19 @@ h2 {
 	padding:0em 0em 0.5em 0em;
 }
 body{
-	font-size: calc(0.7em + 1vw);
+	font-size: calc(0.7em + 0.5vw);
 	line-height: 2em;
-	margin:7% 8% 5% 8%;
+	margin:5% 8% 5% 8%;
 }
 input{
-	width:90%;
+	width:80%;
+}
+a:hover{
+	box-shadow:0em 0em 2em 0em rgb(0,0,0);
+	font-size: calc(0.8em + 1vw);
+	transition:box-shadow 0.4s linear, font-size 0.4s;
+	color:rgb(255, 204, 0);
+	text-decoration: none;
 }
 
 }
@@ -76,7 +83,6 @@ input{
 .BRB {
 	border-radius:5em;
 	padding:1em 2em 1em 2em;
-	margin:2em;
 	box-shadow:0em 0em 2em 0em rgb(0,0,0,0.5);
 	color:rgb(255, 204, 0);
 	transition:box-shadow 0.4s linear, font-size 0.4s

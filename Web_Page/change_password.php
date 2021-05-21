@@ -28,17 +28,18 @@
 			}
 		</style>
 	</head>
-	<body class="bg-dark">
-		<div class="container Center bg-dark text-warning">
-			<div class="container Center">
-				<form action="change_password.php?exec" method="POST">
+	<body class="bg-warning Center">
+		<div class="Center bg-dark text-warning RB pt-4 pb-4">
+			<h1>CHANGE</h1>
+			<h1>PASSWORD</h1>
+				<form class="form-group form-group-sm Center pt-4" action="change_password.php?exec" method="POST">
 					<label>New Password:<input type="password" name="npass"></label>
 					<label>Comfirm Password:<input type="password" name="cnpass"></label>
 					<label>Old Password:<input type="password" name="opass"></label>
-					<input type="submit" value="Submit">
+					<input class="mt-4 mp-4" type="submit" value="Submit">
 				</form>
-			</div>
 		</div>	
+		<a href="profile.php?account=prof" class="BRB bg-dark">RETURN</a>
 	<?php
 	if(isset($_GET["exec"])){
 

@@ -19,7 +19,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<!--<Link rel="stylesheet" href="CSS.css">-->
-		<Link rel="stylesheet" href="css//index_CSS.css">
+		<Link rel="stylesheet" href="css//account_CSS.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
 			h1 {
@@ -93,7 +93,7 @@
 			?>	
 		</ul>
 		<div class="content Center text-warning">
-			<h2 style="margin-top:7%">LATEST DISCUSSIONS</h2>
+			<h1 style="margin-top:7%">LATEST DISCUSSIONS</h1>
 
 			<?php			
 			include("test_connect_db.php");
@@ -104,7 +104,7 @@
 					<?php
 						while($data=mysqli_fetch_array($result)){
 							printf("<div class='row RBY'>
-										<div class='col-sm-2 Center'><img style='width:40px;'src='%s'></div>
+										<div class='col-sm-2 Center'><img style='width:40px;border-radius:5em'src='%s'></div>
 										<div class='col-sm-2 Center'>%s</div>
 										<div class='col-sm-2 Center'>%s</div>
 										<div class='col-sm-4 Center'>%s</div>
