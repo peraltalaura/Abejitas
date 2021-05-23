@@ -17,7 +17,7 @@
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<link rel="stylesheet" href="css//index_CSS.css">
+		<link rel="stylesheet" href="css/index_CSS.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
 			h1 {
@@ -28,13 +28,13 @@
 			}
 		</style>
 	</head>
-	<body class="bg-dark">	
+	<body>	
 		<ul class="sidenav">
 			<li>
-				<h1 class="text-warning Center">ERLETE</h1>
+				<h1 class="Center">ERLETE</h1>
 			</li>
 			<li>
-				<a class="Center active" href="index.php">HOME</a>
+				<a class="Center" href="index.php">HOME</a>
 			</li>
 			<li>
 				<a class="Center" href="info.php">INFORMATION</a>
@@ -89,9 +89,9 @@
 				}
 			?>	
 		</ul>
-		<div class="content Center bg-warning info">
+		<div class="content Center">
 			<br><h2>HOW TO CONTACT US</h2><br>
-			<div class="bg-dark text-warning RB">
+			<div class="RB">
 				
 				<div class="row">
 					<div class="col-sm-4">ASSOSIATION ADDRESS:</div>
@@ -112,7 +112,7 @@
 				
 			</div>
 		</div>
-		<div class="bg-dark p-4">
+		<div class="p-4">
 			<address></address>
 		</div>
 	</body>
