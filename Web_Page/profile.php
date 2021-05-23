@@ -68,7 +68,7 @@
 		
 	</head>
 	<body>
-		<!--menu of the web page-->
+				<!--menu of the web page-->
 		<ul class="sidenav">
 			<li>
 				<h1 class="Center">ERLETE</h1>
@@ -445,7 +445,7 @@
 								
 								<div class='rows'>
 									<div class='row'>%d</div>
-									<div class='row' style='flex:2'>%s</div>
+									<div class='row'>%s</div>
 									<div class='row'>%d</div>
 									<div class='row'>%d</div>
 								",$data2[1],$data2[4],$data2[2],$data2[3]);
@@ -555,7 +555,6 @@
 			<div class="p-4">
 				<address></address>
 			</div>
-			
 			
 			<script>
 				$.datepicker.regional[ "eng" ] = {
@@ -673,14 +672,14 @@
 			<script>
 				/*Function to show or hide the transfer form*/
 				$('#trans').click(function(){
-					$("#transfer").toggle();
+					$("#transfer").toggle("1000");
 				});
 			</script>
 			
 			<script>
 				/*Function to show or hide the register production form*/
 				$('#produce').click(function(){
-					$("#production").toggle();
+					$("#production").toggle("1000");
 				});
 			</script>
 	
