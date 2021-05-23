@@ -19,7 +19,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<!--<Link rel="stylesheet" href="CSS.css">-->
-		<Link rel="stylesheet" href="css//account_CSS.css">
+		<Link rel="stylesheet" href="css/index_CSS.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
 			h1 {
@@ -31,10 +31,10 @@
 		</style>
 		
 	</head>
-	<body class="bg-dark">
+	<body>
 		<ul class="sidenav">
 			<li>
-				<h1 class="text-warning Center">ERLETE</h1>
+				<h1 class="Center">ERLETE</h1>
 			</li>
 			<li>
 				<a class="Center" href="index.php">HOME</a>
@@ -92,8 +92,8 @@
 				}
 			?>	
 		</ul>
-		<div class="content Center text-warning">
-			<h1 style="margin-top:7%">LATEST DISCUSSIONS</h1>
+		<div class="content Center">
+			<h1 style="margin-top:7%">LATEST DISCUSSIONS</h1><br>
 
 			<?php			
 			include("test_connect_db.php");
@@ -103,15 +103,17 @@
 			?>
 					<?php
 						while($data=mysqli_fetch_array($result)){
-							printf("<div class='row RBY'>
-										<div class='col-sm-2 Center'><img style='width:40px;border-radius:5em'src='%s'></div>
-										<div class='col-sm-2 Center'>%s</div>
-										<div class='col-sm-2 Center'>%s</div>
-										<div class='col-sm-4 Center'>%s</div>
+							printf("
+								<div class='columns'>
+									<div class='forumR'>
+									<img style='width:40px;border-radius:5em'src='%s'>
+										<span> %s </span> 
+										<span> %s </span> 
+										<span> %s </span> 
 									</div>
-									<div class='row RB'>
-										<div class='col-md-12'>%s</div>
-									</div>",$data[14],$data['name'],$data['surname'],$data['comment_date'],$data['message']);
+									<div class='forumL'>%s
+									</div>
+								</div>",$data[14],$data['name'],$data['surname'],$data['comment_date'],$data['message']);
 							}
 					?>
 
@@ -124,20 +126,20 @@
 				<div class="row">
 					<textarea maxlength="255" class="rounded-0" class="Center" rows="10" required="required" name='txt'></textarea>
 				</div>
-				<input type="submit">
+				<input type="submit" value="POST COMMENT" class="BRB">
 			</form>
 			<?php
 			}else{
 				?>
 				<?php
-				printf("<br><a class='BRBY' href='login.php'>Login to comment</a>")
+				printf("<br><a class='BRB' href='login.php'>Login to comment</a>")
 				?>
 			<?php
 			}
 			?>
 			
 		</div>
-		<div class="bg-dark p-4">
+		<div class="p-4">
 			<address></address>
 		</div>
 	</body>

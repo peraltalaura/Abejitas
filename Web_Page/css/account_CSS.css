@@ -1,6 +1,8 @@
 /*start of responsive navigation var*/
 body {
 	margin: 0;
+	background: url(../images/honey2.jpg) repeat center;
+	color:rgb(255, 255, 255,0.8);
 }
 
 ul.sidenav {
@@ -23,9 +25,9 @@ ul.sidenav li a {
 }
 
 ul.sidenav li a.active {
-	background:rgb(255, 204, 0);
+	background:	rgb(255, 255, 255);
 	color:black;
-	box-shadow: 0vw 0vw 1vw 0vw rgb(255, 204, 0);  
+	box-shadow: 0vw 0vw 1vw 0vw rgb(255, 255, 255);;  
 }
 
 ul.sidenav li a:hover:not(.active) {
@@ -163,11 +165,14 @@ a:hover{
 	color:rgb(255, 204, 0);
 }
 .BRB,button {
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);
 	border-radius:5em;
-	padding:1em;
-	box-shadow:0em 0em 2em 0em rgb(0,0,0,0.5);
-	color:rgb(255, 204, 0);
+	padding:1em 2em 1em 2em;
+	background:rgb(0,0,0,0.5);
+	transition:box-shadow 0.2s linear, font-size 0.2s linear;
+	color:rgb(255, 255, 255);
 }
+
 .RBY  {
 	border-radius:5em;
 	padding:1em 0.5em 0.5em 0.5em;
@@ -250,16 +255,16 @@ input[type='submit'] {
 	border-radius:5vw;
 	border:none;
 	outline:none;
-	box-shadow: 0em 0em 0.5em 0em rgb(255, 204, 0);  
-	background-image:linear-gradient(rgb(255, 204, 0,0.5),rgb(255, 204, 0),rgb(255, 204, 0,0.5));  
-	color:black;
+	background:rgb(0,0,0,0.3);
+	box-shadow: 0em 0em 0.5em 0em rgb(255, 255, 255,0.3);  
+	color:rgb(255, 255, 255);
 	width:auto;
 	margin:1em 0.5em 0em 0.5em;
 	transition:box-shadow 0.4s linear;
 }
 input[type='submit']:hover{
-	font-weight:bolder;
-	box-shadow: 0em 0em 1em 0em rgb(255, 204, 0);  
+box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);
+	background:rgb(0,0,0,0.3); 
 }
 /*Modify data end*/
 
@@ -282,18 +287,3 @@ input[type='submit']:hover{
 
 /*End of select style*/
 
-/*calendar CSS*/
-.fc-event-title-container{
-	background-color:rgb(255, 204, 0);
-	color:black;
-	text-align: center;
-}
-
-#calendar {
-	width:75%;
-	margin:0 auto;
-	border:rgb(255, 204, 0);
-}
-.fc-daygrid-day-number, .fc-col-header-cell-cushion  {
-	color:rgb(255, 204, 0);
-}

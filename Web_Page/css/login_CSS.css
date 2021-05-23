@@ -1,22 +1,36 @@
 /*start of responsive navigation var*/
 body{
+	margin:2%;
+	background: url(../images/honeyBGSM.jpg) repeat center;
 	font-size: calc(0.5em + 0.6vw);
 	line-height: 2.2em;
-	margin:3% 30% 5% 30%;
+	color:rgb(255, 255, 255);
 }
 h1 {
 	font-size: calc(2em + 0.6vw);
+		margin-top:1em;
 }
 h2 {
 	font-size: calc(1em + 0.6vw); 
-	margin-top:1vw;
 	padding:1em 0em 1em 0em;
 }
-a:hover{
-	box-shadow:0em 0em 2em 0em rgb(0,0,0);
-	font-size: calc(0.7em + 0.5vw);
+
+.RB {
+	border-radius:2em;
+	padding:2em;
+	margin:4em 2em 2em 2em;
+	text-align:justify;
+	width:35%;
+	box-shadow:0em 0em 2em 0em rgb(0, 0, 0,0.5);
+	background-color: rgb(0, 0, 0,0.5);
+	color:rgb(255, 255, 255);
+}
+a:hover, input[type='submit']:hover{
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);
+
+	font-size: calc(0.6em + 0.5vw);
+	color:rgb(255, 255, 255);
 	transition:box-shadow 0.4s linear, font-size 0.4s;
-	color:rgb(255, 204, 0);
 	text-decoration: none;
 }
 input{
@@ -25,7 +39,7 @@ input{
 /*Small devices like mobile phones*/
 @media screen and (max-width: 900px) {
 	
-	h1 {
+h1 {
 	font-size: calc(2em + 0.5vw);
 }
 h2 {
@@ -33,20 +47,21 @@ h2 {
 	margin-top:1em;
 	padding:0em 0em 0.5em 0em;
 }
+.RB {
+	width: 70%;
+}
 body{
-	font-size: calc(0.7em + 0.5vw);
+	font-size: calc(0.7em + 1vw);
 	line-height: 2em;
-	margin:5% 8% 5% 8%;
+	margin:0;
 }
-input{
-	width:80%;
-}
-a:hover{
-	box-shadow:0em 0em 2em 0em rgb(0,0,0);
+
+a:hover, input[type='submit']:hover{
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);
 	font-size: calc(0.8em + 1vw);
 	transition:box-shadow 0.4s linear, font-size 0.4s;
-	color:rgb(255, 204, 0);
 	text-decoration: none;
+	color:rgb(255, 255, 255);
 }
 
 }
@@ -61,104 +76,46 @@ a:hover{
 	align-items: center;  
 	text-align:center;
 }
-.RB {
-	border-radius:2em;
-	padding:1em;
-	margin:2em;
-	text-align:justify;
-	width:75%;
-	box-shadow:0em 0em 1em 0em rgb(255, 204, 0,0.2);
-}
 
-.RBY  {
-	border-radius:5em;
-	padding:0.5em;
-	margin:0.5em;
-	text-align:justify;
-	box-shadow:0em 0em 2em 0em rgb(0, 0, 0,0.1);
-	background:rgb(255, 204, 0);
-	color:black;
-	width:75%;
-}
+
 .BRB {
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);
 	border-radius:5em;
 	padding:1em 2em 1em 2em;
-	box-shadow:0em 0em 2em 0em rgb(0,0,0,0.5);
-	color:rgb(255, 204, 0);
-	transition:box-shadow 0.4s linear, font-size 0.4s
+	background:rgb(0,0,0,0.5);
+	transition:box-shadow 0.2s linear, font-size 0.2s linear;
+	color:rgb(255, 255, 255);
 
-}
-
-.BRBY {
-	border-radius:5em;
-	padding:1em 2em 1em 2em;
-	color:black;
-	box-shadow:0em 0em 2em 0em rgb(255, 204, 0,0.3);
-	background:rgb(255, 204, 0);
-	transition:box-shadow 0.4s linear, font-size 0.4s;
-}
-.BRBY:hover{
-	
 }
 
 /*Start of login form*/
-input[type="email"],input[type="password"]  {
-	border-radius:5vw;
-	border:none;
-	outline:none;
-	background:linear-gradient(rgb(255, 204, 0,0.1),rgb(255, 204, 0,0.3),rgb(255, 204, 0,0.5),rgb(255, 204, 0,0.7),rgb(255, 204, 0),rgb(255, 204, 0,0.7),rgb(255, 204, 0,0.5),rgb(255, 204, 0,0.3),rgb(255, 204, 0,0.1));  
-	color:black;
-	text-align:center;
-	margin: 0 auto;
-	padding:0.5em;
-}
-
-input[type="text"]{
+ input[type="email"], input[type="password"] {
 	border-radius:5vw;
 	border:none;
 	outline:none;
 	background:linear-gradient(rgb(0, 0, 0,0.1),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.7),rgb(0, 0, 0),rgb(0, 0, 0,0.7),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.1));  
-	color:rgb(255, 204, 0);
+	color:rgb(255, 255, 255);
+	padding:1vw;
 	text-align:center;
 	transition:box-shadow 0.4s linear; 
 }
-{
-	box-shadow:0vw 0vw 1vw 0vw rgb(0, 0, 0.4);
-}
-input[type="password"]:focus,input[type="email"]:focus{
-	transition:box-shadow 0.8s;
-	box-shadow: 0em 0em 1em 0em black; 
+input[type="password"]:focus,input[type="email"]:focus, input:hover{
+	box-shadow:0vw 0vw 1vw 0vw rgb(255, 255,255, 0.4);
 }
 input[type='submit'] {
 	border-radius:5vw;
 	border:none;
 	outline:none;
-	box-shadow: 0em 0em 0.5em 0em rgb(255, 204, 0);  
-	background-image:linear-gradient(rgb(255, 204, 0,0.5),rgb(255, 204, 0),rgb(255, 204, 0,0.5));  
-	color:black;
-	padding:1vw 2vw 1vw 2vw;
+	background:rgb(0,0,0,0.3);
+	box-shadow: 0em 0em 0.5em 0em rgb(255, 255, 255,0.3);  
+	color:rgb(255, 255, 255);
 	width:auto;
+	margin:1em 0.5em 0em 0.5em;
+	transition:box-shadow 0.4s linear;
 }
 input[type='submit']:hover{
-	font-weight:bolder;
-	box-shadow: 0em 0em 1em 0em rgb(255, 204, 0);  
+box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);
+	background:rgb(0,0,0,0.3); 
 }
-/*End of login form*/
 
-/*Start of Forum*/
-textarea{
-	width:30em;
-	margin:auto;
-	height: 10em;
-	border-radius:5em;
-	border:none;
-	outline:none;
-	background:linear-gradient(rgb(0, 0, 0,0.1),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.6),rgb(0, 0, 0,0.7),rgb(0, 0, 0,0.6),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.1));  
-	color:rgb(255, 204, 0);
-	text-align:center;
-	transition:box-shadow 0.4s linear; 
-}
-textarea:focus {
-	box-shadow: 0em 0em 0.5em 0em rgb(255, 204, 0,0.5);  
-}
-/*End of Forum*/
+/*End of login form*/

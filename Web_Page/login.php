@@ -17,45 +17,49 @@
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<Link rel="stylesheet" href="css//login_CSS.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<Link rel="stylesheet" href="css/login_CSS.css">
 		<style>
 			h1 {
 			font-family: 'Dancing Script', cursive;
 			}
 			body {
 			font-family: 'Lato', sans-serif;
+			
 			}
 		</style>
 	</head>
-	<body class="bg-warning Center">
+	<body class="Center">
+
 					<?php 
 		if(isset($_GET['incorrect'])){
 					if($_GET['incorrect']=='yes'){
-						printf("<div class='container Center bg-dark text-warning RB'>The email or account don't match</div>");
+						printf("<div class='container Center RB'>The email or account don't match</div>");
 						} else if($_GET['incorrect']=='disable'){
-						printf("<div class='container Center bg-dark text-warning RB'>Your account is disabled</div>");
+						printf("<div class='container Center RB'>Your account is disabled</div>");
 					}
 				}
 				
 				if(isset($_GET['found'])){
-					printf("<div class='container Center text-warning bg-dark RB'>Email not found</div>");
+					printf("<div class='container Center RB'>Email not found</div>");
 					
 				}
 			?>
-			<div class="Center bg-dark text-warning RB pt-4 pb-4">
-				<h1>LOGIN</h1>
+			<div class="Center RB pt-4 pb-4">
+				<h1>SIGN IN</h1>
+				<br>
 				<form class="form-group form-group-sm Center" action="search_users.php" method="post">
 					<LABEL>E-MAIL:</LABEL>
-					<input class="mb-2" required="required" type="email" name="mail">
+					<input class="mb-2" required="required" type="email" name="mail" autocomplete="no">
 					<LABEL>PASSWORD:</LABEL>
-					<input type="password" required="required" name="password"><br>
+					<input type="password" required="required" name="password" autocomplete="no"><br>
 					<input class="BRB" type="submit" value="LOGIN">
+					<br>
 				</form>
 				<b>You don't have an account?</b><a class="mt-4 mb-4 BRB" href="contact.php"> Contact us</a>
+				<a href="index.php" class="BRB">RETURN</a>
+				<br>	
 			</div>	
-	
-			<a href="index.php" class="BRB bg-dark">RETURN</a>		
 			</body>
 		</html>	
 				

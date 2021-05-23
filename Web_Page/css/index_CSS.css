@@ -1,6 +1,8 @@
 /*start of responsive navigation var*/
 body {
 	margin: 0;
+	background: url(../images/honeyBGSM.jpg) repeat center;
+	color:rgb(255, 255, 255);
 }
 
 ul.sidenav {
@@ -12,42 +14,45 @@ ul.sidenav {
 	height: 100%;
 	overflow: auto;
 	box-shadow:0em 0em 2em 0em rgb(0,0,0,0.5);
+	background:rgb(0, 0, 0,0.5);
 }
-
-ul.sidenav li a {
+#accountNav {
+	list-style-type:none;
+	padding:0;
+	width:80%;
+	margin:auto;
+}
+ul.sidenav li a, ul#accountNav li a{
 	display: block;
-	color: rgb(255, 204, 0);
 	padding: 0.7em;
 	text-decoration: none;
-	font-size: calc(0.8em + 0.6vw);
-}
-
-ul.sidenav li a.active {
-	background:rgb(255, 204, 0);
-	color:black;
-	box-shadow: 0vw 0vw 1vw 0vw rgb(255, 204, 0);  
-}
-
-ul.sidenav li a:hover:not(.active) {
-	background-color: rgb(255, 204, 0);
-	color: black;
-	box-shadow: 0vw 0vw 1vw 0vw rgb(255, 204, 0);  
-	font-size: calc(0.9em + 0.6vw);
+	font-size: calc(0.6em + 0.6vw);
+	color:rgb(255, 255, 255,0.5);
 	transition:font-size 0.4s linear;
+}
+
+ul.sidenav li a.active{
+	color:rgb(255, 255, 255);
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.8);  
+	background-color: rgb(0, 0, 0,0.3);
+}
+ul#accountNav li a.active {
+	color:rgb(255, 255, 255);
+	background-color: rgb(0, 0, 0,0.3);
+}
+
+ul.sidenav li a:hover:not(.active), ul#accountNav li a:hover:not(.active) {
+	color:rgb(255, 255, 255);
+	font-size: calc(0.7em + 0.6vw);
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.4); 
 }
 
 div.content {
 	margin-left:20%;
-	font-size: calc(0.5em + 0.6vw);
+	font-size: calc(0.4em + 0.6vw);
 	line-height: 2.2em;
 }
 
-#title {
-	width:100%;
-	text-shadow: 0.1em 0.1em 0.1em black;
-	padding: 1.5em  0.5em;
-	margin: 0em 1em 2em 1em;
-}
 h1 {
 	font-size: calc(3em + 0.6vw);
 }
@@ -56,53 +61,113 @@ h2 {
 	margin-top:1vw;
 	padding:1em 0em 1em 0em;
 }
-a:hover{
-	box-shadow:0em 0em 2em 0em rgb(0,0,0);
-	font-size: calc(0.7em + 0.5vw);
-	transition:box-shadow 0.4s linear, font-size 0.4s;
-	color:rgb(255, 204, 0);
+a:hover, input[type='submit']:hover{
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);  
+	font-size: calc(0.5em + 0.6vw);
+	color:rgb(255, 255, 255,0.5);
 	text-decoration: none;
+}
+.rows {
+	margin: 1em;
+	padding:1em 5em 1em 5em;
+	display:flex;
+	flex-direction: row;
+	width: 100%;
+	  align-items: center;
+  justify-content: center;
+  	color:rgb(255, 255, 255,0.7);
+	box-shadow:0em 0em 2em 0em rgb(0, 0, 0,0.5);
+	background-color: rgb(0, 0, 0,0.8);
+	text-align: center;
+
+}
+.row {
+	flex: 15%;
+}
+.booking:hover{
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);  
+}
+.columns{
+	display:flex;
+	flex-direction: row;
+	width: 100%;
+	text-align: justify;
+}
+
+.forumR {
+	border-radius:5em 0em 0em 5em;
+	padding:1em;
+	margin:1em;
+	color:rgb(255, 255, 255,0.7);
+	box-shadow:0em 0em 2em 0em rgb(0, 0, 0,0.5);
+	background-color: rgb(0, 0, 0,0.8);
+}
+.forumL {
+	border-radius:0em 5em 5em 0em;
+	padding:1em;
+	margin:1em;
+	color:rgb(255, 255, 255,0.7);
+	box-shadow:0em 0em 2em 0em rgb(0, 0, 0,0.5);
+	background-color: rgb(0, 0, 0,0.8);
+	flex:2;
 }
 /*Small devices like mobile phones*/
 @media screen and (max-width: 900px) {
-	ul.sidenav {
+	ul.sidenav, ul#accountNav {
 		width: 100%;
 		height: auto;
 		position: relative;
 	}
 	
-	ul.sidenav li a {
+	ul.sidenav li a,ul#accountNav li a {
 		float: left;
 		padding: 1em;
-
-
+		font-size:calc(0.5em + 1vw);
 	}
-	
+	ul.sidenav li a:hover:not(.active), ul#accountNav li a:hover:not(.active) {
+	color:rgb(255, 255, 255);
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.4); 
+
+}
 	div.content {
 		margin-left: 0;
-		font-size: calc(0.7em + 1vw);
+		font-size: calc(0.5em + 1vw);
 		line-height: 2em;
 	}
 	h1 {
-	font-size: calc(4.2em + 1vw);
+		font-size: calc(4.2em + 1vw);
+	}
+	h2 {
+		font-size: calc(1em + 1vw); 
+		margin-top:1em;
+		padding:0em 0em 0.5em 0em;
+	}
+	a:hover,input[type='submit']:hover{
+		box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);  
+		font-size: calc(0.6em + 1vw);
+		color:rgb(255, 255, 255,0.5);
+		text-decoration: none;
+	}
+.columns{
+	display:flex;
+	flex-direction: column;
+	width: 100%;
+	text-align: justify;
 }
-h2 {
-	font-size: calc(1em + 1vw); 
-	margin-top:1em;
-	padding:0em 0em 0.5em 0em;
-}
-a:hover{
-	box-shadow:0em 0em 2em 0em rgb(0,0,0);
-	font-size: calc(0.8em + 1vw);
-	transition:box-shadow 0.4s linear, font-size 0.4s;
-	color:rgb(255, 204, 0);
-	text-decoration: none;
-}
+.forumR {
+	margin:2em 1em 1em 1em;
+	border-radius:2em 2em 0em 0em;
 
+}
+.forumL {
+	margin:0em 1em 2em 1em;
+	border-radius:0em 0em 2em 2em;
+
+}
 }
 
 @media screen and (max-width: 400px) {
-	ul.sidenav li a {
+	ul.sidenav li a, ul#accountNav li a {
 		text-align: center;
 		float: none;
 
@@ -124,21 +189,85 @@ a:hover{
 }
 .RB {
 	border-radius:2em;
-	padding:0em 2em 2em 2em;
-	margin:3em;
+	padding:2em;
+	margin:2em;
 	text-align:justify;
-	width:75%;
-	box-shadow:0em 0em 2em 0em rgb(0,0,0,0.5);
+	color:rgb(255, 255, 255,0.7);
+	box-shadow:0em 0em 2em 0em rgb(0, 0, 0,0.5);
+	background-color: rgb(0, 0, 0,0.8);
 }
 .BRB {
 	border-radius:5em;
-	padding:1em;
-	margin:1em;
-	box-shadow:0em 0em 2em 0em rgb(0,0,0,0.5);
-	color:rgb(255, 204, 0);
+	padding:1em 2em 1em 2em;
+	box-shadow:0em 0em 2em 0em rgb(0,0,0);
+	background:rgb(0,0,0,0.5);
+	color:rgb(255, 255, 255,0.5);
+	transition:box-shadow 0.2s linear, font-size 0.2s linear;
 }
 
+/*Start of Forum*/
+input[type='submit'] {
+	border:none;
+	outline:none;
+	border-radius:5em;
+	padding:1em 2em 1em 2em;
+	box-shadow:0em 0em 2em 0em rgb(0,0,0);
+	background:rgb(0,0,0,0.3);
+	transition:box-shadow 0.2s linear, font-size 0.2s linear;
+}
+textarea{
+	width:30em;
+	margin:auto;
+	margin-bottom: 2em;
+	height: 10em;
+	border-radius:5em;
+	border:none;
+	outline:none;
+	background:linear-gradient(rgb(0, 0, 0,0.1),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.6),rgb(0, 0, 0,0.7),rgb(0, 0, 0,0.6),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.1));  
+	color:rgb(255, 255,255);
+	text-align:center;
+	transition:box-shadow 0.4s linear; 
+}
+textarea:focus {
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.7);  
+}
+/*End of Forum*/
+/*calendar CSS*/
+.fc-event-title-container{
+	background-color: rgb(0, 0, 0);
+	text-align: center;
+}
 
+#calendar {
+	width:75%;
+	margin:0 auto;
+	border:rgb(255, 255, 255);
+	background-color: rgb(0, 0, 0,0.8);
+}
+.fc-daygrid-day-number, .fc-col-header-cell-cushion  {
+color:rgb(255, 255, 255,0.7);
+}
+/*End calendar
 
+/*Start of login form*/
+input[type="email"],input[type="password"], input[type="text"], input[type="number"], input[type='tel']  {
+	border-radius:5vw;
+	border:none;
+	outline:none;
+	background:linear-gradient(rgb(0, 0, 0,0.1),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.7),rgb(0, 0, 0),rgb(0, 0, 0,0.7),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.1));  
+	color:rgb(255, 255, 255);
+	padding:1vw;
+	text-align:center;
+	transition:box-shadow 0.4s linear; 
+}
 
+input[type="password"]:focus,input[type="email"]:focus,input[type="text"]:focus, input[type="number"]:focus, input[type='tel']:focus {
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);
+	background:rgb(0,0,0,0.3);
+}
+input:hover {
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);
+	background:rgb(0,0,0,0.3);
+}
 
+/*End of login form*/
