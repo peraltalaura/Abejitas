@@ -21,9 +21,9 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
-import java.math.BigInteger; 
-import java.security.MessageDigest; 
-import java.security.NoSuchAlgorithmException; 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 //import java.util.Date;
 
 /**
@@ -100,7 +100,7 @@ public class Management {
 
                     Metalbin m = new Metalbin(rs.getInt("metalbin_id"), rs.getInt("name"), rs.getBoolean("available"), rs.getDate("available_date"));
                     dataList.add(m);
-                    dataList.add(m);//aki luego abra k añadir con INSERT INTO metalbin (available_date) VALUES (?) WHERE metalbin_id = ?
+                    dataList.add(m);
 
                 } else if (table.equals("production")) {
                     Timestamp d = rs.getTimestamp("production_date");
@@ -111,19 +111,6 @@ public class Management {
 
                     Production p = new Production(rs.getInt("production_id"), (float) rs.getInt("kilos"), (float) rs.getInt("total"), rs.getInt("booking_id"), rs.getInt("metalbin_id"), date);
                     dataList.add(p);
-//                } else if (table.equals("booking_1")) {
-//                    Timestamp edate = rs.getTimestamp("entrydate");
-//                    Timestamp exdate = rs.getTimestamp("exitdate");
-//                    LocalDateTime entry_date = Instant
-//                            .ofEpochMilli(edate.getTime())
-//                            .atZone(ZoneId.systemDefault())
-//                            .toLocalDateTime();
-//                    LocalDateTime exit_date = Instant
-//                            .ofEpochMilli(exdate.getTime())
-//                            .atZone(ZoneId.systemDefault())
-//                            .toLocalDateTime();
-//                    LocalDateTime datak[] = {entry_date, exit_date};
-//                    dataList.add(datak);
 
                 } else if (table.equals("inventory")) {
                     Inventory in = new Inventory(rs.getInt("Item_Id"), rs.getString("model"), rs.getString("comment"));
@@ -165,7 +152,6 @@ public class Management {
         String img = "";
         String usrpass = newMember.getPassword();
         String sql = "INSERT INTO member(email, name, surname, password, city, postcode, address, phone, active) VALUES (?,?,?,?,?,?,?,?,?)";
-        //LocalDateTime data = newMember.getDate; falta por crear birthday
         if (usrpass.toCharArray()[0] == '1' && usrpass.toCharArray()[1] == '2' && usrpass.toCharArray()[2] == '3') { //if the new member has only name, surname, email and password
             try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql);) {
 
@@ -175,7 +161,7 @@ public class Management {
                 pstmt.setString(4, encryptThisString(newMember.getPassword()));
                 pstmt.setString(5, "");
                 pstmt.setInt(6, 0);
-                pstmt.setString(7,"");
+                pstmt.setString(7, "");
                 pstmt.setInt(8, 0);
                 pstmt.setBoolean(9, false);
                 pstmt.executeUpdate();
@@ -187,30 +173,29 @@ public class Management {
 
             }
 
-        }else{
+        } else {
             try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql);) {
 
-            pstmt.setString(1, newMember.getEmail());
-            pstmt.setString(2, newMember.getName());
-            pstmt.setString(3, newMember.getSurname());
-            pstmt.setString(4, encryptThisString(newMember.getPassword()));
-            pstmt.setString(5, newMember.getCity());
-            pstmt.setInt(6, newMember.getPostCode());
-            pstmt.setString(7, newMember.getAddress());
-            pstmt.setInt(8, newMember.getPhone());
-            pstmt.setBoolean(9, newMember.isActive());
-            pstmt.executeUpdate();
+                pstmt.setString(1, newMember.getEmail());
+                pstmt.setString(2, newMember.getName());
+                pstmt.setString(3, newMember.getSurname());
+                pstmt.setString(4, encryptThisString(newMember.getPassword()));
+                pstmt.setString(5, newMember.getCity());
+                pstmt.setInt(6, newMember.getPostCode());
+                pstmt.setString(7, newMember.getAddress());
+                pstmt.setInt(8, newMember.getPhone());
+                pstmt.setBoolean(9, newMember.isActive());
+                pstmt.executeUpdate();
 
-            done = true;
-        } catch (SQLException e) {
-            System.out.println("fail on insert");
-            System.out.println(e.getMessage());
+                done = true;
+            } catch (SQLException e) {
+                System.out.println("fail on insert");
+                System.out.println(e.getMessage());
+
+            }
 
         }
 
-        }
-
-        
         return done;
     }
 
@@ -399,40 +384,39 @@ public class Management {
 
         return done;
     }
+
     /**
      * Encryption method (SHA250). Takes a String and returns it encrypted
+     *
      * @param input
-     * @return 
+     * @return
      */
-     public static String encryptThisString(String input) 
-    { 
-        try { 
+    public static String encryptThisString(String input) {
+        try {
             // getInstance() method is called with algorithm SHA-512 
-            MessageDigest md = MessageDigest.getInstance("SHA-512"); 
-  
+            MessageDigest md = MessageDigest.getInstance("SHA-512");
+
             // digest() method is called 
             // to calculate message digest of the input string 
             // returned as array of byte 
-            byte[] messageDigest = md.digest(input.getBytes()); 
-  
+            byte[] messageDigest = md.digest(input.getBytes());
+
             // Convert byte array into signum representation 
-            BigInteger no = new BigInteger(1, messageDigest); 
-  
+            BigInteger no = new BigInteger(1, messageDigest);
+
             // Convert message digest into hex value 
-            String hashtext = no.toString(16); 
-  
+            String hashtext = no.toString(16);
+
             // Add preceding 0s to make it 32 bit 
-            while (hashtext.length() < 32) { 
-                hashtext = "0" + hashtext; 
-            } 
-  
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+
             // return the HashText 
-            return hashtext; 
-        } 
-  
-        // For specifying wrong message digest algorithms 
-        catch (NoSuchAlgorithmException e) { 
-            throw new RuntimeException(e); 
-        } 
-    } 
+            return hashtext;
+        } // For specifying wrong message digest algorithms 
+        catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

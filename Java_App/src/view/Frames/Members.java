@@ -44,7 +44,6 @@ public class Members extends javax.swing.JFrame {
         jTextFieldCity = new javax.swing.JTextField();
         jTextFieldAdress = new javax.swing.JTextField();
         jTextFieldPhone = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         memberjTable = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
@@ -77,7 +76,7 @@ public class Members extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("ERLETE");
+        jLabel3.setText("MEMBERS");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 846, 55));
 
         jTextFieldPostcode.setForeground(new java.awt.Color(255, 255, 255));
@@ -92,15 +91,10 @@ public class Members extends javax.swing.JFrame {
         jTextFieldPhone.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jTextFieldPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 564, 138, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("MEMBERS:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 87, -1, -1));
-
         memberjTable.setModel(new MembersTable());
         jScrollPane1.setViewportView(memberjTable);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 87, -1, 262));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 87, 830, 262));
 
         jLabel6.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -170,7 +164,7 @@ public class Members extends javax.swing.JFrame {
         jButtonActivate.setGradientLineColor(java.awt.Color.green);
         jButtonActivate.setLinePainted(true);
         jButtonActivate.setRounded(true);
-        getContentPane().add(jButtonActivate, new org.netbeans.lib.awtextra.AbsoluteConstraints(589, 135, 96, 28));
+        getContentPane().add(jButtonActivate, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 360, 96, 28));
 
         jButtonInsertMember.setBorder(null);
         jButtonInsertMember.setForeground(new java.awt.Color(255, 255, 255));
@@ -200,7 +194,7 @@ public class Members extends javax.swing.JFrame {
         jButtonDisable.setGradientLineColor(new java.awt.Color(255, 0, 0));
         jButtonDisable.setLinePainted(true);
         jButtonDisable.setRounded(true);
-        getContentPane().add(jButtonDisable, new org.netbeans.lib.awtextra.AbsoluteConstraints(589, 169, 96, 26));
+        getContentPane().add(jButtonDisable, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 360, 96, 26));
 
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setText("(required:)");
@@ -285,7 +279,6 @@ public class Members extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

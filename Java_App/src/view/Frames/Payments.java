@@ -39,7 +39,6 @@ public class Payments extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTablePayments = new javax.swing.JTable();
@@ -63,13 +62,8 @@ public class Payments extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("ERLETE");
+        jLabel1.setText("PAYMENTS");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 1006, 55));
-
-        jLabel3.setFont(new java.awt.Font("Segoe Script", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("PAYMENTS");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 104, 139, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
@@ -85,15 +79,15 @@ public class Payments extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("ADD PAYMENT:");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(614, 145, -1, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 140, -1, -1));
 
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Description of the payment:");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(665, 209, -1, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 210, -1, -1));
 
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("total:");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(773, 235, -1, -1));
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 230, -1, -1));
 
         jTextFieldPDescription.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jTextFieldPDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(809, 206, 124, -1));
@@ -108,7 +102,7 @@ public class Payments extends javax.swing.JFrame {
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Enter a member ID:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(705, 332, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 330, -1, -1));
 
         jTextFieldID.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jTextFieldID, new org.netbeans.lib.awtextra.AbsoluteConstraints(809, 329, 144, -1));
@@ -214,7 +208,6 @@ public static Payments createPayments() {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane2;

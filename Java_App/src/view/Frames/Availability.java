@@ -5,7 +5,6 @@
  */
 package view.Frames;
 
-import controllers.*;
 import java.awt.Color;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -39,6 +38,7 @@ public class Availability extends javax.swing.JFrame {
         this.jTableBookings.setOpaque(false);
         ((DefaultTableCellRenderer) this.jTableBookings.getDefaultRenderer(Object.class)).setOpaque(false);
         this.jScrollPane2.getViewport().setOpaque(false);
+        
     }
 
     /**

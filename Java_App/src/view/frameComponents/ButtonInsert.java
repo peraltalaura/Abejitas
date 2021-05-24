@@ -178,6 +178,7 @@ public class ButtonInsert extends JButton implements MouseListener {
         this.setLineColor(Color.green);
         this.setGradientLineColor(Color.black);
         
+        
         //this.setBackground((Color.red).brighter());
     }
 

@@ -27,10 +27,6 @@ import model.mainclass.Member;
 import model.Management;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.io.File;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -39,12 +35,6 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 /**
  *
@@ -112,7 +102,7 @@ public class HomeController implements ActionListener {
         inventoryActionListener(this);
         paymentActionListener(this);
         commentActionListener(this);
-        commentActionListener(this);
+        
 
     }
 
@@ -200,23 +190,20 @@ public class HomeController implements ActionListener {
             break;
             //when the activate button is clicked it puts the data from the textfields into a Member object and calls the insertMember()function to add a member to the database
             case "SUBMIT":
-//                System.out.println(members.jButtonInsertMember.getActionListeners().length);
-//                
-//                members.jButtonInsertMember.removeActionListener(members.jButtonInsertMember.getActionListeners()[1]);
-//                System.out.println(members.jButtonInsertMember.getActionListeners().length);
-                boolean troll = false;
+
+                boolean fail_1 = false;
 
                 if (!members.jTextFieldName.getText().isEmpty() && !members.jTextFieldSurname.getText().isEmpty() && !members.jTextFieldEmail.getText().isEmpty()) {
                     //name comprobation
                     for (char c : members.jTextFieldName.getText().toCharArray()) {
                         if (!Character.isLetterOrDigit(c)) {
-                            troll = true;
+                            fail_1 = true;
                         }
                     }
                     //surname comprobation
                     for (char c : members.jTextFieldSurname.getText().toCharArray()) {
                         if (!Character.isLetter(c)) {
-                            troll = true;
+                            fail_1 = true;
                         }
 
                     }
@@ -231,12 +218,12 @@ public class HomeController implements ActionListener {
 
                         }
                         if (isarroba == false) {
-                            troll = true;
+                            fail_1 = true;
                         }
 
                     }
                     //simple insert of member
-                    if (troll == false) {
+                    if (fail_1 == false) {
                         if (members.jTextFieldPassword.getText().equals("")) {
                             String unformatted_date = "25/12/1999";
                             try {
@@ -259,33 +246,33 @@ public class HomeController implements ActionListener {
                             //adress comprobation
                             for (char c : members.jTextFieldAdress.getText().toCharArray()) {
                                 if (!Character.isLetter(c)) {
-                                    troll = true;
+                                    fail_1 = true;
                                 }
                             }
                             //city comprobation
                             for (char c : members.jTextFieldCity.getText().toCharArray()) {
                                 if (!Character.isLetter(c)) {
-                                    troll = true;
+                                    fail_1 = true;
                                 }
                             }
                             //
                             for (char c : members.jTextFieldPassword.getText().toCharArray()) {
                                 if (!Character.isLetter(c)) {
-                                    troll = true;
+                                    fail_1 = true;
                                 }
                             }
                             for (char c : members.jTextFieldPhone.getText().toCharArray()) {
                                 if (!Character.isDigit(c)) {
-                                    troll = true;
+                                    fail_1 = true;
                                 }
                             }
                             for (char c : members.jTextFieldPostcode.getText().toCharArray()) {
                                 if (!Character.isDigit(c)) {
-                                    troll = true;
+                                    fail_1 = true;
                                 }
                             }
                             //complete member adding
-                            if (troll == false) {
+                            if (fail_1 == false) {
                                 String unformatted_date = members.jTextFieldBirthday.getText();
                                 try {
                                     Date date = new SimpleDateFormat("dd/MM/yyyy").parse(unformatted_date);
@@ -342,26 +329,26 @@ public class HomeController implements ActionListener {
                     members.jTextFieldPostcode.setText("");
 
                 }
-                System.out.println("eouu");
+                
                 break;
 
             //when it is clicked it takes the description and import and registers a new payment on the database
             case "PAY":
-                boolean troll1 = false;
+                boolean fail_2 = false;
                 if (payments.jTextFieldPDescription.getText().isEmpty() || payments.jTextFieldPTotal.getText().isEmpty()) {
-                    troll1 = true;
+                    fail_2 = true;
                 }
                 for (char c : payments.jTextFieldPDescription.getText().toCharArray()) {
                     if (!Character.isLetter(c)) {
-                        troll1 = true;
+                        fail_2 = true;
                     }
                 }
                 for (char c : payments.jTextFieldPTotal.getText().toCharArray()) {
                     if (!Character.isDigit(c)) {
-                        troll1 = true;
+                        fail_2 = true;
                     }
                 }
-                if (troll1 == false) {
+                if (fail_2 == false) {
                     try {
                         String description = payments.jTextFieldPDescription.getText();
                         LocalDateTime now = LocalDateTime.now();
@@ -383,19 +370,19 @@ public class HomeController implements ActionListener {
 
             //when it is clicked it displays the payments depending on the id introduced
             case "SEARCH":
-                boolean troll3 = false;
+                boolean fail_3 = false;
                 if (payments.jTextFieldID.getText().isEmpty()) {
-                    troll3 = true;
+                    fail_3 = true;
                 } else {
                     for (char x : payments.jTextFieldID.getText().toCharArray()) {
 
                         if (!Character.isDigit(x)) {
-                            troll3 = true;
+                            fail_3 = true;
                         }
                     }
                 }
 
-                if (troll3 == false) {
+                if (fail_3 == false) {
                     try {
                         int memberID = Integer.parseInt(payments.jTextFieldID.getText());
                         paymentTable.searchMemberPayments(memberID);
@@ -415,23 +402,23 @@ public class HomeController implements ActionListener {
             //when its clicked this case adds the submitted item into items table
             case "ADD ITEM":
 
-                boolean troll2 = false;
+                boolean fail_4 = false;
                 String getModel = inventory.jTextFieldModel.getText();
                 if (inventory.jTextFieldComment.getText().isEmpty() || inventory.jTextFieldModel.getText().isEmpty()) {
-                    troll2 = true;
+                    fail_4 = true;
                 }
                 for (char c : inventory.jTextFieldModel.getText().toCharArray()) {
                     if (!Character.isLetter(c)) {
 
-                        troll2 = true;
+                        fail_4 = true;
                     }
                 }
                 for (char c : inventory.jTextFieldComment.getText().toCharArray()) {
                     if (!Character.isLetter(c)) {
-                        troll2 = true;
+                        fail_4 = true;
                     }
                 }
-                if (troll2 == false) {
+                if (fail_4 == false) {
                     try {
                         Inventory in = new Inventory(inventory.jTextFieldModel.getText(), inventory.jTextFieldComment.getText());
                         man.addInventory(in);
@@ -452,7 +439,7 @@ public class HomeController implements ActionListener {
                 break;
             //in this case when its pressed it deletes the selected comment
             case "DELETE COMMENT":
-                //Aqui meter notify al usuario de esa id de tipo mal comentario?
+ 
                 int ic = JOptionPane.showConfirmDialog(inventory, "Are you sure?");
                 if (ic == 0) {
                     try {

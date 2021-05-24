@@ -67,7 +67,6 @@ public class Materials extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableInventory = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -87,13 +86,8 @@ public class Materials extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("ERLETE");
+        jLabel1.setText("INVENTORY");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 925, 55));
-
-        jLabel3.setFont(new java.awt.Font("Segoe Script", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("INVENTORY");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 97, 166, -1));
 
         jTableInventory.setModel(new InventoryTable());
         jScrollPane1.setViewportView(jTableInventory);
@@ -208,7 +202,6 @@ public class Materials extends javax.swing.JFrame {
     public view.frameComponents.ButtonDelete jButtonDeleteItem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

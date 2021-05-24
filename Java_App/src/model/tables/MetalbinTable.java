@@ -53,7 +53,7 @@ public class MetalbinTable extends AbstractTableModel {
             case 0:
                 return production.get(rowIndex).getMetalbin_id();
             case 1:
-                return production.get(rowIndex).getName();
+                return production.get(rowIndex).getCapacity();
             case 2:
                 return production.get(rowIndex).isAvailable();
             case 3:
