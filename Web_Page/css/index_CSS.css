@@ -1,13 +1,12 @@
-/*start of responsive navigation var*/
+/*Properties applied to all the web page*/
 body {
 	margin: 0;
 	background: url(../images/honeyBGSM.jpg) repeat center;
-
 	color:rgb(255, 255, 255);
-
 }
 
-
+/*start of responsive navigation var in the maximum size of the window*/
+/*properties of the unordered list of the nav var that will contain the links to the sites*/
 ul.sidenav {
 	list-style-type: none;
 	margin: 0;
@@ -20,12 +19,14 @@ ul.sidenav {
 	background:rgb(0, 0, 0,0.5);
 
 }
+/*Properties of the navigation var with the links of the profile page*/
 #accountNav {
 	list-style-type:none;
 	padding:0;
 	width:80%;
 	margin:auto;
 }
+/* Properties common to the links of both nav vars*/
 ul.sidenav li a, ul#accountNav li a{
 	display: block;
 	padding: 0.7em;
@@ -34,34 +35,36 @@ ul.sidenav li a, ul#accountNav li a{
 	color:rgb(255, 255, 255,0.5);
 	transition:font-size 0.4s linear;
 }
-
+/* Properties that will have the link when the user is in that page to highlight it*/
 ul.sidenav li a.active{
 	color:rgb(255, 255, 255);
 	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.8);  
 	background-color: rgb(0, 0, 0,0.3);
 }
+
 ul#accountNav li a.active {
 	color:rgb(255, 255, 255);
 	background-color: rgb(0, 0, 0,0.3);
 }
-
+/*Properties that will be aplied when the user draggs the mouse over the links*/
 ul.sidenav li a:hover:not(.active), ul#accountNav li a:hover:not(.active) {
 	color:rgb(255, 255, 255);
 	font-size: calc(0.7em + 0.6vw);
 	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.4); 
 }
-
+/*Properties applied to the content of each page*/
 div.content {
 	margin-left:20%;
 	font-size: calc(0.4em + 0.6vw);
 	line-height: 2.2em;
 	text-align: justify;
 }
-
+/*Size and alignment of the titles*/
 h1 {
 	font-size: calc(3em + 0.6vw);
 	text-align: center;
 }
+/*Properties of the subtitles*/
 h2 {
 	font-size: calc(1em + 0.6vw); 
 	margin-top:1vw;
@@ -69,12 +72,14 @@ h2 {
 	color:rgb(255, 255, 255);
 	text-align: center;
 }
+/*Properties that will be applied when the user draggs the mouse over the links that will make actions in the web page*/
 a:hover, input[type='submit']:hover{
 	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);  
 	font-size: calc(0.5em + 0.6vw);
 	color:rgb(255, 255, 255);
 	text-decoration: none;
 }
+/*a class that will be applied to make the rows responsive when the page becomes smaller*/
 .rows {
 	margin: 1em;
 	padding:1em;
@@ -85,24 +90,36 @@ a:hover, input[type='submit']:hover{
 	background-color: rgb(0, 0, 0,0.8);
 
 }
+/* class applied to the elements in the rows class for them to be aligned centered and equaly*/
 .row {
-	flex: 90%;
+	flex: 100%;
 	justify-content: center;    
 	align-items: center;  
 	text-align:center;
 }
+/**/
 .booking:hover{
 	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);
 	color:rgb(255, 255, 255);  
 }
-.columns{
+/* class that will be applied to the elements that will be displayed as rows in full page and columns in small devices*/
+#index .columns{
+	display:flex;
+	flex-direction: row;
+	width: 90%;
+	margin:auto;
+	justify-content: center;    
+	align-items: flex-start;  
+	text-align:center;
+}
+.columns {
 	display:flex;
 	flex-direction: row;
 	width: 90%;
 	margin:auto;
 	justify-content: center;    
 	align-items: center;  
-	text-align:center;
+	text-align:center;	
 }
 .column {
 	flex: 100%;
@@ -110,6 +127,7 @@ a:hover, input[type='submit']:hover{
 	align-items: center;  
 	text-align:center;
 }
+/* class to modify the style of the title of the comments in the forum (name, surname, date))*/
 .forumR {
 	border-radius:5em 0em 0em 5em;
 	padding:1em;
@@ -117,6 +135,7 @@ a:hover, input[type='submit']:hover{
 	box-shadow:0em 0em 2em 0em rgb(0, 0, 0,0.5);
 	background-color: rgb(0, 0, 0,0.8);
 }
+/* class applied to display the text of the message left in full page and under the data of the user in small devices*/
 .forumL {
 	border-radius:0em 5em 5em 0em;
 	padding:1em;
@@ -125,7 +144,7 @@ a:hover, input[type='submit']:hover{
 	background-color: rgb(0, 0, 0,0.8);
 	flex:2;
 }
-
+/* class to center the elements that contains*/
 .Center {
 	display: flex;              
 	flex-direction: column;     
@@ -133,6 +152,7 @@ a:hover, input[type='submit']:hover{
 	align-items: center;  
 	text-align:center;
 }
+/* class to give style to the elements of forms, information...*/
 .RB {
 	border-radius:2em;
 	padding:2em 1em 2em 1em;
@@ -141,6 +161,7 @@ a:hover, input[type='submit']:hover{
 	box-shadow:0em 0em 2em 0em rgb(0, 0, 0,0.5);
 	background-color: rgb(0, 0, 0,0.8);
 }
+/* class to give style to the links that will make actions*/
 .BRB {
 	border-radius:5em;
 	margin-top:1em;
@@ -179,6 +200,7 @@ textarea:focus {
 	box-shadow:0vw 0vw 1vw 0vw rgb(255, 255,255, 0.8); 
 	color:rgb(255, 255, 255); 
 }
+
 /*End of Forum*/
 /*calendar CSS*/
 .fc-event-title-container{
@@ -198,7 +220,7 @@ color:rgb(255, 255, 255,0.7);
 /*End calendar
 
 /*Start of login form*/
-input[type="email"],input[type="password"], input[type="text"], input[type="number"], input[type='tel']  {
+input[type="email"],input[type="password"], input[type="text"], input[type="number"], input[type='tel'] {
 	border-radius:5vw;
 	border:none;
 	outline:none;
@@ -214,18 +236,20 @@ input[type="password"]:focus,input[type="email"]:focus,input[type="text"]:focus,
 	background:rgb(0,0,0,0.3);
 	color:rgb(255, 255, 255);
 }
+/* style applied to all inputs when the user draggs the mouse on them*/
 input:hover {
 	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);
 	background:rgb(0,0,0,0.3);
 	color:rgb(255, 255, 255);
 }
+/*take off the list of the input number*/
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
 }
 /*End of login form*/
-/*Small devices like mobile phones*/
+/* style that will be applied to all the web page for Small devices like mobile tablets*/
 @media screen and (max-width: 900px) {
 	ul.sidenav, ul#accountNav {
 		width: 100%;
@@ -263,7 +287,7 @@ input[type=number]::-webkit-outer-spin-button {
 		color:rgb(255, 255, 255);
 		text-decoration: none;
 	}
-.columns{
+#index .columns, .columns{
 	display:flex;
 	flex-direction: column;
 	width: 90%;
@@ -281,17 +305,21 @@ input[type=number]::-webkit-outer-spin-button {
 
 }
 }
-
-@media screen and (max-width: 400px) {
+/*Style that will be applied to even smaller devices*/
+@media screen and (max-width: 500px) {
 	ul.sidenav li a, ul#accountNav li a {
 		text-align: center;
 		float: none;
-		display:none;
 	}
 	div.content {
-		margin-left: 0;
-		font-size: calc(0.6em + 1vw);
+		margin:0;
+		font-size: calc(0.5em + 1vw);
 		color:rgb(255, 255, 255,0.9);
+	}
+	.rows {
+		margin: 0;
+		width: 100%;
+		padding: 0.5em 0em 0.5em 0em;
 	}
 	h1 {
 		font-size: calc(2.5em + 1vw);

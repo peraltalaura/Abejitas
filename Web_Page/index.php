@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		
+		<!--changes the name of the page-->
 		<title>Home</title>
+		<!--links of google fonts-->
 		<link rel="preconnect" href="https://fonts.gstatic.com"><link>
 		<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lato&display=swap" rel="stylesheet">
+		<!--changes the icon of the page-->
 		<link rel="icon"  type="image/jpg" href="images/bee-icon.jpg">
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -21,6 +23,7 @@
 		<Link rel="stylesheet" href="css/index_CSS.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
+			/*Style for the fonts used in the page*/
 			h1 {
 			font-family: 'Dancing Script', cursive;
 			}
@@ -30,59 +33,73 @@
 		</style>
 	</head>
 	<body>	
+		<!--Start of the navigation var to go to the different pages of the web site-->
 		<ul class="sidenav">
 			<li>
-				<h1 class="Center" onClick=switch()>ERLETE</h1>
+				<h1 class="Center">ERLETE</h1>
 			</li>
 			<li>
+				<!-- The link of HOME redirects the user to the index.php page-->
 				<a class="Center active" href="index.php">HOME</a>
 			</li>
 			<li>
+				<!-- The link of INFORMATION redirects the user to the info.php page-->
 				<a class="Center" href="info.php">INFORMATION</a>
 			</li>
 			<li>
+				<!-- The link of FORUM redirects the user to the forum.php page-->
 				<a class="Center" href="forum.php">FORUM</a>
 			</li>
+			<!--it starts the session and changes the links depending if the user is logged in or not for the bookings page-->
 			<?php
 				session_start();
+				/*Global variable where the member id is saved to do the querys*/
 				if(isset($_SESSION['memberID'])){
 				?>
 				<li>
+					<!-- The link of BOOKINGS redirects the user to the bookings.php page-->
 					<a class="Center" href="bookings.php">BOOKINGS</a>
 				</li>
 				<?php
 					} else {
 				?>
 				<li>
+					<!-- The link redirects the user to the login.php page-->
 					<a class="Center" href="login.php">BOOKINGS</a>
 				</li>
 				<?php
 				}
 			?>
+			<!--it starts the session and changes the links depending if the user is logged in or not for the profile page-->
 			<?php
 				if(isset($_SESSION['memberID'])){
 				?>
 				<li>
+					<!-- The link of MY ACCOUNT redirects the user to the profile.php page in the profile section-->
 					<a class="Center" href="profile.php?account=prof">MY ACCOUNT</a>
 				</li>
 				<?php
 					} else {
 				?>
 				<li>
+					<!-- The link redirects the user to the login.php page-->
 					<a class="Center" href="login.php">MY ACCOUNT</a>
 				</li>
 				<?php
 				}
 			?>
+			<!--it starts the session and changes the links depending if the user is logged in or not-->
 			<?php
 				if(isset($_SESSION['memberID'])){
 				?>
+				<!--If the user is logged in it redirects the user to the close_session.php to log out-->
 				<li class="nav-item flex-fill">
 					<a class="nav-link Center" href="close_session.php">LOGOUT</a>
 				</li>
 				<?php
 					} else {
 				?>
+				<!--If the user isn't logged it redirects the user to the login.php-->
 				<li class="nav-item flex-fill">
 					<a class="nav-link Center" href="login.php">LOGIN</a>
 				</li>
@@ -90,8 +107,8 @@
 				}
 			?>	
 		</ul>
-		
-		<div class="content Center">
+		<!--The content of the web page-->
+		<div id='index' class="content Center">
 		<div class="columns">
 			<div class="RB">
 				<h2>LEARN ABOUT OUR PURPOSE AND ACTIVITIES</h2>
@@ -110,6 +127,7 @@
 			<div class="RB ">
 				<h2>BOOK OUR EXTRACTOR AND METAL BINS</h2>
 				<p>Only members: See de days available to book the extractor and the metalbins available to us that we provide</p>
+				<!--This php code changes the page where the link will lead the user depending if it has logged in or not-->
 					<a class="BRB Center" href="forum.php" 
 			<?php if(isset($_SESSION['memberID'])){
 				printf("href='bookings.php'");
@@ -123,6 +141,7 @@
 			<div class="RB ">
 				<h2>CONSULT YOUR PERSONAL INFORMATION</h2>
 				<p>Only members: Have access to your personal information and be able to modify it, make a transfer, see your bookings, productions and account status at any time</p>
+				<!--This php code changes the page where the link will lead the user depending if it has logged in or not-->
 				<a class="BRB Center" href="forum.php" 
 			<?php 
 				if(isset($_SESSION['memberID'])){
@@ -139,12 +158,5 @@
 					<div class="p-4">
 						<address></address>
 					</div>
-					<script>
-						$("#erlete").click(function(){
-							if ($("ul.sidenav li a").css("display","none")) {
-								$("ul.sidenav li a").css("display","block");
-							}
-						});
-					</script>
 				</body>
 		</html>																				
