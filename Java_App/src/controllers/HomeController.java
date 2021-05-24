@@ -347,6 +347,9 @@ public class HomeController implements ActionListener {
             //when it is clicked it takes the description and import and registers a new payment on the database
             case "PAY":
                 boolean troll1 = false;
+                if (payments.jTextFieldPDescription.getText().isEmpty() || payments.jTextFieldPTotal.getText().isEmpty()) {
+                    troll1 = true;
+                }
                 for (char c : payments.jTextFieldPDescription.getText().toCharArray()) {
                     if (!Character.isLetter(c)) {
                         troll1 = true;
@@ -357,7 +360,7 @@ public class HomeController implements ActionListener {
                         troll1 = true;
                     }
                 }
-                if (troll1 = false) {
+                if (troll1 == false) {
                     try {
                         String description = payments.jTextFieldPDescription.getText();
                         LocalDateTime now = LocalDateTime.now();
@@ -379,14 +382,31 @@ public class HomeController implements ActionListener {
 
             //when it is clicked it displays the payments depending on the id introduced
             case "SEARCH":
-                try {
-                int memberID = Integer.parseInt(payments.jTextFieldID.getText());
-                paymentTable.searchMemberPayments(memberID);
-                System.out.println("filter done");
-            } catch (Exception E) {
-                System.out.println("filter error");
-            }
-            break;
+                boolean troll3 = false;
+                if (payments.jTextFieldID.getText().isEmpty()) {
+                    troll3 = true;
+                } else {
+                    for (char x : payments.jTextFieldID.getText().toCharArray()) {
+
+                        if (!Character.isDigit(x)) {
+                            troll3 = true;
+                        }
+                    }
+                }
+
+                if (troll3 == false) {
+                    try {
+                        int memberID = Integer.parseInt(payments.jTextFieldID.getText());
+                        paymentTable.searchMemberPayments(memberID);
+                        System.out.println("filter done");
+                    } catch (Exception E) {
+                        System.out.println("filter error");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(payments, "Check and try again.");
+                }
+                
+                break;
             // when its clicked it refresh the table of payments
             case "RESET":
                 paymentTable.resetList();
@@ -396,6 +416,9 @@ public class HomeController implements ActionListener {
 
                 boolean troll2 = false;
                 String getModel = inventory.jTextFieldModel.getText();
+                if (inventory.jTextFieldComment.getText().isEmpty() || inventory.jTextFieldModel.getText().isEmpty()) {
+                    troll2 = true;
+                }
                 for (char c : inventory.jTextFieldModel.getText().toCharArray()) {
                     if (!Character.isLetter(c)) {
 
@@ -407,7 +430,7 @@ public class HomeController implements ActionListener {
                         troll2 = true;
                     }
                 }
-                if (troll2 = false) {
+                if (troll2 == false) {
                     try {
                         Inventory in = new Inventory(inventory.jTextFieldModel.getText(), inventory.jTextFieldComment.getText());
                         man.addInventory(in);
