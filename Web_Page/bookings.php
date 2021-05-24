@@ -66,6 +66,7 @@
 				$(".datepicker").datepicker();
 			});
 		</script>
+
 		<style>
 			h1 {
 				font-family: 'Dancing Script', cursive;
@@ -78,7 +79,7 @@
 	<body>
 		<ul class="sidenav">
 			<li>
-				<h1 class="Center">ERLETE</h1>
+				<h1 id="erlete" class="Center">ERLETE</h1>
 			</li>
 			<li>
 				<a class="Center" href="index.php">HOME</a>
@@ -136,8 +137,8 @@
 			$result=mysqli_query($link,"SELECT * FROM metalbin");
 			?>
 			<div class="table-responsive">
-				<table class="table table-hover Center text-light">
-					<tr style='background-color: rgb(0, 0, 0,0.8);'>
+				<table class="table Center text-light">
+					<tr style='background-color: rgb(0, 0, 0,0.8);margin:1em'>
 						<th>METAL BIN</th>
 						<th>CAPACITY</th>
 						<th>AVAILABILITY</th>
@@ -157,18 +158,16 @@
 			<h2 class="Center mt-4">CONSULT THE AVAILABILITY OF OUR EXTRACTOR</h2>
 			<div id='calendar'></div>
 
-			<form class="form-group mt-4 content Center" action="book.php" method="post">
+			<form class="form-group mt-4 content" action="book.php" method="post">
 				<H2>BOOK THE EXTRACTOR</H2>
 				<div class="columns">
 				<div class="RB">
-					<label>Select entry date:</label>
-						<input class="datepicker" id="from" type="text" required="required" name="entry" autocomplete="off">
+					<label>Select entry date:
+						<input class="datepicker" id="from" type="text" required="required" name="entry" autocomplete="off"></label>
 					</div>
 					<div class="RB">
 					<label>Select exit date:
-					</label>
-					
-						<input class="datepicker" id="to" type="text" required="required" name="exit" autocomplete="off">
+						<input class="datepicker" id="to" type="text" required="required" name="exit" autocomplete="off"></label>
 				</div>
 			</div>
 				<BR>

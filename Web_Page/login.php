@@ -49,10 +49,10 @@
 				<h1>SIGN IN</h1>
 				<br>
 				<form class="form-group form-group-sm Center" action="search_users.php" method="post">
-					<LABEL>E-MAIL:</LABEL>
-					<input class="mb-2" required="required" type="email" name="mail" autocomplete="no">
-					<LABEL>PASSWORD:</LABEL>
-					<input type="password" required="required" name="password" autocomplete="no"><br>
+					<LABEL>E-MAIL:
+					<input class="mb-2" required="required" type="email" name="mail" autocomplete="no"></LABEL>
+					<LABEL>PASSWORD:
+					<input type="password" required="required" name="password" autocomplete="no"></LABEL><br>
 					<input class="BRB" type="submit" value="LOGIN">
 					<br>
 				</form>

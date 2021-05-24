@@ -1,119 +1,118 @@
 <!DOCTYPE html>
 <html>
-	<head>	
-		<title>Home</title>
-		<link rel="preconnect" href="https://fonts.gstatic.com"><link>
-		<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lato&display=swap" rel="stylesheet">
-		<link rel="icon"  type="image/jpg" href="images/bee-icon.jpg">
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-		
-		<!-- jQuery library -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		
-		<!-- Popper JS -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-		
-		<!-- Latest compiled JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<link rel="stylesheet" href="css/index_CSS.css">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<style>
-			h1 {
+<head>	
+	<title>Home</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com"><link>
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lato&display=swap" rel="stylesheet">
+	<link rel="icon"  type="image/jpg" href="images/bee-icon.jpg">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/index_CSS.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		h1 {
 			font-family: 'Dancing Script', cursive;
-			}
-			body {
+		}
+		body {
 			font-family: 'Lato', sans-serif;
-			}
-		</style>
-	</head>
-	<body>	
-		<ul class="sidenav">
-			<li>
-				<h1 class="Center">ERLETE</h1>
-			</li>
-			<li>
-				<a class="Center" href="index.php">HOME</a>
-			</li>
-			<li>
-				<a class="Center" href="info.php">INFORMATION</a>
-			</li>
-			<li>
-				<a class="Center" href="forum.php">FORUM</a>
-			</li>
-			<?php
-				session_start();
-				if(isset($_SESSION['memberID'])){
-				?>
-				<li>
-					<a class="Center" href="bookings.php">BOOKINGS</a>
-				</li>
-				<?php
-					} else {
-				?>
-				<li>
-					<a class="Center" href="login.php">BOOKINGS</a>
-				</li>
-				<?php
-				}
+		}
+	</style>
+</head>
+<body>	
+	<ul class="sidenav">
+		<li>
+			<h1 class="Center">ERLETE</h1>
+		</li>
+		<li>
+			<a class="Center" href="index.php">HOME</a>
+		</li>
+		<li>
+			<a class="Center" href="info.php">INFORMATION</a>
+		</li>
+		<li>
+			<a class="Center" href="forum.php">FORUM</a>
+		</li>
+		<?php
+		session_start();
+		if(isset($_SESSION['memberID'])){
 			?>
+			<li>
+				<a class="Center" href="bookings.php">BOOKINGS</a>
+			</li>
 			<?php
-				if(isset($_SESSION['memberID'])){
-				?>
-				<li>
-					<a class="Center" href="profile.php?account=prof">MY ACCOUNT</a>
-				</li>
-				<?php
-					} else {
-				?>
-				<li>
-					<a class="Center" href="login.php">MY ACCOUNT</a>
-				</li>
-				<?php
-				}
+		} else {
 			?>
+			<li>
+				<a class="Center" href="login.php">BOOKINGS</a>
+			</li>
 			<?php
-				if(isset($_SESSION['memberID'])){
-				?>
-				<li class="nav-item flex-fill">
-					<a class="nav-link Center" href="close_session.php">LOGOUT</a>
-				</li>
-				<?php
-					} else {
-				?>
-				<li class="nav-item flex-fill">
-					<a class="nav-link Center" href="login.php">LOGIN</a>
-				</li>
-				<?php
-				}
-			?>	
-		</ul>
-		<div class="content Center">
-			<br><h2>HOW TO CONTACT US</h2><br>
-			<div class="RB">
-				
-				<div class="row">
-					<div class="col-sm-4">ASSOSIATION ADDRESS:</div>
-					<div class="col-sm-8">DURANGO</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-sm-4"></div>
-					<div class="col-sm-8"></div>
-				</div>
-				
-				<div class="row">
-					<div class="col-sm-4">
-					</div>
-					<div class="col-sm-8">
-					</div>
-				</div>
-				
-			</div>
+		}
+		?>
+		<?php
+		if(isset($_SESSION['memberID'])){
+			?>
+			<li>
+				<a class="Center" href="profile.php?account=prof">MY ACCOUNT</a>
+			</li>
+			<?php
+		} else {
+			?>
+			<li>
+				<a class="Center" href="login.php">MY ACCOUNT</a>
+			</li>
+			<?php
+		}
+		?>
+		<?php
+		if(isset($_SESSION['memberID'])){
+			?>
+			<li class="nav-item flex-fill">
+				<a class="nav-link Center" href="close_session.php">LOGOUT</a>
+			</li>
+			<?php
+		} else {
+			?>
+			<li class="nav-item flex-fill">
+				<a class="nav-link Center" href="login.php">LOGIN</a>
+			</li>
+			<?php
+		}
+		?>	
+	</ul>
+	<div class="content Center">
+		<br><h1>CONTACT US</h1>
+
+		<div class="RB">
+			<h2>NOT A MEMBER YET?</h2>
+			<p>If you are interested in our activity and assotiation feel free to come by whenever you want. Our members will be kind and willing to help you</p>
+			<p>You can talk to our administrator, call him or send him an email if you want to become a part of this community, he will make an account and send you the autogenerated password for you to enter your account the first time</p>
 		</div>
-		<div class="p-4">
-			<address></address>
+		<div class="RB">
+			<h2>ALREADY A MEMBER?</h2>
+			<p>If you already are a part of our assosiation be free to come by or talk to our members or administrator from the forum, email, phone or in our dependencies if you have any problems or suggestions</p>
 		</div>
-	</body>
+
+		<div class="RB">
+			<h2>WHERE TO FIND US</h2>
+			<p>ASSOSIATION ADDRESS: San Juan Plaza 1</p>
+			<p>CITY: Axpe</p>
+			<p>PROVINCE: Bizkaia</p>
+			<p>POST CODE: 48291</p>
+		</div>
+	</div>
+
+	<div class="p-4">
+		<address></address>
+	</div>
+</body>
 </html>																

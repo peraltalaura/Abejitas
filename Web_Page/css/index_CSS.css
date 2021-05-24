@@ -18,6 +18,7 @@ ul.sidenav {
 	overflow: auto;
 	box-shadow:0em 0em 2em 0em rgb(0,0,0,0.5);
 	background:rgb(0, 0, 0,0.5);
+
 }
 #accountNav {
 	list-style-type:none;
@@ -54,20 +55,24 @@ div.content {
 	margin-left:20%;
 	font-size: calc(0.4em + 0.6vw);
 	line-height: 2.2em;
+	text-align: justify;
 }
 
 h1 {
 	font-size: calc(3em + 0.6vw);
+	text-align: center;
 }
 h2 {
 	font-size: calc(1em + 0.6vw); 
 	margin-top:1vw;
 	padding:1em 0em 1em 0em;
+	color:rgb(255, 255, 255);
+	text-align: center;
 }
 a:hover, input[type='submit']:hover{
 	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);  
 	font-size: calc(0.5em + 0.6vw);
-	color:rgb(255, 255, 255,0.5);
+	color:rgb(255, 255, 255);
 	text-decoration: none;
 }
 .rows {
@@ -76,32 +81,39 @@ a:hover, input[type='submit']:hover{
 	display:flex;
 	flex-direction: row;
 	width: 75%;
-  	color:rgb(255, 255, 255,0.7);
 	box-shadow:0em 0em 2em 0em rgb(0, 0, 0,0.5);
 	background-color: rgb(0, 0, 0,0.8);
 
 }
 .row {
-	flex: 100%;
+	flex: 90%;
 	justify-content: center;    
 	align-items: center;  
 	text-align:center;
 }
 .booking:hover{
-	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);  
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);
+	color:rgb(255, 255, 255);  
 }
 .columns{
 	display:flex;
 	flex-direction: row;
-	width: 100%;
-	text-align: justify;
+	width: 90%;
+	margin:auto;
+	justify-content: center;    
+	align-items: center;  
+	text-align:center;
 }
-
+.column {
+	flex: 100%;
+	justify-content: center;    
+	align-items: center;  
+	text-align:center;
+}
 .forumR {
 	border-radius:5em 0em 0em 5em;
 	padding:1em;
 	margin:1em;
-	color:rgb(255, 255, 255,0.7);
 	box-shadow:0em 0em 2em 0em rgb(0, 0, 0,0.5);
 	background-color: rgb(0, 0, 0,0.8);
 }
@@ -109,79 +121,10 @@ a:hover, input[type='submit']:hover{
 	border-radius:0em 5em 5em 0em;
 	padding:1em;
 	margin:1em;
-	color:rgb(255, 255, 255,0.7);
 	box-shadow:0em 0em 2em 0em rgb(0, 0, 0,0.5);
 	background-color: rgb(0, 0, 0,0.8);
 	flex:2;
 }
-/*Small devices like mobile phones*/
-@media screen and (max-width: 900px) {
-	ul.sidenav, ul#accountNav {
-		width: 100%;
-		height: auto;
-		position: relative;
-	}
-	
-	ul.sidenav li a,ul#accountNav li a {
-		float: left;
-		padding: 1em;
-		font-size:calc(0.5em + 1vw);
-	}
-	ul.sidenav li a:hover:not(.active), ul#accountNav li a:hover:not(.active) {
-	color:rgb(255, 255, 255);
-	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.4); 
-
-}
-	div.content {
-		margin-left: 0;
-		font-size: calc(0.3em + 1vw);
-		line-height: 2em;
-	}
-	h1 {
-		font-size: calc(4.2em + 1vw);
-	}
-	h2 {
-		font-size: calc(1em + 1vw); 
-		margin-top:1em;
-		padding:0em 0em 0.5em 0em;
-	}
-	a:hover,input[type='submit']:hover{
-		box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);  
-		font-size: calc(0.4em + 1vw);
-		color:rgb(255, 255, 255,0.5);
-		text-decoration: none;
-	}
-.columns{
-	display:flex;
-	flex-direction: column;
-	width: 100%;
-	text-align: justify;
-}
-.forumR {
-	margin:2em 1em 1em 1em;
-	border-radius:2em 2em 0em 0em;
-
-}
-.forumL {
-	margin:0em 1em 2em 1em;
-	border-radius:0em 0em 2em 2em;
-
-}
-}
-
-@media screen and (max-width: 400px) {
-	ul.sidenav li a, ul#accountNav li a {
-		text-align: center;
-		float: none;
-
-	}
-	div.content {
-		margin-left: 0;
-
-	}
-}
-/*end of responsive navigation var*/
-
 
 .Center {
 	display: flex;              
@@ -192,18 +135,18 @@ a:hover, input[type='submit']:hover{
 }
 .RB {
 	border-radius:2em;
-	padding:2em;
+	padding:2em 1em 2em 1em;
 	margin:2em;
-	text-align:justify;
 	color:rgb(255, 255, 255,0.7);
 	box-shadow:0em 0em 2em 0em rgb(0, 0, 0,0.5);
 	background-color: rgb(0, 0, 0,0.8);
 }
 .BRB {
 	border-radius:5em;
+	margin-top:1em;
 	padding:1em 2em 1em 2em;
 	box-shadow:0em 0em 2em 0em rgb(0,0,0);
-	background:rgb(0,0,0,0.5);
+	background:rgb(0,0,0,0.7);
 	color:rgb(255, 255, 255,0.5);
 	transition:box-shadow 0.2s linear, font-size 0.2s linear;
 }
@@ -215,8 +158,9 @@ input[type='submit'] {
 	border-radius:5em;
 	padding:1em 2em 1em 2em;
 	box-shadow:0em 0em 2em 0em rgb(0,0,0);
-	background:rgb(0,0,0,0.3);
+	background:linear-gradient(rgb(255, 255, 255,0.1),rgb(255, 255, 255,0.3),rgb(255, 255, 255,0.4),rgb(255, 255, 255,0.5),rgb(255, 255, 255,0.4),rgb(255, 255, 255,0.3),rgb(255, 255, 255,0.1));  
 	transition:box-shadow 0.2s linear, font-size 0.2s linear;
+	color:black;
 }
 textarea{
 	width:30em;
@@ -232,7 +176,8 @@ textarea{
 	transition:box-shadow 0.4s linear; 
 }
 textarea:focus {
-	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.7);  
+	box-shadow:0vw 0vw 1vw 0vw rgb(255, 255,255, 0.8); 
+	color:rgb(255, 255, 255); 
 }
 /*End of Forum*/
 /*calendar CSS*/
@@ -257,20 +202,108 @@ input[type="email"],input[type="password"], input[type="text"], input[type="numb
 	border-radius:5vw;
 	border:none;
 	outline:none;
-	background:linear-gradient(rgb(0, 0, 0,0.1),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.7),rgb(0, 0, 0),rgb(0, 0, 0,0.7),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.1));  
+	background:linear-gradient(rgb(255, 255, 255,0.1),rgb(255, 255, 255,0.3),rgb(255, 255, 255,0.4),rgb(255, 255, 255,0.5),rgb(255, 255, 255,0.4),rgb(255, 255, 255,0.3),rgb(255, 255, 255,0.1));  
 	color:rgb(255, 255, 255);
 	padding:1vw;
 	text-align:center;
-	transition:box-shadow 0.4s linear; 
+	transition:box-shadow 0.4s linear, background-color 0.4s linear;
 }
 
 input[type="password"]:focus,input[type="email"]:focus,input[type="text"]:focus, input[type="number"]:focus, input[type='tel']:focus {
-	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.8);
 	background:rgb(0,0,0,0.3);
+	color:rgb(255, 255, 255);
 }
 input:hover {
 	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);
 	background:rgb(0,0,0,0.3);
+	color:rgb(255, 255, 255);
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+/*End of login form*/
+/*Small devices like mobile phones*/
+@media screen and (max-width: 900px) {
+	ul.sidenav, ul#accountNav {
+		width: 100%;
+		height: auto;
+		position: relative;
+	}
+	
+	ul.sidenav li a,ul#accountNav li a {
+		float: left;
+		padding: 1em;
+		font-size:calc(0.5em + 1vw);
+	}
+	ul.sidenav li a:hover:not(.active), ul#accountNav li a:hover:not(.active) {
+		font-size:calc(0.6em + 1vw);
+	color:rgb(255, 255, 255);
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.4); 
+
+}
+	div.content {
+		margin-left: 0;
+		font-size: calc(0.5em + 1vw);
+		line-height: 2em;
+	}
+	h1 {
+		font-size: calc(4.2em + 1vw);
+	}
+	h2 {
+		font-size: calc(1em + 1vw); 
+		margin-top:1em;
+		padding:0em 0em 0.5em 0em;
+	}
+	a:hover,input[type='submit']:hover{
+		box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);  
+		font-size: calc(0.6em + 1vw);
+		color:rgb(255, 255, 255);
+		text-decoration: none;
+	}
+.columns{
+	display:flex;
+	flex-direction: column;
+	width: 90%;
+	margin:auto;
+	text-align: center;
+}
+.forumR {
+	margin:2em 1em 1em 1em;
+	border-radius:2em 2em 0em 0em;
+
+}
+.forumL {
+	margin:0em 1em 2em 1em;
+	border-radius:0em 0em 2em 2em;
+
+}
 }
 
-/*End of login form*/
+@media screen and (max-width: 400px) {
+	ul.sidenav li a, ul#accountNav li a {
+		text-align: center;
+		float: none;
+		display:none;
+	}
+	div.content {
+		margin-left: 0;
+		font-size: calc(0.6em + 1vw);
+		color:rgb(255, 255, 255,0.9);
+	}
+	h1 {
+		font-size: calc(2.5em + 1vw);
+		margin-top:1em;
+		margin-bottom: 1em;
+	}
+	.BRB {
+		color:rgb(255, 255, 255);
+		box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);  
+	}
+}
+/*end of responsive navigation var*/
+
+
+

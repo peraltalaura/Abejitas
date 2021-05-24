@@ -199,12 +199,12 @@
 						?>
 						<div id="profile" class="container Center">
 							<div class="columns">
-								<div class="Center">
+								<div class="column">
 									<?php
-										printf("<img src='%s' style='width:20em'>",$data['picture']);
+										printf("<img src='%s' style='width:20em;border-radius:2em'>",$data['picture']);
 									?>
 								</div>
-								<div class="RB">
+								<div class="RB column">
 									<?php
 									printf("<p>NAME: %s</p>",$data['name']);
 									printf("<p>SURNAME: %s</p>",$data[3]);
@@ -212,7 +212,7 @@
 									printf("<p >BIRTH-DATE: %s</p>",$data[5]);
 									?>
 								</div>
-								<div class="RB" style='flex:2'>
+								<div class="RB column" style='flex:2'>
 									<?php
 									printf("<p>CITY:&nbsp;&nbsp;%s</p>",$data[6]);
 									printf("<p>POST:&nbsp;&nbsp;%d</p>",$data[7]);
@@ -333,7 +333,7 @@
 					?>
 					<div class="table-responsive">
 						<table class="table Center text-light">
-							<tr>
+							<tr style='background-color: rgb(0, 0, 0,0.8);'>
 								<th>PAYMENT ID</th>
 								<th>DESCRIPTION</th>
 								<th>DATE</th>
@@ -342,20 +342,21 @@
 							<?php
 								$balance=0;
 								while($data=mysqli_fetch_array($result)){
-									printf("<tr><td>%d</td><td>%s</td><td>%s</td><td>%d €</td></tr>",$data[0],$data[1],$data[3],$data[2]);
+									printf("<tr style='background-color: rgb(0, 0, 0,0.8);'><td>%d</td><td>%s</td><td>%s</td><td>%d €</td></tr>",$data[0],$data[1],$data[3],$data[2]);
 									$balance=$balance+$data[2];
 								}
 							?>
 						</table>
 					</div>
-					<div id="balance" class="row RB">
-						<div class="col-sm-4 Center">
-							MY BALANCE:
+					<div id="balance" class="columns RB pb-4">
+						<div style='padding-left:1em;padding-right:1em'>
+							<h2>MY BALANCE:</h2>
 						</div>
 						<?php
-							printf("<div class='col-sm-4 Center'>%d €</div>",$balance);
+							printf("<div style='padding-left:1em;padding-right:1em'><h2> %d €</h2></div>",$balance);
 						?>
-						<div id="trans" class="col-sm-4 Center"><a class="BRB">transfer money</a></div>
+						<div id="trans" style='padding-left:1em;padding-right:1em'><a class="BRB">transfer money</a>
+						</div>
 					</div>
 				</div>
 				
@@ -363,19 +364,17 @@
 				<div id="transfer" class="content Center" style="display:none">
 					<h1 class="mt-4">TRANSFER</h1>
 					<form id="transfer-form" class="form-group container Center" action="transfer.php" method="post">
-						<div class="row RB" style="text-align:center">
-							<div class='col-sm-12'>
-								DESCRIPTION:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text' required="required" name='desc' autocomplete="off">
+						<div class="columns" style="text-align:center">
+							<div class='RB'>
+								<label for='desc'>DESCRIPTION: <input type='text' required="required" name='desc' autocomplete="off"></label>
+							</div>
+							<div class='RB'>
+								<label>CUANTITY: <input type='text'required="required" name='import' min="1" autocomplete="off"></label>
 							</div>
 						</div>
-						
-						<div class="row RB Center" style="text-align:center">
-							<div class='col-sm-8'>
-								CUANTITY:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='text'required="required" name='import' min="1" autocomplete="off">
-							</div>
-						</div>
-						<input class="BRB" type="submit" value="TRANSFER">
+							<input class="BRB" type="submit" value="TRANSFER">
 					</form>
+					</div>
 					<?php
 						if(isset($_GET['insert'])) {
 							if($_GET['insert']=='yes'){
@@ -419,16 +418,16 @@
 						while($data=mysqli_fetch_array($result)){
 							
 							printf("
-							<div class='rows'>
+							<div class='rows' %d onClick=clickaction(this)>
 								<div class='row'>%d</div>
 								<div class='row'>%s</div>
 								<div class='row'>%s</div>
 								<div class='row'>%d KG</div>
 								<div class='row'>%d €</div>
-							</div>",$data[0],$data[1],$data[2],$data[3],$data[4]);
+							</div>",$data[0],$data[0],$data[1],$data[2],$data[3],$data[4]);
 							printf("
-							<h2 class='Center'>PRODUCTIONS</h2>
-							<div class='rows'>
+							<h2 class='Center production'>PRODUCTIONS</h2>
+							<div class='rows production'>
 								<div class='row'>METALBIN</div>
 								<div class='row'>DATE/TIME</div>
 								<div class='row'>KILOS</div>
@@ -443,7 +442,7 @@
 							while($data2=mysqli_fetch_array($result2)){
 								printf("
 								
-								<div class='rows'>
+								<div class='rows production'>
 									<div class='row'>%d</div>
 									<div class='row'>%s</div>
 									<div class='row'>%d</div>
@@ -462,11 +461,11 @@
 									</div>");
 								}
 							}
-								
+							printf("<a id='produce' class='Center BRB production %d'>REGISTER PRODUCTION</a>",$data[0]);	
 						}
 					?>
 							
-					<a id="produce" class='Center BRB'>REGISTER PRODUCTION</a>
+					
 
 					<form id="production" class="form-group container Center" action="produce.php" method="post" style="display:none">
 						<h2 class="mt-4">REGISTER PRODUCTION</h2>

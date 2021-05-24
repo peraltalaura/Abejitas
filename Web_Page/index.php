@@ -32,7 +32,7 @@
 	<body>	
 		<ul class="sidenav">
 			<li>
-				<h1 class="Center">ERLETE</h1>
+				<h1 class="Center" onClick=switch()>ERLETE</h1>
 			</li>
 			<li>
 				<a class="Center active" href="index.php">HOME</a>
@@ -139,5 +139,12 @@
 					<div class="p-4">
 						<address></address>
 					</div>
+					<script>
+						$("#erlete").click(function(){
+							if ($("ul.sidenav li a").css("display","none")) {
+								$("ul.sidenav li a").css("display","block");
+							}
+						});
+					</script>
 				</body>
 		</html>																				

@@ -8,11 +8,12 @@ body{
 }
 h1 {
 	font-size: calc(2em + 0.6vw);
-		margin-top:1em;
+	margin-top:1em;
 }
 h2 {
 	font-size: calc(1em + 0.6vw); 
 	padding:1em 0em 1em 0em;
+	text-align: center;
 }
 
 .RB {
@@ -27,7 +28,6 @@ h2 {
 }
 a:hover, input[type='submit']:hover{
 	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);
-
 	font-size: calc(0.6em + 0.5vw);
 	color:rgb(255, 255, 255);
 	transition:box-shadow 0.4s linear, font-size 0.4s;
@@ -61,6 +61,7 @@ a:hover, input[type='submit']:hover{
 	font-size: calc(0.8em + 1vw);
 	transition:box-shadow 0.4s linear, font-size 0.4s;
 	text-decoration: none;
+	background:rgb(0,0,0,0.3);
 	color:rgb(255, 255, 255);
 }
 
@@ -93,25 +94,26 @@ a:hover, input[type='submit']:hover{
 	border-radius:5vw;
 	border:none;
 	outline:none;
-	background:linear-gradient(rgb(0, 0, 0,0.1),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.7),rgb(0, 0, 0),rgb(0, 0, 0,0.7),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.1));  
+	background:linear-gradient(rgb(255, 255, 255,0.1),rgb(255, 255, 255,0.3),rgb(255, 255, 255,0.4),rgb(255, 255, 255,0.5),rgb(255, 255, 255,0.4),rgb(255, 255, 255,0.3),rgb(255, 255, 255,0.1));  
 	color:rgb(255, 255, 255);
 	padding:1vw;
 	text-align:center;
-	transition:box-shadow 0.4s linear; 
+	transition:box-shadow 0.4s linear, background-color 0.4s linear;
 }
 input[type="password"]:focus,input[type="email"]:focus, input:hover{
-	box-shadow:0vw 0vw 1vw 0vw rgb(255, 255,255, 0.4);
+	box-shadow:0vw 0vw 1vw 0vw rgb(255, 255,255, 0.8);
+	background:rgb(0,0,0,0.3);
 }
 input[type='submit'] {
 	border-radius:5vw;
 	border:none;
 	outline:none;
 	background:rgb(0,0,0,0.3);
-	box-shadow: 0em 0em 0.5em 0em rgb(255, 255, 255,0.3);  
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);  
 	color:rgb(255, 255, 255);
 	width:auto;
 	margin:1em 0.5em 0em 0.5em;
-	transition:box-shadow 0.4s linear;
+	transition:box-shadow 0.4s linear, background-color 0.4s linear;
 }
 input[type='submit']:hover{
 box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);

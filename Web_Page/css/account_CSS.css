@@ -80,7 +80,7 @@ ul#accountNav li a.active {
 }
 #accountNav li a:hover:not(.active) {
 	background: black;
-	color: rgb(255, 204, 0);
+	color:rgb(255, 255, 255);
 	transition:font-size 0.4s linear;
 	box-shadow: 0vw 0vw 1vw 0vw rgb(255, 204, 0);  
 }
@@ -125,7 +125,7 @@ a:hover{
 	box-shadow:0em 0em 2em 0em rgb(0,0,0);
 	font-size: calc(0.5em + 1vw);
 	transition:box-shadow 0.4s linear, font-size 0.4s;
-	color:rgb(255, 204, 0);
+	color:rgb(255, 255, 255);
 	text-decoration: none;
 }
 #accountNav {
@@ -188,7 +188,7 @@ a:hover{
 	padding:1vw 2vw 1vw 2vw;
 	color:black;
 	box-shadow:0vw 0vw 2vw 0vw rgb(255, 204, 0,0.5);
-	background:rgb(255, 204, 0);
+	color:rgb(255, 255, 255);
 }
 
 .BRB:hover{
@@ -196,7 +196,7 @@ a:hover{
 	transition:box-shadow 0.4s linear, font-size 0.4s;
 	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0);
 	font-weight:bolder;
-	color:rgb(255, 204, 0);
+	color:rgb(255, 255, 255);
 }
 
 .BRBY:hover{
@@ -235,7 +235,7 @@ a:hover{
 	width:100%;
 	box-shadow:0vw 0vw 2vw 0vw rgb(0, 0, 0.8);
 	background:rgb(0,0,0);
-	color:rgb(255, 204, 0);
+	color:rgb(255, 255, 255);
 
 }
 input[type="text"], #data input[type="date"], input[type="number"],#data input[type="tel"],#data input[type="email"],#data input[type="datetime-local"],#data input[type="password"] {
@@ -243,7 +243,7 @@ input[type="text"], #data input[type="date"], input[type="number"],#data input[t
 	border:none;
 	outline:none;
 	background:linear-gradient(rgb(0, 0, 0,0.1),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.7),rgb(0, 0, 0),rgb(0, 0, 0,0.7),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.1));  
-	color:rgb(255, 204, 0);
+	color:rgb(255, 255, 255);
 	padding:1vw;
 	text-align:center;
 	transition:box-shadow 0.4s linear; 
