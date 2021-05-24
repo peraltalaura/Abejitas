@@ -28,6 +28,7 @@ public class Home extends javax.swing.JFrame {
         
 
         initComponents();
+        
         //jLabelImage = new JLabel(new ImageIcon("C:\\Users\\kalboetxeaga.ager\\Downloads\\Boton_Muestra-20210519T060314Z-001\\Abejitas\\Java_App\\src\\PRUEBA.jpg"));
 
         //setContentPane(new JLabel(new ImageIcon("C:\\Users\\kalboetxeaga.ager\\Downloads\\Boton_Muestra-20210519T060314Z-001\\Abejitas\\Java_App\\src\\Prueba.jpg")));
@@ -71,6 +72,7 @@ public class Home extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 12, 779, 55));
 
         MEMBERS.setBorder(null);
+        MEMBERS.setForeground(new java.awt.Color(255, 255, 255));
         MEMBERS.setText("MANAGE MEMBERS");
         MEMBERS.setGradientLineColor(new java.awt.Color(255, 0, 255));
         MEMBERS.setLineColor(new java.awt.Color(0, 0, 255));
@@ -79,6 +81,7 @@ public class Home extends javax.swing.JFrame {
         getContentPane().add(MEMBERS, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 163, 169, 29));
 
         PAYMENTS.setBorder(null);
+        PAYMENTS.setForeground(new java.awt.Color(255, 255, 255));
         PAYMENTS.setText("MANAGE PAYMENTS");
         PAYMENTS.setGradientLineColor(new java.awt.Color(255, 0, 255));
         PAYMENTS.setLineColor(new java.awt.Color(0, 0, 255));
@@ -87,6 +90,7 @@ public class Home extends javax.swing.JFrame {
         getContentPane().add(PAYMENTS, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 219, 169, 29));
 
         INVENTORY.setBorder(null);
+        INVENTORY.setForeground(new java.awt.Color(255, 255, 255));
         INVENTORY.setText("MANAGE INVENTORY");
         INVENTORY.setGradientLineColor(new java.awt.Color(255, 0, 255));
         INVENTORY.setLineColor(new java.awt.Color(0, 0, 255));
@@ -96,6 +100,7 @@ public class Home extends javax.swing.JFrame {
 
         COMMENTS.setBackground(new java.awt.Color(153, 153, 153));
         COMMENTS.setBorder(null);
+        COMMENTS.setForeground(new java.awt.Color(255, 255, 255));
         COMMENTS.setText("MANAGE COMMENTS");
         COMMENTS.setGradientLineColor(new java.awt.Color(255, 0, 255));
         COMMENTS.setLineColor(new java.awt.Color(0, 0, 255));
@@ -104,6 +109,7 @@ public class Home extends javax.swing.JFrame {
         getContentPane().add(COMMENTS, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 219, 169, 29));
 
         AVAILABILITY.setBorder(null);
+        AVAILABILITY.setForeground(new java.awt.Color(255, 255, 255));
         AVAILABILITY.setText("MANAGE AVAILABILITY");
         AVAILABILITY.setGradientLineColor(new java.awt.Color(255, 0, 255));
         AVAILABILITY.setLineColor(new java.awt.Color(0, 0, 255));
@@ -112,6 +118,7 @@ public class Home extends javax.swing.JFrame {
         getContentPane().add(AVAILABILITY, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 163, 169, 29));
 
         NOTIFICATIONS.setBorder(null);
+        NOTIFICATIONS.setForeground(new java.awt.Color(255, 255, 255));
         NOTIFICATIONS.setText("SEE NOTIFICATIONS");
         NOTIFICATIONS.setGradientLineColor(new java.awt.Color(255, 0, 255));
         NOTIFICATIONS.setLineColor(new java.awt.Color(0, 0, 255));
@@ -154,7 +161,7 @@ public class Home extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(302, 73, -1, -1));
 
-        jLabelImage.setIcon(new javax.swing.ImageIcon("C:\\Users\\kalboetxeaga.ager\\Downloads\\Boton_Muestra-20210519T060314Z-001\\Abejitas\\Java_App\\src\\PRUEBA.jpg")); // NOI18N
+        jLabelImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
         getContentPane().add(jLabelImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 310));
 
         pack();

@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package view.Frames;
+
 import controllers.*;
+import java.awt.Color;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -17,6 +20,25 @@ public class Availability extends javax.swing.JFrame {
      */
     public Availability() {
         initComponents();
+        this.jTableMetal.setBackground(new Color(0, 0, 0, 0));
+        ((DefaultTableCellRenderer) this.jTableMetal.getDefaultRenderer(Object.class)).setBackground(new Color(0, 0, 0, 0));
+        this.jTableMetal.setGridColor(Color.WHITE);
+        this.jTableMetal.setForeground(Color.WHITE);
+        this.jScrollPane1.setBackground(new Color(0, 0, 0, 0));
+        this.jScrollPane1.setOpaque(false);
+        this.jTableMetal.setOpaque(false);
+        ((DefaultTableCellRenderer) this.jTableMetal.getDefaultRenderer(Object.class)).setOpaque(false);
+        this.jScrollPane1.getViewport().setOpaque(false);
+
+        this.jTableBookings.setBackground(new Color(0, 0, 0, 0));
+        ((DefaultTableCellRenderer) this.jTableBookings.getDefaultRenderer(Object.class)).setBackground(new Color(0, 0, 0, 0));
+        this.jTableBookings.setGridColor(Color.WHITE);
+        this.jTableBookings.setForeground(Color.WHITE);
+        this.jScrollPane2.setBackground(new Color(0, 0, 0, 0));
+        this.jScrollPane2.setOpaque(false);
+        this.jTableBookings.setOpaque(false);
+        ((DefaultTableCellRenderer) this.jTableBookings.getDefaultRenderer(Object.class)).setOpaque(false);
+        this.jScrollPane2.getViewport().setOpaque(false);
     }
 
     /**
@@ -43,15 +65,18 @@ public class Availability extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("EXTRACTORS BOOKINGS DATES:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 72, 240, 34));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ERLETE");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 864, 55));
 
+        jTableBookings.setForeground(new java.awt.Color(255, 255, 255));
         jTableBookings.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -67,6 +92,7 @@ public class Availability extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 139, 339, 406));
 
+        jTableMetal.setForeground(new java.awt.Color(255, 255, 255));
         jTableMetal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -83,11 +109,13 @@ public class Availability extends javax.swing.JFrame {
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 139, 382, 406));
 
         jLabel3.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("METALBINS AVAILABILITY");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(628, 80, 175, -1));
 
         button1.setBorder(null);
+        button1.setForeground(new java.awt.Color(255, 255, 255));
         button1.setText("HOME");
         button1.setGradientLineColor(new java.awt.Color(0, 204, 204));
         button1.setLineColor(new java.awt.Color(255, 255, 0));
@@ -100,7 +128,8 @@ public class Availability extends javax.swing.JFrame {
         });
         getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 543, 67, 30));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\kalboetxeaga.ager\\Downloads\\Boton_Muestra-20210519T060314Z-001\\Abejitas\\Java_App\\src\\PRUEBA.jpg")); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 2, 910, 600));
 
         pack();

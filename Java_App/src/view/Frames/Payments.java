@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package view.Frames;
+import java.awt.Color;
+import javax.swing.table.DefaultTableCellRenderer;
 import model.tables.PaymentsTable;
 /**
  *
@@ -16,6 +18,15 @@ public class Payments extends javax.swing.JFrame {
      */
     public Payments() {
         initComponents();
+        this.jTablePayments.setBackground(new Color(0,0,0,0));
+        ((DefaultTableCellRenderer) this.jTablePayments.getDefaultRenderer(Object.class)).setBackground(new Color(0,0,0,0));
+        this.jTablePayments.setGridColor(Color.WHITE);
+        this.jTablePayments.setForeground(Color.WHITE);
+        this.jScrollPane2.setBackground(new Color(0,0,0,0));
+        this.jScrollPane2.setOpaque(false);
+        this.jTablePayments.setOpaque(false);
+            ((DefaultTableCellRenderer) this.jTablePayments.getDefaultRenderer(Object.class)).setOpaque(false);
+        this.jScrollPane2.getViewport().setOpaque(false);
     }
 
     /**
@@ -50,15 +61,18 @@ public class Payments extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ERLETE");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 1006, 55));
 
         jLabel3.setFont(new java.awt.Font("Segoe Script", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("PAYMENTS");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 104, 139, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("PAYMENTS:");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 155, -1, -1));
 
@@ -69,26 +83,38 @@ public class Payments extends javax.swing.JFrame {
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 155, -1, 265));
 
         jLabel12.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("ADD PAYMENT:");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(614, 145, -1, -1));
 
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Description of the payment:");
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(665, 209, -1, -1));
 
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("total:");
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(773, 235, -1, -1));
+
+        jTextFieldPDescription.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jTextFieldPDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(809, 206, 124, -1));
+
+        jTextFieldPTotal.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jTextFieldPTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(809, 232, 124, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("FILTER BY MEMBER ID:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(614, 283, 185, -1));
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Enter a member ID:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(705, 332, -1, -1));
+
+        jTextFieldID.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jTextFieldID, new org.netbeans.lib.awtextra.AbsoluteConstraints(809, 329, 144, -1));
 
         jButtonReset.setBorder(null);
+        jButtonReset.setForeground(new java.awt.Color(255, 255, 255));
         jButtonReset.setText("RESET");
         jButtonReset.setGradientLineColor(java.awt.Color.cyan);
         jButtonReset.setLineColor(java.awt.Color.magenta);
@@ -97,6 +123,7 @@ public class Payments extends javax.swing.JFrame {
         getContentPane().add(jButtonReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(809, 367, 63, 24));
 
         jButtonSearch.setBorder(null);
+        jButtonSearch.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSearch.setText("SEARCH");
         jButtonSearch.setGradientLineColor(java.awt.Color.magenta);
         jButtonSearch.setLineColor(java.awt.Color.cyan);
@@ -105,6 +132,7 @@ public class Payments extends javax.swing.JFrame {
         getContentPane().add(jButtonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 367, 63, 24));
 
         jButtonPay.setBorder(null);
+        jButtonPay.setForeground(new java.awt.Color(255, 255, 255));
         jButtonPay.setText("PAY");
         jButtonPay.setGradientLineColor(new java.awt.Color(0, 255, 0));
         jButtonPay.setLinePainted(true);
@@ -112,6 +140,7 @@ public class Payments extends javax.swing.JFrame {
         getContentPane().add(jButtonPay, new org.netbeans.lib.awtextra.AbsoluteConstraints(943, 214, 53, 26));
 
         button1.setBorder(null);
+        button1.setForeground(new java.awt.Color(255, 255, 255));
         button1.setText("HOME");
         button1.setGradientLineColor(new java.awt.Color(0, 255, 255));
         button1.setLineColor(new java.awt.Color(255, 255, 0));
@@ -124,7 +153,7 @@ public class Payments extends javax.swing.JFrame {
         });
         getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(932, 426, 64, 23));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\kalboetxeaga.ager\\Downloads\\Boton_Muestra-20210519T060314Z-001\\Abejitas\\Java_App\\src\\PRUEBA.jpg")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 1010, 460));
 
         pack();

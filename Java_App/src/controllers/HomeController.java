@@ -128,6 +128,7 @@ public class HomeController implements ActionListener {
             //each of the manage cases go to their respectfull jframe
             case "MANAGE MEMBERS":
                 members.memberjTable.setModel(membersTable);
+                
                 members.setVisible(true);
                 members.setLocationRelativeTo(null);
                 break;

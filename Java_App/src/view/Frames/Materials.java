@@ -5,6 +5,7 @@
  */
 package view.Frames;
 
+import java.awt.Color;
 import model.tables.InventoryTable;
 
 import java.awt.event.ActionEvent;
@@ -13,6 +14,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -43,6 +45,15 @@ public class Materials extends javax.swing.JFrame {
             }
         });
         updateTimer.start();
+         this.jTableInventory.setBackground(new Color(0, 0, 0, 0));
+        ((DefaultTableCellRenderer) this.jTableInventory.getDefaultRenderer(Object.class)).setBackground(new Color(0, 0, 0, 0));
+        this.jTableInventory.setGridColor(Color.WHITE);
+        this.jTableInventory.setForeground(Color.WHITE);
+        this.jScrollPane1.setBackground(new Color(0, 0, 0, 0));
+        this.jScrollPane1.setOpaque(false);
+        this.jTableInventory.setOpaque(false);
+        ((DefaultTableCellRenderer) this.jTableInventory.getDefaultRenderer(Object.class)).setOpaque(false);
+        this.jScrollPane1.getViewport().setOpaque(false);
 
     }
 
@@ -74,11 +85,13 @@ public class Materials extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ERLETE");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 925, 55));
 
         jLabel3.setFont(new java.awt.Font("Segoe Script", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("INVENTORY");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 97, 166, -1));
 
@@ -87,19 +100,29 @@ public class Materials extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 173, -1, 202));
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ADD ITEM:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(532, 173, -1, -1));
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Model:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(553, 201, -1, -1));
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Comment");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 242, -1, -1));
+
+        jTextFieldModel.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jTextFieldModel, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 198, 120, -1));
+
+        jTextFieldComment.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jTextFieldComment, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 239, 120, -1));
+
+        jLabelTime.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 92, 280, 35));
 
         jButtonAddItem.setBorder(null);
+        jButtonAddItem.setForeground(new java.awt.Color(255, 255, 255));
         jButtonAddItem.setText("ADD ITEM");
         jButtonAddItem.setGradientLineColor(new java.awt.Color(51, 204, 0));
         jButtonAddItem.setLinePainted(true);
@@ -107,6 +130,7 @@ public class Materials extends javax.swing.JFrame {
         getContentPane().add(jButtonAddItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(813, 236, 80, 26));
 
         button1.setBorder(null);
+        button1.setForeground(new java.awt.Color(255, 255, 255));
         button1.setText("HOME");
         button1.setGradientLineColor(new java.awt.Color(0, 204, 204));
         button1.setLineColor(new java.awt.Color(255, 255, 0));
@@ -120,13 +144,14 @@ public class Materials extends javax.swing.JFrame {
         getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(853, 442, 62, 23));
 
         jButtonDeleteItem.setBorder(null);
+        jButtonDeleteItem.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDeleteItem.setText("DELETE ITEM");
         jButtonDeleteItem.setGradientLineColor(new java.awt.Color(255, 0, 0));
         jButtonDeleteItem.setLinePainted(true);
         jButtonDeleteItem.setRounded(true);
         getContentPane().add(jButtonDeleteItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 393, 92, 27));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\kalboetxeaga.ager\\Downloads\\Boton_Muestra-20210519T060314Z-001\\Abejitas\\Java_App\\src\\PRUEBA.jpg")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 930, 490));
 
         pack();

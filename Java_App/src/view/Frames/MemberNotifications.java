@@ -5,6 +5,9 @@
  */
 package view.Frames;
 
+import java.awt.Color;
+import javax.swing.table.DefaultTableCellRenderer;
+
 /**
  *
  * @author peral
@@ -16,6 +19,16 @@ public class MemberNotifications extends javax.swing.JFrame {
      */
     public MemberNotifications() {
         initComponents();
+         this.jTableNotifications.setBackground(new Color(0, 0, 0, 0));
+        ((DefaultTableCellRenderer) this.jTableNotifications.getDefaultRenderer(Object.class)).setBackground(new Color(0, 0, 0, 0));
+        this.jTableNotifications.setGridColor(Color.WHITE);
+        this.jTableNotifications.setForeground(Color.WHITE);
+        this.jScrollPane1.setBackground(new Color(0, 0, 0, 0));
+        this.jScrollPane1.setOpaque(false);
+        this.jTableNotifications.setOpaque(false);
+        ((DefaultTableCellRenderer) this.jTableNotifications.getDefaultRenderer(Object.class)).setOpaque(false);
+        this.jScrollPane1.getViewport().setOpaque(false);
+
     }
 
     /**
@@ -37,6 +50,7 @@ public class MemberNotifications extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe Print", 0, 11)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("SEE MEMBERS NOTIFICATIONS STATE");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 25, 334, 34));
@@ -57,6 +71,7 @@ public class MemberNotifications extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 77, -1, 313));
 
         button1.setBorder(null);
+        button1.setForeground(new java.awt.Color(255, 255, 255));
         button1.setText("HOME");
         button1.setGradientLineColor(new java.awt.Color(0, 204, 204));
         button1.setLineColor(new java.awt.Color(255, 255, 51));
@@ -69,7 +84,7 @@ public class MemberNotifications extends javax.swing.JFrame {
         });
         getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(578, 433, 61, 24));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\kalboetxeaga.ager\\Downloads\\Boton_Muestra-20210519T060314Z-001\\Abejitas\\Java_App\\src\\PRUEBA.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 680, 470));
 
         pack();

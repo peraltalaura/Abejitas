@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package view.Frames;
+import java.awt.Color;
+import javax.swing.table.DefaultTableCellRenderer;
 import model.tables.CommentsTable;
 
 /**
@@ -17,6 +19,15 @@ public class Comments extends javax.swing.JFrame {
      */
     public Comments() {
         initComponents();
+         this.jTableCommentsTable.setBackground(new Color(0, 0, 0, 0));
+        ((DefaultTableCellRenderer) this.jTableCommentsTable.getDefaultRenderer(Object.class)).setBackground(new Color(0, 0, 0, 0));
+        this.jTableCommentsTable.setGridColor(Color.WHITE);
+        this.jTableCommentsTable.setForeground(Color.WHITE);
+        this.jScrollPane1.setBackground(new Color(0, 0, 0, 0));
+        this.jScrollPane1.setOpaque(false);
+        this.jTableCommentsTable.setOpaque(false);
+        ((DefaultTableCellRenderer) this.jTableCommentsTable.getDefaultRenderer(Object.class)).setOpaque(false);
+        this.jScrollPane1.getViewport().setOpaque(false);
     }
 
     /**
@@ -40,11 +51,13 @@ public class Comments extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ERLETE");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 871, 55));
 
         jLabel2.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("COMMENTS");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 72, 101, 33));
 
@@ -54,6 +67,7 @@ public class Comments extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 718, 227));
 
         jButtonDeleteComment.setBorder(null);
+        jButtonDeleteComment.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDeleteComment.setText("DELETE COMMENT");
         jButtonDeleteComment.setGradientLineColor(new java.awt.Color(255, 0, 0));
         jButtonDeleteComment.setLinePainted(true);
@@ -61,6 +75,7 @@ public class Comments extends javax.swing.JFrame {
         getContentPane().add(jButtonDeleteComment, new org.netbeans.lib.awtextra.AbsoluteConstraints(746, 217, 117, 26));
 
         button1.setBorder(null);
+        button1.setForeground(new java.awt.Color(255, 255, 255));
         button1.setText("HOME");
         button1.setGradientLineColor(new java.awt.Color(255, 255, 0));
         button1.setLineColor(new java.awt.Color(0, 204, 204));
@@ -73,7 +88,7 @@ public class Comments extends javax.swing.JFrame {
         });
         getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(802, 321, 71, 26));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\kalboetxeaga.ager\\Downloads\\Boton_Muestra-20210519T060314Z-001\\Abejitas\\Java_App\\src\\PRUEBA.jpg")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 890, 360));
 
         pack();
