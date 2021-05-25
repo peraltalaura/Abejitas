@@ -6,6 +6,12 @@
 package view.Frames;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
@@ -14,12 +20,31 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class MemberNotifications extends javax.swing.JFrame {
 
+    Timer updateTimer;
+    int DELAY = 100;
+
     /**
      * Creates new form NOTIFICATIONS
      */
     public MemberNotifications() {
         initComponents();
-         this.jTableNotifications.setBackground(new Color(0, 0, 0, 0));
+
+        updateTimer = new Timer(DELAY, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date currentTime = new Date();
+                String formatTimeStr = "hh:mm:ss";
+                DateFormat formatTime = new SimpleDateFormat(formatTimeStr);
+                String formattedTimeStr = formatTime.format(currentTime);
+
+                jLabelTime.setText(formattedTimeStr);
+
+                setTitle("Time: " + formattedTimeStr);
+
+            }
+        });
+        updateTimer.start();
+        this.jTableNotifications.setBackground(new Color(0, 0, 0, 0));
         ((DefaultTableCellRenderer) this.jTableNotifications.getDefaultRenderer(Object.class)).setBackground(new Color(0, 0, 0, 0));
         this.jTableNotifications.setGridColor(Color.WHITE);
         this.jTableNotifications.setForeground(Color.WHITE);
@@ -45,15 +70,17 @@ public class MemberNotifications extends javax.swing.JFrame {
         jTableNotifications = new javax.swing.JTable();
         button1 = new view.frameComponents.Button();
         jLabel2 = new javax.swing.JLabel();
+        jLabelTime = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe Print", 0, 11)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe Print", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("SEE MEMBERS NOTIFICATIONS STATE");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 25, 334, 34));
+        jLabel1.setText("NOTIFICATIONS");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 360, 34));
 
         jTableNotifications.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -68,7 +95,7 @@ public class MemberNotifications extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableNotifications);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 77, -1, 313));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, -1, 313));
 
         button1.setBorder(null);
         button1.setForeground(new java.awt.Color(255, 255, 255));
@@ -82,10 +109,13 @@ public class MemberNotifications extends javax.swing.JFrame {
                 button1ActionPerformed(evt);
             }
         });
-        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(578, 433, 61, 24));
+        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(549, 407, 90, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 680, 470));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 480));
+
+        jLabelTime.setText("jLabel3");
+        getContentPane().add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 120, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -129,8 +159,7 @@ public class MemberNotifications extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-    
-     public static MemberNotifications createNotifications() {
+    public static MemberNotifications createNotifications() {
         MemberNotifications mn = new MemberNotifications();
         return mn;
     }
@@ -139,6 +168,7 @@ public class MemberNotifications extends javax.swing.JFrame {
     private view.frameComponents.Button button1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelTime;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTableNotifications;
     // End of variables declaration//GEN-END:variables

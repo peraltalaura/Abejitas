@@ -5,6 +5,12 @@
  */
 package view.Frames;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableCellRenderer;
 import model.tables.MembersTable;
 
@@ -13,12 +19,28 @@ import model.tables.MembersTable;
  * @author uribe.markel
  */
 public class Members extends javax.swing.JFrame {
-
+    Timer updateTimer;
+    int DELAY = 100;
     /**
      * Creates new form nmembers
      */
     public Members() {
         initComponents();
+         updateTimer = new Timer(DELAY, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date currentTime = new Date();
+                String formatTimeStr = "hh:mm:ss";
+                DateFormat formatTime = new SimpleDateFormat(formatTimeStr);
+                String formattedTimeStr = formatTime.format(currentTime);
+
+                jLabelTime.setText(formattedTimeStr);
+
+                setTitle("Time: " + formattedTimeStr);
+
+            }
+        });
+        updateTimer.start();
         this.memberjTable.setBackground(new Color(0,0,0,0));
         ((DefaultTableCellRenderer) this.memberjTable.getDefaultRenderer(Object.class)).setBackground(new Color(0,0,0,0));
         this.memberjTable.setGridColor(Color.WHITE);
@@ -69,27 +91,29 @@ public class Members extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jLabelTime = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe Script", 1, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("MEMBERS");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 846, 55));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 330, 55));
 
         jTextFieldPostcode.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextFieldPostcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 487, 281, -1));
+        getContentPane().add(jTextFieldPostcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 500, 281, -1));
 
         jTextFieldCity.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextFieldCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 512, 281, -1));
+        getContentPane().add(jTextFieldCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 530, 281, -1));
 
         jTextFieldAdress.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 538, 281, -1));
+        getContentPane().add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 560, 281, -1));
 
         jTextFieldPhone.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextFieldPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 564, 138, -1));
+        getContentPane().add(jTextFieldPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 590, 138, -1));
 
         memberjTable.setModel(new MembersTable());
         jScrollPane1.setViewportView(memberjTable);
@@ -98,8 +122,8 @@ public class Members extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("INSERT MEMBERS");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 378, -1, -1));
+        jLabel6.setText("CREATE A MEMBER ACCOUNT:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, -1, -1));
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("NAME");
@@ -119,19 +143,19 @@ public class Members extends javax.swing.JFrame {
 
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("POST CODE");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 490, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 500, -1, -1));
 
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("CITY");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 515, -1, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 530, -1, -1));
 
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("ADRESS");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 541, -1, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 560, -1, -1));
 
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("PHONE");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 567, -1, -1));
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 590, -1, -1));
 
         jTextFieldName.setForeground(new java.awt.Color(255, 255, 255));
         jTextFieldName.addActionListener(new java.awt.event.ActionListener() {
@@ -152,11 +176,11 @@ public class Members extends javax.swing.JFrame {
 
         jLabelBirthday.setForeground(new java.awt.Color(255, 255, 255));
         jLabelBirthday.setText("BIRTHDAY");
-        getContentPane().add(jLabelBirthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(236, 461, 57, -1));
+        getContentPane().add(jLabelBirthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 470, 50, -1));
 
         jTextFieldBirthday.setForeground(new java.awt.Color(255, 255, 255));
         jTextFieldBirthday.setToolTipText("");
-        getContentPane().add(jTextFieldBirthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 461, 138, -1));
+        getContentPane().add(jTextFieldBirthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 470, 138, -1));
 
         jButtonActivate.setBorder(null);
         jButtonActivate.setForeground(new java.awt.Color(255, 255, 255));
@@ -172,7 +196,7 @@ public class Members extends javax.swing.JFrame {
         jButtonInsertMember.setGradientLineColor(java.awt.Color.green);
         jButtonInsertMember.setLinePainted(true);
         jButtonInsertMember.setRounded(true);
-        getContentPane().add(jButtonInsertMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(589, 543, 96, 28));
+        getContentPane().add(jButtonInsertMember, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 570, 96, 28));
 
         button1.setBorder(null);
         button1.setForeground(new java.awt.Color(255, 255, 255));
@@ -186,7 +210,7 @@ public class Members extends javax.swing.JFrame {
                 button1ActionPerformed(evt);
             }
         });
-        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(758, 538, 78, 38));
+        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 590, 78, 38));
 
         jButtonDisable.setBorder(null);
         jButtonDisable.setForeground(new java.awt.Color(255, 255, 255));
@@ -202,15 +226,18 @@ public class Members extends javax.swing.JFrame {
 
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("(optional:)");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(438, 403, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
         jLabel4.setText("(dd/mm/yyyy)");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 464, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, -1, -1));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 600));
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 650));
+
+        jLabelTime.setText("jLabel5");
+        getContentPane().add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 150, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -284,6 +311,7 @@ public class Members extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelBirthday;
+    private javax.swing.JLabel jLabelTime;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTextField jTextFieldAdress;
     public javax.swing.JTextField jTextFieldBirthday;

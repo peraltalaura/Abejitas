@@ -74,46 +74,45 @@ public class Materials extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextFieldModel = new javax.swing.JTextField();
         jTextFieldComment = new javax.swing.JTextField();
-        jLabelTime = new javax.swing.JLabel();
         jButtonAddItem = new view.frameComponents.ButtonInsert();
         button1 = new view.frameComponents.Button();
         jButtonDeleteItem = new view.frameComponents.ButtonDelete();
-        jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabelTime = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe Script", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("INVENTORY");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 925, 55));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 480, 55));
 
         jTableInventory.setModel(new InventoryTable());
         jScrollPane1.setViewportView(jTableInventory);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 173, -1, 202));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 115, -1, 260));
 
+        jLabel2.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ADD ITEM:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(532, 173, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 110, 70, 20));
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Model:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(553, 201, -1, -1));
+        jLabel4.setText("MODEL:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 40, -1));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Comment");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 242, -1, -1));
+        jLabel5.setText("COMMENT:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 60, -1));
 
         jTextFieldModel.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextFieldModel, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 198, 120, -1));
+        getContentPane().add(jTextFieldModel, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, 140, -1));
 
         jTextFieldComment.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextFieldComment, new org.netbeans.lib.awtextra.AbsoluteConstraints(603, 239, 120, -1));
-
-        jLabelTime.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 92, 280, 35));
+        getContentPane().add(jTextFieldComment, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 200, 140, 70));
 
         jButtonAddItem.setBorder(null);
         jButtonAddItem.setForeground(new java.awt.Color(255, 255, 255));
@@ -121,7 +120,7 @@ public class Materials extends javax.swing.JFrame {
         jButtonAddItem.setGradientLineColor(new java.awt.Color(51, 204, 0));
         jButtonAddItem.setLinePainted(true);
         jButtonAddItem.setRounded(true);
-        getContentPane().add(jButtonAddItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(813, 236, 80, 26));
+        getContentPane().add(jButtonAddItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 290, 80, 26));
 
         button1.setBorder(null);
         button1.setForeground(new java.awt.Color(255, 255, 255));
@@ -135,7 +134,7 @@ public class Materials extends javax.swing.JFrame {
                 button1ActionPerformed(evt);
             }
         });
-        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(853, 442, 62, 23));
+        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 380, 90, 50));
 
         jButtonDeleteItem.setBorder(null);
         jButtonDeleteItem.setForeground(new java.awt.Color(255, 255, 255));
@@ -143,10 +142,13 @@ public class Materials extends javax.swing.JFrame {
         jButtonDeleteItem.setGradientLineColor(new java.awt.Color(255, 0, 0));
         jButtonDeleteItem.setLinePainted(true);
         jButtonDeleteItem.setRounded(true);
-        getContentPane().add(jButtonDeleteItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 393, 92, 27));
+        getContentPane().add(jButtonDeleteItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, 92, 27));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 930, 490));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 120, 30));
+
+        jLabelTime.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
+        getContentPane().add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -202,10 +204,10 @@ public class Materials extends javax.swing.JFrame {
     public view.frameComponents.ButtonDelete jButtonDeleteItem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    public static javax.swing.JLabel jLabelTime;
+    private javax.swing.JLabel jLabelTime;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTableInventory;
     public javax.swing.JTextField jTextFieldComment;

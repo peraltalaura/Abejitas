@@ -6,6 +6,12 @@
 package view.Frames;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
@@ -13,12 +19,28 @@ import javax.swing.table.DefaultTableCellRenderer;
  * @author uribe.markel
  */
 public class Availability extends javax.swing.JFrame {
-
+     Timer updateTimer;
+    int DELAY = 100;
     /**
      * Creates new form navailability
      */
     public Availability() {
         initComponents();
+        updateTimer = new Timer(DELAY, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date currentTime = new Date();
+                String formatTimeStr = "hh:mm:ss";
+                DateFormat formatTime = new SimpleDateFormat(formatTimeStr);
+                String formattedTimeStr = formatTime.format(currentTime);
+
+                jLabelTime.setText(formattedTimeStr);
+
+                setTitle("Time: " + formattedTimeStr);
+
+            }
+        });
+        updateTimer.start();
         this.jTableMetal.setBackground(new Color(0, 0, 0, 0));
         ((DefaultTableCellRenderer) this.jTableMetal.getDefaultRenderer(Object.class)).setBackground(new Color(0, 0, 0, 0));
         this.jTableMetal.setGridColor(Color.WHITE);
@@ -59,22 +81,24 @@ public class Availability extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         button1 = new view.frameComponents.Button();
         jLabel4 = new javax.swing.JLabel();
+        jLabelTime = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("EXTRACTORS BOOKINGS DATES:");
+        jLabel2.setText("EXTRACTOR BOOKINGS DATES:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 72, 240, 34));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe Script", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("ERLETE");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 864, 55));
+        jLabel1.setText("AVAILABILITY");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 400, 55));
 
         jTableBookings.setForeground(new java.awt.Color(255, 255, 255));
         jTableBookings.setModel(new javax.swing.table.DefaultTableModel(
@@ -90,7 +114,7 @@ public class Availability extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableBookings);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 139, 339, 406));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 139, 380, 406));
 
         jTableMetal.setForeground(new java.awt.Color(255, 255, 255));
         jTableMetal.setModel(new javax.swing.table.DefaultTableModel(
@@ -106,7 +130,7 @@ public class Availability extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTableMetal);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 139, 382, 406));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 139, 390, 406));
 
         jLabel3.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -126,11 +150,14 @@ public class Availability extends javax.swing.JFrame {
                 button1ActionPerformed(evt);
             }
         });
-        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 543, 67, 30));
+        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 570, 100, 50));
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 2, 910, 600));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 2, 980, 630));
+
+        jLabelTime.setText("jLabel5");
+        getContentPane().add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 140, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -185,6 +212,7 @@ public class Availability extends javax.swing.JFrame {
     javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelTime;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable jTableBookings;

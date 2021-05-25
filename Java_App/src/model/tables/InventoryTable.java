@@ -9,7 +9,7 @@ public class InventoryTable extends AbstractTableModel {
 
     private Management man = new Management();
     public ArrayList<Inventory> materials = new ArrayList<>();//stores data for the table
-    private String[] titles = {"ITEM ID", "MODEL", "COMMENT"};//sets table col titles
+    private String[] titles = {"ID", "MODEL", "COMMENT"};//sets table col titles
 
     public InventoryTable() {
         ArrayList<Object> array = new ArrayList<>();

@@ -11,7 +11,7 @@ public class BookingsTable extends AbstractTableModel{
 
     private Management man= new Management();
     public ArrayList<Booking> occupied_list = new ArrayList<>();//stores data for the table
-    private String[] titles={"ENTRY-DATE","EXIT-DATE"};//sets table col titles
+    private String[] titles={"MEMBER","ENTRY-DATE","EXIT-DATE"};//sets table col titles
     
     public BookingsTable(){
         ArrayList<Object> array = new ArrayList<>();
@@ -41,8 +41,10 @@ public class BookingsTable extends AbstractTableModel{
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return occupied_list.get(rowIndex).getEntryDate();
+                return occupied_list.get(rowIndex).getMember_id();
             case 1:
+                return occupied_list.get(rowIndex).getEntryDate();
+            case 2:
                 return occupied_list.get(rowIndex).getExitDate();
             default:
                 return null;

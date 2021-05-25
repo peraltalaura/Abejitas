@@ -15,7 +15,7 @@ public class MetalbinTable extends AbstractTableModel {
 
     private Management man = new Management();
     public ArrayList<Metalbin> production = new ArrayList<>();//stores data for the table
-    private String[] titles = {"ID","NAME","AVAILABLE","AVAILABLE DATE"};//sets table col titles
+    private String[] titles = {"ID","NAME","AVAILABLE","DATE"};//sets table col titles
 
     public MetalbinTable() {
         ArrayList<Object> array = new ArrayList<>();

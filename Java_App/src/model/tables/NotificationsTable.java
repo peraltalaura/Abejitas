@@ -15,7 +15,7 @@ public class NotificationsTable extends AbstractTableModel {
 
     private Management man = new Management();
     public ArrayList<Notify> notification_list = new ArrayList<>();//stores data for the table
-    private String[] titles = {"MEMBER ID", "NOTIFICATION ID", "DATE", "SEEN"};//sets table col titles
+    private String[] titles = {"ID", "NOTIFICATION", "DATE", "SEEN"};//sets table col titles
 
     public NotificationsTable() {
         ArrayList<Object> array = new ArrayList<>();

@@ -16,7 +16,7 @@ public class MembersTable extends AbstractTableModel {
     private Management man = new Management();
     private int member_count;
     private ArrayList<Member> members_list=new ArrayList<>();//stores data for the table
-    private final String[] TITLES = {"MEMBER ID", "NAME", "SURNAME", "E-MAIL", "PASSWORD", "BIRTHDAY","POST CODE", "CITY", "ADDRESS", "PHONE", "ACTIVE"};//sets table col titles
+    private final String[] TITLES = {"ID", "NAME", "SURNAME", "E-MAIL", "PASSWORD", "BIRTHDAY","POST CODE", "CITY", "ADDRESS", "PHONE", "ACTIVE"};//sets table col titles
 
     public MembersTable() {
         ArrayList<Object> array = new ArrayList<>();

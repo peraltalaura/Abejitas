@@ -5,6 +5,12 @@
  */
 package view.Frames;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableCellRenderer;
 import model.tables.CommentsTable;
 
@@ -13,12 +19,28 @@ import model.tables.CommentsTable;
  * @author uribe.markel
  */
 public class Comments extends javax.swing.JFrame {
-
+    Timer updateTimer;
+    int DELAY = 100;
     /**
      * Creates new form ncomments
      */
     public Comments() {
         initComponents();
+        updateTimer = new Timer(DELAY, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date currentTime = new Date();
+                String formatTimeStr = "hh:mm:ss";
+                DateFormat formatTime = new SimpleDateFormat(formatTimeStr);
+                String formattedTimeStr = formatTime.format(currentTime);
+
+                jLabelTime.setText(formattedTimeStr);
+
+                setTitle("Time: " + formattedTimeStr);
+
+            }
+        });
+        updateTimer.start();
          this.jTableCommentsTable.setBackground(new Color(0, 0, 0, 0));
         ((DefaultTableCellRenderer) this.jTableCommentsTable.getDefaultRenderer(Object.class)).setBackground(new Color(0, 0, 0, 0));
         this.jTableCommentsTable.setGridColor(Color.WHITE);
@@ -45,20 +67,22 @@ public class Comments extends javax.swing.JFrame {
         jButtonDeleteComment = new view.frameComponents.ButtonDelete();
         button1 = new view.frameComponents.Button();
         jLabel3 = new javax.swing.JLabel();
+        jLabelTime = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe Script", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("COMMENTS");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 11, 871, 55));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 380, 55));
 
         jTableCommentsTable.setModel(new CommentsTable());
         jScrollPane1.setViewportView(jTableCommentsTable);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 718, 227));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 630, -1));
 
         jButtonDeleteComment.setBorder(null);
         jButtonDeleteComment.setForeground(new java.awt.Color(255, 255, 255));
@@ -66,7 +90,7 @@ public class Comments extends javax.swing.JFrame {
         jButtonDeleteComment.setGradientLineColor(new java.awt.Color(255, 0, 0));
         jButtonDeleteComment.setLinePainted(true);
         jButtonDeleteComment.setRounded(true);
-        getContentPane().add(jButtonDeleteComment, new org.netbeans.lib.awtextra.AbsoluteConstraints(746, 217, 117, 26));
+        getContentPane().add(jButtonDeleteComment, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 330, 117, 26));
 
         button1.setBorder(null);
         button1.setForeground(new java.awt.Color(255, 255, 255));
@@ -80,10 +104,13 @@ public class Comments extends javax.swing.JFrame {
                 button1ActionPerformed(evt);
             }
         });
-        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(802, 321, 71, 26));
+        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 440, 90, 50));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 890, 360));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 890, 540));
+
+        jLabelTime.setText("jLabel2");
+        getContentPane().add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 150, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -137,6 +164,7 @@ public static Comments createComments() {
     public view.frameComponents.ButtonDelete jButtonDeleteComment;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelTime;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTableCommentsTable;
     // End of variables declaration//GEN-END:variables

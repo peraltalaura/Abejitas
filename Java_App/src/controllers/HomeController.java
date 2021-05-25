@@ -67,7 +67,7 @@ public class HomeController implements ActionListener {
 
     //declaration of the notifications
     private ArrayList<Notification> notifications = new ArrayList<>();
-
+    
     private int adminId = 1;
 
     /**
@@ -103,7 +103,6 @@ public class HomeController implements ActionListener {
         paymentActionListener(this);
         commentActionListener(this);
         
-
     }
 
     /**
@@ -118,11 +117,10 @@ public class HomeController implements ActionListener {
             //each of the manage cases go to their respectfull jframe
             case "MANAGE MEMBERS":
                 members.memberjTable.setModel(membersTable);
-                
                 members.setVisible(true);
                 members.setLocationRelativeTo(null);
                 break;
-
+            
             case "MANAGE AVAILABILITY":
                 bookingsTable = new BookingsTable();
                 metalbinsTable = new MetalbinTable();
@@ -131,37 +129,38 @@ public class HomeController implements ActionListener {
                 available.setVisible(true);
                 available.setLocationRelativeTo(null);
                 break;
-
+            
             case "MANAGE INVENTORY":
                 inventoryTable = new InventoryTable();
                 inventory.jTableInventory.setModel(inventoryTable);
                 inventory.setVisible(true);
                 inventory.setLocationRelativeTo(null);
-
+                
                 break;
-
+            
             case "MANAGE PAYMENTS":
                 paymentTable = new PaymentsTable();
                 payments.jTablePayments.setModel(paymentTable);
+                payments.jLabelBalance.setText("" + paymentTable.getBalance());
                 payments.setVisible(true);
                 payments.setLocationRelativeTo(null);
-
+                
                 break;
-
+            
             case "MANAGE COMMENTS":
                 commentsTable = new CommentsTable();
                 comments.jTableCommentsTable.setModel(commentsTable);
                 comments.setVisible(true);
                 comments.setLocationRelativeTo(null);
-
+                
                 break;
-
+            
             case "SEE NOTIFICATIONS":
                 notificationsTable = new NotificationsTable();
                 notificationsFrame.jTableNotifications.setModel(notificationsTable);
                 notificationsFrame.setVisible(true);
                 notificationsFrame.setLocationRelativeTo(null);
-
+                
                 break;
 
             //when the activate button is clicked it calls the activateMember() function from Management
@@ -190,9 +189,9 @@ public class HomeController implements ActionListener {
             break;
             //when the activate button is clicked it puts the data from the textfields into a Member object and calls the insertMember()function to add a member to the database
             case "SUBMIT":
-
+                
                 boolean fail_1 = false;
-
+                
                 if (!members.jTextFieldName.getText().isEmpty() && !members.jTextFieldSurname.getText().isEmpty() && !members.jTextFieldEmail.getText().isEmpty()) {
                     //name comprobation
                     for (char c : members.jTextFieldName.getText().toCharArray()) {
@@ -205,22 +204,22 @@ public class HomeController implements ActionListener {
                         if (!Character.isLetter(c)) {
                             fail_1 = true;
                         }
-
+                        
                     }
                     //email comprobation
                     boolean isarroba = false;
                     if (!members.jTextFieldEmail.getText().equals("")) {
                         for (char c : members.jTextFieldEmail.getText().toCharArray()) {
-
+                            
                             if (c == '@') {
                                 isarroba = true;
                             }
-
+                            
                         }
                         if (isarroba == false) {
                             fail_1 = true;
                         }
-
+                        
                     }
                     //simple insert of member
                     if (fail_1 == false) {
@@ -304,7 +303,7 @@ public class HomeController implements ActionListener {
                                 members.jTextFieldPostcode.setText("");
                             }
                         }
-
+                        
                     } else {
                         JOptionPane.showMessageDialog(payments, "You must write valid characters");
                         members.jTextFieldName.setText("");
@@ -316,7 +315,7 @@ public class HomeController implements ActionListener {
                         members.jTextFieldPhone.setText("");
                         members.jTextFieldPostcode.setText("");
                     }
-
+                    
                 } else {
                     JOptionPane.showMessageDialog(payments, "You must write valid characters");
                     members.jTextFieldName.setText("");
@@ -327,7 +326,7 @@ public class HomeController implements ActionListener {
                     members.jTextFieldAdress.setText("");
                     members.jTextFieldPhone.setText("");
                     members.jTextFieldPostcode.setText("");
-
+                    
                 }
                 
                 break;
@@ -356,6 +355,7 @@ public class HomeController implements ActionListener {
                         Payment pay = new Payment(description, now, total, adminId);
                         man.registerPayment(pay);
                         paymentTable.addPayment(pay);
+                        payments.jLabelBalance.setText("" + paymentTable.getBalance());
                         System.out.println("payment done");
                     } catch (Exception E) {
                         System.out.println("error when paying");
@@ -365,7 +365,7 @@ public class HomeController implements ActionListener {
                     payments.jTextFieldPDescription.setText("");
                     payments.jTextFieldPTotal.setText("");
                 }
-
+                
                 break;
 
             //when it is clicked it displays the payments depending on the id introduced
@@ -375,22 +375,23 @@ public class HomeController implements ActionListener {
                     fail_3 = true;
                 } else {
                     for (char x : payments.jTextFieldID.getText().toCharArray()) {
-
+                        
                         if (!Character.isDigit(x)) {
                             fail_3 = true;
                         }
                     }
                 }
-
+                
                 if (fail_3 == false) {
                     try {
                         int memberID = Integer.parseInt(payments.jTextFieldID.getText());
                         paymentTable.searchMemberPayments(memberID);
+                        payments.jLabelBalance.setText("" + paymentTable.getBalance());
                         System.out.println("filter done");
                     } catch (Exception E) {
                         System.out.println("filter error");
                     }
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(payments, "Check and try again.");
                 }
                 
@@ -398,10 +399,11 @@ public class HomeController implements ActionListener {
             // when its clicked it refresh the table of payments
             case "RESET":
                 paymentTable.resetList();
+                payments.jLabelBalance.setText("" + paymentTable.getBalance()+" €");
                 break;
             //when its clicked this case adds the submitted item into items table
             case "ADD ITEM":
-
+                
                 boolean fail_4 = false;
                 String getModel = inventory.jTextFieldModel.getText();
                 if (inventory.jTextFieldComment.getText().isEmpty() || inventory.jTextFieldModel.getText().isEmpty()) {
@@ -409,7 +411,7 @@ public class HomeController implements ActionListener {
                 }
                 for (char c : inventory.jTextFieldModel.getText().toCharArray()) {
                     if (!Character.isLetter(c)) {
-
+                        
                         fail_4 = true;
                     }
                 }
@@ -435,11 +437,11 @@ public class HomeController implements ActionListener {
                     inventory.jTextFieldComment.setText("");
                     inventory.jTextFieldModel.setText("");
                 }
-
+                
                 break;
             //in this case when its pressed it deletes the selected comment
             case "DELETE COMMENT":
- 
+                
                 int ic = JOptionPane.showConfirmDialog(inventory, "Are you sure?");
                 if (ic == 0) {
                     try {
@@ -458,7 +460,7 @@ public class HomeController implements ActionListener {
                 } else {
                     JOptionPane.showMessageDialog(inventory, "The Operation has been succesfully cancelled");
                 }
-
+                
                 break;
             //This case deletes the selected item from the item table 
             case "DELETE ITEM":
@@ -476,13 +478,13 @@ public class HomeController implements ActionListener {
                         System.out.println("Error deleting item");
                         System.out.println(ex);
                     }
-
+                    
                 } else {
                     JOptionPane.showMessageDialog(inventory, "The Operation has been succesfully cancelled");
                 }
-
+            
         }
-
+        
     }
 
     /**
@@ -509,7 +511,7 @@ public class HomeController implements ActionListener {
      * @param listener
      */
     public void memberActionListener(ActionListener listener) {
-
+        
         members.jButtonInsertMember.addActionListener(listener);
         members.jButtonDisable.addActionListener(listener);
         members.jButtonActivate.addActionListener(listener);
@@ -534,7 +536,7 @@ public class HomeController implements ActionListener {
      * @param listener
      */
     public void availabilityActionListener(ActionListener listener) {
-
+        
     }
 
     /**
@@ -569,5 +571,5 @@ public class HomeController implements ActionListener {
             notifications.add((Notification) x);
         }
     }
-
+    
 }
