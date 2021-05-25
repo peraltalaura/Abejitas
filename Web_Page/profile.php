@@ -17,8 +17,10 @@
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 	<!--<Link rel="stylesheet" href="CSS.css">-->
 	<Link rel="stylesheet" href="css/index_CSS.css">
+
 	<!--link for jqueryui custom-->
 	<link rel="stylesheet" href="jquery/jquery-ui.min.css">
 	<script src="jquery/external/jquery/jquery.js"></script>
@@ -53,21 +55,20 @@
 		}
 	</script>
 	<style>
-		h1 {
+		h1,h2 {
 			font-family: 'Dancing Script', cursive;
 		}
 		body {
 			font-family: 'Lato', sans-serif;
 		}
+
 	</style>
 
 </head>
 <body>
+	<h1 class="Center erlete">ERLETE</h1>
 	<!--menu of the web page that is explaned in the other pages of the web page-->
 	<ul class="sidenav">
-		<li>
-			<h1 class="Center">ERLETE</h1>
-		</li>
 		<li>
 			<a class="Center" href="index.php">HOME</a>
 		</li>
@@ -175,7 +176,7 @@
 							<!-- if the variable login exists it prints the message-->
 							<?php
 							if(isset($_GET["login"])){
-								printf("<div class='container Center RB'>Login successfull, Wellcome!</div>");
+								printf("<div id='loginDialog' title='Login successfull'><p>You have logged in successfully, Wellcome!</p></div>");
 								/* php code that makes a sql query to know if there are any unseen notifications, if there are, it shows a dialog*/
 								$sql="SELECT * FROM notify WHERE member_id=$id";
 								$result=mysqli_query($link,$sql);
@@ -190,7 +191,7 @@
 							} 
 
 							?>	
-							<h1 class="mt-4">MY PROFILE</h1>
+							<h1>My profile</h1>
 							<!--php code that checks if the update variable exists, if it does, a dialog displays:-->
 							<?php
 							if(isset($_GET['update'])){
@@ -217,7 +218,7 @@
 											printf("<img src='%s' style='width:20em;border-radius:2em'>",$data['picture']);
 											?>
 										</div>
-										<div class="RB column">
+										<div class="RB column" style="text-align: justify;">
 											<!-- PHP code that prints the data from the query in the specified format-->
 											<?php
 											printf("<p>NAME: %s</p>",$data['name']);
@@ -299,11 +300,11 @@
 								}
 							}	
 							?>
-							<div class="Center content">
+							<div class="content Center">
 								<!-- The form which shows the current data from the user and allows to make changes on it to then send it to the same page with the account = mod variable to change the php switch and modify variable-->
-								<form id="data" class="form-group Center" action="profile.php?account=mod&modify" method="post" enctype="multipart/form-data">
-									<h1 class="mt-4">EDIT PROFILE</h1>
-									<div class="RB Center">
+								<form id="data" class="form-group" action="profile.php?account=mod&modify" method="post" enctype="multipart/form-data">
+									<h1>Edit your profile</h1>
+									<div class="Center modify">
 
 										<label>PROFILE PICTURE:</label> 
 										<input type="file" name="pic"><br>
@@ -318,19 +319,19 @@
 
 										<?php
 										printf("<label>CITY:</label><input type='text' name='city' value='%s'><br>",$data[6]);
-										printf("<label>POST CODE: </label><input type='number' name='post' value='%d'><br>",$data[7]);
+										printf("<label>POST CODE: <br><input type='number' name='post' value='%d'></label><br>",$data[7]);
 										?>
 
 										<?php
-										printf("<label>ADDRESS: </label><input type='text' name='address' value='%s'><br>",$data[8]);
-										printf("<label>PHONE:</label> <input type='tel' pattern='[0-9]{9}' name='phone' value='%d' required><br>",$data[9]);
+										printf("<label>ADDRESS: <br><input type='text' name='address' value='%s'></label><br>",$data[8]);
+										printf("<label>PHONE:</label><input type='tel' pattern='[0-9]{9}' name='phone' value='%d' required><br>",$data[9]);
 										?>
 									</div>
-									<div class="RB Center">
-										<label>PASSWORD:</label><br><input type="password" name="cpass"></label>
+									<div class="Center">
+										<label>PASSWORD: <br><input type="password" name="cpass"></label><br>
+										<input id="modify" class="BRB"  type="submit" value="MODIFY DATA">
 									</div>
-									<input id="modify" class="BRB"  type="submit" value="MODIFY DATA">
-
+									
 								</div>
 							</div>
 						</form>
@@ -343,7 +344,7 @@
 						'</script>';
 						?>
 						<div class="content Center">
-							<h1 id="movement" class="mt-4">MY MOVEMENTS</h1>
+							<h1 id="movement">My movements</h1>
 							<br>
 							<!-- php code that makes a query to extract the payments done or assosiated with the current member and display them in a table-->
 							<?php			
@@ -368,21 +369,19 @@
 								</table>
 							</div>
 							<!-- a div that shows the total balance of the account of the member and shows/hides the transaction form when the transfer money link is clicked-->
-							<div id="balance" class="columns RB pb-4">
-								<div style='padding-left:1em;padding-right:1em'>
-									<h2>MY BALANCE:</h2>
-								</div>
+							<h1 style="margin:0">Your account balance</h1>
+							<div id="balance" class="columns RB mt-4">
 								<?php
-								printf("<div style='padding-left:1em;padding-right:1em'><h2> %d €</h2></div>",$balance);
+								printf("<div><h2> %d €</h2></div>",$balance);
 								?>
-								<div id="trans" style='padding-left:1em;padding-right:1em'><a class="BRB">transfer money</a>
+								<div id="trans"><a class="BRB">transfer money</a>
 								</div>
 							</div>
 						</div>
 
 						<!--Form that allows the user to transfer money to the account-->
 						<div id="transfer" class="content Center" style="display:none">
-							<h1 class="mt-4">TRANSFER</h1>
+							<h1 class="mt-4">Transfer</h1>
 							<!-- form to transfer money which asks the member for a description and cuantity-->
 							<form id="transfer-form" class="form-group container Center" action="transfer.php" method="post">
 								<div class="columns" style="text-align:center">
@@ -422,7 +421,7 @@
 					'</script>';
 					?>
 					<div class="content Center">
-						<h1 id="bookings" class="mt-4">MY BOOKINGS</h1>
+						<h1 id="bookings">My bookings</h1>
 						<br>
 						<!-- php code that makes an SQL query to extract the bookings of the member signed in-->
 						<?php			
@@ -431,44 +430,29 @@
 						
 						?>
 						<!-- Titles from the bookings table-->
-						<h2 class="Center">BOOKINGS</h2>
+						<h2 class="Center">Bookings</h2>
 						<div class="rows">
 							<div class="row"><b>ID</b></div>
 							<div class="row"><b>ENTRY</b></div>
 							<div class="row"><b>EXIT</b></div>
 							<div class="row"><b>KILOS</b></div>
 							<div class="row"><b>TOTAL</b></div>
-							<div class="row"><b></b></div>
 						</div>
 
 						<?php
 						while($data=mysqli_fetch_array($result)){
 							/* information about each booking made by the member*/
-							if($data['total']==0){
-								printf("
-									<div class='rows'>
-									<div class='row'>%d</div>
-									<div class='row'>%s</div>
-									<div class='row'>%s</div>
-									<div class='row'>%d KG</div>
-									<div class='row'>%d €</div>
-									<div class='row'><a type='button' class='BRB' href='cancel_booking.php?bid=$data[0]'>Cancel booking</a></div>
-									</div>",$data[0],$data[0],$data[1],$data[2],$data[3],$data[4]);
-							}else{
-								printf("
-									<div class='rows' %d onClick=clickaction(this)>
-									<div class='row'>%d</div>
-									<div class='row'>%s</div>
-									<div class='row'>%s</div>
-									<div class='row'>%d KG</div>
-									<div class='row'>%d €</div>
-									<div class='row'>cancelling unavailable</div>
-									</div>",$data[0],$data[0],$data[1],$data[2],$data[3],$data[4]);
-							}
+							printf("
+								<div class='rows'>
+								<div class='row'>%d</div>
+								<div class='row'>%s</div>
+								<div class='row'>%s</div>
+								<div class='row'>%d KG</div>
+								<div class='row'>%d €</div>
+								</div>",$data[0],$data[0],$data[1],$data[2],$data[3],$data[4]);
 							/* Titles of the productions table*/
 							printf("
-								<h2 class='Center production'>PRODUCTIONS</h2>
-								<div class='rows production'>
+								<div class='rows production' style='background-color:rgb(255,255,255,0.4);color:black'>
 								<div class='row'>METALBIN</div>
 								<div class='row'>DATE/TIME</div>
 								<div class='row'>KILOS</div>
@@ -482,48 +466,36 @@
 							
 							while($data2=mysqli_fetch_array($result2)){
 								/* information about the productions of the booking above*/
-								if ($data2[1]!=NULL) {			
-									printf("
-										<div class='rows production'>
-										<div class='row'>%d</div>
-										<div class='row'>%s</div>
-										<div class='row'>%d</div>
-										<div class='row'>%d</div>
-										",$data2[1],$data2[4],$data2[2],$data2[3]);
-									/*Select the availability of the metalbin of the production*/
-									$availability="SELECT available FROM metalbin WHERE metalbin_id=$data2[1]";
-									$result3=mysqli_query($link,$availability);
-									$data3=mysqli_fetch_array($result3);
-									/* if the production is finished*/
-									if($data3[0]==1){
-										printf("<div class='row'>FINISHED</div>
-											</div>");
-										/* if the metalbin is still in use and the production going on*/
-									} else {
-										printf("<div class='row'><a type='button' 
-											class='BRB' href='setAvailable.php?productid=$data2[0]'>END</a></div>
-											</div>");
-									}
+								printf("
+									<div class='rows production' style='background-color:rgb(255,255,255,0.4);color:black'>
+									<div class='row'>%d</div>
+									<div class='row'>%s</div>
+									<div class='row'>%d</div>
+									<div class='row'>%d</div>
+									",$data2[1],$data2[4],$data2[2],$data2[3]);
+								/*Select the availability of the metalbin of the production*/
+								$availability="SELECT available FROM metalbin WHERE metalbin_id=$data2[1]";
+								$result3=mysqli_query($link,$availability);
+								$data3=mysqli_fetch_array($result3);
+								/* if the production is finished*/
+								if($data3[0]==1){
+									printf("<div class='row'>FINISHED</div>
+										</div>");
+									/* if the metalbin is still in use and the production going on*/
 								} else {
-									printf("
-										<div class='rows production'>
-										<div class='row'>yours</div>
-										<div class='row'>%s</div>
-										<div class='row'>%d</div>
-										<div class='row'>%d</div>
-										<div class='row'></div></div>
-										",$data2[4],$data2[2],$data2[3]);
+									printf("<div class='row'><a type='button' 
+										class='BRB' href='setAvailable.php?productid=$data2[0]'>END</a></div>
+										</div>");
 								}
 							}
-							
+							printf("<a id='produce' class='Center BRB production %d'>REGISTER PRODUCTION</a>",$data[0]);	
 						}
-					
 						?>
-						<a id='produce' class='Center BRB production %d'>REGISTER PRODUCTION</a>
+
 
 						<!-- a form to slect the booking and make a production related to it, once submit it will redirect the user to the produce.php -->
 						<form id="production" class="form-group container Center" action="produce.php" method="post" style="display:none">
-							<h2 class="mt-4">REGISTER PRODUCTION</h2>
+							<h2>Register a production</h2>
 							<div class="colums" style="text-align:center">
 								<div class='RB'>
 									<b>SELECT YOUR BOOKING:</b><br><br>
@@ -582,7 +554,7 @@
 					'</script>';
 					?>
 					<div class="content Center">
-						<h2 id="notification" class="mt-4">NOTIFICATIONS</h2>
+						<h1 id="notification">Notifications</h1>
 						<br>
 						<!-- a php code that selects the notifications related to the user and shows them, if there are unseen it prints them with a clickable button-->
 						<?php			
@@ -742,9 +714,16 @@
 						$("#production").toggle("1000");
 					});
 				</script>
-
+					<script>
+					/*Function to show or hide the sidenav when the mouse is clicked*/
+					$('.erlete').click(function(){
+						$(".sidenav").toggle("900");
+						$(".erlete").toggleClass("fullW",500);
+						$(".content").toggleClass("addMargin",500);
+					});
+				</script>
 				<script>
-					/*function that shows the dialog assosiated withc that id */
+					/*function that shows the dialog assosiated with that id */
 					$( function() {
 						$( "#modifyConfirmDialog" ).dialog();
 					} );
@@ -765,6 +744,12 @@
 				<script>
 					$( function() {
 						$( "#notificationDialog" ).dialog();
+					} );
+
+				</script>
+				<script>
+					$( function() {
+						$( "#loginDialog" ).dialog();
 					} );
 
 				</script>

@@ -10,11 +10,11 @@
 	$exit = date('Y-m-d', strtotime($exit. ' + 1 days'));
 	$id=$_SESSION['memberID'];
 	$ok=true;
+
 	$cdate=date("Y-m-d");
 	// The SQL query to extract the entry date and exit date of the bookings table
 	$sql="SELECT entrydate, exitdate FROM booking";
 	$result = mysqli_query($link,$sql);
-	// This algorithm checks whether the entered dates are valid or not. If p1 and p2 end up having the same value and the ok variable is true the dates get considered valid.
 	if($exit>=$entry && $entry>=$cdate){
 		while($data=mysqli_fetch_array($result)){
 			$p1=-1;

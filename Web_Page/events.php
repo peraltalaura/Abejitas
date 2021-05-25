@@ -1,4 +1,3 @@
-// This php code turns the bookings from the sql server into json files so that our js calendar can interpret them.
 <?php 
 	header('Content-Type: application/json');
 	include('test_connect_db.php');

@@ -41,12 +41,11 @@
 		<a href="profile.php?account=prof" class="BRB">RETURN</a>
 	<?php
 	if(isset($_GET["exec"])){
-		
+
 		session_start();
 		$id = $_SESSION["memberID"];/* userid of the user */
 		include("test_connect_db.php");
 		$con=connectDataBase();
-		// Here we verify if the old password is correct and then insert the new one as hash.
 		if(count($_POST)>0) {
 		$result = mysqli_query($con,"SELECT* from member WHERE member_id='" . $id . "'");
 		$row=mysqli_fetch_array($result);

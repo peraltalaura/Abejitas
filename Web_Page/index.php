@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!--changes the name of the page-->
-		<title>Home</title>
-		<!--links of google fonts-->
-		<link rel="preconnect" href="https://fonts.gstatic.com"><link>
-		<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lato&display=swap" rel="stylesheet">
-		<!--changes the icon of the page-->
-		<link rel="icon"  type="image/jpg" href="images/bee-icon.jpg">
+	<title>Home</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com"><link>
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lato&display=swap" rel="stylesheet">
+	<link rel="icon"  type="image/jpg" href="images/bee-icon.jpg">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -33,7 +30,6 @@
 	<style>
 		/*Style for the fonts used in the page*/
 		h1 {
-
 			font-family: 'Dancing Script', cursive;
 		}
 		body {
@@ -128,9 +124,8 @@
 				<p>Everyone can enter and see the questions, answers and discussions of our forum, where members can also participate actively by posting comments.</p>
 				<a href="forum.php" class="BRB Center" >GO TO FORUM</a>
 			</div>
-			</div>
-			<div class="columns">
-
+		</div>
+		<div class="columns">
 			<div class="RB ">
 				<h2>BOOK OUR EXTRACTOR AND METAL BINS</h2>
 				<p>Only members: See de days available to book the extractor and the metalbins available to us that we provide</p>
@@ -149,7 +144,7 @@
 				<p>Only members: Have access to your personal information and be able to modify it, make a transfer, see your bookings, productions and account status at any time</p>
 				<!--This php code changes the page where the link will lead the user depending if it has logged in or not-->
 				<a class="BRB Center" href="forum.php" 
-			<?php 
+				<?php 
 				if(isset($_SESSION['memberID'])){
 					printf("href='profile.php?account=prof'>YOUR ACCOUNT</a>");
 				}else{
@@ -157,7 +152,6 @@
 				}?>
 			</div>
 			
-
 		</div>
 		<br>
 	</div>

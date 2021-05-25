@@ -1,0 +1,31 @@
+/*Modify data*/
+input[type="text"], input[type="date"], input[type="number"], input[type="tel"], input[type="email"], input[type="datetime-local"] {
+	border-radius:5vw;
+	border:none;
+	outline:none;
+	background:linear-gradient(rgb(255, 204, 0,0.1),rgb(255, 204, 0,0.3),rgb(255, 204, 0,0.5),rgb(255, 204, 0,0.7),rgb(255, 204, 0),rgb(255, 204, 0,0.7),rgb(255, 204, 0,0.5),rgb(255, 204, 0,0.3),rgb(255, 204, 0,0.1));  
+	color:black;
+	text-align:center;
+	margin: 0 auto;
+}
+input[type="password"]:focus,input[type='text']:focus{
+	transition:box-shadow 0.8s;
+	box-shadow: 0em 0em 1em 0em black; 
+}
+input[type='submit'] {
+	border-radius:5vw;
+	border:none;
+	outline:none;
+	box-shadow: 0em 0em 0.5em 0em rgb(255, 204, 0);  
+	background-image:linear-gradient(rgb(255, 204, 0,0.5),rgb(255, 204, 0),rgb(255, 204, 0,0.5));  
+	color:black;
+	padding:1vw 8.5vw 1vw 1vw;
+	width:4em;
+	margin:1em 0.5em 0em 0.5em;
+}
+input[type='submit']:hover{
+	font-weight:bolder;
+	text-shadow: 0.1em 0.1em 0.2em rgb(0,0,0);
+	box-shadow: 0em 0em 1em 0em rgb(255, 204, 0);  
+}
+/*Modify data end*/

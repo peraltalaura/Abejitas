@@ -1,0 +1,287 @@
+/*start of responsive navigation var*/
+body {
+	margin: 0;
+	background: url(../images/honey2.jpg) repeat center;
+	color:rgb(255, 255, 255,0.8);
+}
+
+ul.sidenav {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 20%;
+	position: fixed;
+	height: 100%;
+	overflow: auto;
+	box-shadow:0em 0em 2em 0em rgb(0,0,0,0.5);
+}
+
+ul.sidenav li a {
+	display: block;
+	color: rgb(255, 204, 0);
+	padding: 0.7em;
+	text-decoration: none;
+	font-size: calc(0.8em + 0.6vw);
+}
+
+ul.sidenav li a.active {
+	background:	rgb(255, 255, 255);
+	color:black;
+	box-shadow: 0vw 0vw 1vw 0vw rgb(255, 255, 255);;  
+}
+
+ul.sidenav li a:hover:not(.active) {
+	background-color: rgb(255, 204, 0);
+	color: black;
+	box-shadow: 0vw 0vw 1vw 0vw rgb(255, 204, 0);  
+	font-size: calc(0.9em + 0.6vw);
+	transition:font-size 0.4s linear;
+}
+
+div.content {
+	margin:0% 5% 5% 25%;
+	font-size: calc(0.5em + 0.5vw);
+	line-height: 2em;
+}
+
+h1 {
+	font-size: calc(3em + 0.5vw);
+}
+h2 {
+	font-size: calc(1em + 0.5vw); 
+	margin-top:1em;
+	padding:0em 0em 0.5em 0em;
+}
+#profImg{
+	width:calc(15em + 0.5vw);
+	border-radius: 2em;
+}
+a:hover{
+	box-shadow:0em 0em 2em 0em rgb(0,0,0);
+	font-size: calc(0.5em + 0.5vw);
+	transition:box-shadow 0.4s linear, font-size 0.4s;
+	color:rgb(255, 204, 0);
+	text-decoration: none;
+}
+/*My account nav */
+#accountNav {
+	list-style-type:none;
+	padding:0;
+	width:80%;
+	margin:auto;
+	font-size:calc(0.35em + 0.5vw);
+}
+ul#accountNav li a.active {
+	background:black;
+	color:rgb(255, 204, 0);
+	box-shadow: 0vw 0vw 1vw 0vw rgb(255, 204, 0);  
+}
+#accountNav li a:hover:not(.active) {
+	background: black;
+	color:rgb(255, 255, 255);
+	transition:font-size 0.4s linear;
+	box-shadow: 0vw 0vw 1vw 0vw rgb(255, 204, 0);  
+}
+
+/*My account nav end*/
+/*Small devices like mobile phones*/
+@media screen and (max-width: 900px) {
+	ul.sidenav {
+		width: 100%;
+		height: auto;
+		position: relative;
+	}
+	
+	ul.sidenav li a {
+		float: left;
+		padding: 1em;
+
+	}
+	
+	div.content {
+		margin-left: 0;
+		font-size: calc(0.5em + 0.5vw);
+		line-height: 2em;
+	}
+	#profImg{
+		width:calc(15em + 1vw);
+
+	} 
+
+	.nav2{
+		background: ;
+	}
+	h1 {
+		font-size: calc(3em + 1vw);
+	}
+	h2 {
+		font-size: calc(1em + 1vw); 
+		margin-top:1em;
+		padding:0em 0em 0.5em 0em;
+	}
+	a:hover{
+		box-shadow:0em 0em 2em 0em rgb(0,0,0);
+		font-size: calc(0.5em + 1vw);
+		transition:box-shadow 0.4s linear, font-size 0.4s;
+		color:rgb(255, 255, 255);
+		text-decoration: none;
+	}
+	#accountNav {
+		font-size:calc(0.5em + 1vw);
+	}
+
+}
+
+@media screen and (max-width: 400px) {
+	ul.sidenav li a {
+		text-align: center;
+		float: none;
+
+	}
+	div.content {
+		margin-left: 0;
+
+	}
+}
+/*end of responsive navigation var*/
+
+
+.Center {
+	display: flex;              
+	flex-direction: column;     
+	justify-content: center;    
+	align-items: center;  
+	text-align:center;
+}
+.RB {
+	border-radius:2em;
+	padding:1em;
+	margin:2em;
+	text-align:justify;
+	width:75%;
+	box-shadow:0em 0em 2em 0em rgb(0,0,0,0.5);
+	color:rgb(255, 204, 0);
+}
+.BRB,button {
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);
+	border-radius:5em;
+	padding:1em 2em 1em 2em;
+	background:rgb(0,0,0,0.5);
+	transition:box-shadow 0.2s linear, font-size 0.2s linear;
+	color:rgb(255, 255, 255);
+}
+
+.RBY  {
+	border-radius:5em;
+	padding:1em 0.5em 0.5em 0.5em;
+	margin:2em;
+	text-align:justify;
+	width:75%;
+	box-shadow:0vw 0vw 2vw 0vw rgb(255, 204, 0,0.5);
+	background:rgb(255, 204, 0);
+	color:black;
+}
+.BRBY {
+	border-radius:5vw;
+	padding:1vw 2vw 1vw 2vw;
+	color:black;
+	box-shadow:0vw 0vw 2vw 0vw rgb(255, 204, 0,0.5);
+	color:rgb(255, 255, 255);
+}
+
+.BRB:hover{
+	text-decoration:none;
+	transition:box-shadow 0.4s linear, font-size 0.4s;
+	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0);
+	font-weight:bolder;
+	color:rgb(255, 255, 255);
+}
+
+.BRBY:hover{
+	text-decoration:none;
+	transition:box-shadow 0.4s linear, font-size 0.4s;
+	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0);
+	font-weight:bolder;
+	color:black;
+}
+.booking:hover {
+	box-shadow:0vw 0vw 2vw 0vw rgb(255, 204, 0,0.5);
+}
+.booking {
+	transition:box-shadow 0.6s linear, font-size 0.6s;
+}
+
+/*MY PROFILE STYLE*/
+#profile{
+	border-radius:2em;
+	padding:2vw;
+	margin:3vw;
+	text-align:justify;
+	width:75%;
+	background:rgb(255, 204, 0,0.9);
+	box-shadow:0vw 0vw 2vw 0vw rgb(255, 204, 0,0.5);
+	color:black;
+}
+
+/*END OF PROFILE STYLE*/
+/*Modify data*/
+#data .row{ 
+	border-radius:5vw;
+	padding:1vw;
+	margin:2vw;
+	text-align:justify;
+	width:100%;
+	box-shadow:0vw 0vw 2vw 0vw rgb(0, 0, 0.8);
+	background:rgb(0,0,0);
+	color:rgb(255, 255, 255);
+
+}
+input[type="text"], #data input[type="date"], input[type="number"],#data input[type="tel"],#data input[type="email"],#data input[type="datetime-local"],#data input[type="password"] {
+	border-radius:5vw;
+	border:none;
+	outline:none;
+	background:linear-gradient(rgb(0, 0, 0,0.1),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.7),rgb(0, 0, 0),rgb(0, 0, 0,0.7),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.1));  
+	color:rgb(255, 255, 255);
+	padding:1vw;
+	text-align:center;
+	transition:box-shadow 0.4s linear; 
+}
+#data input[type="password"]:focus,input[type='text']:focus,#data input[type="date"]:focus, input[type="number"]:focus,#data input[type="tel"]:focus,#data input[type="email"]:focus,#data input[type="datetime-local"]:focus{
+	box-shadow:0vw 0vw 1vw 0vw rgb(0, 0, 0.4);
+}
+input[type='submit'] {
+	border-radius:5vw;
+	border:none;
+	outline:none;
+	background:rgb(0,0,0,0.3);
+	box-shadow: 0em 0em 0.5em 0em rgb(255, 255, 255,0.3);  
+	color:rgb(255, 255, 255);
+	width:auto;
+	margin:1em 0.5em 0em 0.5em;
+	transition:box-shadow 0.4s linear;
+}
+input[type='submit']:hover{
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);
+	background:rgb(0,0,0,0.3); 
+}
+/*Modify data end*/
+
+
+/*select style*/
+/* The container must be positioned relative: */
+.custom-select {
+	border-radius:5vw;
+	border:none;
+	outline:none;
+	box-shadow: 0em 0em 0.5em 0em rgb(0, 0, 0); 
+	color:rgb(255, 204, 0);
+	background:linear-gradient(rgb(0, 0, 0,0.1),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.7),rgb(0, 0, 0),rgb(0, 0, 0,0.7),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.1));  
+}
+
+.custom-select:hover {
+	font-weight:bolder;
+	box-shadow: 0em 0em 0.5em 0em rgb(0, 0, 0);    
+}
+
+/*End of select style*/
+
