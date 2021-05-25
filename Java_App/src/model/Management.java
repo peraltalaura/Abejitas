@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import org.mindrot.BCrypt;
 //import java.util.Date;
 
 /**
@@ -158,7 +159,7 @@ public class Management {
                 pstmt.setString(1, newMember.getEmail());
                 pstmt.setString(2, newMember.getName());
                 pstmt.setString(3, newMember.getSurname());
-                pstmt.setString(4, encryptThisString(newMember.getPassword()));
+                pstmt.setString(4, BCrypt.hashpw(newMember.getPassword(),BCrypt.gensalt()));
                 pstmt.setString(5, "");
                 pstmt.setInt(6, 0);
                 pstmt.setString(7, "");
@@ -180,7 +181,7 @@ public class Management {
                 pstmt.setString(1, newMember.getEmail());
                 pstmt.setString(2, newMember.getName());
                 pstmt.setString(3, newMember.getSurname());
-                pstmt.setString(4, encryptThisString(newMember.getPassword()));
+                pstmt.setString(4, BCrypt.hashpw(newMember.getPassword(),BCrypt.gensalt()));
                 pstmt.setString(5, newMember.getCity());
                 pstmt.setInt(6, newMember.getPostCode());
                 pstmt.setString(7, newMember.getAddress());
@@ -408,37 +409,38 @@ public class Management {
     }
 
     /**
-     * Encryption method (SHA256). Takes a String and returns it encrypted
+     * Encryption method (SHA256). Takes a String and returns it encrypted (obsolete)
      *
      * @param input
      * @return
      */
-    public static String encryptThisString(String input) { //mira esto mañana en kasa
-        try {
-            // getInstance() method is called with algorithm SHA-512 
-            MessageDigest md = MessageDigest.getInstance("SHA-512");
-
-            // digest() method is called 
-            // to calculate message digest of the input string 
-            // returned as array of byte 
-            byte[] messageDigest = md.digest(input.getBytes());
-
-            // Convert byte array into signum representation 
-            BigInteger no = new BigInteger(1, messageDigest);
-
-            // Convert message digest into hex value 
-            String hashtext = no.toString(16);
-
-            // Add preceding 0s to make it 32 bit 
-            while (hashtext.length() < 32) {
-                hashtext = "0" + hashtext;
-            }
-
-            // return the HashText 
-            return hashtext;
-        } // For specifying wrong message digest algorithms 
-        catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    public static String encryptThisString(String input) { //mira esto mañana en kasa
+//        try {
+//            // getInstance() method is called with algorithm SHA-512 
+//            MessageDigest md = MessageDigest.getInstance("SHA-512");
+//
+//            // digest() method is called 
+//            // to calculate message digest of the input string 
+//            // returned as array of byte 
+//            byte[] messageDigest = md.digest(input.getBytes());
+//
+//            // Convert byte array into signum representation 
+//            BigInteger no = new BigInteger(1, messageDigest);
+//
+//            // Convert message digest into hex value 
+//            String hashtext = no.toString(16);
+//
+//            // Add preceding 0s to make it 32 bit 
+//            while (hashtext.length() < 32) {
+//                hashtext = "0" + hashtext;
+//            }
+//
+//            // return the HashText 
+//            return hashtext;
+//        } // For specifying wrong message digest algorithms 
+//        catch (NoSuchAlgorithmException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+    
 }
