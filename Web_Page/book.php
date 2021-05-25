@@ -1,8 +1,10 @@
 <?php
+	//calls the function connectDataBase to make a connection to erlete_db, where the data is stored
 	include("test_connect_db.php");
 	$link=connectDataBase();
+	//starts the session 
 	session_start();
-	
+	//it gets the data from the form and stores it into variables
 	$entry=$_POST['entry'];
 	$exit=$_POST['exit'];
 	$exit = date('Y-m-d', strtotime($exit. ' + 1 days'));
@@ -10,7 +12,7 @@
 	$ok=true;
 
 	$cdate=date("Y-m-d");
-
+	// The SQL query to extract the entry date and exit date of the bookings table
 	$sql="SELECT entrydate, exitdate FROM booking";
 	$result = mysqli_query($link,$sql);
 	if($exit>=$entry && $entry>=$cdate){

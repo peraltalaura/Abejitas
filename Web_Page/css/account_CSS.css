@@ -1,6 +1,8 @@
 /*start of responsive navigation var*/
 body {
 	margin: 0;
+	background: url(../images/honey2.jpg) repeat center;
+	color:rgb(255, 255, 255,0.8);
 }
 
 ul.sidenav {
@@ -23,9 +25,9 @@ ul.sidenav li a {
 }
 
 ul.sidenav li a.active {
-	background:rgb(255, 204, 0);
+	background:	rgb(255, 255, 255);
 	color:black;
-	box-shadow: 0vw 0vw 1vw 0vw rgb(255, 204, 0);  
+	box-shadow: 0vw 0vw 1vw 0vw rgb(255, 255, 255);;  
 }
 
 ul.sidenav li a:hover:not(.active) {
@@ -36,12 +38,13 @@ ul.sidenav li a:hover:not(.active) {
 	transition:font-size 0.4s linear;
 }
 
-	div.content {
-		margin-left: 20%;
-		font-size: calc(0.5em + 0.5vw);
-		line-height: 2em;
-	}
-	h1 {
+div.content {
+	margin:0% 5% 5% 25%;
+	font-size: calc(0.5em + 0.5vw);
+	line-height: 2em;
+}
+
+h1 {
 	font-size: calc(3em + 0.5vw);
 }
 h2 {
@@ -55,9 +58,7 @@ h2 {
 }
 a:hover{
 	box-shadow:0em 0em 2em 0em rgb(0,0,0);
-
 	font-size: calc(0.5em + 0.5vw);
-
 	transition:box-shadow 0.4s linear, font-size 0.4s;
 	color:rgb(255, 204, 0);
 	text-decoration: none;
@@ -77,7 +78,7 @@ ul#accountNav li a.active {
 }
 #accountNav li a:hover:not(.active) {
 	background: black;
-	color: rgb(255, 204, 0);
+	color:rgb(255, 255, 255);
 	transition:font-size 0.4s linear;
 	box-shadow: 0vw 0vw 1vw 0vw rgb(255, 204, 0);  
 }
@@ -103,29 +104,31 @@ ul#accountNav li a.active {
 		line-height: 2em;
 	}
 	#profImg{
-	width:calc(15em + 1vw);
+		width:calc(15em + 1vw);
 
-} 
+	} 
 
-
+	.nav2{
+		background: ;
+	}
 	h1 {
-	font-size: calc(3em + 1vw);
-}
-h2 {
-	font-size: calc(1em + 1vw); 
-	margin-top:1em;
-	padding:0em 0em 0.5em 0em;
-}
-a:hover{
-	box-shadow:0em 0em 2em 0em rgb(0,0,0);
-	font-size: calc(0.5em + 1vw);
-	transition:box-shadow 0.4s linear, font-size 0.4s;
-	color:rgb(255, 204, 0);
-	text-decoration: none;
-}
-#accountNav {
-	font-size:calc(0.5em + 1vw);
-}
+		font-size: calc(3em + 1vw);
+	}
+	h2 {
+		font-size: calc(1em + 1vw); 
+		margin-top:1em;
+		padding:0em 0em 0.5em 0em;
+	}
+	a:hover{
+		box-shadow:0em 0em 2em 0em rgb(0,0,0);
+		font-size: calc(0.5em + 1vw);
+		transition:box-shadow 0.4s linear, font-size 0.4s;
+		color:rgb(255, 255, 255);
+		text-decoration: none;
+	}
+	#accountNav {
+		font-size:calc(0.5em + 1vw);
+	}
 
 }
 
@@ -160,11 +163,14 @@ a:hover{
 	color:rgb(255, 204, 0);
 }
 .BRB,button {
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);
 	border-radius:5em;
-	padding:1em;
-	box-shadow:0em 0em 2em 0em rgb(0,0,0,0.5);
-	color:rgb(255, 204, 0);
+	padding:1em 2em 1em 2em;
+	background:rgb(0,0,0,0.5);
+	transition:box-shadow 0.2s linear, font-size 0.2s linear;
+	color:rgb(255, 255, 255);
 }
+
 .RBY  {
 	border-radius:5em;
 	padding:1em 0.5em 0.5em 0.5em;
@@ -180,7 +186,7 @@ a:hover{
 	padding:1vw 2vw 1vw 2vw;
 	color:black;
 	box-shadow:0vw 0vw 2vw 0vw rgb(255, 204, 0,0.5);
-	background:rgb(255, 204, 0);
+	color:rgb(255, 255, 255);
 }
 
 .BRB:hover{
@@ -188,7 +194,7 @@ a:hover{
 	transition:box-shadow 0.4s linear, font-size 0.4s;
 	box-shadow:0vw 0vw 2vw 0vw rgb(0,0,0);
 	font-weight:bolder;
-	color:rgb(255, 204, 0);
+	color:rgb(255, 255, 255);
 }
 
 .BRBY:hover{
@@ -199,10 +205,10 @@ a:hover{
 	color:black;
 }
 .booking:hover {
-		box-shadow:0vw 0vw 2vw 0vw rgb(255, 204, 0,0.5);
+	box-shadow:0vw 0vw 2vw 0vw rgb(255, 204, 0,0.5);
 }
 .booking {
-		transition:box-shadow 0.6s linear, font-size 0.6s;
+	transition:box-shadow 0.6s linear, font-size 0.6s;
 }
 
 /*MY PROFILE STYLE*/
@@ -227,7 +233,7 @@ a:hover{
 	width:100%;
 	box-shadow:0vw 0vw 2vw 0vw rgb(0, 0, 0.8);
 	background:rgb(0,0,0);
-	color:rgb(255, 204, 0);
+	color:rgb(255, 255, 255);
 
 }
 input[type="text"], #data input[type="date"], input[type="number"],#data input[type="tel"],#data input[type="email"],#data input[type="datetime-local"],#data input[type="password"] {
@@ -235,7 +241,7 @@ input[type="text"], #data input[type="date"], input[type="number"],#data input[t
 	border:none;
 	outline:none;
 	background:linear-gradient(rgb(0, 0, 0,0.1),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.7),rgb(0, 0, 0),rgb(0, 0, 0,0.7),rgb(0, 0, 0,0.5),rgb(0, 0, 0,0.3),rgb(0, 0, 0,0.1));  
-	color:rgb(255, 204, 0);
+	color:rgb(255, 255, 255);
 	padding:1vw;
 	text-align:center;
 	transition:box-shadow 0.4s linear; 
@@ -247,16 +253,16 @@ input[type='submit'] {
 	border-radius:5vw;
 	border:none;
 	outline:none;
-	box-shadow: 0em 0em 0.5em 0em rgb(255, 204, 0);  
-	background-image:linear-gradient(rgb(255, 204, 0,0.5),rgb(255, 204, 0),rgb(255, 204, 0,0.5));  
-	color:black;
+	background:rgb(0,0,0,0.3);
+	box-shadow: 0em 0em 0.5em 0em rgb(255, 255, 255,0.3);  
+	color:rgb(255, 255, 255);
 	width:auto;
 	margin:1em 0.5em 0em 0.5em;
 	transition:box-shadow 0.4s linear;
 }
 input[type='submit']:hover{
-	font-weight:bolder;
-	box-shadow: 0em 0em 1em 0em rgb(255, 204, 0);  
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.3);
+	background:rgb(0,0,0,0.3); 
 }
 /*Modify data end*/
 
@@ -279,18 +285,3 @@ input[type='submit']:hover{
 
 /*End of select style*/
 
-/*calendar CSS*/
-.fc-event-title-container{
-	background-color:rgb(255, 204, 0);
-	color:black;
-	text-align: center;
-}
-
-#calendar {
-	width:75%;
-	margin:0 auto;
-	border:rgb(255, 204, 0);
-}
-.fc-daygrid-day-number, .fc-col-header-cell-cushion  {
-	color:rgb(255, 204, 0);
-}
