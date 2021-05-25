@@ -42,7 +42,7 @@ public class Management {
         try {
             //con = DriverManager.getConnection(url, "root", "dam1");
             //con = DriverManager.getConnection(url + ip + db, "root", "dam1");
-            con = DriverManager.getConnection("jdbc:mariadb://localhost/erlete_db", "root", "");
+            con = DriverManager.getConnection("jdbc:mariadb://localhost/erlete_db", "root", "dam1");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("error in the db");
@@ -213,7 +213,8 @@ public class Management {
         String sql = "UPDATE member SET active=?"
                 + " WHERE member_id = ?";
         String sql2 = "INSERT INTO payment(description,total,member_id) VALUES(?,?,?)";
-        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql);  PreparedStatement pstmt2 = con.prepareStatement(sql2);) {
+        String sql3 = "INSERT INTO notify(member_id, notification_id) VALUES(?, ?)";
+        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql);  PreparedStatement pstmt2 = con.prepareStatement(sql2); PreparedStatement pstmt3 = con.prepareStatement(sql3);) {
 
             pstmt.setBoolean(1, true);
             pstmt.setInt(2, id);
@@ -224,6 +225,10 @@ public class Management {
 
             pstmt2.setInt(3, id);
             pstmt2.executeUpdate();
+            
+            pstmt3.setInt(1, id);
+            pstmt3.setInt(2, 4);
+            pstmt3.executeUpdate();
 
             return true;
 
@@ -333,7 +338,23 @@ public class Management {
 
         return done;
     }
+    public boolean balanceNotification(int id){
+        
+        String sql = "INSERT INTO notify(member_id, notification_id) VALUES (?,5)";
 
+        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+            
+            pstmt.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            System.out.println("Error inserting notify");
+            System.out.println(e.getMessage());
+        }
+        
+        return false;
+    }
     /**
      * it creates a new payment on the payments table
      *

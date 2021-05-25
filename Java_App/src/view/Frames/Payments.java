@@ -58,13 +58,14 @@ public class Payments extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextFieldID = new javax.swing.JTextField();
-        jButtonReset = new view.frameComponents.Button();
+        jButtonNotification = new view.frameComponents.Button();
         jLabelTime = new javax.swing.JLabel();
         jButtonSearch = new view.frameComponents.Button();
         jButtonPay = new view.frameComponents.ButtonInsert();
         button1 = new view.frameComponents.Button();
         jLabel3 = new javax.swing.JLabel();
         jLabelBalance = new javax.swing.JLabel();
+        jButtonReset1 = new view.frameComponents.Button();
         jLabel6 = new javax.swing.JLabel();
 
         setUndecorated(true);
@@ -113,14 +114,14 @@ public class Payments extends javax.swing.JFrame {
         jTextFieldID.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jTextFieldID, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, 70, -1));
 
-        jButtonReset.setBorder(null);
-        jButtonReset.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonReset.setText("RESET");
-        jButtonReset.setGradientLineColor(java.awt.Color.cyan);
-        jButtonReset.setLineColor(java.awt.Color.magenta);
-        jButtonReset.setLinePainted(true);
-        jButtonReset.setRounded(true);
-        getContentPane().add(jButtonReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 190, 63, 24));
+        jButtonNotification.setBorder(null);
+        jButtonNotification.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonNotification.setText("SEND NOTIFICATION");
+        jButtonNotification.setGradientLineColor(java.awt.Color.cyan);
+        jButtonNotification.setLineColor(java.awt.Color.magenta);
+        jButtonNotification.setLinePainted(true);
+        jButtonNotification.setRounded(true);
+        getContentPane().add(jButtonNotification, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 220, 120, 24));
 
         jLabelTime.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
         jLabelTime.setForeground(new java.awt.Color(255, 255, 255));
@@ -167,6 +168,20 @@ public class Payments extends javax.swing.JFrame {
         jLabelBalance.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabelBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 540, 150, 30));
 
+        jButtonReset1.setBorder(null);
+        jButtonReset1.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonReset1.setText("RESET");
+        jButtonReset1.setGradientLineColor(java.awt.Color.cyan);
+        jButtonReset1.setLineColor(java.awt.Color.magenta);
+        jButtonReset1.setLinePainted(true);
+        jButtonReset1.setRounded(true);
+        jButtonReset1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReset1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonReset1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 190, 63, 24));
+
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
@@ -179,6 +194,10 @@ public class Payments extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_button1ActionPerformed
+
+    private void jButtonReset1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReset1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonReset1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,8 +240,9 @@ public static Payments createPayments() {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private view.frameComponents.Button button1;
+    public view.frameComponents.Button jButtonNotification;
     public view.frameComponents.ButtonInsert jButtonPay;
-    public view.frameComponents.Button jButtonReset;
+    public view.frameComponents.Button jButtonReset1;
     public view.frameComponents.Button jButtonSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
