@@ -4,19 +4,63 @@
  * and open the template in the editor.
  */
 package view.Frames;
-import controllers.*;
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.Timer;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
  * @author uribe.markel
  */
 public class Availability extends javax.swing.JFrame {
-
+     Timer updateTimer;
+    int DELAY = 100;
     /**
      * Creates new form navailability
      */
     public Availability() {
         initComponents();
+        updateTimer = new Timer(DELAY, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date currentTime = new Date();
+                String formatTimeStr = "hh:mm:ss";
+                DateFormat formatTime = new SimpleDateFormat(formatTimeStr);
+                String formattedTimeStr = formatTime.format(currentTime);
+
+                jLabelTime.setText(formattedTimeStr);
+
+                setTitle("Time: " + formattedTimeStr);
+
+            }
+        });
+        updateTimer.start();
+        this.jTableMetal.setBackground(new Color(0, 0, 0));
+        ((DefaultTableCellRenderer) this.jTableMetal.getDefaultRenderer(Object.class)).setBackground(new Color(0, 0, 0, 0));
+        this.jTableMetal.setGridColor(new Color(0,0,0,0));
+        this.jTableMetal.setForeground(Color.WHITE);
+        this.jScrollPane1.setBackground(new Color(0, 0, 0, 0));
+        this.jScrollPane1.setOpaque(false);
+        this.jTableMetal.setOpaque(true);
+        ((DefaultTableCellRenderer) this.jTableMetal.getDefaultRenderer(Object.class)).setOpaque(false);
+        this.jScrollPane1.getViewport().setOpaque(false);
+
+        this.jTableBookings.setBackground(new Color(0, 0, 0));
+        ((DefaultTableCellRenderer) this.jTableBookings.getDefaultRenderer(Object.class)).setBackground(new Color(0, 0, 0, 0));
+        this.jTableBookings.setGridColor(new Color(0,0,0,0));
+        this.jTableBookings.setForeground(Color.WHITE);
+        this.jScrollPane2.setBackground(new Color(0, 0, 0, 0));
+        this.jScrollPane2.setOpaque(false);
+        this.jTableBookings.setOpaque(true);
+        ((DefaultTableCellRenderer) this.jTableBookings.getDefaultRenderer(Object.class)).setOpaque(false);
+        this.jScrollPane2.getViewport().setOpaque(false);
+        
     }
 
     /**
@@ -36,18 +80,27 @@ public class Availability extends javax.swing.JFrame {
         jTableMetal = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         button1 = new view.frameComponents.Button();
+        jLabel4 = new javax.swing.JLabel();
+        jLabelTime = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("EXTRACTORS BOOKINGS DATES:");
+        jLabel2.setText("EXTRACTOR BOOKINGS DATES:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 72, 240, 34));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe Script", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("ERLETE");
+        jLabel1.setText("AVAILABILITY");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 400, 55));
 
+        jTableBookings.setForeground(new java.awt.Color(255, 255, 255));
         jTableBookings.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -61,6 +114,9 @@ public class Availability extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableBookings);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 139, 380, 406));
+
+        jTableMetal.setForeground(new java.awt.Color(255, 255, 255));
         jTableMetal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -74,11 +130,16 @@ public class Availability extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTableMetal);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 139, 390, 406));
+
         jLabel3.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("METALBINS AVAILABILITY");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(628, 80, 175, -1));
 
         button1.setBorder(null);
+        button1.setForeground(new java.awt.Color(255, 255, 255));
         button1.setText("HOME");
         button1.setGradientLineColor(new java.awt.Color(0, 204, 204));
         button1.setLineColor(new java.awt.Color(255, 255, 0));
@@ -89,48 +150,14 @@ public class Availability extends javax.swing.JFrame {
                 button1ActionPerformed(evt);
             }
         });
+        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 570, 100, 50));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(62, 62, 62))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34))))
-        );
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 2, 980, 630));
+
+        jLabelTime.setText("jLabel5");
+        getContentPane().add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 140, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -184,6 +211,8 @@ public class Availability extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabelTime;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable jTableBookings;

@@ -9,7 +9,7 @@ public class CommentsTable extends AbstractTableModel {
 
     private Management man = new Management();
     public ArrayList<Comment> comments = new ArrayList<>();//stores data for the table
-    private String[] TITLES = {"COMMENT ID", "COMMENT DATE", "MESSAGE", "MEMBER ID"};//sets table col titles
+    private String[] TITLES = {"ID", "DATE", "MESSAGE", "MEMBER"};//sets table col titles
 
     public CommentsTable() {
         ArrayList<Object> array = new ArrayList<>();

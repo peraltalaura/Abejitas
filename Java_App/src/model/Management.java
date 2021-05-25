@@ -21,9 +21,9 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
-import java.math.BigInteger; 
-import java.security.MessageDigest; 
-import java.security.NoSuchAlgorithmException; 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 //import java.util.Date;
 
 /**
@@ -32,17 +32,17 @@ import java.security.NoSuchAlgorithmException;
  */
 public class Management {
 
-    //private String url = "204.204.2.1:80/erlete_db";
-    //private String db = "/erlete_db";
-//    private String ip = "localhost";
-//    private String url = "jdbc:mariadb://";
+    private String ip = "10.2.1.136:80";
+    private String db = "/erlete_db";
+    //private String ip = "localhost";
+    private String url = "jdbc:mariadb://";
     private Connection connect() {
         Connection con = null;
 
         try {
             //con = DriverManager.getConnection(url, "root", "dam1");
             //con = DriverManager.getConnection(url + ip + db, "root", "dam1");
-            con = DriverManager.getConnection("jdbc:mariadb://localhost/erlete_db", "root", "");
+            con = DriverManager.getConnection("jdbc:mariadb://localhost/erlete_db", "root", "dam1");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("error in the db");
@@ -98,9 +98,9 @@ public class Management {
                     dataList.add(p);
                 } else if (table.equals("metalbin")) {
 
-                    Metalbin m = new Metalbin(rs.getInt("metalbin_id"), rs.getString("name"), rs.getBoolean("available"), rs.getDate("available_date"));
+                    Metalbin m = new Metalbin(rs.getInt("metalbin_id"), rs.getInt("name"), rs.getBoolean("available"), rs.getDate("available_date"));
                     dataList.add(m);
-                    dataList.add(m);//aki luego abra k añadir con INSERT INTO metalbin (available_date) VALUES (?) WHERE metalbin_id = ?
+                    dataList.add(m);
 
                 } else if (table.equals("production")) {
                     Timestamp d = rs.getTimestamp("production_date");
@@ -111,19 +111,6 @@ public class Management {
 
                     Production p = new Production(rs.getInt("production_id"), (float) rs.getInt("kilos"), (float) rs.getInt("total"), rs.getInt("booking_id"), rs.getInt("metalbin_id"), date);
                     dataList.add(p);
-//                } else if (table.equals("booking_1")) {
-//                    Timestamp edate = rs.getTimestamp("entrydate");
-//                    Timestamp exdate = rs.getTimestamp("exitdate");
-//                    LocalDateTime entry_date = Instant
-//                            .ofEpochMilli(edate.getTime())
-//                            .atZone(ZoneId.systemDefault())
-//                            .toLocalDateTime();
-//                    LocalDateTime exit_date = Instant
-//                            .ofEpochMilli(exdate.getTime())
-//                            .atZone(ZoneId.systemDefault())
-//                            .toLocalDateTime();
-//                    LocalDateTime datak[] = {entry_date, exit_date};
-//                    dataList.add(datak);
 
                 } else if (table.equals("inventory")) {
                     Inventory in = new Inventory(rs.getInt("Item_Id"), rs.getString("model"), rs.getString("comment"));
@@ -162,10 +149,9 @@ public class Management {
      */
     public boolean insertMember(Member newMember) {
         boolean done = false;
-        String img = "";
+        String img = "../Web_Page/images/bee-icon.png";
         String usrpass = newMember.getPassword();
-        String sql = "INSERT INTO member(email, name, surname, password, city, postcode, address, phone, active) VALUES (?,?,?,?,?,?,?,?,?)";
-        //LocalDateTime data = newMember.getDate; falta por crear birthday
+        String sql = "INSERT INTO member(email, name, surname, password, city, postcode, address, phone, picture, active) VALUES (?,?,?,?,?,?,?,?,?,?)";
         if (usrpass.toCharArray()[0] == '1' && usrpass.toCharArray()[1] == '2' && usrpass.toCharArray()[2] == '3') { //if the new member has only name, surname, email and password
             try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql);) {
 
@@ -175,9 +161,10 @@ public class Management {
                 pstmt.setString(4, encryptThisString(newMember.getPassword()));
                 pstmt.setString(5, "");
                 pstmt.setInt(6, 0);
-                pstmt.setString(7,"");
+                pstmt.setString(7, "");
                 pstmt.setInt(8, 0);
-                pstmt.setBoolean(9, false);
+                pstmt.setBoolean(10, false);
+                pstmt.setString(9, img);
                 pstmt.executeUpdate();
 
                 done = true;
@@ -187,30 +174,29 @@ public class Management {
 
             }
 
-        }else{
+        } else {
             try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql);) {
 
-            pstmt.setString(1, newMember.getEmail());
-            pstmt.setString(2, newMember.getName());
-            pstmt.setString(3, newMember.getSurname());
-            pstmt.setString(4, encryptThisString(newMember.getPassword()));
-            pstmt.setString(5, newMember.getCity());
-            pstmt.setInt(6, newMember.getPostCode());
-            pstmt.setString(7, newMember.getAddress());
-            pstmt.setInt(8, newMember.getPhone());
-            pstmt.setBoolean(9, newMember.isActive());
-            pstmt.executeUpdate();
+                pstmt.setString(1, newMember.getEmail());
+                pstmt.setString(2, newMember.getName());
+                pstmt.setString(3, newMember.getSurname());
+                pstmt.setString(4, encryptThisString(newMember.getPassword()));
+                pstmt.setString(5, newMember.getCity());
+                pstmt.setInt(6, newMember.getPostCode());
+                pstmt.setString(7, newMember.getAddress());
+                pstmt.setInt(8, newMember.getPhone());
+                pstmt.setBoolean(9, newMember.isActive());
+                pstmt.executeUpdate();
 
-            done = true;
-        } catch (SQLException e) {
-            System.out.println("fail on insert");
-            System.out.println(e.getMessage());
+                done = true;
+            } catch (SQLException e) {
+                System.out.println("fail on insert");
+                System.out.println(e.getMessage());
+
+            }
 
         }
 
-        }
-
-        
         return done;
     }
 
@@ -227,7 +213,8 @@ public class Management {
         String sql = "UPDATE member SET active=?"
                 + " WHERE member_id = ?";
         String sql2 = "INSERT INTO payment(description,total,member_id) VALUES(?,?,?)";
-        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql);  PreparedStatement pstmt2 = con.prepareStatement(sql2);) {
+        String sql3 = "INSERT INTO notify(member_id, notification_id) VALUES(?, ?)";
+        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql);  PreparedStatement pstmt2 = con.prepareStatement(sql2); PreparedStatement pstmt3 = con.prepareStatement(sql3);) {
 
             pstmt.setBoolean(1, true);
             pstmt.setInt(2, id);
@@ -238,6 +225,10 @@ public class Management {
 
             pstmt2.setInt(3, id);
             pstmt2.executeUpdate();
+            
+            pstmt3.setInt(1, id);
+            pstmt3.setInt(2, 4);
+            pstmt3.executeUpdate();
 
             return true;
 
@@ -347,7 +338,23 @@ public class Management {
 
         return done;
     }
+    public boolean balanceNotification(int id){
+        
+        String sql = "INSERT INTO notify(member_id, notification_id) VALUES (?,5)";
 
+        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+            
+            pstmt.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            System.out.println("Error inserting notify");
+            System.out.println(e.getMessage());
+        }
+        
+        return false;
+    }
     /**
      * it creates a new payment on the payments table
      *
@@ -399,35 +406,39 @@ public class Management {
 
         return done;
     }
-     public static String encryptThisString(String input) 
-    { 
-        try { 
+
+    /**
+     * Encryption method (SHA256). Takes a String and returns it encrypted
+     *
+     * @param input
+     * @return
+     */
+    public static String encryptThisString(String input) { //mira esto mañana en kasa
+        try {
             // getInstance() method is called with algorithm SHA-512 
-            MessageDigest md = MessageDigest.getInstance("SHA-512"); 
-  
+            MessageDigest md = MessageDigest.getInstance("SHA-512");
+
             // digest() method is called 
             // to calculate message digest of the input string 
             // returned as array of byte 
-            byte[] messageDigest = md.digest(input.getBytes()); 
-  
+            byte[] messageDigest = md.digest(input.getBytes());
+
             // Convert byte array into signum representation 
-            BigInteger no = new BigInteger(1, messageDigest); 
-  
+            BigInteger no = new BigInteger(1, messageDigest);
+
             // Convert message digest into hex value 
-            String hashtext = no.toString(16); 
-  
+            String hashtext = no.toString(16);
+
             // Add preceding 0s to make it 32 bit 
-            while (hashtext.length() < 32) { 
-                hashtext = "0" + hashtext; 
-            } 
-  
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+
             // return the HashText 
-            return hashtext; 
-        } 
-  
-        // For specifying wrong message digest algorithms 
-        catch (NoSuchAlgorithmException e) { 
-            throw new RuntimeException(e); 
-        } 
-    } 
+            return hashtext;
+        } // For specifying wrong message digest algorithms 
+        catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

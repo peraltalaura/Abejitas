@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import java.io.IOException;
 import model.Management;
 import view.Frames.Availability;
 import view.Frames.Comments;
@@ -23,7 +24,7 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Home home = Home.createView();
         Comments com = Comments.createComments();
         Materials mat = Materials.createMaterials();

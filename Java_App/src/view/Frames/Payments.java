@@ -4,18 +4,38 @@
  * and open the template in the editor.
  */
 package view.Frames;
+import java.awt.Color;
+import javax.swing.Timer;
+import javax.swing.table.DefaultTableCellRenderer;
 import model.tables.PaymentsTable;
 /**
  *
  * @author uribe.markel
  */
 public class Payments extends javax.swing.JFrame {
-
+    Timer updateTimer;
+    int DELAY = 100;
     /**
      * Creates new form npayments
      */
     public Payments() {
         initComponents();
+        this.jTextFieldID.setOpaque(false);
+        this.jTextFieldID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        this.jTextFieldPDescription.setOpaque(false);
+        this.jTextFieldPDescription.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        this.jTextFieldPTotal.setOpaque(false);
+        this.jTextFieldPTotal.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        
+        this.jTablePayments.setBackground(new Color(0,0,0));
+        ((DefaultTableCellRenderer) this.jTablePayments.getDefaultRenderer(Object.class)).setBackground(new Color(153,153,255));
+        this.jTablePayments.setGridColor(new Color(0,0,0,0));
+        this.jTablePayments.setForeground(Color.WHITE);
+        this.jScrollPane2.setBackground(new Color(153,153,255));
+        this.jScrollPane2.setOpaque(false);
+        this.jTablePayments.setOpaque(true);
+            ((DefaultTableCellRenderer) this.jTablePayments.getDefaultRenderer(Object.class)).setOpaque(false);
+        this.jScrollPane2.getViewport().setOpaque(false);
     }
 
     /**
@@ -28,8 +48,6 @@ public class Payments extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTablePayments = new javax.swing.JTable();
         jLabel12 = new javax.swing.JLabel();
@@ -40,60 +58,95 @@ public class Payments extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextFieldID = new javax.swing.JTextField();
-        jButtonReset = new view.frameComponents.Button();
+        jButtonNotification = new view.frameComponents.Button();
+        jLabelTime = new javax.swing.JLabel();
         jButtonSearch = new view.frameComponents.Button();
         jButtonPay = new view.frameComponents.ButtonInsert();
         button1 = new view.frameComponents.Button();
+        jLabel3 = new javax.swing.JLabel();
+        jLabelBalance = new javax.swing.JLabel();
+        jButtonReset1 = new view.frameComponents.Button();
+        jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe Script", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("ERLETE");
-
-        jLabel3.setFont(new java.awt.Font("Segoe Script", 1, 18)); // NOI18N
-        jLabel3.setText("PAYMENTS");
-
-        jLabel11.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
-        jLabel11.setText("PAYMENTS:");
+        jLabel1.setText("PAYMENTS");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 430, 55));
 
         jTablePayments.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         jTablePayments.setModel(new PaymentsTable());
         jScrollPane2.setViewportView(jTablePayments);
 
-        jLabel12.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 500, 410));
+
+        jLabel12.setFont(new java.awt.Font("Segoe Script", 1, 11)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("ADD PAYMENT:");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 290, -1, -1));
 
-        jLabel13.setText("Description of the payment:");
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("DESCRIPTION:");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, -1, -1));
 
-        jLabel15.setText("total:");
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("IMPORT:");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 460, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
-        jLabel2.setText("FILTER BY MEMBER ID:");
+        jTextFieldPDescription.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jTextFieldPDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 360, 290, 70));
 
-        jLabel4.setText("Enter a member ID:");
+        jTextFieldPTotal.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jTextFieldPTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 460, 230, -1));
 
-        jButtonReset.setBorder(null);
-        jButtonReset.setText("RESET");
-        jButtonReset.setGradientLineColor(java.awt.Color.cyan);
-        jButtonReset.setLineColor(java.awt.Color.magenta);
-        jButtonReset.setLinePainted(true);
-        jButtonReset.setRounded(true);
+        jLabel2.setFont(new java.awt.Font("Segoe Script", 1, 11)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("FILTER:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 130, 60, -1));
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("MEMBER ID:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 180, 70, 40));
+
+        jTextFieldID.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jTextFieldID, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, 70, -1));
+
+        jButtonNotification.setBorder(null);
+        jButtonNotification.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonNotification.setText("SEND NOTIFICATION");
+        jButtonNotification.setGradientLineColor(java.awt.Color.cyan);
+        jButtonNotification.setLineColor(java.awt.Color.magenta);
+        jButtonNotification.setLinePainted(true);
+        jButtonNotification.setRounded(true);
+        getContentPane().add(jButtonNotification, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 220, 120, 24));
+
+        jLabelTime.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
+        jLabelTime.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTime.setText("SDGSDG");
+        getContentPane().add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 140, 30));
 
         jButtonSearch.setBorder(null);
+        jButtonSearch.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSearch.setText("SEARCH");
         jButtonSearch.setGradientLineColor(java.awt.Color.magenta);
         jButtonSearch.setLineColor(java.awt.Color.cyan);
         jButtonSearch.setLinePainted(true);
         jButtonSearch.setRounded(true);
+        getContentPane().add(jButtonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 190, 63, 24));
 
         jButtonPay.setBorder(null);
+        jButtonPay.setForeground(new java.awt.Color(255, 255, 255));
         jButtonPay.setText("PAY");
         jButtonPay.setGradientLineColor(new java.awt.Color(0, 255, 0));
         jButtonPay.setLinePainted(true);
         jButtonPay.setRounded(true);
+        getContentPane().add(jButtonPay, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 510, 60, 26));
 
         button1.setBorder(null);
+        button1.setForeground(new java.awt.Color(255, 255, 255));
         button1.setText("HOME");
         button1.setGradientLineColor(new java.awt.Color(0, 255, 255));
         button1.setLineColor(new java.awt.Color(255, 255, 0));
@@ -104,95 +157,35 @@ public class Payments extends javax.swing.JFrame {
                 button1ActionPerformed(evt);
             }
         });
+        getContentPane().add(button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 530, 80, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1006, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addGap(36, 36, 36)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(55, 55, 55)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jTextFieldID, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(jButtonReset, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jButtonSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextFieldPDescription)
-                                            .addComponent(jTextFieldPTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButtonPay, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addComponent(button1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jTextFieldPDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextFieldPTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel15))
-                                .addGap(31, 31, 31))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonPay, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(43, 43, 43)))
-                        .addComponent(jLabel2)
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButtonReset, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        jLabel3.setFont(new java.awt.Font("Segoe Script", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("BALANCE =");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 540, 120, 30));
+
+        jLabelBalance.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jLabelBalance.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jLabelBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 540, 150, 30));
+
+        jButtonReset1.setBorder(null);
+        jButtonReset1.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonReset1.setText("RESET");
+        jButtonReset1.setGradientLineColor(java.awt.Color.cyan);
+        jButtonReset1.setLineColor(java.awt.Color.magenta);
+        jButtonReset1.setLinePainted(true);
+        jButtonReset1.setRounded(true);
+        jButtonReset1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReset1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonReset1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 190, 63, 24));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -201,6 +194,10 @@ public class Payments extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_button1ActionPerformed
+
+    private void jButtonReset1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReset1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonReset1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,17 +240,20 @@ public static Payments createPayments() {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private view.frameComponents.Button button1;
+    public view.frameComponents.Button jButtonNotification;
     public view.frameComponents.ButtonInsert jButtonPay;
-    public view.frameComponents.Button jButtonReset;
+    public view.frameComponents.Button jButtonReset1;
     public view.frameComponents.Button jButtonSearch;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    public javax.swing.JLabel jLabelBalance;
+    private javax.swing.JLabel jLabelTime;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable jTablePayments;
     public javax.swing.JTextField jTextFieldID;

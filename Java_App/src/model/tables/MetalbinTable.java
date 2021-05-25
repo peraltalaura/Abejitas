@@ -15,7 +15,7 @@ public class MetalbinTable extends AbstractTableModel {
 
     private Management man = new Management();
     public ArrayList<Metalbin> production = new ArrayList<>();//stores data for the table
-    private String[] titles = {"ID","NAME","AVAILABLE","AVAILABLE DATE"};//sets table col titles
+    private String[] titles = {"ID","NAME","AVAILABLE","DATE"};//sets table col titles
 
     public MetalbinTable() {
         ArrayList<Object> array = new ArrayList<>();
@@ -53,7 +53,7 @@ public class MetalbinTable extends AbstractTableModel {
             case 0:
                 return production.get(rowIndex).getMetalbin_id();
             case 1:
-                return production.get(rowIndex).getName();
+                return production.get(rowIndex).getCapacity();
             case 2:
                 return production.get(rowIndex).isAvailable();
             case 3:

@@ -9,7 +9,7 @@ public class ProductionsTable extends AbstractTableModel {
 
     private Management man = new Management();
     public ArrayList<Production> production = new ArrayList<>();//stores data for the table
-    private String[] titles = {"PRODUCTION ID", "TOTAL KG", "BOOKING ID", "METALBIN ID", "PRODUCTION DATE"};//sets table col titles
+    private String[] titles = {"ID", "TOTAL KG", "BOOKING", "METALBIN", "DATE"};//sets table col titles
 
     public ProductionsTable() {
         ArrayList<Object> array = new ArrayList<>();

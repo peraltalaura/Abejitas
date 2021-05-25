@@ -1,3 +1,4 @@
+
 <?php
 //calls the function connectDataBase to make a connection to erlete_db, where the data is stored
 	include("test_connect_db.php");
@@ -19,11 +20,19 @@
 	$sql4="UPDATE metalbin SET available=0, available_date=DATE_ADD(NOW(),INTERVAL 20 DAY) WHERE metalbin_id=$metal";
 	//if the variable metal has an id the metalbin_id will be registered
 	if($metal!=null){
-		$sql1="INSERT INTO production(kilos,total,booking_id,metalbin_id,production_date) VALUES('$kilos',$total,$book,$metal,CURRENT_TIMESTAMP)";
+		$tsql="SELECT * FROM metalbin WHERE metalbin_id = $metal";
+		$result = mysqli_query($link,$tsql);
+		$data=mysqli_fetch_array($result);
+		if($data['capacity'] >= $kilos){
+			$sql1="INSERT INTO production(kilos,total,booking_id,metalbin_id,production_date) VALUES('$kilos',$total,$book,$metal,CURRENT_TIMESTAMP)";
+		}else{
+			header("Location:profile.php?account=book&insert=no");
+		}
 
 	// if the variable metal has a null value it will just make an insert SQL query intro the production table with all the data except the metalbin_id
 		} else {
 		$sql1="INSERT INTO production(kilos,total,booking_id,production_date) VALUES('$kilos',$total,$book,CURRENT_TIMESTAMP)";
+		
 	}
 
 	// if all the querys are correct the user will be redirected to the bookings section of the profile page and the variable insert = yes will be sent
