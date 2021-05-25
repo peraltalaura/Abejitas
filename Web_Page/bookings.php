@@ -42,14 +42,6 @@
 		});
 	</script>
 	<script>
-		/*Function to show or hide the sidenav when the mouse is clicked*/
-		$('.erlete').click(function(){
-			$(".sidenav").toggle("900");
-			$(".erlete").toggleClass("fullW",500);
-			$(".content").toggleClass("addMargin",500);
-		});
-	</script>
-	<script>
 		$.datepicker.regional[ "eng" ] = {
 			closeText: "Done",
 			prevText: "Prev",
@@ -90,75 +82,75 @@
 	</head>
 	<body>
 		<h1 class="Center erlete">ERLETE</h1>
-	<!--menu of the web page that is explaned in the other pages of the web page-->
-	<ul class="sidenav">
-		<li>
-			<a class="Center" href="index.php">HOME</a>
-		</li>
-		<li>
-			<a class="Center" href="info.php">INFORMATION</a>
-		</li>
-		<li>
-			<a class="Center" href="forum.php">FORUM</a>
-		</li>
-		<!--it starts the session and changes the links depending if the user is logged in or not for the bookings page-->
-		<?php
-		session_start();
-		/*Global variable where the member id is saved to do the querys*/
-		if(isset($_SESSION['memberID'])){
-			?>
+		<!--menu of the web page that is explaned in the other pages of the web page-->
+		<ul class="sidenav">
 			<li>
-				<!-- The link of BOOKINGS redirects the user to the bookings.php page-->
-				<a class="Center active" href="bookings.php">BOOKINGS</a>
+				<a class="Center" href="index.php">HOME</a>
 			</li>
-			<?php
-		} else {
-			?>
 			<li>
-				<!-- The link redirects the user to the login.php page-->
-				<a class="Center" href="login.php">BOOKINGS</a>
+				<a class="Center" href="info.php">INFORMATION</a>
 			</li>
-			<?php
-		}
-		?>
-		<!--it starts the session and changes the links depending if the user is logged in or not for the profile page-->
-		<?php
-		if(isset($_SESSION['memberID'])){
-			?>
 			<li>
-				<!-- The link of MY ACCOUNT redirects the user to the profile.php page in the profile section-->
-				<a class="Center" href="profile.php?account=prof">MY ACCOUNT</a>
+				<a class="Center" href="forum.php">FORUM</a>
 			</li>
+			<!--it starts the session and changes the links depending if the user is logged in or not for the bookings page-->
 			<?php
-		} else {
+			session_start();
+			/*Global variable where the member id is saved to do the querys*/
+			if(isset($_SESSION['memberID'])){
+				?>
+				<li>
+					<!-- The link of BOOKINGS redirects the user to the bookings.php page-->
+					<a class="Center active" href="bookings.php">BOOKINGS</a>
+				</li>
+				<?php
+			} else {
+				?>
+				<li>
+					<!-- The link redirects the user to the login.php page-->
+					<a class="Center" href="login.php">BOOKINGS</a>
+				</li>
+				<?php
+			}
 			?>
-			<li>
-				<!-- The link redirects the user to the login.php page-->
-				<a class="Center" href="login.php">MY ACCOUNT</a>
-			</li>
+			<!--it starts the session and changes the links depending if the user is logged in or not for the profile page-->
 			<?php
-		}
-		?>
-		<!--it starts the session and changes the links depending if the user is logged in or not-->
-		<?php
-		if(isset($_SESSION['memberID'])){
+			if(isset($_SESSION['memberID'])){
+				?>
+				<li>
+					<!-- The link of MY ACCOUNT redirects the user to the profile.php page in the profile section-->
+					<a class="Center" href="profile.php?account=prof">MY ACCOUNT</a>
+				</li>
+				<?php
+			} else {
+				?>
+				<li>
+					<!-- The link redirects the user to the login.php page-->
+					<a class="Center" href="login.php">MY ACCOUNT</a>
+				</li>
+				<?php
+			}
 			?>
-			<!--If the user is logged in it redirects the user to the close_session.php to log out-->
-			<li class="nav-item flex-fill">
-				<a class="nav-link Center" href="close_session.php">LOGOUT</a>
-			</li>
+			<!--it starts the session and changes the links depending if the user is logged in or not-->
 			<?php
-		} else {
-			?>
-			<!--If the user isn't logged it redirects the user to the login.php-->
-			<li class="nav-item flex-fill">
-				<a class="nav-link Center" href="login.php">LOGIN</a>
-			</li>
-			<?php
-		}
-		?>	
-	</ul>
-	<!--End of menu web page-->
+			if(isset($_SESSION['memberID'])){
+				?>
+				<!--If the user is logged in it redirects the user to the close_session.php to log out-->
+				<li class="nav-item flex-fill">
+					<a class="nav-link Center" href="close_session.php">LOGOUT</a>
+				</li>
+				<?php
+			} else {
+				?>
+				<!--If the user isn't logged it redirects the user to the login.php-->
+				<li class="nav-item flex-fill">
+					<a class="nav-link Center" href="login.php">LOGIN</a>
+				</li>
+				<?php
+			}
+			?>	
+		</ul>
+		<!--End of menu web page-->
 		<!--The content of the web page-->
 		<div class="content Center">
 			<h1>Book our extractor</h1>
@@ -215,19 +207,19 @@
 				<div class="p-4">
 					<address></address>
 				</div>
-					<script>
-		/*Function to show or hide the sidenav when the mouse is clicked*/
-		$('.erlete').click(function(){
-			$(".sidenav").toggle("900");
-			$(".erlete").toggleClass("fullW",500);
-			$(".content").toggleClass("addMargin",500);
-		});
-	</script>
 				<script>
-		/*Function to show or hide the sidenav when the mouse is clicked*/
-		$('#bookExt').click(function(){
-			$("#bookForm").toggle("1000");
-		});
-	</script>
+					/*Function to show or hide the sidenav when the mouse is clicked*/
+					$('.erlete').click(function(){
+						$(".sidenav").toggle("900");
+						$(".erlete").toggleClass("fullW",500);
+						$(".content").toggleClass("addMargin",500);
+					});
+				</script>
+				<script>
+					/*Function to show or hide the sidenav when the mouse is clicked*/
+					$('#bookExt').click(function(){
+						$("#bookForm").toggle("1000");
+					});
+				</script>
 			</body>
 			</html>									

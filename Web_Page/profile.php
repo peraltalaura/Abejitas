@@ -176,7 +176,7 @@
 							<!-- if the variable login exists it prints the message-->
 							<?php
 							if(isset($_GET["login"])){
-								printf("<div class='container Center RB'>Login successfull, Wellcome!</div>");
+								printf("<div id='loginDialog' title='Login successfull'><p>You have logged in successfully, Wellcome!</p></div>");
 								/* php code that makes a sql query to know if there are any unseen notifications, if there are, it shows a dialog*/
 								$sql="SELECT * FROM notify WHERE member_id=$id";
 								$result=mysqli_query($link,$sql);
@@ -300,10 +300,10 @@
 								}
 							}	
 							?>
-							<div class="Center content">
+							<div class="content Center">
 								<!-- The form which shows the current data from the user and allows to make changes on it to then send it to the same page with the account = mod variable to change the php switch and modify variable-->
-								<form id="data" class="form-group Center" action="profile.php?account=mod&modify" method="post" enctype="multipart/form-data">
-									<h1 class="mt-4 mb-4">Edit your profile</h1>
+								<form id="data" class="form-group" action="profile.php?account=mod&modify" method="post" enctype="multipart/form-data">
+									<h1>Edit your profile</h1>
 									<div class="Center modify">
 
 										<label>PROFILE PICTURE:</label> 
@@ -328,10 +328,10 @@
 										?>
 									</div>
 									<div class="Center">
-										<label>PASSWORD: <br><input type="password" name="cpass"></label>
+										<label>PASSWORD: <br><input type="password" name="cpass"></label><br>
+										<input id="modify" class="BRB"  type="submit" value="MODIFY DATA">
 									</div>
-									<input id="modify" class="BRB"  type="submit" value="MODIFY DATA">
-
+									
 								</div>
 							</div>
 						</form>
@@ -372,9 +372,9 @@
 							<h1 style="margin:0">Your account balance</h1>
 							<div id="balance" class="columns RB mt-4">
 								<?php
-								printf("<div style='padding-left:1em;padding-right:1em'><h2> %d €</h2></div>",$balance);
+								printf("<div><h2> %d €</h2></div>",$balance);
 								?>
-								<div id="trans" style='padding-left:1em;padding-right:1em'><a class="BRB">transfer money</a>
+								<div id="trans"><a class="BRB">transfer money</a>
 								</div>
 							</div>
 						</div>
@@ -744,6 +744,12 @@
 				<script>
 					$( function() {
 						$( "#notificationDialog" ).dialog();
+					} );
+
+				</script>
+				<script>
+					$( function() {
+						$( "#loginDialog" ).dialog();
 					} );
 
 				</script>

@@ -138,7 +138,6 @@
 				}?>
 				>BOOK NOW</a>
 			</div>
-
 			
 			<div class="RB ">
 				<h2>CONSULT YOUR PERSONAL INFORMATION</h2>
@@ -153,7 +152,6 @@
 				}?>
 			</div>
 			
-
 		</div>
 		<br>
 	</div>
