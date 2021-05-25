@@ -35,19 +35,23 @@ public class PaymentsTable extends AbstractTableModel {
         }
     }
 
-    public void searchMemberPayments(int memberID) {
+    public boolean searchMemberPayments(int memberID) {
+        boolean found= false;
         ArrayList<Payment> filterPayments = new ArrayList<>();
         for (Payment p : payments_list) {
             if (p.getMember_id() == memberID) {
                 filterPayments.add(p);
+                found = true;
             }
         }
         this.payments_list = filterPayments;
         accountBalance();
         this.fireTableDataChanged();
+        return found;
     }
 
     public void addPayment(Payment p) {
+        p.setPayment_id(payments_list.get(payments_list.size()-1).getPayment_id()+1);
         payments_list.add(p);
         accountBalance();
         this.fireTableDataChanged();

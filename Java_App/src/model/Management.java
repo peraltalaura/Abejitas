@@ -32,17 +32,17 @@ import java.security.NoSuchAlgorithmException;
  */
 public class Management {
 
-    //private String url = "204.204.2.1:80/erlete_db";
-    //private String db = "/erlete_db";
-//    private String ip = "localhost";
-//    private String url = "jdbc:mariadb://";
+    private String ip = "10.2.1.136:80";
+    private String db = "/erlete_db";
+    //private String ip = "localhost";
+    private String url = "jdbc:mariadb://";
     private Connection connect() {
         Connection con = null;
 
         try {
             //con = DriverManager.getConnection(url, "root", "dam1");
             //con = DriverManager.getConnection(url + ip + db, "root", "dam1");
-            con = DriverManager.getConnection("jdbc:mariadb://localhost/erlete_db", "root", "dam1");
+            con = DriverManager.getConnection("jdbc:mariadb://localhost/erlete_db", "root", "");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("error in the db");
@@ -149,9 +149,9 @@ public class Management {
      */
     public boolean insertMember(Member newMember) {
         boolean done = false;
-        String img = "";
+        String img = "../Web_Page/images/bee-icon.png";
         String usrpass = newMember.getPassword();
-        String sql = "INSERT INTO member(email, name, surname, password, city, postcode, address, phone, active) VALUES (?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO member(email, name, surname, password, city, postcode, address, phone, picture, active) VALUES (?,?,?,?,?,?,?,?,?,?)";
         if (usrpass.toCharArray()[0] == '1' && usrpass.toCharArray()[1] == '2' && usrpass.toCharArray()[2] == '3') { //if the new member has only name, surname, email and password
             try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql);) {
 
@@ -163,7 +163,8 @@ public class Management {
                 pstmt.setInt(6, 0);
                 pstmt.setString(7, "");
                 pstmt.setInt(8, 0);
-                pstmt.setBoolean(9, false);
+                pstmt.setBoolean(10, false);
+                pstmt.setString(9, img);
                 pstmt.executeUpdate();
 
                 done = true;
@@ -386,12 +387,12 @@ public class Management {
     }
 
     /**
-     * Encryption method (SHA250). Takes a String and returns it encrypted
+     * Encryption method (SHA256). Takes a String and returns it encrypted
      *
      * @param input
      * @return
      */
-    public static String encryptThisString(String input) {
+    public static String encryptThisString(String input) { //mira esto mañana en kasa
         try {
             // getInstance() method is called with algorithm SHA-512 
             MessageDigest md = MessageDigest.getInstance("SHA-512");

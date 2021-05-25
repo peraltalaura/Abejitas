@@ -41,13 +41,31 @@ public class Members extends javax.swing.JFrame {
             }
         });
         updateTimer.start();
-        this.memberjTable.setBackground(new Color(0,0,0,0));
-        ((DefaultTableCellRenderer) this.memberjTable.getDefaultRenderer(Object.class)).setBackground(new Color(0,0,0,0));
-        this.memberjTable.setGridColor(Color.WHITE);
+        this.jTextFieldAdress.setOpaque(false);
+        this.jTextFieldAdress.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        this.jTextFieldBirthday.setOpaque(false);
+        this.jTextFieldBirthday.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        this.jTextFieldCity.setOpaque(false);
+        this.jTextFieldCity.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        this.jTextFieldEmail.setOpaque(false);
+        this.jTextFieldEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        this.jTextFieldName.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        this.jTextFieldName.setOpaque(false);
+        this.jTextFieldPassword.setOpaque(false);
+        this.jTextFieldPhone.setOpaque(false);
+        this.jTextFieldPhone.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        this.jTextFieldPostcode.setOpaque(false);
+        this.jTextFieldPostcode.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        this.jTextFieldSurname.setOpaque(false);
+        this.jTextFieldSurname.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        
+        this.memberjTable.setBackground(new Color(0,0,0));
+        ((DefaultTableCellRenderer) this.memberjTable.getDefaultRenderer(Object.class)).setBackground(new Color(153,153,255));
+        this.memberjTable.setGridColor(new Color(0,0,0,0));
         this.memberjTable.setForeground(Color.WHITE);
-        this.jScrollPane1.setBackground(new Color(0,0,0,0));
+        this.jScrollPane1.setBackground(new Color(153,153,255));
         this.jScrollPane1.setOpaque(false);
-        this.memberjTable.setOpaque(false);
+        this.memberjTable.setOpaque(true);
             ((DefaultTableCellRenderer) this.memberjTable.getDefaultRenderer(Object.class)).setOpaque(false);
         this.jScrollPane1.getViewport().setOpaque(false);
     }
@@ -104,16 +122,16 @@ public class Members extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, 330, 55));
 
         jTextFieldPostcode.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextFieldPostcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 500, 281, -1));
+        getContentPane().add(jTextFieldPostcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 500, 281, -1));
 
         jTextFieldCity.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextFieldCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 530, 281, -1));
+        getContentPane().add(jTextFieldCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 530, 281, -1));
 
         jTextFieldAdress.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 560, 281, -1));
+        getContentPane().add(jTextFieldAdress, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 560, 281, -1));
 
         jTextFieldPhone.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextFieldPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 590, 138, -1));
+        getContentPane().add(jTextFieldPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 590, 138, -1));
 
         memberjTable.setModel(new MembersTable());
         jScrollPane1.setViewportView(memberjTable);
@@ -127,15 +145,15 @@ public class Members extends javax.swing.JFrame {
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("NAME");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 439, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, -1, -1));
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("SURNAME");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 477, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, -1, -1));
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("EMAIL");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 515, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 510, -1, -1));
 
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("PASSWORD");
@@ -172,15 +190,16 @@ public class Members extends javax.swing.JFrame {
         getContentPane().add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 512, 69, -1));
 
         jTextFieldPassword.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jTextFieldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 435, 281, -1));
+        jTextFieldPassword.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        getContentPane().add(jTextFieldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 281, -1));
 
         jLabelBirthday.setForeground(new java.awt.Color(255, 255, 255));
         jLabelBirthday.setText("BIRTHDAY");
-        getContentPane().add(jLabelBirthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 470, 50, -1));
+        getContentPane().add(jLabelBirthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 470, 100, -1));
 
         jTextFieldBirthday.setForeground(new java.awt.Color(255, 255, 255));
         jTextFieldBirthday.setToolTipText("");
-        getContentPane().add(jTextFieldBirthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 470, 138, -1));
+        getContentPane().add(jTextFieldBirthday, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 470, 138, -1));
 
         jButtonActivate.setBorder(null);
         jButtonActivate.setForeground(new java.awt.Color(255, 255, 255));
@@ -231,7 +250,7 @@ public class Members extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(153, 153, 153));
         jLabel4.setText("(dd/mm/yyyy)");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 470, -1, -1));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 650));

@@ -44,13 +44,13 @@ public class MemberNotifications extends javax.swing.JFrame {
             }
         });
         updateTimer.start();
-        this.jTableNotifications.setBackground(new Color(0, 0, 0, 0));
+        this.jTableNotifications.setBackground(new Color(0, 0, 0));
         ((DefaultTableCellRenderer) this.jTableNotifications.getDefaultRenderer(Object.class)).setBackground(new Color(0, 0, 0, 0));
-        this.jTableNotifications.setGridColor(Color.WHITE);
+        this.jTableNotifications.setGridColor(new Color(0,0,0,0));
         this.jTableNotifications.setForeground(Color.WHITE);
         this.jScrollPane1.setBackground(new Color(0, 0, 0, 0));
         this.jScrollPane1.setOpaque(false);
-        this.jTableNotifications.setOpaque(false);
+        this.jTableNotifications.setOpaque(true);
         ((DefaultTableCellRenderer) this.jTableNotifications.getDefaultRenderer(Object.class)).setOpaque(false);
         this.jScrollPane1.getViewport().setOpaque(false);
 

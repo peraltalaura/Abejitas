@@ -45,13 +45,17 @@ public class Materials extends javax.swing.JFrame {
             }
         });
         updateTimer.start();
-         this.jTableInventory.setBackground(new Color(0, 0, 0, 0));
+        this.jTextFieldComment.setOpaque(false);
+        this.jTextFieldComment.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        this.jTextFieldModel.setOpaque(false);
+        this.jTextFieldModel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+         this.jTableInventory.setBackground(new Color(0, 0, 0));
         ((DefaultTableCellRenderer) this.jTableInventory.getDefaultRenderer(Object.class)).setBackground(new Color(0, 0, 0, 0));
-        this.jTableInventory.setGridColor(Color.WHITE);
+        this.jTableInventory.setGridColor(new Color(0,0,0,0));
         this.jTableInventory.setForeground(Color.WHITE);
         this.jScrollPane1.setBackground(new Color(0, 0, 0, 0));
         this.jScrollPane1.setOpaque(false);
-        this.jTableInventory.setOpaque(false);
+        this.jTableInventory.setOpaque(true);
         ((DefaultTableCellRenderer) this.jTableInventory.getDefaultRenderer(Object.class)).setOpaque(false);
         this.jScrollPane1.getViewport().setOpaque(false);
 
@@ -102,11 +106,11 @@ public class Materials extends javax.swing.JFrame {
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("MODEL:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 40, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, 60, -1));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("COMMENT:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 60, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, 80, -1));
 
         jTextFieldModel.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jTextFieldModel, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, 140, -1));

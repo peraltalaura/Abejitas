@@ -20,13 +20,20 @@ public class Payments extends javax.swing.JFrame {
      */
     public Payments() {
         initComponents();
-        this.jTablePayments.setBackground(new Color(0,0,0,0));
-        ((DefaultTableCellRenderer) this.jTablePayments.getDefaultRenderer(Object.class)).setBackground(new Color(0,0,0,0));
-        this.jTablePayments.setGridColor(Color.WHITE);
+        this.jTextFieldID.setOpaque(false);
+        this.jTextFieldID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        this.jTextFieldPDescription.setOpaque(false);
+        this.jTextFieldPDescription.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        this.jTextFieldPTotal.setOpaque(false);
+        this.jTextFieldPTotal.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        
+        this.jTablePayments.setBackground(new Color(0,0,0));
+        ((DefaultTableCellRenderer) this.jTablePayments.getDefaultRenderer(Object.class)).setBackground(new Color(153,153,255));
+        this.jTablePayments.setGridColor(new Color(0,0,0,0));
         this.jTablePayments.setForeground(Color.WHITE);
-        this.jScrollPane2.setBackground(new Color(0,0,0,0));
+        this.jScrollPane2.setBackground(new Color(153,153,255));
         this.jScrollPane2.setOpaque(false);
-        this.jTablePayments.setOpaque(false);
+        this.jTablePayments.setOpaque(true);
             ((DefaultTableCellRenderer) this.jTablePayments.getDefaultRenderer(Object.class)).setOpaque(false);
         this.jScrollPane2.getViewport().setOpaque(false);
     }

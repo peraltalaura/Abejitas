@@ -121,7 +121,7 @@ public class HomeController implements ActionListener {
                 members.setLocationRelativeTo(null);
                 break;
             
-            case "MANAGE AVAILABILITY":
+            case "SEE AVAILABILITY":
                 bookingsTable = new BookingsTable();
                 metalbinsTable = new MetalbinTable();
                 available.jTableBookings.setModel(bookingsTable);
@@ -141,7 +141,7 @@ public class HomeController implements ActionListener {
             case "MANAGE PAYMENTS":
                 paymentTable = new PaymentsTable();
                 payments.jTablePayments.setModel(paymentTable);
-                payments.jLabelBalance.setText("" + paymentTable.getBalance());
+                payments.jLabelBalance.setText("" + paymentTable.getBalance() + " €");
                 payments.setVisible(true);
                 payments.setLocationRelativeTo(null);
                 
@@ -355,7 +355,9 @@ public class HomeController implements ActionListener {
                         Payment pay = new Payment(description, now, total, adminId);
                         man.registerPayment(pay);
                         paymentTable.addPayment(pay);
-                        payments.jLabelBalance.setText("" + paymentTable.getBalance());
+                        payments.jTextFieldPDescription.setText("");
+                        payments.jTextFieldPTotal.setText("");
+                        payments.jLabelBalance.setText("" + paymentTable.getBalance() + " €");
                         System.out.println("payment done");
                     } catch (Exception E) {
                         System.out.println("error when paying");
@@ -386,13 +388,20 @@ public class HomeController implements ActionListener {
                     try {
                         int memberID = Integer.parseInt(payments.jTextFieldID.getText());
                         paymentTable.searchMemberPayments(memberID);
-                        payments.jLabelBalance.setText("" + paymentTable.getBalance());
-                        System.out.println("filter done");
+                        if(paymentTable.searchMemberPayments(memberID)==true){
+                            payments.jLabelBalance.setText("" + paymentTable.getBalance() + " €");
+                            System.out.println("filter done");
+                        }else{
+                            JOptionPane.showMessageDialog(payments, "Sorry, we could not find the member");
+                            payments.jTextFieldID.setText("");
+                        }
+                        
                     } catch (Exception E) {
                         System.out.println("filter error");
                     }
                 } else {
                     JOptionPane.showMessageDialog(payments, "Check and try again.");
+                    payments.jTextFieldID.setText("");
                 }
                 
                 break;
@@ -400,6 +409,7 @@ public class HomeController implements ActionListener {
             case "RESET":
                 paymentTable.resetList();
                 payments.jLabelBalance.setText("" + paymentTable.getBalance()+" €");
+                payments.jTextFieldID.setText("");
                 break;
             //when its clicked this case adds the submitted item into items table
             case "ADD ITEM":

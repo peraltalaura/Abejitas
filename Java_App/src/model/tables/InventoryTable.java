@@ -2,6 +2,7 @@ package model.tables;
 
 import model.Management;
 import java.util.ArrayList;
+import java.util.HashSet;
 import javax.swing.table.AbstractTableModel;
 import model.mainclass.Inventory;
 //this class is the model for the inventory frame
@@ -18,8 +19,14 @@ public class InventoryTable extends AbstractTableModel {
             materials.add((Inventory) x);
         }
     }
-
+    
+    /**
+     * Adds the inserted object into the arraylist
+     * @param i the inserted object 
+     */
     public void addToInventory(Inventory i) {
+        i.setItem_id(materials.get(materials.size()-1).getItem_id()+1);//esto en todos
+        
         materials.add(i);
         this.fireTableDataChanged();
     }

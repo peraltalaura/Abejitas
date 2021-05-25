@@ -25,6 +25,7 @@ public class Member {
     private int phone;
     private boolean active = false;
     private Date birthday;
+    
     /**
      * constructor
      * @param member_id

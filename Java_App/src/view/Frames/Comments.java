@@ -41,13 +41,13 @@ public class Comments extends javax.swing.JFrame {
             }
         });
         updateTimer.start();
-         this.jTableCommentsTable.setBackground(new Color(0, 0, 0, 0));
+         this.jTableCommentsTable.setBackground(new Color(0, 0, 0));
         ((DefaultTableCellRenderer) this.jTableCommentsTable.getDefaultRenderer(Object.class)).setBackground(new Color(0, 0, 0, 0));
-        this.jTableCommentsTable.setGridColor(Color.WHITE);
+        this.jTableCommentsTable.setGridColor(new Color(0,0,0,0));
         this.jTableCommentsTable.setForeground(Color.WHITE);
         this.jScrollPane1.setBackground(new Color(0, 0, 0, 0));
         this.jScrollPane1.setOpaque(false);
-        this.jTableCommentsTable.setOpaque(false);
+        this.jTableCommentsTable.setOpaque(true);
         ((DefaultTableCellRenderer) this.jTableCommentsTable.getDefaultRenderer(Object.class)).setOpaque(false);
         this.jScrollPane1.getViewport().setOpaque(false);
     }

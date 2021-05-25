@@ -17,14 +17,16 @@ public class MembersTable extends AbstractTableModel {
     private int member_count;
     private ArrayList<Member> members_list=new ArrayList<>();//stores data for the table
     private final String[] TITLES = {"ID", "NAME", "SURNAME", "E-MAIL", "PASSWORD", "BIRTHDAY","POST CODE", "CITY", "ADDRESS", "PHONE", "ACTIVE"};//sets table col titles
-
+    
     public MembersTable() {
         ArrayList<Object> array = new ArrayList<>();
         array = man.readData(array, "member");
         for (Object x : array) {
             members_list.add((Member) x);
             member_count++;
+            
         }
+     
     }
 
     public void activate(int memberId) {
@@ -48,6 +50,7 @@ public class MembersTable extends AbstractTableModel {
     }
     
     public void addMember(Member m){
+        m.setMember_id(members_list.get(members_list.size()-1).getMember_id()+1);
         members_list.add(m);
         this.fireTableDataChanged();
         this.member_count++;

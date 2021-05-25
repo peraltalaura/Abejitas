@@ -5,6 +5,7 @@
  */
 package view.Frames;
 
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -18,16 +19,19 @@ import javax.swing.Timer;
  * @author uribe.markel
  */
 public class Home extends javax.swing.JFrame {
+
     Timer updateTimer;
     int DELAY = 100;
+
     /**
      * Creates new form nhome
      */
     public Home() throws IOException {
-        
 
         initComponents();
-         updateTimer = new Timer(DELAY, new ActionListener() {
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass()
+                .getClassLoader().getResource("bee-iconn.jpg")));
+        updateTimer = new Timer(DELAY, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Date currentTime = new Date();
@@ -217,7 +221,7 @@ public class Home extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-    public static Home createView() throws IOException  {
+    public static Home createView() throws IOException {
         Home v = new Home();
         return v;
     }

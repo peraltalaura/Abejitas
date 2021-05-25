@@ -41,23 +41,23 @@ public class Availability extends javax.swing.JFrame {
             }
         });
         updateTimer.start();
-        this.jTableMetal.setBackground(new Color(0, 0, 0, 0));
+        this.jTableMetal.setBackground(new Color(0, 0, 0));
         ((DefaultTableCellRenderer) this.jTableMetal.getDefaultRenderer(Object.class)).setBackground(new Color(0, 0, 0, 0));
-        this.jTableMetal.setGridColor(Color.WHITE);
+        this.jTableMetal.setGridColor(new Color(0,0,0,0));
         this.jTableMetal.setForeground(Color.WHITE);
         this.jScrollPane1.setBackground(new Color(0, 0, 0, 0));
         this.jScrollPane1.setOpaque(false);
-        this.jTableMetal.setOpaque(false);
+        this.jTableMetal.setOpaque(true);
         ((DefaultTableCellRenderer) this.jTableMetal.getDefaultRenderer(Object.class)).setOpaque(false);
         this.jScrollPane1.getViewport().setOpaque(false);
 
-        this.jTableBookings.setBackground(new Color(0, 0, 0, 0));
+        this.jTableBookings.setBackground(new Color(0, 0, 0));
         ((DefaultTableCellRenderer) this.jTableBookings.getDefaultRenderer(Object.class)).setBackground(new Color(0, 0, 0, 0));
-        this.jTableBookings.setGridColor(Color.WHITE);
+        this.jTableBookings.setGridColor(new Color(0,0,0,0));
         this.jTableBookings.setForeground(Color.WHITE);
         this.jScrollPane2.setBackground(new Color(0, 0, 0, 0));
         this.jScrollPane2.setOpaque(false);
-        this.jTableBookings.setOpaque(false);
+        this.jTableBookings.setOpaque(true);
         ((DefaultTableCellRenderer) this.jTableBookings.getDefaultRenderer(Object.class)).setOpaque(false);
         this.jScrollPane2.getViewport().setOpaque(false);
         
