@@ -109,7 +109,7 @@
 	</ul>
 	<!--End of menu web page-->
 	<!--The content of the web page-->
-	<div class="content Center">
+	<div class="content Center addMargin">
 		<h1>Latest discussions</h1><br>
 		<!--php code that makes a query of the comments of the members and displays them in the given format-->
 		<?php			
@@ -139,10 +139,11 @@
 		if(isset($_SESSION['memberID'])){
 			?>
 			<h2>WRITE YOUR COMMENT:</h2>
-			<form action="send_comment.php" method="post">
-				<div class="row">
-					<textarea maxlength="255" class="rounded-0" class="Center" rows="10" required="required" name='txt'></textarea>
+			<form class="Center" action="send_comment.php" method="post">
+				
+					<textarea maxlength="255" class="rounded-0" class="Center" rows="10" required="required" name='txt'></textarea><br>
 					<input type="submit" value="POST COMMENT" class="BRB">
+					</form>
 					<?php
 				}else{
 
@@ -150,8 +151,6 @@
 					printf("<br><a class='BRB' href='login.php'>Login to comment</a>");
 				}
 				?>
-			</div>
-		</form>
 	</div>
 	<div class="p-4">
 		<address></address>

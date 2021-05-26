@@ -110,7 +110,7 @@
 		</ul>
 	<!--End of menu web page-->
 	<!--The content of the web page-->
-	<div id="info" class="content Center">
+	<div id="info" class="content Center addMargin">
 		<BR>
 		<h1>Learn about our community</h1><br>
 		<div class="columns">	
@@ -161,8 +161,14 @@
 				<li>You must also have a respectful attitude towards the rest of the members</li>
 			</ol>
 		</div>
-		<a class="BRB" href="contact.php">BECOME A MEMBER</a>
-	</div>
+			
+		
+	<div class="Center">
+				<h2>Opening of Erlete</h2>
+				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9lqKwL2hKRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+	<a class="BRB Center" href="contact.php">BECOME A MEMBER</a>
+</div>
 	<div class="p-4">
 		<address></address>
 	</div>

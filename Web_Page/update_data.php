@@ -37,7 +37,7 @@
 			$result=mysqli_query($link,"select* from member where member_id=$id");
 			$data=mysqli_fetch_array($result);
 			
-			if(isset($_GET['modify']) && $_FILES["pic"]["size"] > 500000){
+			if(isset($_GET['modify'])){
 				$user=$_POST['uname'];
 				$surname=$_POST['usurname'];
 				$email=$_POST['mail'];

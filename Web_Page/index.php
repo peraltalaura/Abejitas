@@ -109,7 +109,7 @@
 		</ul>
 	<!--End of menu web page-->
 	<!--The content of the web page-->
-	<div id='index' class="content Center">
+	<div id='index' class="content Center addMargin">
 		<h1>Wellcome to Erletes site</h1>
 		<div class="columns">
 			<div class="RB">

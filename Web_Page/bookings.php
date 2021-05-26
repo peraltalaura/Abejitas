@@ -152,7 +152,7 @@
 		</ul>
 		<!--End of menu web page-->
 		<!--The content of the web page-->
-		<div class="content Center">
+		<div class="content Center addMargin">
 			<h1>Book our extractor</h1>
 			<h2 class="Center mt-4 mb-4">Check if our metalbins are available</h2>
 			<br>

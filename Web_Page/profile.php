@@ -93,35 +93,28 @@
 			</li>
 			<?php
 		}
-		?>
-		<li>
-			<a class="Center" href="">MY ACCOUNT</a>
-			<?php
 			if(isset($_SESSION['memberID'])){
 				?>
 				<!-- the account nav displays the links for the different information and actions allowed to the user in his progile-->
-				<ul id="accountNav">
-					<li>
 						<!-- it leads the user to the profile information part of this web site-->
-						<a class="Center" id="prof" href="profile.php?account=prof" onclick="prof()">EDIT</a>
+					<li>
+						<a class="Center accountnav" id="prof" href="profile.php?account=prof" onclick="prof()">EDIT</a>
 					</li>
 					<li>
 						<!-- it leads the user to the part of this web site that shows the payments done and the accounts balance-->
-						<a class="Center" id="bal" onclick="bal()" href="profile.php?account=bal">BALANCE</a>
+						<a class="Center accountnav" id="bal" onclick="bal()" href="profile.php?account=bal">BALANCE</a>
 					</li>
 					<li>
 						<!-- it leads the user to the information about the bookings, productions and allows him to register a production-->
-						<a class="Center" id="book" onclick="book()" href="profile.php?account=book">MY BOOKINGS</a>
+						<a class="Center accountnav" id="book" onclick="book()" href="profile.php?account=book">MY BOOKINGS</a>
 					</li>
 					<li>
 						<!-- it leads the user to the notifications part of this web site, where the messages sent by the administrator can be seen-->
-						<a class="Center" id="not" onclick="not()" href="profile.php?account=not">NOTIFICATIONS</a>
+						<a class="Center accountnav" id="not" onclick="not()" href="profile.php?account=not">NOTIFICATIONS</a>
 					</li>
-				</ul>
 				<?php
 			}
 			?>
-		</li>
 		<?php
 		if(isset($_SESSION['memberID'])){
 			?>
@@ -172,7 +165,7 @@
 						'prof();',
 						'</script>';
 						?>
-						<div class="content Center">
+						<div class="content Center addMargin">
 							<!-- if the variable login exists it prints the message-->
 							<?php
 							if(isset($_GET["login"])){
@@ -300,7 +293,7 @@
 								}
 							}	
 							?>
-							<div class="content Center">
+							<div class="content Center addMargin">
 								<!-- The form which shows the current data from the user and allows to make changes on it to then send it to the same page with the account = mod variable to change the php switch and modify variable-->
 								<form id="data" class="form-group" action="profile.php?account=mod&modify" method="post" enctype="multipart/form-data">
 									<h1>Edit your profile</h1>
@@ -343,7 +336,7 @@
 						'bal();',
 						'</script>';
 						?>
-						<div class="content Center">
+						<div class="content Center addMargin">
 							<h1 id="movement">My movements</h1>
 							<br>
 							<!-- php code that makes a query to extract the payments done or assosiated with the current member and display them in a table-->
@@ -380,7 +373,7 @@
 						</div>
 
 						<!--Form that allows the user to transfer money to the account-->
-						<div id="transfer" class="content Center" style="display:none">
+						<div id="transfer" class="content Center addMargin" style="display:none">
 							<h1 class="mt-4">Transfer</h1>
 							<!-- form to transfer money which asks the member for a description and cuantity-->
 							<form id="transfer-form" class="form-group container Center" action="transfer.php" method="post">
@@ -420,7 +413,7 @@
 					'act();',
 					'</script>';
 					?>
-					<div class="content Center">
+					<div class="content Center addMargin">
 						<h1 id="bookings">My bookings</h1>
 						<br>
 						<!-- php code that makes an SQL query to extract the bookings of the member signed in-->
@@ -580,7 +573,7 @@
 					'not();',
 					'</script>';
 					?>
-					<div class="content Center">
+					<div class="content Center addMargin">
 						<h1 id="notification">Notifications</h1>
 						<br>
 						<!-- a php code that selects the notifications related to the user and shows them, if there are unseen it prints them with a clickable button-->

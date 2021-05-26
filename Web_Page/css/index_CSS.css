@@ -7,16 +7,17 @@ body {
 }
 /*Size and alignment of the titles*/
 h1 {
-	margin-top: calc(1em + 0.6vw);
+	margin-top: calc(3em + 0.6vw);
 	font-size: calc(3.5em + 0.6vw);
 	text-align: center;
 }
 .erlete {
 	background:rgb(0, 0, 0,0.5);
 	padding:0.5em 0 1em 0;
-	margin:0;
-	width: 100%;
+	margin: 0 0 0 20%;
+	width: 80%;
 	float: right;
+	position: fixed;
 	transition:box-shadow 0.4s linear, font-size 0.4s linear;
 }
 .erlete:hover {
@@ -24,8 +25,8 @@ h1 {
 	font-size: calc(3.7em + 0.6vw);
 }
 .fullW {
-	margin-left: 20%;
-	width: 80%;
+	margin:0;
+	width: 100%;
 }
 /*start of responsive navigation var in the maximum size of the window*/
 /*properties of the unordered list of the nav var that will contain the links to the sites*/
@@ -39,18 +40,15 @@ ul.sidenav {
 	overflow: auto;
 	box-shadow:0em 0em 2em 0em rgb(0,0,0,0.5);
 	background:rgb(0, 0, 0,0.5);
-	display: none;
 
 }
-/*Properties of the navigation var with the links of the profile page*/
-#accountNav {
-	list-style-type:none;
-	padding:0;
-	width:80%;
-	margin:auto;
+.accountnav{
+
+	background: rgb(255,255,255,0.4);
 }
+/*Properties of the navigation var with the links of the profile page*/
 /* Properties common to the links of both nav vars*/
-ul.sidenav li a, ul#accountNav li a{
+ul.sidenav li a {
 	display: block;
 	padding: 0.7em;
 	text-decoration: none;
@@ -65,12 +63,14 @@ ul.sidenav li a.active{
 	background-color: rgb(0, 0, 0,0.3);
 }
 
-ul#accountNav li a.active {
-	color:rgb(255, 255, 255);
-	background-color: rgb(0, 0, 0,0.3);
+.accountnav li a.active{
+	background: rgb(255,255,255,0.4);
+	box-shadow: 0em 0em 1em 0em rgb(0, 0, 0,0.8);
 }
+
+
 /*Properties that will be aplied when the user draggs the mouse over the links*/
-ul.sidenav li a:hover:not(.active), ul#accountNav li a:hover:not(.active) {
+ul.sidenav li a:hover:not(.active) {
 	color:rgb(255, 255, 255);
 	font-size: calc(0.7em + 0.6vw);
 	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.4); 
@@ -83,8 +83,8 @@ div.content {
 	text-align: justify;
 }
 .addMargin {
-	margin-left: 10%;
 	width: 80%;
+	margin-left:10%;
 }
 
 /*Properties of the subtitles*/
@@ -232,7 +232,7 @@ textarea:focus {
 }
 
 #calendar {
-	width:75%;
+	width:65%;
 	margin:0 auto;
 	border:rgb(255, 255, 255);
 	background-color: rgb(0, 0, 0,0.8);
@@ -294,26 +294,30 @@ input[type=number]::-webkit-outer-spin-button {
 		height: 20%;
 	}
 	
-	ul.sidenav li a,ul#accountNav li a {
+	ul.sidenav li a {
 		float: left;
 		padding:1.5em 1em 1.5em 1em;
 		font-size:calc(0.5em + 1vw);
-		transition: box-shadow 0.2s linear, font-color 0.2s linear;
+		transition: box-shadow 0.4s linear, font-color 0.4s linear;
 	}
-	ul.sidenav li a:hover:not(.active), ul#accountNav li a:hover:not(.active) {
+
+	ul.sidenav li a:hover:not(.active) {
 		font-size:calc(0.5em + 1vw);
 		color:rgb(255, 255, 255);
 		box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.4); 
 
 	}
+
 	div.content {
 		padding: 3em;
 		width: 100%;
+		margin: auto;
 		font-size: calc(0.5em + 1vw);
 		line-height: 2em;
 	}
 	.addMargin {
-		margin: 0;
+		margin: auto;
+		width: 100%;
 }
 	h1 {
 		margin:0.5em;
@@ -359,14 +363,24 @@ input[type=number]::-webkit-outer-spin-button {
 @media screen and (max-width: 500px) {
 	.erlete {
 		padding:0.5em;
+		display: fixed;
+		width: 100%;
 	}
-	ul.sidenav li a, ul#accountNav li a {
+	ul.sidenav li a {
 		text-align: center;
 		float: none;
 		font-size: calc(0.7em + 1vw);
+		transition: font-size 0.4s linear, box-shadow 0.4s linear;
 	}
+	/*Properties that will be aplied when the user draggs the mouse over the links*/
+ul.sidenav li a:hover:not(.active) {
+	color:rgb(255, 255, 255);
+	font-size: calc(0.8em + 1vw);
+	box-shadow: 0em 0em 1em 0em rgb(255, 255, 255,0.4); 
+}
 	div.content, .fc .fc-toolbar-title {
 		margin:0;
+		width: 100%;
 		font-size: calc(0.5em + 1vw);
 		color:rgb(255, 255, 255,0.9);
 	}
