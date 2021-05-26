@@ -439,20 +439,34 @@
 							<div class="row"><b>TOTAL</b></div>
 						</div>
 
-						<?php
+												<?php
 						while($data=mysqli_fetch_array($result)){
 							/* information about each booking made by the member*/
-							printf("
-								<div class='rows'>
-								<div class='row'>%d</div>
-								<div class='row'>%s</div>
-								<div class='row'>%s</div>
-								<div class='row'>%d KG</div>
-								<div class='row'>%d €</div>
-								</div>",$data[0],$data[0],$data[1],$data[2],$data[3],$data[4]);
+							if($data['total']==0){
+								printf("
+									<div class='rows'>
+									<div class='row'>%d</div>
+									<div class='row'>%s</div>
+									<div class='row'>%s</div>
+									<div class='row'>%d KG</div>
+									<div class='row'>%d €</div>
+									<div class='row'><a type='button' class='BRB' href='cancel_booking.php?bid=$data[0]'>Cancel booking</a></div>
+									</div>",$data[0],$data[0],$data[1],$data[2],$data[3],$data[4]);
+							}else{
+								printf("
+									<div class='rows' %d onClick=clickaction(this)>
+									<div class='row'>%d</div>
+									<div class='row'>%s</div>
+									<div class='row'>%s</div>
+									<div class='row'>%d KG</div>
+									<div class='row'>%d €</div>
+									<div class='row'>cancelling unavailable</div>
+									</div>",$data[0],$data[0],$data[1],$data[2],$data[3],$data[4]);
+							}
 							/* Titles of the productions table*/
 							printf("
-								<div class='rows production' style='background-color:rgb(255,255,255,0.4);color:black'>
+								<h2 class='Center production'>PRODUCTIONS</h2>
+								<div class='rows production'>
 								<div class='row'>METALBIN</div>
 								<div class='row'>DATE/TIME</div>
 								<div class='row'>KILOS</div>
@@ -466,31 +480,44 @@
 							
 							while($data2=mysqli_fetch_array($result2)){
 								/* information about the productions of the booking above*/
-								printf("
-									<div class='rows production' style='background-color:rgb(255,255,255,0.4);color:black'>
-									<div class='row'>%d</div>
-									<div class='row'>%s</div>
-									<div class='row'>%d</div>
-									<div class='row'>%d</div>
-									",$data2[1],$data2[4],$data2[2],$data2[3]);
-								/*Select the availability of the metalbin of the production*/
-								$availability="SELECT available FROM metalbin WHERE metalbin_id=$data2[1]";
-								$result3=mysqli_query($link,$availability);
-								$data3=mysqli_fetch_array($result3);
-								/* if the production is finished*/
-								if($data3[0]==1){
-									printf("<div class='row'>FINISHED</div>
-										</div>");
-									/* if the metalbin is still in use and the production going on*/
+								if ($data2[1]!=NULL) {			
+									printf("
+										<div class='rows production'>
+										<div class='row'>%d</div>
+										<div class='row'>%s</div>
+										<div class='row'>%d</div>
+										<div class='row'>%d</div>
+										",$data2[1],$data2[4],$data2[2],$data2[3]);
+									/*Select the availability of the metalbin of the production*/
+									$availability="SELECT available FROM metalbin WHERE metalbin_id=$data2[1]";
+									$result3=mysqli_query($link,$availability);
+									$data3=mysqli_fetch_array($result3);
+									/* if the production is finished*/
+									if($data3[0]==1){
+										printf("<div class='row'>FINISHED</div>
+											</div>");
+										/* if the metalbin is still in use and the production going on*/
+									} else {
+										printf("<div class='row'><a type='button' 
+											class='BRB' href='setAvailable.php?productid=$data2[0]'>END</a></div>
+											</div>");
+									}
 								} else {
-									printf("<div class='row'><a type='button' 
-										class='BRB' href='setAvailable.php?productid=$data2[0]'>END</a></div>
-										</div>");
+									printf("
+										<div class='rows production'>
+										<div class='row'>yours</div>
+										<div class='row'>%s</div>
+										<div class='row'>%d</div>
+										<div class='row'>%d</div>
+										<div class='row'></div></div>
+										",$data2[4],$data2[2],$data2[3]);
 								}
 							}
-							printf("<a id='produce' class='Center BRB production %d'>REGISTER PRODUCTION</a>",$data[0]);	
+							
 						}
+					
 						?>
+						<a id='produce' class='Center BRB production %d'>REGISTER PRODUCTION</a>
 
 
 						<!-- a form to slect the booking and make a production related to it, once submit it will redirect the user to the produce.php -->
