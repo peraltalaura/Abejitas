@@ -296,9 +296,9 @@
 							$result=mysqli_query($link,"SELECT* from payment where member_id=$id");
 							?>
 							<div class="table-responsive">
-								<table class="table Center text-light">
-									<tr style='background-color: rgb(0, 0, 0,0.8);'>
-										<th>PAYMENT ID</th>
+								<table class="table Center text-black">
+									<tr style='background-color: rgb(255, 255, 255,0.6);'>
+										<th>ID</th>
 										<th>DESCRIPTION</th>
 										<th>DATE</th>
 										<th>TOTAL</th>
@@ -306,8 +306,13 @@
 									<?php
 									$balance=0;
 									while($data=mysqli_fetch_array($result)){
-										printf("<tr style='background-color: rgb(0, 0, 0,0.8);'><td>%d</td><td>%s</td><td>%s</td><td>%d €</td></tr>",$data[0],$data[1],$data[3],$data[2]);
+										if ($data["total"]<0) {
+												printf("<tr style='background-color: rgb(179, 0, 0,0.5);color:white' ><td>%d</td><td>%s</td><td>%s</td><td>%d €</td></tr>",$data[0],$data[1],$data[3],$data[2]);
 										$balance=$balance+$data[2];
+										}else{
+										printf("<tr style='background-color: rgb(255, 255, 255,0.6);' ><td>%d</td><td>%s</td><td>%s</td><td>%d €</td></tr>",$data[0],$data[1],$data[3],$data[2]);
+										$balance=$balance+$data[2];
+									}
 									}
 									?>
 								</table>
@@ -316,7 +321,12 @@
 							<h1>Your account balance</h1>
 							<div id="balance" class="columns RB Center">
 								<?php
-								printf("<h2> %d €</h2>",$balance);
+								if ($balance<0) {
+									printf("<h2 style='color:red'> %d €</h2>",$balance);
+								}else {
+									printf("<h2> %d €</h2>",$balance);
+								}
+								
 								?>
 							</div>
 							<br>
@@ -374,13 +384,13 @@
 						
 						?>
 						<!-- Titles from the bookings table-->
-						<h2 class="Center text-white">Bookings</h2>
 						<div class="rows">
 							<div class="row"><b>ID</b></div>
 							<div class="row"><b>ENTRY</b></div>
 							<div class="row"><b>EXIT</b></div>
 							<div class="row"><b>KILOS</b></div>
 							<div class="row"><b>TOTAL</b></div>
+							<div class="row"><b>STATUS</b></div>
 						</div>
 
 						<?php
@@ -395,7 +405,7 @@
 									<div class='row'>%d KG</div>
 									<div class='row'>%d €</div>
 									<div class='row'><a type='button' class='BRB' href='cancel_booking.php?bid=$data[0]'>Cancel booking</a></div>
-									</div>",$data[0],$data[0],$data[1],$data[2],$data[3],$data[4]);
+									</div>",$data[0],$data[1],$data[2],$data[3],$data[4]);
 							}else{
 								printf("
 									<div class='rows'>
@@ -404,18 +414,17 @@
 									<div class='row'>%s</div>
 									<div class='row'>%d KG</div>
 									<div class='row'>%d €</div>
-									<div class='row'>cancelling unavailable</div>
-									</div>",$data[0],$data[0],$data[1],$data[2],$data[3],$data[4]);
+									<div class='row'>Producing</div>
+									</div>",$data[0],$data[1],$data[2],$data[3],$data[4]);
 							}
 							/* Titles of the productions table*/
 							printf("
-								<h2 class='Center production text-white'>Productions</h2>
 								<div class='rows production' style='background-color:rgb(255,255,255,0.5);color:black'>
 								<div class='row'>METALBIN</div>
 								<div class='row'>DATE/TIME</div>
 								<div class='row'>KILOS</div>
 								<div class='row'>TOTAL</div>
-								<div class='row'>FINISH</div>
+								<div class='row'>STATUS</div>
 								</div>
 								");
 							$result2=mysqli_query($link,"SELECT * FROM production 
@@ -438,7 +447,7 @@
 									$data3=mysqli_fetch_array($result3);
 									/* if the production is finished*/
 									if($data3[0]==1){
-										printf("<div class='row'>FINISHED</div>
+										printf("<div class='row'>Finished</div>
 											</div>");
 										/* if the metalbin is still in use and the production going on*/
 									} else {
@@ -476,7 +485,7 @@
 
 						<!-- a form to slect the booking and make a production related to it, once submit it will redirect the user to the produce.php -->
 						<form id="production" class="form-group container Center" action="produce.php" method="post" style="display:none">
-							<h2>Register a production</h2>
+							<h1>Register a production</h1>
 							<div class="colums" style="text-align:center">
 								<div class='RB'>
 									<b>SELECT YOUR BOOKING:</b><br><br>

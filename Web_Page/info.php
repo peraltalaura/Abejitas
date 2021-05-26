@@ -162,11 +162,10 @@
 			</ol>
 		</div>
 		
-		
-		<div class="RB Center">
-			<h2>Opening of Erlete</h2>
+		<div class="Center">
+			<h2 class="text-light">Opening of Erlete</h2><br>
 			<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9lqKwL2hKRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-		</div>
+		</div><br>
 		<a class="BRB Center" href="contact.php">BECOME A MEMBER</a>
 	</div>
 	<div class="p-4">

@@ -193,7 +193,7 @@
 			<!--Displays the fullcalendar with the dates that are booked and it shows which member has booked them-->
 			<div id='calendar'></div>
 			<!--Form to book the extractor which asks for the entry and exit date. Then sends the form to the book.php file, which makes the according checks-->
-			<a id="bookExt" class="BRB">Book the extractor</a>
+			<br><a id="bookExt" class="BRB">Book the extractor</a>
 			<form  id="bookForm" class="form-group mt-4 content" action="book.php" method="post" style="display:none">
 			<h1 class="mt-4 mb-4">Book our extractor</h1>
 				<div class="columns Center">
