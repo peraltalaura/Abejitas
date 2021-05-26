@@ -42,9 +42,9 @@
 	<?php 
 	if(isset($_GET['incorrect'])){
 		if($_GET['incorrect']=='yes'){
-			printf("<div class='container Center RB'>The email or account don't match</div>");
+			printf("<div class='container Center RB'>The email or account don't match</div><br>");
 		} else if($_GET['incorrect']=='disable'){
-			printf("<div class='container Center RB'>Your account is disabled</div>");
+			printf("<div class='container Center RB'>Your account is disabled</div><br>");
 		}
 	}
 	/*
@@ -52,7 +52,7 @@
 			if it does, it tells the user that the email hasn't been found
 	*/
 	if(isset($_GET['found'])){
-		printf("<div class='container Center RB'>Email not found</div>");
+		printf("<div class='container Center RB'>Email not found</div><br>");
 
 	}
 	?>

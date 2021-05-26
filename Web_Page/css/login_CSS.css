@@ -1,7 +1,7 @@
 /*Properties applied to all the web page*/
 body{
 	margin-top:4%; 
-	background: url(../images/honeyBGSM.jpg) repeat center;
+	background: url(../images/honeyBlur.png) no-repeat center;
 	font-size: calc(0.5em + 0.6vw);
 	line-height: 2.2em;
 	color:rgb(255, 255, 255);

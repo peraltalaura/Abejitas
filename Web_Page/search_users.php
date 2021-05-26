@@ -11,10 +11,9 @@
 	$stmt = $link->prepare($sql);
 	$stmt->bind_param('s',$user);
 	$stmt->execute();
-	
+	$result =  $stmt->get_result();
 	//if the result isn't null continues
-	if($result =  $stmt->get_result()){
-		while ($data= $result->fetch_assoc()) {
+	if($data= $result->fetch_assoc()!=null){
 			//if the users introduced email and password equel the ones taken from the database
 			if (($user == $data["email"]) && (password_verify($pass, $data["password"]))) { //if the account is active it starts session, stores the id in a global variable and redirects the user to the profile page and returns the login variable
 				if($data["active"]==1){
@@ -29,7 +28,7 @@
 				} else {    
 				header("Location:login.php?incorrect=yes");
 			}
-		}
+		
 		//if the result is null it redirects the user to the login page and return the variable found=no
 		}else {
 		header("Location:login.php?found=no");
