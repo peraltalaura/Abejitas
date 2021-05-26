@@ -25,7 +25,7 @@
 		if($data['capacity'] >= $kilos){
 			$sql1="INSERT INTO production(kilos,total,booking_id,metalbin_id,production_date) VALUES('$kilos',$total,$book,$metal,CURRENT_TIMESTAMP)";
 		}else{
-			header("Location:profile.php?account=book&insert=no");
+			header("Location:profile.php?account=book&capacity");
 		}
 
 	// if the variable metal has a null value it will just make an insert SQL query intro the production table with all the data except the metalbin_id

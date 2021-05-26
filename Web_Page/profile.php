@@ -399,7 +399,7 @@
 									</div>",$data[0],$data[0],$data[1],$data[2],$data[3],$data[4]);
 							}else{
 								printf("
-									<div class='rows' %d onClick=clickaction(this)>
+									<div class='rows'>
 									<div class='row'>%d</div>
 									<div class='row'>%s</div>
 									<div class='row'>%s</div>
@@ -410,8 +410,8 @@
 							}
 							/* Titles of the productions table*/
 							printf("
-								<h2 class='Center production'>PRODUCTIONS</h2>
-								<div class='rows production'>
+								<h2 class='Center production'>Productions</h2>
+								<div class='rows production' style='background-color:rgb(255,255,255,0.5);color:black'>
 								<div class='row'>METALBIN</div>
 								<div class='row'>DATE/TIME</div>
 								<div class='row'>KILOS</div>
@@ -427,7 +427,7 @@
 								/* information about the productions of the booking above*/
 								if ($data2[1]!=NULL) {			
 									printf("
-										<div class='rows production'>
+										<div class='rows production' style='background-color:rgb(255,255,255,0.5);color:black'>
 										<div class='row'>%d</div>
 										<div class='row'>%s</div>
 										<div class='row'>%d</div>
@@ -514,6 +514,9 @@
 							} else {
 								printf("<div id='productionDialog' title='Register production'><p>There was an error during the registration of the production</p></div>");
 							}
+						}
+						if(isset($_GET['capacity'])){
+							printf("<div id='productionDialog' title='Capacity exceeded'><p>The metalbil selected is too small for the amount produced</p></div>");
 						}
 						?>
 					</div>
