@@ -24,7 +24,6 @@ import java.util.ArrayList;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import org.mindrot.BCrypt;
 //import java.util.Date;
 
 /**
@@ -33,7 +32,7 @@ import org.mindrot.BCrypt;
  */
 public class Management {
 
-    private String ip = "10.2.1.136:80";
+    private String ip = "10.2.1.179";
     private String db = "/erlete_db";
     //private String ip = "localhost";
     private String url = "jdbc:mariadb://";
@@ -42,8 +41,8 @@ public class Management {
 
         try {
             //con = DriverManager.getConnection(url, "root", "dam1");
-            //con = DriverManager.getConnection(url + ip + db, "root", "dam1");
-            con = DriverManager.getConnection("jdbc:mariadb://localhost/erlete_db", "root", "dam1");
+            con = DriverManager.getConnection(url + ip + db, "root", "dam1");
+            //con = DriverManager.getConnection("jdbc:mariadb://localhost/erlete_db", "root", "");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("error in the db");
@@ -159,7 +158,7 @@ public class Management {
                 pstmt.setString(1, newMember.getEmail());
                 pstmt.setString(2, newMember.getName());
                 pstmt.setString(3, newMember.getSurname());
-                pstmt.setString(4, BCrypt.hashpw(newMember.getPassword(),BCrypt.gensalt()));
+                pstmt.setString(4, encryptThisString(newMember.getPassword()));
                 pstmt.setString(5, "");
                 pstmt.setInt(6, 0);
                 pstmt.setString(7, "");
@@ -181,7 +180,7 @@ public class Management {
                 pstmt.setString(1, newMember.getEmail());
                 pstmt.setString(2, newMember.getName());
                 pstmt.setString(3, newMember.getSurname());
-                pstmt.setString(4, BCrypt.hashpw(newMember.getPassword(),BCrypt.gensalt()));
+                pstmt.setString(4, encryptThisString(newMember.getPassword()));
                 pstmt.setString(5, newMember.getCity());
                 pstmt.setInt(6, newMember.getPostCode());
                 pstmt.setString(7, newMember.getAddress());
@@ -214,8 +213,7 @@ public class Management {
         String sql = "UPDATE member SET active=?"
                 + " WHERE member_id = ?";
         String sql2 = "INSERT INTO payment(description,total,member_id) VALUES(?,?,?)";
-        String sql3 = "INSERT INTO notify(member_id, notification_id) VALUES(?, ?)";
-        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql);  PreparedStatement pstmt2 = con.prepareStatement(sql2); PreparedStatement pstmt3 = con.prepareStatement(sql3);) {
+        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql);  PreparedStatement pstmt2 = con.prepareStatement(sql2);) {
 
             pstmt.setBoolean(1, true);
             pstmt.setInt(2, id);
@@ -226,10 +224,6 @@ public class Management {
 
             pstmt2.setInt(3, id);
             pstmt2.executeUpdate();
-            
-            pstmt3.setInt(1, id);
-            pstmt3.setInt(2, 4);
-            pstmt3.executeUpdate();
 
             return true;
 
@@ -339,23 +333,7 @@ public class Management {
 
         return done;
     }
-    public boolean balanceNotification(int id){
-        
-        String sql = "INSERT INTO notify(member_id, notification_id) VALUES (?,5)";
 
-        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql)) {
-            pstmt.setInt(1, id);
-            
-            pstmt.executeUpdate();
-            return true;
-
-        } catch (SQLException e) {
-            System.out.println("Error inserting notify");
-            System.out.println(e.getMessage());
-        }
-        
-        return false;
-    }
     /**
      * it creates a new payment on the payments table
      *
@@ -409,38 +387,37 @@ public class Management {
     }
 
     /**
-     * Encryption method (SHA256). Takes a String and returns it encrypted (obsolete)
+     * Encryption method (SHA256). Takes a String and returns it encrypted
      *
      * @param input
      * @return
      */
-//    public static String encryptThisString(String input) { //mira esto mañana en kasa
-//        try {
-//            // getInstance() method is called with algorithm SHA-512 
-//            MessageDigest md = MessageDigest.getInstance("SHA-512");
-//
-//            // digest() method is called 
-//            // to calculate message digest of the input string 
-//            // returned as array of byte 
-//            byte[] messageDigest = md.digest(input.getBytes());
-//
-//            // Convert byte array into signum representation 
-//            BigInteger no = new BigInteger(1, messageDigest);
-//
-//            // Convert message digest into hex value 
-//            String hashtext = no.toString(16);
-//
-//            // Add preceding 0s to make it 32 bit 
-//            while (hashtext.length() < 32) {
-//                hashtext = "0" + hashtext;
-//            }
-//
-//            // return the HashText 
-//            return hashtext;
-//        } // For specifying wrong message digest algorithms 
-//        catch (NoSuchAlgorithmException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-    
+    public static String encryptThisString(String input) { //mira esto mañana en kasa
+        try {
+            // getInstance() method is called with algorithm SHA-512 
+            MessageDigest md = MessageDigest.getInstance("SHA-512");
+
+            // digest() method is called 
+            // to calculate message digest of the input string 
+            // returned as array of byte 
+            byte[] messageDigest = md.digest(input.getBytes());
+
+            // Convert byte array into signum representation 
+            BigInteger no = new BigInteger(1, messageDigest);
+
+            // Convert message digest into hex value 
+            String hashtext = no.toString(16);
+
+            // Add preceding 0s to make it 32 bit 
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+
+            // return the HashText 
+            return hashtext;
+        } // For specifying wrong message digest algorithms 
+        catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

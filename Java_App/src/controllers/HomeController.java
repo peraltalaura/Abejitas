@@ -369,19 +369,9 @@ public class HomeController implements ActionListener {
                 }
                 
                 break;
-            case "SEND NOTIFICATION":
-                try{
-                    man.balanceNotification(Integer.parseInt(payments.jTextFieldID.getText()));
-                }catch(Exception E){
-                    System.out.println("Error");
-                }
-                
-                
-                break;
 
             //when it is clicked it displays the payments depending on the id introduced
             case "SEARCH":
-                paymentTable.resetList();
                 boolean fail_3 = false;
                 if (payments.jTextFieldID.getText().isEmpty()) {
                     fail_3 = true;
@@ -546,8 +536,7 @@ public class HomeController implements ActionListener {
     public void paymentActionListener(ActionListener listener) {
         payments.jButtonPay.addActionListener(listener);
         payments.jButtonSearch.addActionListener(listener);
-        payments.jButtonReset1.addActionListener(listener);
-        payments.jButtonNotification.addActionListener(listener);
+        payments.jButtonReset.addActionListener(listener);
     }
 
     /**

@@ -189,7 +189,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="view.frameComponents.Button" name="jButtonNotification">
+    <Component class="view.frameComponents.Button" name="jButtonReset">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
@@ -197,7 +197,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="SEND NOTIFICATION"/>
+        <Property name="text" type="java.lang.String" value="RESET"/>
         <Property name="gradientLineColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" id="cyan" palette="1" red="0" type="palette"/>
         </Property>
@@ -212,7 +212,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="790" y="220" width="120" height="24"/>
+          <AbsoluteConstraints x="860" y="190" width="63" height="24"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -341,36 +341,6 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="180" y="540" width="150" height="30"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="view.frameComponents.Button" name="jButtonReset1">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="null"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="RESET"/>
-        <Property name="gradientLineColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" id="cyan" palette="1" red="0" type="palette"/>
-        </Property>
-        <Property name="lineColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="0" id="magenta" palette="1" red="ff" type="palette"/>
-        </Property>
-        <Property name="linePainted" type="boolean" value="true"/>
-        <Property name="rounded" type="boolean" value="true"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonReset1ActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-      </AuxValues>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="860" y="190" width="63" height="24"/>
         </Constraint>
       </Constraints>
     </Component>
