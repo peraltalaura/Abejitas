@@ -32,7 +32,7 @@ import java.security.NoSuchAlgorithmException;
  */
 public class Management {
 
-    private String ip = "10.2.1.179";
+    private String ip = "localhost";
     private String db = "/erlete_db";
     //private String ip = "localhost";
     private String url = "jdbc:mariadb://";
@@ -41,7 +41,7 @@ public class Management {
 
         try {
             //con = DriverManager.getConnection(url, "root", "dam1");
-            con = DriverManager.getConnection(url + ip + db, "root", "dam1");
+            con = DriverManager.getConnection(url + ip + db, "java", "dam1");
             //con = DriverManager.getConnection("jdbc:mariadb://localhost/erlete_db", "root", "");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -149,7 +149,7 @@ public class Management {
      */
     public boolean insertMember(Member newMember) {
         boolean done = false;
-        String img = "../Web_Page/images/bee-icon.png";
+        String img = "images/bee-icon.jpg";
         String usrpass = newMember.getPassword();
         String sql = "INSERT INTO member(email, name, surname, password, city, postcode, address, phone, picture, active) VALUES (?,?,?,?,?,?,?,?,?,?)";
         if (usrpass.toCharArray()[0] == '1' && usrpass.toCharArray()[1] == '2' && usrpass.toCharArray()[2] == '3') { //if the new member has only name, surname, email and password
@@ -213,17 +213,21 @@ public class Management {
         String sql = "UPDATE member SET active=?"
                 + " WHERE member_id = ?";
         String sql2 = "INSERT INTO payment(description,total,member_id) VALUES(?,?,?)";
-        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql);  PreparedStatement pstmt2 = con.prepareStatement(sql2);) {
+        String sql3 = "INSERT INTO notify(member_id,notification_id) VALUES(?,?)";
+        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql);  PreparedStatement pstmt2 = con.prepareStatement(sql2);PreparedStatement pstmt3 = con.prepareStatement(sql3);) {
 
-            pstmt.setBoolean(1, true);
+            pstmt.setInt(1, 1);
             pstmt.setInt(2, id);
             pstmt.executeUpdate();
 
             pstmt2.setString(1, "Annual fee");
             pstmt2.setInt(2, -30);
-
             pstmt2.setInt(3, id);
             pstmt2.executeUpdate();
+            
+            pstmt3.setInt(1, id);
+            pstmt3.setInt(2, 4);
+            pstmt3.executeUpdate();
 
             return true;
 
