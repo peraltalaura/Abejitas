@@ -55,14 +55,14 @@
 		}
 	</script>
 	<style>
-		h1,h2 {
-			font-family: 'Dancing Script', cursive;
-		}
-		body {
-			font-family: 'Lato', sans-serif;
-		}
+	h1,h2 {
+		font-family: 'Dancing Script', cursive;
+	}
+	body {
+		font-family: 'Lato', sans-serif;
+	}
 
-	</style>
+</style>
 
 </head>
 <body>
@@ -93,28 +93,28 @@
 			</li>
 			<?php
 		}
-			if(isset($_SESSION['memberID'])){
-				?>
-				<!-- the account nav displays the links for the different information and actions allowed to the user in his progile-->
-						<!-- it leads the user to the profile information part of this web site-->
-					<li>
-						<a class="Center accountnav" id="prof" href="profile.php?account=prof" onclick="prof()">EDIT</a>
-					</li>
-					<li>
-						<!-- it leads the user to the part of this web site that shows the payments done and the accounts balance-->
-						<a class="Center accountnav" id="bal" onclick="bal()" href="profile.php?account=bal">BALANCE</a>
-					</li>
-					<li>
-						<!-- it leads the user to the information about the bookings, productions and allows him to register a production-->
-						<a class="Center accountnav" id="book" onclick="book()" href="profile.php?account=book">MY BOOKINGS</a>
-					</li>
-					<li>
-						<!-- it leads the user to the notifications part of this web site, where the messages sent by the administrator can be seen-->
-						<a class="Center accountnav" id="not" onclick="not()" href="profile.php?account=not">NOTIFICATIONS</a>
-					</li>
-				<?php
-			}
+		if(isset($_SESSION['memberID'])){
 			?>
+			<!-- the account nav displays the links for the different information and actions allowed to the user in his progile-->
+			<!-- it leads the user to the profile information part of this web site-->
+			<li>
+				<a class="Center accountnav" id="prof" href="profile.php?account=prof" onclick="prof()">EDIT</a>
+			</li>
+			<li>
+				<!-- it leads the user to the part of this web site that shows the payments done and the accounts balance-->
+				<a class="Center accountnav" id="bal" onclick="bal()" href="profile.php?account=bal">BALANCE</a>
+			</li>
+			<li>
+				<!-- it leads the user to the information about the bookings, productions and allows him to register a production-->
+				<a class="Center accountnav" id="book" onclick="book()" href="profile.php?account=book">MY BOOKINGS</a>
+			</li>
+			<li>
+				<!-- it leads the user to the notifications part of this web site, where the messages sent by the administrator can be seen-->
+				<a class="Center accountnav" id="not" onclick="not()" href="profile.php?account=not">NOTIFICATIONS</a>
+			</li>
+			<?php
+		}
+		?>
 		<?php
 		if(isset($_SESSION['memberID'])){
 			?>
@@ -206,12 +206,12 @@
 								?>
 								<div id="profile" class="container Center">
 									<div class="columns" style="align-items:center">
-										<div class="column">
+										<div class="RB">
 											<?php
-											printf("<img src='%s' style='width:20em;border-radius:2em'>",$data['picture']);
+											printf("<img src='%s' style='width:20em'>",$data['picture']);
 											?>
 										</div>
-										<div class="RB column" style="text-align: justify;">
+										<div class="RB" style="text-align: justify;">
 											<!-- PHP code that prints the data from the query in the specified format-->
 											<?php
 											printf("<p>NAME: %s</p>",$data['name']);
@@ -245,12 +245,11 @@
 							$data=mysqli_fetch_array($result);
 							/*Take data from the form and insert it in the member table of the database if the modify variable is set*/
 							?>
-							<div class="content Center addMargin">
-								<!-- The form which shows the current data from the user and allows to make changes on it to then send it to the same page with the account = mod variable to change the php switch and modify variable-->
-								<form id="data" class="form-group" action="modify.php" method="post" enctype="multipart/form-data">
+							<!-- The form which shows the current data from the user and allows to make changes on it to then send it to the same page with the account = mod variable to change the php switch and modify variable-->
+							<form id="data" class="form-group" action="modify.php" method="post" enctype="multipart/form-data">
+								<div class="content Center addMargin">
 									<h1>Edit your profile</h1>
-									<div class="Center modify">
-
+									<div class="Center modify RB">
 										<label>PROFILE PICTURE:</label> 
 										<input type="file" name="pic"><br>
 										<?php
@@ -271,9 +270,9 @@
 										printf("<label>ADDRESS: <br><input type='text' name='address' value='%s'></label><br>",$data[8]);
 										printf("<label>PHONE:</label><input type='tel' pattern='[0-9]{9}' name='phone' value='%d' required><br>",$data[9]);
 										?>
+										<label>PASSWORD: <br><input type="password" name="cpass"></label><br>
 									</div>
 									<div class="Center">
-										<label>PASSWORD: <br><input type="password" name="cpass"></label><br>
 										<input id="modify" class="BRB"  type="submit" value="MODIFY DATA">
 									</div>
 									
@@ -314,14 +313,14 @@
 								</table>
 							</div>
 							<!-- a div that shows the total balance of the account of the member and shows/hides the transaction form when the transfer money link is clicked-->
-							<h1 style="margin:0">Your account balance</h1>
-							<div id="balance" class="columns RB mt-4">
+							<h1>Your account balance</h1>
+							<div id="balance" class="columns RB Center">
 								<?php
-								printf("<div><h2> %d €</h2></div>",$balance);
+								printf("<h2> %d €</h2>",$balance);
 								?>
-								<div id="trans"><a class="BRB">transfer money</a>
-								</div>
 							</div>
+							<br>
+							<a id="trans" class="BRB">transfer money</a>
 						</div>
 
 						<!--Form that allows the user to transfer money to the account-->
@@ -329,12 +328,12 @@
 							<h1 class="mt-4">Transfer</h1>
 							<!-- form to transfer money which asks the member for a description and cuantity-->
 							<form id="transfer-form" class="form-group container Center" action="transfer.php" method="post">
-								<div class="columns" style="text-align:center">
+								<div class="columns Center" style="text-align:center">
 									<div class='RB'>
-										<label for='desc'>DESCRIPTION: <input type='text' required="required" name='desc' autocomplete="off"></label>
+										<label for='desc'>DESCRIPTION:<br> <input type='text' required="required" name='desc' autocomplete="off"></label>
 									</div>
 									<div class='RB'>
-										<label>CUANTITY: <input type='text'required="required" name='import' min="1" autocomplete="off"></label>
+										<label>CUANTITY:<br> <input type='text'required="required" name='import' min="1" autocomplete="off"></label>
 									</div>
 								</div>
 								<input class="BRB" type="submit" value="TRANSFER">
@@ -375,7 +374,7 @@
 						
 						?>
 						<!-- Titles from the bookings table-->
-						<h2 class="Center">Bookings</h2>
+						<h2 class="Center text-white">Bookings</h2>
 						<div class="rows">
 							<div class="row"><b>ID</b></div>
 							<div class="row"><b>ENTRY</b></div>
@@ -384,7 +383,7 @@
 							<div class="row"><b>TOTAL</b></div>
 						</div>
 
-												<?php
+						<?php
 						while($data=mysqli_fetch_array($result)){
 							/* information about each booking made by the member*/
 							if($data['total']==0){
@@ -410,7 +409,7 @@
 							}
 							/* Titles of the productions table*/
 							printf("
-								<h2 class='Center production'>Productions</h2>
+								<h2 class='Center production text-white'>Productions</h2>
 								<div class='rows production' style='background-color:rgb(255,255,255,0.5);color:black'>
 								<div class='row'>METALBIN</div>
 								<div class='row'>DATE/TIME</div>
@@ -460,8 +459,18 @@
 							}
 							
 						}
-					
+
 						?>
+
+						<?php
+				if (isset($_GET["delete"])) {
+					if ($_GET["delete"]=="yes") {
+						printf("<div id='cancelDialog' title='Booking canceled'><p>Your booking has been canceled successfully</p></div>");
+					} else {
+						printf("<div id='cancelDialog' title='Cancel unavailable'><p>You can't cancel an ongoing booking</p></div>");
+					}
+				}
+			?>
 						<a id='produce' class='Center BRB production %d'>REGISTER PRODUCTION</a>
 
 
@@ -537,16 +546,16 @@
 						$result=mysqli_query($link,"SELECT message,notification_date,seen,member_id,notify_id FROM notification INNER JOIN notify ON notify.notification_id=notification.notification_id WHERE member_id=$id");
 						while($data=mysqli_fetch_array($result)){
 							if($data['seen']==0){
-								printf("<div class='row RB'>
-									<div class='col-sm-6 Center'>%s</div>
-									<div class='col-sm-3 Center'>%s</div>
-									<div class='col-sm-3 Center'><a type='button' class='BRB' href='setSeen.php?nid=$data[4]'>set as seen</a></div>
+								printf("<div class='rows RB' style='width:50em'>
+									<div class='row pl-4'>%s</div>
+									<div class='row pl-4'>%s</div>
+									<div class='row'><a type='button' class='BRB' href='setSeen.php?nid=$data[4]'>set as seen</a></div>
 									</div>",$data['message'],$data['notification_date']);
 							}else{
-								printf("<div class='row RB'>
-									<div class='col-sm-6 Center'>%s</div>
-									<div class='col-sm-3 Center'>%s</div>
-									<div class='col-sm-3 Center'>seen</div>
+								printf("<div class='rows RB' style='width:50em'>
+									<div class='row pl-4'>%s</div>
+									<div class='row pl-4'>%s</div>
+									<div class='row'>seen</div>
 
 									</div>",$data[0],$data[1]);
 							}
@@ -689,7 +698,7 @@
 						$("#production").toggle("1000");
 					});
 				</script>
-					<script>
+				<script>
 					/*Function to show or hide the sidenav when the mouse is clicked*/
 					$('.erlete').click(function(){
 						$(".sidenav").toggle("900");
@@ -725,6 +734,12 @@
 				<script>
 					$( function() {
 						$( "#loginDialog" ).dialog();
+					} );
+
+				</script>
+					<script>
+					$( function() {
+						$( "#cancelDialog" ).dialog();
 					} );
 
 				</script>

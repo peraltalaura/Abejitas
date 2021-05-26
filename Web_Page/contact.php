@@ -42,7 +42,7 @@
 			<a class="Center" href="index.php">HOME</a>
 		</li>
 		<li>
-			<a class="Center active" href="info.php">INFORMATION</a>
+			<a class="Center" href="info.php">INFORMATION</a>
 		</li>
 		<li>
 			<a class="Center" href="forum.php">FORUM</a>
@@ -90,24 +90,24 @@
 		if(isset($_SESSION['memberID'])){
 			?>
 			<!--If the user is logged in it redirects the user to the close_session.php to log out-->
-			<li class="nav-item flex-fill">
-				<a class="nav-link Center" href="close_session.php">LOGOUT</a>
+			<li>
+				<a class="Center" href="close_session.php">LOGOUT</a>
 			</li>
 			<?php
 		} else {
 			?>
 			<!--If the user isn't logged it redirects the user to the login.php-->
-			<li class="nav-item flex-fill">
-				<a class="nav-link Center" href="login.php">LOGIN</a>
+			<li>
+				<a class="Center" href="login.php">LOGIN</a>
 			</li>
 			<?php
 		}
 		?>	
 	</ul>
 	<!--End of menu web page-->
-	<div class="content Center">
+	<div class="content Center addMargin">
 		<h1>Contact us</h1>
-		<div class="columns">
+		<div class="columns Center">
 			<div class="RB">
 				<h2>NOT A MEMBER YET?</h2>
 				<p>If you are interested in our activity and assotiation feel free to come by whenever you want. Our members will be kind and willing to help you</p>

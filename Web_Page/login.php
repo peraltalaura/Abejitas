@@ -19,7 +19,7 @@
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<Link rel="stylesheet" href="css/login_CSS.css">
+	<Link rel="stylesheet" href="css/index_CSS.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
 		/*Style for the fonts used in the page*/

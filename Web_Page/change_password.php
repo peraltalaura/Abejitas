@@ -17,7 +17,7 @@
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<Link rel="stylesheet" href="css/login_CSS.css">
+		<Link rel="stylesheet" href="css/index_CSS.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
 			h1 {
@@ -29,12 +29,12 @@
 		</style>
 	</head>
 	<body class="Center">
-		<div class="Center RB pt-4 pb-4">
+		<div class="Center RB">
 			<h1>CHANGE PASSWORD</h1>
 				<form class="form-group form-group-sm Center pt-4" action="change_password.php?exec" method="POST">
-					<label>New Password:<input type="password" name="npass"></label>
-					<label>Comfirm Password:<input type="password" name="cnpass"></label>
-					<label>Old Password:<input type="password" name="opass"></label>
+					<label>New Password:<br><br><input type="password" name="npass"></label><br>
+					<label>Comfirm Password:<br><br><input type="password" name="cnpass"></label><br>
+					<label>Old Password:<br><br><input type="password" name="opass"></label><br>
 					<input class="mt-4 mp-4 BRB" type="submit" value="Submit">
 				</form>
 		</div>	

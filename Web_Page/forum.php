@@ -28,13 +28,13 @@
 	<Link rel="stylesheet" href="css/index_CSS.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
-		h1 {
-			font-family: 'Dancing Script', cursive;
-		}
-		body {
-			font-family: 'Lato', sans-serif;
-		}
-	</style>
+	h1 {
+		font-family: 'Dancing Script', cursive;
+	}
+	body {
+		font-family: 'Lato', sans-serif;
+	}
+</style>
 
 </head>
 <body>
@@ -120,17 +120,47 @@
 		?>
 		<?php
 		while($data=mysqli_fetch_array($result)){
-			printf("
-				<div class='columns'>
-				<div class='forumR'>
-				<img style='width:40px;border-radius:5em'src='%s'>
-				<span> %s </span> 
-				<span> %s </span> 
-				<span> %s </span> 
-				</div>
-				<div class='forumL'>%s
-				</div>
-				</div>",$data[14],$data['name'],$data['surname'],$data['comment_date'],$data['message']);
+			if (isset($_SESSION["memberID"])) {
+				$id=$_SESSION["memberID"];
+				if ($data["member_id"]==$id) {
+					printf("
+						<div class='columns2'>
+						<div class='forumR1'>%s
+						</div>
+						<div class='forumL1'>
+						<img style='width:40px;border-radius:5em'src='%s'>
+						<span> %s </span> 
+						<span> %s </span> 
+						<span> %s </span> 
+						</div>
+						</div>",$data['message'],$data[14],$data['name'],$data['surname'],$data['comment_date']);
+				} else {
+					printf("
+						<div class='columns'>
+						<div class='forumR2'>
+						<img style='width:40px;border-radius:5em'src='%s'>
+						<span> %s </span> 
+						<span> %s </span> 
+						<span> %s </span> 
+						</div>
+						<div class='forumL2'>%s
+						</div>
+						</div>",$data[14],$data['name'],$data['surname'],$data['comment_date'],$data['message']);
+				}
+
+			} else {
+				printf("
+					<div class='columns'>
+					<div class='forumR2'>
+					<img style='width:40px;border-radius:5em'src='%s'>
+					<span> %s </span> 
+					<span> %s </span> 
+					<span> %s </span> 
+					</div>
+					<div class='forumL2'>%s
+					</div>
+					</div>",$data[14],$data['name'],$data['surname'],$data['comment_date'],$data['message']);
+			}
 		}
 		?>
 
@@ -138,19 +168,19 @@
 		<?php
 		if(isset($_SESSION['memberID'])){
 			?>
-			<h2>WRITE YOUR COMMENT:</h2>
+			<h2 class="text-light">WRITE YOUR COMMENT:</h2>
 			<form class="Center" action="send_comment.php" method="post">
 				
-					<textarea maxlength="255" class="rounded-0" class="Center" rows="10" required="required" name='txt'></textarea><br>
-					<input type="submit" value="POST COMMENT" class="BRB">
-					</form>
-					<?php
-				}else{
+				<textarea maxlength="255" class="rounded-0" class="Center" rows="10" required="required" name='txt'></textarea><br>
+				<input type="submit" value="POST COMMENT" class="BRB">
+			</form>
+			<?php
+		}else{
 
 
-					printf("<br><a class='BRB' href='login.php'>Login to comment</a>");
-				}
-				?>
+			printf("<br><a class='BRB' href='login.php'>Login to comment</a>");
+		}
+		?>
 	</div>
 	<div class="p-4">
 		<address></address>

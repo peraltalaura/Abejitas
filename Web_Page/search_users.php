@@ -6,16 +6,15 @@
 	$user=$_POST["mail"];
 	$pass=$_POST["password"];
 	//The SQL query to select the information from the member who is loggin in
-	$sql="SELECT * FROM member WHERE email=?";
+	$sql="SELECT * FROM member WHERE email='$user'";
+	$result=mysqli_query($link,$sql);
 
-	$stmt = $link->prepare($sql);
-	$stmt->bind_param('s',$user);
-	$stmt->execute();
-	$result =  $stmt->get_result();
 	//if the result isn't null continues
-	if($data= $result->fetch_assoc()!=null){
+	if(mysqli_num_rows($result)==1){
 			//if the users introduced email and password equel the ones taken from the database
-			if (($user == $data["email"]) && (password_verify($pass, $data["password"]))) { //if the account is active it starts session, stores the id in a global variable and redirects the user to the profile page and returns the login variable
+		$data=mysqli_fetch_array($result);
+			if (($user == $data["email"]) && (password_verify($pass, $data["password"]))) { 
+			//if the account is active it starts session, stores the id in a global variable and redirects the user to the profile page and returns the login variable
 				if($data["active"]==1){
 					session_start();
 					$_SESSION['memberID'] = $data["member_id"];

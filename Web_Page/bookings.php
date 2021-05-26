@@ -153,8 +153,16 @@
 		<!--End of menu web page-->
 		<!--The content of the web page-->
 		<div class="content Center addMargin">
-			<h1>Book our extractor</h1>
-			<h2 class="Center mt-4 mb-4">Check if our metalbins are available</h2>
+			<?php
+				if (isset($_GET["insert"])) {
+					if ($_GET["insert"]=="yes") {
+						printf("<div id='bookDialog' title='Extractor booked'><p>Your booking has been registered successfully</p></div>");
+					} else {
+						printf("<div id='bookDialog' title='Booking failed'><p>The extractor couldn't be booked because it was already picked</p></div>");
+					}
+				}
+			?>
+			<h1 class="Center">Check if our metalbins are available</h1>
 			<br>
 			<!--The php code is used to make a query and extract the information about the metalbins, the capacity and when they will be available, and display it in a table-->
 			<?php		
@@ -163,8 +171,8 @@
 			$result=mysqli_query($link,"SELECT * FROM metalbin");
 			?>
 			<div class="table-responsive">
-				<table class="table Center text-light">
-					<tr style='background-color: rgb(0, 0, 0,0.8);margin:1em'>
+				<table class="table Center text-black">
+					<tr style='background-color: rgb(255, 255, 255,0.6);margin:1em'>
 						<th>METAL BIN</th>
 						<th>CAPACITY</th>
 						<th>AVAILABILITY</th>
@@ -173,28 +181,29 @@
 					<?php
 					while($data=mysqli_fetch_array($result)){
 						if($data[2]==1){
-							printf("<tr style='background-color: rgb(0, 0, 0,0.8);'><td>%d</td><td>%d KG</td><td>available</td><td>NOW</td></tr>",$data[0],$data[1]);
+							printf("<tr style='background-color: rgb(255, 255, 255,0.6);'><td>%d</td><td>%d KG</td><td>available</td><td>NOW</td></tr>",$data[0],$data[1]);
 						} else {
-							printf("<tr style='background-color: rgb(0, 0, 0,0.8);'><td>%d</td><td>%d KG</td><td>occupied</td><td>%s</td></tr>",$data[0],$data[1],$data[3]);
+							printf("<tr style='background-color: rgb(255, 255, 255,0.6);'><td>%d</td><td>%d KG</td><td>occupied</td><td>%s</td></tr>",$data[0],$data[1],$data[3]);
 						}
 					}
 					?>
 				</table>
 			</div>
-			<h2 class="Center mt-4 mb-4">Check if your date is available</h2>
+			<h1 class="Center mt-4 mb-4">Check if your date is available</h1>
 			<!--Displays the fullcalendar with the dates that are booked and it shows which member has booked them-->
 			<div id='calendar'></div>
 			<!--Form to book the extractor which asks for the entry and exit date. Then sends the form to the book.php file, which makes the according checks-->
 			<a id="bookExt" class="BRB">Book the extractor</a>
 			<form  id="bookForm" class="form-group mt-4 content" action="book.php" method="post" style="display:none">
-				<div class="columns">
+			<h1 class="mt-4 mb-4">Book our extractor</h1>
+				<div class="columns Center">
 					<div class="RB">
 						<label>Select entry date:
-							<input class="datepicker" id="from" type="text" required="required" name="entry" autocomplete="off"></label>
+							<input class="datepicker" type="text" required="required" name="entry" autocomplete="off"></label>
 						</div>
 						<div class="RB">
 							<label>Select exit date:
-								<input class="datepicker" id="to" type="text" required="required" name="exit" autocomplete="off"></label>
+								<input class="datepicker" type="text" required="required" name="exit" autocomplete="off"></label>
 							</div>
 						</div>
 						<BR>
@@ -220,6 +229,12 @@
 					$('#bookExt').click(function(){
 						$("#bookForm").toggle("1000");
 					});
+				</script>
+					<script>
+					$( function() {
+						$( "#bookDialog" ).dialog();
+					} );
+
 				</script>
 			</body>
 			</html>									
