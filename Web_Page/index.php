@@ -18,13 +18,13 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-	<!--<Link rel="stylesheet" href="CSS.css">-->
-	<Link rel="stylesheet" href="css/index_CSS.css">
-
 	<!--link for jqueryui custom-->
 	<link rel="stylesheet" href="jquery/jquery-ui.min.css">
 	<script src="jquery/external/jquery/jquery.js"></script>
 	<script src="jquery/jquery-ui.min.js"></script>
+
+		<!--<Link rel="stylesheet" href="CSS.css">-->
+	<Link rel="stylesheet" href="css/index_CSS.css">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
@@ -38,7 +38,7 @@
 	</style>
 </head>
 <body>	
-	<h1 class="Center erlete">ERLETE</h1>
+	<h1 class="erlete">ERLETE</h1>
 	<!--menu of the web page that is explaned in the other pages of the web page-->
 	<ul class="sidenav">
 		<li>

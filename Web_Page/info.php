@@ -39,7 +39,7 @@
 	</style>
 </head>
 <body>
-	<h1 class="Center erlete">ERLETE</h1>
+	<h1 class="erlete">ERLETE</h1>
 	<!--menu of the web page that is explaned in the other pages of the web page-->
 	<ul class="sidenav">
 		<li>
