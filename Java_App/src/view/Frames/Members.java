@@ -22,7 +22,7 @@ public class Members extends javax.swing.JFrame {
     Timer updateTimer;
     int DELAY = 100;
     /**
-     * Creates new form nmembers
+     * Creates new form members
      */
     public Members() {
         initComponents();
