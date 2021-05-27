@@ -7,12 +7,19 @@
 	$bid=$_GET['bid'];
 	$id=$_SESSION['memberID'];
 
-	$sql="DELETE FROM booking WHERE booking_id = $bid";
+	$data=mysqli_fetch_array(mysqli_query($link,"SELECT * FROM booking WHERE booking_id = $bid"));
 
-	if(mysqli_query($link,$sql)){
-		header("Location:profile.php?account=book&delete=yes");
+	if ($data['entrydate']>=date("Y-m-d")) {
+		
+		$sql="DELETE FROM booking WHERE booking_id = $bid";
+
+		if(mysqli_query($link,$sql)){
+			header("Location:profile.php?account=book&delete=yes");
+		}else{
+			header("Location:profile.php?account=book&delete=no");
+		}
 	}else{
-		header("Location:profile.php?account=book&delete=no");
+		header("Location:profile.php?account=book&delete=disabled");
 	}
 
 ?>
