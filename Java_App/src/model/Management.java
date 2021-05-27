@@ -41,7 +41,7 @@ public class Management {
 
         try {
             //con = DriverManager.getConnection(url, "root", "dam1");
-            con = DriverManager.getConnection(url + ip + db, "root", "dam1");
+            con = DriverManager.getConnection(url + ip + db, "java", "dam1");
             //con = DriverManager.getConnection("jdbc:mariadb://localhost/erlete_db", "root", "");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
