@@ -43,6 +43,10 @@ import javax.swing.JOptionPane;
 public class HomeController implements ActionListener {
 
     //The home class declaration
+
+    /**
+     *
+     */
     public Home home;
 
     //The different views class declaration
@@ -74,8 +78,14 @@ public class HomeController implements ActionListener {
      * The constructor of HomeController
      *
      * @param home the menu
+     * @param members
+     * @param payments
+     * @param available
      * @param man the Management, which will be used for all the functions of
      * the menu
+     * @param comments
+     * @param inventory
+     * @param notificationsFrame
      */
     public HomeController(Home home, Members members, Payments payments, Availability available, Materials inventory, Comments comments, Management man, MemberNotifications notificationsFrame) {
         this.home = home;

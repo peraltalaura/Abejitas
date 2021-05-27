@@ -8,10 +8,13 @@ package view.Frames;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 /**
@@ -45,7 +48,22 @@ public class Home extends javax.swing.JFrame {
 
             }
         });
+       
         updateTimer.start();
+        
+        //Adds a window listener to detect when the exit button is clicked and display a confirmation dialog
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int confirmed = JOptionPane.showConfirmDialog(null,
+                        "Are you sure you want to exit?", "Exit Erlete App",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (confirmed == JOptionPane.YES_OPTION) {
+                    dispose();
+                }
+            }
+        });
         //jLabelImage = new JLabel(new ImageIcon("C:\\Users\\kalboetxeaga.ager\\Downloads\\Boton_Muestra-20210519T060314Z-001\\Abejitas\\Java_App\\src\\PRUEBA.jpg"));
 
         //setContentPane(new JLabel(new ImageIcon("C:\\Users\\kalboetxeaga.ager\\Downloads\\Boton_Muestra-20210519T060314Z-001\\Abejitas\\Java_App\\src\\Prueba.jpg")));
@@ -76,7 +94,7 @@ public class Home extends javax.swing.JFrame {
 
         button1.setText("button1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("ERLETE Home");
         setBackground(new java.awt.Color(255, 255, 153));
         setForeground(new java.awt.Color(255, 255, 153));

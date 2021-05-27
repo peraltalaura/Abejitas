@@ -41,7 +41,7 @@ public class Management {
 
         try {
             //con = DriverManager.getConnection(url, "root", "dam1");
-            con = DriverManager.getConnection(url + ip + db, "java", "dam1");
+            con = DriverManager.getConnection(url + ip + db, "root", "dam1");
             //con = DriverManager.getConnection("jdbc:mariadb://localhost/erlete_db", "root", "");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -98,7 +98,7 @@ public class Management {
                     dataList.add(p);
                 } else if (table.equals("metalbin")) {
 
-                    Metalbin m = new Metalbin(rs.getInt("metalbin_id"), rs.getInt("name"), rs.getBoolean("available"), rs.getDate("available_date"));
+                    Metalbin m = new Metalbin(rs.getInt("metalbin_id"), rs.getInt("capacity"), rs.getBoolean("available"), rs.getDate("available_date"));
                     dataList.add(m);
                     dataList.add(m);
 
