@@ -208,7 +208,7 @@
 									<div class="columns" style="align-items:center">
 										<div class="RB">
 											<?php
-											printf("<img src='%s' style='width:20em'>",$data['picture']);
+											printf("<img src='%s' style='width:15em'>",$data['picture']);
 											?>
 										</div>
 										<div class="RB" style="text-align: justify;">
@@ -343,7 +343,7 @@
 										<label for='desc'>DESCRIPTION:<br> <input type='text' required="required" name='desc' autocomplete="off"></label>
 									</div>
 									<div class='RB'>
-										<label>CUANTITY:<br> <input type='text'required="required" name='import' min="1" autocomplete="off"></label>
+										<label>CUANTITY:<br> <input type='text'required="required" name='import' min="1" pattern="^[0-9]+" autocomplete="off"></label>
 									</div>
 									<div class='RB'>
 										<label>PASSWORD: <br><input type="password" name="bcpass"></label>
@@ -504,7 +504,7 @@
 									</select>
 								</div>
 								<div class="RB">
-									<b>KILOS:</b><br><br><input type='number'required="required" name='kilos' min="1">
+									<b>KILOS:</b><br><br><input type='number'required="required" name='kilos' min="1" pattern="^[0-9]+">
 								</div>
 								<div class="RB">
 									<b class="Center">SELECT THE METALBIN:</b>
