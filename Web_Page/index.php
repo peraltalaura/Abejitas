@@ -23,19 +23,19 @@
 	<script src="jquery/external/jquery/jquery.js"></script>
 	<script src="jquery/jquery-ui.min.js"></script>
 
-		<!--<Link rel="stylesheet" href="CSS.css">-->
+	<!--<Link rel="stylesheet" href="CSS.css">-->
 	<Link rel="stylesheet" href="css/index_CSS.css">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
-		/*Style for the fonts used in the page*/
-		h1 {
-			font-family: 'Dancing Script', cursive;
-		}
-		body {
-			font-family: 'Lato', sans-serif;
-		}
-	</style>
+	/*Style for the fonts used in the page*/
+	h1 {
+		font-family: 'Dancing Script', cursive;
+	}
+	body {
+		font-family: 'Lato', sans-serif;
+	}
+</style>
 </head>
 <body>	
 	<h1 class="erlete">ERLETE</h1>
@@ -51,62 +51,62 @@
 			<a class="Center" href="forum.php">FORUM</a>
 		</li>
 		<!--it starts the session and changes the links depending if the user is logged in or not for the bookings page-->
-			<?php
-				session_start();
-				/*Global variable where the member id is saved to do the querys*/
-				if(isset($_SESSION['memberID'])){
-				?>
-				<li>
-					<!-- The link of BOOKINGS redirects the user to the bookings.php page-->
-					<a class="Center" href="bookings.php">BOOKINGS</a>
-				</li>
-				<?php
-					} else {
-				?>
-				<li>
-					<!-- The link redirects the user to the login.php page-->
-					<a class="Center" href="login.php">BOOKINGS</a>
-				</li>
-				<?php
-				}
+		<?php
+		session_start();
+		/*Global variable where the member id is saved to do the querys*/
+		if(isset($_SESSION['memberID'])){
 			?>
-			<!--it starts the session and changes the links depending if the user is logged in or not for the profile page-->
+			<li>
+				<!-- The link of BOOKINGS redirects the user to the bookings.php page-->
+				<a class="Center" href="bookings.php">BOOKINGS</a>
+			</li>
 			<?php
-				if(isset($_SESSION['memberID'])){
-				?>
-				<li>
-					<!-- The link of MY ACCOUNT redirects the user to the profile.php page in the profile section-->
-					<a class="Center" href="profile.php?account=prof">MY ACCOUNT</a>
-				</li>
-				<?php
-					} else {
-				?>
-				<li>
-					<!-- The link redirects the user to the login.php page-->
-					<a class="Center" href="login.php">MY ACCOUNT</a>
-				</li>
-				<?php
-				}
+		} else {
 			?>
-			<!--it starts the session and changes the links depending if the user is logged in or not-->
+			<li>
+				<!-- The link redirects the user to the login.php page-->
+				<a class="Center" href="login.php">BOOKINGS</a>
+			</li>
 			<?php
-				if(isset($_SESSION['memberID'])){
-				?>
-				<!--If the user is logged in it redirects the user to the close_session.php to log out-->
-				<li class="nav-item flex-fill">
-					<a class="nav-link Center" href="close_session.php">LOGOUT</a>
-				</li>
-				<?php
-					} else {
-				?>
-				<!--If the user isn't logged it redirects the user to the login.php-->
-				<li class="nav-item flex-fill">
-					<a class="nav-link Center" href="login.php">LOGIN</a>
-				</li>
-				<?php
-				}
-			?>	
-		</ul>
+		}
+		?>
+		<!--it starts the session and changes the links depending if the user is logged in or not for the profile page-->
+		<?php
+		if(isset($_SESSION['memberID'])){
+			?>
+			<li>
+				<!-- The link of MY ACCOUNT redirects the user to the profile.php page in the profile section-->
+				<a class="Center" href="profile.php?account=prof">MY ACCOUNT</a>
+			</li>
+			<?php
+		} else {
+			?>
+			<li>
+				<!-- The link redirects the user to the login.php page-->
+				<a class="Center" href="login.php">MY ACCOUNT</a>
+			</li>
+			<?php
+		}
+		?>
+		<!--it starts the session and changes the links depending if the user is logged in or not-->
+		<?php
+		if(isset($_SESSION['memberID'])){
+			?>
+			<!--If the user is logged in it redirects the user to the close_session.php to log out-->
+			<li class="nav-item flex-fill">
+				<a class="nav-link Center" href="close_session.php">LOGOUT</a>
+			</li>
+			<?php
+		} else {
+			?>
+			<!--If the user isn't logged it redirects the user to the login.php-->
+			<li class="nav-item flex-fill">
+				<a class="nav-link Center" href="login.php">LOGIN</a>
+			</li>
+			<?php
+		}
+		?>	
+	</ul>
 	<!--End of menu web page-->
 	<!--The content of the web page-->
 	<div id='index' class="content Center addMargin">
@@ -155,10 +155,7 @@
 		</div>
 		<br>
 	</div>
-	<div class="p-4">
-		<address></address>
-	</div>
-			<script>
+	<script>
 		/*Function to show or hide the sidenav when the mouse is clicked*/
 		$('.erlete').click(function(){
 			$(".sidenav").toggle("900");

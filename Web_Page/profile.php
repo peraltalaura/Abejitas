@@ -305,14 +305,15 @@
 									</tr>
 									<?php
 									$balance=0;
+									//This code makes the table background red when the transaction was negative and white when it was a positive transfer from the user
 									while($data=mysqli_fetch_array($result)){
 										if ($data["total"]<0) {
-												printf("<tr style='background-color: rgb(179, 0, 0,0.5);color:white' ><td>%d</td><td>%s</td><td>%s</td><td>%d €</td></tr>",$data[0],$data[1],$data[3],$data[2]);
-										$balance=$balance+$data[2];
+											printf("<tr style='background-color: rgb(179, 0, 0,0.5);color:white' ><td>%d</td><td>%s</td><td>%s</td><td>%d €</td></tr>",$data[0],$data[1],$data[3],$data[2]);
+											$balance=$balance+$data[2];
 										}else{
-										printf("<tr style='background-color: rgb(255, 255, 255,0.6);' ><td>%d</td><td>%s</td><td>%s</td><td>%d €</td></tr>",$data[0],$data[1],$data[3],$data[2]);
-										$balance=$balance+$data[2];
-									}
+											printf("<tr style='background-color: rgb(255, 255, 255,0.6);' ><td>%d</td><td>%s</td><td>%s</td><td>%d €</td></tr>",$data[0],$data[1],$data[3],$data[2]);
+											$balance=$balance+$data[2];
+										}
 									}
 									?>
 								</table>
@@ -321,6 +322,7 @@
 							<h1>Your account balance</h1>
 							<div id="balance" class="columns RB Center">
 								<?php
+								//this code makes the color of the balance data red when it is in negative
 								if ($balance<0) {
 									printf("<h2 style='color:red'> %d €</h2>",$balance);
 								}else {
@@ -344,9 +346,6 @@
 									</div>
 									<div class='RB'>
 										<label>CUANTITY:<br> <input type='text'required="required" name='import' min="1" autocomplete="off"></label>
-									</div>
-									<div class='RB'>
-										<label>PASSWORD: <br><input type="password" name="bcpass"></label>
 									</div>
 								</div>
 								<input class="BRB" type="submit" value="TRANSFER">
@@ -399,7 +398,7 @@
 						<?php
 						while($data=mysqli_fetch_array($result)){
 							/* information about each booking made by the member*/
-							if($data['total']==0 && $data['status']=='booked'){
+							if($data['total']==0){
 								printf("
 									<div class='rows'>
 									<div class='row'>%d</div>
@@ -436,7 +435,7 @@
 							
 							while($data2=mysqli_fetch_array($result2)){
 								/* information about the productions of the booking above*/
-								if ($data2['metalbin_id']!=NULL) {			
+								if ($data2[1]!=NULL) {			
 									printf("
 										<div class='rows production' style='background-color:rgb(255,255,255,0.5);color:black'>
 										<div class='row'>%d</div>
@@ -449,7 +448,7 @@
 									$result3=mysqli_query($link,$availability);
 									$data3=mysqli_fetch_array($result3);
 									/* if the production is finished*/
-									if($data2["finished"]==1){
+									if($data3[0]==1){
 										printf("<div class='row'>Finished</div>
 											</div>");
 										/* if the metalbin is still in use and the production going on*/
@@ -460,7 +459,7 @@
 									}
 								} else {
 									printf("
-										<div class='rows production' style='background-color:rgb(255,255,255,0.5);color:black'>
+										<div class='rows production'>
 										<div class='row'>yours</div>
 										<div class='row'>%s</div>
 										<div class='row'>%d</div>
@@ -475,14 +474,15 @@
 						?>
 
 						<?php
-				if (isset($_GET["delete"])) {
-					if ($_GET["delete"]=="yes") {
-						printf("<div id='cancelDialog' title='Booking canceled'><p>Your booking has been canceled successfully</p></div>");
-					} else {
-						printf("<div id='cancelDialog' title='Cancel unavailable'><p>You can't cancel an ongoing booking</p></div>");
-					}
-				}
-			?>
+						//It shows a message if the delete variable exists and changes it depending on the value of it
+						if (isset($_GET["delete"])) {
+							if ($_GET["delete"]=="yes") {
+								printf("<div id='cancelDialog' title='Booking canceled'><p>Your booking has been canceled successfully</p></div>");
+							} else {
+								printf("<div id='cancelDialog' title='Cancel unavailable'><p>You can't cancel an ongoing booking</p></div>");
+							}
+						}
+						?>
 						<a id='produce' class='Center BRB production %d'>REGISTER PRODUCTION</a>
 
 
@@ -556,6 +556,7 @@
 						<?php			
 						$id=$_SESSION['memberID'];
 						$result=mysqli_query($link,"SELECT message,notification_date,seen,member_id,notify_id FROM notification INNER JOIN notify ON notify.notification_id=notification.notification_id WHERE member_id=$id");
+						//shows the notifications sent to the user by the administration and shows a button to check them as seen when they haven't been checked yet, else it shows the word seen
 						while($data=mysqli_fetch_array($result)){
 							if($data['seen']==0){
 								printf("<div class='rows RB' style='width:50em'>
@@ -749,7 +750,7 @@
 					} );
 
 				</script>
-					<script>
+				<script>
 					$( function() {
 						$( "#cancelDialog" ).dialog();
 					} );

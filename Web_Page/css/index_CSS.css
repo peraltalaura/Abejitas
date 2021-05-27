@@ -20,9 +20,11 @@ h2 {
 	text-align: center;
 	font-weight: bold;
 }
+/*Justify the content of the paragraphs*/
 p {
 	text-align: justify;
 }
+/*Stile for the page heading containing ERLETE*/
 .erlete {
 	background:rgb(0, 0, 0,0.5);
 	padding:0.5em 0 0.5em 0;
@@ -36,6 +38,7 @@ p {
 	box-shadow: 0em 0em 2em 0em rgb(255, 255, 255,0.5); 
 	font-size: calc(3.7em + 0.6vw);
 }
+/*Adds total width*/
 .fullW {
 	margin:0;
 	width: 100%;
@@ -54,6 +57,7 @@ ul.sidenav {
 	background:rgb(0, 0, 0,0.5);
 
 }
+/*Background color for the profile nav*/
 .accountnav {
 	background: rgb(255,255,255,0.4);
 }
@@ -88,6 +92,7 @@ div.content {
 	line-height: 2.2em;
 	text-align: justify;
 }
+/*Adds margin*/
 .addMargin {
 	width: 80%;
 	margin-left:10%;
@@ -224,6 +229,7 @@ input[type='submit'] {
 	background:linear-gradient(rgb(255, 255, 255,0.1),rgb(255, 255, 255,0.3),rgb(255, 255, 255,0.4),rgb(255, 255, 255,0.5),rgb(255, 255, 255,0.4),rgb(255, 255, 255,0.3),rgb(255, 255, 255,0.1));  
 	color:black;
 }
+/*Style for the input area in the forum section*/
 textarea{
 	width:30em;
 	margin:auto;
@@ -263,7 +269,7 @@ textarea:focus, textarea:hover {
 }
 /*End calendar
 /*Start of modify form*/
-input[type="email"],input[type="password"], input[type="text"], input[type="number"], input[type='tel'] {
+input[type="email"],input[type="password"], input[type="text"], input[type="number"], input[type='tel'], .custom-select {
 	border-radius:5vw;
 	border:none;
 	outline:none;
@@ -274,7 +280,7 @@ input[type="email"],input[type="password"], input[type="text"], input[type="numb
 	transition:box-shadow 0.4s linear, background-color 0.4s linear;
 }
 
-input[type="password"]:focus,input[type="email"]:focus,input[type="text"]:focus, input[type="number"]:focus, input[type='tel']:focus, input[type="date"]:hover {
+input[type="password"]:focus,input[type="email"]:focus,input[type="text"]:focus, input[type="number"]:focus, input[type='tel']:focus, input[type="date"]:hover, .custom-select:focus {
 	box-shadow: 0em 0em 1em 0em rgb(0, 0, 0,0.5);
 	background:rgb(0,0,0,0.8);
 	color:white;

@@ -1,4 +1,5 @@
 <?php
+//a php function to connect to the database
 		function connectDataBase()
 		{
 			if (!($lotura=mysqli_connect("localhost","root","dam1")))

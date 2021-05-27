@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/uribe.markel/Documents/Git/Abejitas/Java_App/src/controllers/Main.java</file>
-            <file>file:/C:/Users/uribe.markel/Documents/Git/Abejitas/Java_App/src/model/Management.java</file>
+            <file>file:/C:/Users/peralta.laura/Documents/Abejitas/Abejitas/Java_App/src/model/tables/PaymentsTable.java</file>
+            <file>file:/C:/Users/peralta.laura/Documents/Abejitas/Abejitas/Java_App/src/controllers/Main.java</file>
+            <file>file:/C:/Users/peralta.laura/Documents/Abejitas/Abejitas/Java_App/src/model/tables/MetalbinTable.java</file>
+            <file>file:/C:/Users/peralta.laura/Documents/Abejitas/Abejitas/Java_App/src/controllers/HomeController.java</file>
+            <file>file:/C:/Users/peralta.laura/Documents/Abejitas/Abejitas/Java_App/src/model/mainclass/Metalbin.java</file>
+            <file>file:/C:/Users/peralta.laura/Documents/Abejitas/Abejitas/Java_App/src/view/Frames/Home.java</file>
+            <file>file:/C:/Users/peralta.laura/Documents/Abejitas/Abejitas/Java_App/src/model/Management.java</file>
         </group>
     </open-files>
 </project-private>
