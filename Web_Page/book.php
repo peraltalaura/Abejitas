@@ -38,7 +38,7 @@
 	}
 
 	if($ok){
-		$sql="INSERT INTO booking(entrydate,exitdate,member_id,kilos,total,status) VALUES('$entry','$exit',$id,0,0,'booked')";
+		$sql="INSERT INTO booking(entrydate,exitdate,member_id,kilos,total) VALUES('$entry','$exit',$id,0,0)";
 	}else{
 		$sql="SELECT * FROM members";
 	}
