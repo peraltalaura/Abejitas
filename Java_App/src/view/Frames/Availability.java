@@ -34,7 +34,7 @@ public class Availability extends javax.swing.JFrame {
                 DateFormat formatTime = new SimpleDateFormat(formatTimeStr);
                 String formattedTimeStr = formatTime.format(currentTime);
 
-                jLabelTime.setText(formattedTimeStr);
+                
 
                 setTitle("Time: " + formattedTimeStr);
 
@@ -81,7 +81,6 @@ public class Availability extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         button1 = new view.frameComponents.Button();
         jLabel4 = new javax.swing.JLabel();
-        jLabelTime = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -156,9 +155,6 @@ public class Availability extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 2, 980, 630));
 
-        jLabelTime.setText("jLabel5");
-        getContentPane().add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 140, 30));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -212,7 +208,6 @@ public class Availability extends javax.swing.JFrame {
     javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabelTime;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable jTableBookings;

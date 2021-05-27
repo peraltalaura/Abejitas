@@ -59,7 +59,6 @@ public class Payments extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextFieldID = new javax.swing.JTextField();
         jButtonReset = new view.frameComponents.Button();
-        jLabelTime = new javax.swing.JLabel();
         jButtonNotification = new view.frameComponents.Button();
         jButtonPay = new view.frameComponents.ButtonInsert();
         button1 = new view.frameComponents.Button();
@@ -122,11 +121,6 @@ public class Payments extends javax.swing.JFrame {
         jButtonReset.setLinePainted(true);
         jButtonReset.setRounded(true);
         getContentPane().add(jButtonReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 190, 63, 24));
-
-        jLabelTime.setFont(new java.awt.Font("Segoe Script", 0, 11)); // NOI18N
-        jLabelTime.setForeground(new java.awt.Color(255, 255, 255));
-        jLabelTime.setText("SDGSDG");
-        getContentPane().add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 140, 30));
 
         jButtonNotification.setBorder(null);
         jButtonNotification.setForeground(new java.awt.Color(255, 255, 255));
@@ -253,7 +247,6 @@ public static Payments createPayments() {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     public javax.swing.JLabel jLabelBalance;
-    private javax.swing.JLabel jLabelTime;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTable jTablePayments;
     public javax.swing.JTextField jTextFieldID;

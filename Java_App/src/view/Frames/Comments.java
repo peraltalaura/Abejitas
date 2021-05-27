@@ -34,7 +34,7 @@ public class Comments extends javax.swing.JFrame {
                 DateFormat formatTime = new SimpleDateFormat(formatTimeStr);
                 String formattedTimeStr = formatTime.format(currentTime);
 
-                jLabelTime.setText(formattedTimeStr);
+                
 
                 setTitle("Time: " + formattedTimeStr);
 
@@ -67,7 +67,6 @@ public class Comments extends javax.swing.JFrame {
         jButtonDeleteComment = new view.frameComponents.ButtonDelete();
         button1 = new view.frameComponents.Button();
         jLabel3 = new javax.swing.JLabel();
-        jLabelTime = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -108,9 +107,6 @@ public class Comments extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 890, 540));
-
-        jLabelTime.setText("jLabel2");
-        getContentPane().add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 150, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -164,7 +160,6 @@ public static Comments createComments() {
     public view.frameComponents.ButtonDelete jButtonDeleteComment;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabelTime;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTableCommentsTable;
     // End of variables declaration//GEN-END:variables

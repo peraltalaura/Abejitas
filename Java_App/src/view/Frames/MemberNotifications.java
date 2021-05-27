@@ -37,7 +37,7 @@ public class MemberNotifications extends javax.swing.JFrame {
                 DateFormat formatTime = new SimpleDateFormat(formatTimeStr);
                 String formattedTimeStr = formatTime.format(currentTime);
 
-                jLabelTime.setText(formattedTimeStr);
+                
 
                 setTitle("Time: " + formattedTimeStr);
 
@@ -70,7 +70,6 @@ public class MemberNotifications extends javax.swing.JFrame {
         jTableNotifications = new javax.swing.JTable();
         button1 = new view.frameComponents.Button();
         jLabel2 = new javax.swing.JLabel();
-        jLabelTime = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -113,9 +112,6 @@ public class MemberNotifications extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 480));
-
-        jLabelTime.setText("jLabel3");
-        getContentPane().add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 120, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -168,7 +164,6 @@ public class MemberNotifications extends javax.swing.JFrame {
     private view.frameComponents.Button button1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabelTime;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable jTableNotifications;
     // End of variables declaration//GEN-END:variables

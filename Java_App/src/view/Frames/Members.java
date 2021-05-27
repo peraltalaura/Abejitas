@@ -34,7 +34,7 @@ public class Members extends javax.swing.JFrame {
                 DateFormat formatTime = new SimpleDateFormat(formatTimeStr);
                 String formattedTimeStr = formatTime.format(currentTime);
 
-                jLabelTime.setText(formattedTimeStr);
+                
 
                 setTitle("Time: " + formattedTimeStr);
 
@@ -109,7 +109,6 @@ public class Members extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabelTime = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -255,9 +254,6 @@ public class Members extends javax.swing.JFrame {
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 650));
 
-        jLabelTime.setText("jLabel5");
-        getContentPane().add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 150, 30));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -330,7 +326,6 @@ public class Members extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelBirthday;
-    private javax.swing.JLabel jLabelTime;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTextField jTextFieldAdress;
     public javax.swing.JTextField jTextFieldBirthday;

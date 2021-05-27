@@ -38,7 +38,7 @@ public class Materials extends javax.swing.JFrame {
                 DateFormat formatTime = new SimpleDateFormat(formatTimeStr);
                 String formattedTimeStr = formatTime.format(currentTime);
 
-                jLabelTime.setText(formattedTimeStr);
+                
 
                 setTitle("Time: " + formattedTimeStr);
 
@@ -81,7 +81,6 @@ public class Materials extends javax.swing.JFrame {
         jButtonAddItem = new view.frameComponents.ButtonInsert();
         button1 = new view.frameComponents.Button();
         jButtonDeleteItem = new view.frameComponents.ButtonDelete();
-        jLabel3 = new javax.swing.JLabel();
         jLabelTime = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -148,9 +147,6 @@ public class Materials extends javax.swing.JFrame {
         jButtonDeleteItem.setRounded(true);
         getContentPane().add(jButtonDeleteItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, 92, 27));
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 120, 30));
-
         jLabelTime.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
         getContentPane().add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 480));
 
@@ -208,7 +204,6 @@ public class Materials extends javax.swing.JFrame {
     public view.frameComponents.ButtonDelete jButtonDeleteItem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelTime;
