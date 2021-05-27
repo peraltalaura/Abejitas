@@ -23,7 +23,7 @@
 			header("Location:profile.php?account=bal&insert=no");
 		}
 	}else{
-		header("Location:profile.php?account=bal&insert=no");
+		header("Location:profile.php?account=bal&wrongpass");
 	}
 	
 ?>

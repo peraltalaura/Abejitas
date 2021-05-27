@@ -29,16 +29,17 @@
 		</style>
 	</head>
 	<body class="Center">
-		<div class="Center RB">
-			<h1>CHANGE PASSWORD</h1>
+		<div class="Center RB mt-4" style="width: 50%;">
+			<h1 class="mt-4">CHANGE PASSWORD</h1>
 				<form class="form-group form-group-sm Center pt-4" action="change_password.php?exec" method="POST">
 					<label>New Password:<br><br><input type="password" name="npass"></label><br>
 					<label>Comfirm Password:<br><br><input type="password" name="cnpass"></label><br>
 					<label>Old Password:<br><br><input type="password" name="opass"></label><br>
 					<input class="mt-4 mp-4 BRB" type="submit" value="Submit">
 				</form>
+				<a href="profile.php?account=prof" class="BRB">RETURN</a>
 		</div>	
-		<a href="profile.php?account=prof" class="BRB">RETURN</a>
+		
 	<?php
 	if(isset($_GET["exec"])){
 

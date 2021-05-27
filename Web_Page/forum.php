@@ -168,7 +168,7 @@
 		<?php
 		if(isset($_SESSION['memberID'])){
 			?>
-			<h2 class="text-light">WRITE YOUR COMMENT:</h2>
+			<h1 >Write your comment:</h1>
 			<form class="Center" action="send_comment.php" method="post">
 				
 				<textarea maxlength="255" class="rounded-0" class="Center" rows="10" required="required" name='txt'></textarea><br>

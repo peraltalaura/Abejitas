@@ -151,7 +151,7 @@
 				*We highly recommend to change the password the first time you login.</p><br>
 			</div>
 		</div>
-		<div class="RB">
+		<div class="RB columns">
 			<h2>RULES: HOW TO MANTAIN A POSITIVE COMMUNITY</h2>
 			<ol>
 				<li>To make use of our services you must become a member</li>

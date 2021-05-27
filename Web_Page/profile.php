@@ -205,10 +205,10 @@
 							while($data=mysqli_fetch_array($result)){
 								?>
 								<div id="profile" class="container Center">
-									<div class="columns" style="align-items:center">
+									<div class="columns">
 										<div class="RB">
 											<?php
-											printf("<img src='%s' style='width:15em'>",$data['picture']);
+											printf("<img src='%s'>",$data['picture']);
 											?>
 										</div>
 										<div class="RB" style="text-align: justify;">
@@ -319,7 +319,7 @@
 							</div>
 							<!-- a div that shows the total balance of the account of the member and shows/hides the transaction form when the transfer money link is clicked-->
 							<h1>Your account balance</h1>
-							<div id="balance" class="columns RB Center">
+							<div id="balance" class="RB Center" style="width: 75%;margin: auto;">
 								<?php
 								if ($balance<0) {
 									printf("<h2 style='color:red'> %d €</h2>",$balance);
@@ -335,7 +335,7 @@
 
 						<!--Form that allows the user to transfer money to the account-->
 						<div id="transfer" class="content Center addMargin" style="display:none">
-							<h1 class="mt-4">Transfer</h1>
+							<h1>Transfer</h1>
 							<!-- form to transfer money which asks the member for a description and cuantity-->
 							<form id="transfer-form" class="form-group container Center" action="transfer.php" method="post">
 								<div class="columns Center" style="text-align:center">
@@ -363,6 +363,9 @@
 								printf("<div id='transferDialog' title='Transfer'><p>There was an error during your transfer</p></div>");
 								
 							}
+						}
+						if(isset($_GET['wrongpass'])) {
+							printf("<div id='transferDialog' title='Transfer'><p>The password is wrong</p></div>");
 						}
 						?>
 					</div>
@@ -399,7 +402,8 @@
 						<?php
 						while($data=mysqli_fetch_array($result)){
 							/* information about each booking made by the member*/
-							if($data['total']==0 && $data['status']=='booked'){
+							//if the 
+							if($data["kilos"]==0){
 								printf("
 									<div class='rows'>
 									<div class='row'>%d</div>
@@ -409,8 +413,18 @@
 									<div class='row'>%d €</div>
 									<div class='row'><a type='button' class='BRB' href='cancel_booking.php?bid=$data[0]'>Cancel booking</a></div>
 									</div>",$data[0],$data[1],$data[2],$data[3],$data[4]);
-							}else{
+							}else if ($data["exitdate"]<date("yy-mm-dd")){
 								printf("
+									<div class='rows'>
+									<div class='row'>%d</div>
+									<div class='row'>%s</div>
+									<div class='row'>%s</div>
+									<div class='row'>%d KG</div>
+									<div class='row'>%d €</div>
+									<div class='row'>Finished</div>
+									</div>",$data[0],$data[1],$data[2],$data[3],$data[4]);
+							} else {
+									printf("
 									<div class='rows'>
 									<div class='row'>%d</div>
 									<div class='row'>%s</div>
@@ -441,8 +455,8 @@
 										<div class='rows production' style='background-color:rgb(255,255,255,0.5);color:black'>
 										<div class='row'>%d</div>
 										<div class='row'>%s</div>
-										<div class='row'>%d</div>
-										<div class='row'>%d</div>
+										<div class='row'>%d KG</div>
+										<div class='row'>%d €</div>
 										",$data2[1],$data2[4],$data2[2],$data2[3]);
 									/*Select the availability of the metalbin of the production*/
 									$availability="SELECT available FROM metalbin WHERE metalbin_id=$data2[1]";
@@ -483,12 +497,12 @@
 					}
 				}
 			?>
-						<a id='produce' class='Center BRB production %d'>REGISTER PRODUCTION</a>
+						<a id='produce' class='Center BRB production'>REGISTER PRODUCTION</a>
 
 
 						<!-- a form to slect the booking and make a production related to it, once submit it will redirect the user to the produce.php -->
 						<form id="production" class="form-group container Center" action="produce.php" method="post" style="display:none">
-							<h1>Register a production</h1>
+							<h1 class="mt-4">Register a production</h1>
 							<div class="colums" style="text-align:center">
 								<div class='RB'>
 									<b>SELECT YOUR BOOKING:</b><br><br>
@@ -503,11 +517,11 @@
 										?>
 									</select>
 								</div>
-								<div class="RB">
-									<b>KILOS:</b><br><br><input type='number'required="required" name='kilos' min="1" pattern="^[0-9]+">
+								<div class="RB Center">
+									<b>KILOS:</b><br><input type='number'required="required" name='kilos' min="1" pattern="^[0-9]+">
 								</div>
 								<div class="RB">
-									<b class="Center">SELECT THE METALBIN:</b>
+									<b class="Center">SELECT THE METALBIN:</b><br>
 									<!-- It makes an SQL query to extract the metalbins available to use and print them in the select-->
 									<select class="custom-select" aria-label="Default select example" name='metalID'>
 										<option>my own bin</option>
@@ -538,6 +552,9 @@
 						}
 						if(isset($_GET['capacity'])){
 							printf("<div id='productionDialog' title='Capacity exceeded'><p>The metalbil selected is too small for the amount produced</p></div>");
+						}
+						if (isset($_GET['date'])) {
+							printf("<div id='productionDialog' title='Production not available'><p>The extractor production dates have not started yet or have already finished</p></div>");
 						}
 						?>
 					</div>
