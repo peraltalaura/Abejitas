@@ -198,15 +198,14 @@
 			<h1 class="mt-4 mb-4">Book our extractor</h1>
 				<div class="columns Center">
 					<div class="RB">
-						<label>Select entry date:
+						<label>Select entry date:<br><br>
 							<input class="datepicker" type="text" required="required" name="entry" autocomplete="off"></label>
 						</div>
 						<div class="RB">
-							<label>Select exit date:
+							<label>Select exit date:<br><br>
 								<input class="datepicker" type="text" required="required" name="exit" autocomplete="off"></label>
 							</div>
 						</div>
-						<BR>
 						<div class="Center">
 							<input class="BRB" type="submit" value="BOOK">
 						</div>
