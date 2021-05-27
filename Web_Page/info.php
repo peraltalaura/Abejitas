@@ -168,6 +168,9 @@
 		</div><br>
 		<a class="BRB Center" href="contact.php">BECOME A MEMBER</a>
 	</div>
+	<div class="p-4">
+		<address></address>
+	</div>
 	<script>
 		/*Function to show or hide the sidenav when the mouse is clicked*/
 		$('.erlete').click(function(){

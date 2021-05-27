@@ -1,5 +1,4 @@
 <?php 
-	//a php function that transforms the dates of the bookings table into json for the fullcalendar to interprete
 	header('Content-Type: application/json');
 	include('test_connect_db.php');
 	$pdo = new PDO("mysql:dbname=erlete_db;host=localhost","root","dam1");

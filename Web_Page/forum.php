@@ -119,7 +119,6 @@
 
 		?>
 		<?php
-		//PHP funcion to print the comment of the members depending if the user is a member or not, if it is a member it will display the comments sent by it on the right side of the page, and will allow to post a comment.
 		while($data=mysqli_fetch_array($result)){
 			if (isset($_SESSION["memberID"])) {
 				$id=$_SESSION["memberID"];
@@ -182,6 +181,9 @@
 			printf("<br><a class='BRB' href='login.php'>Login to comment</a>");
 		}
 		?>
+	</div>
+	<div class="p-4">
+		<address></address>
 	</div>
 	<script>
 		/*Function to show or hide the sidenav when the mouse is clicked*/

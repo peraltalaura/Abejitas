@@ -9,6 +9,8 @@
 	$id=$_GET['productid'];
 	//The SQL query to update the metalbin table and set the availability to true, then returns the user to the bookings section of the profile page 
 	$sql="UPDATE metalbin SET available = true WHERE metalbin_id = (SELECT metalbin_id FROM production WHERE production_id = $id)";
+	$sql2="UPDATE production SET finished = true WHERE production_id = $id";
 	mysqli_query($link,$sql);
+	mysqli_query($link,$sql2);
 	header("Location:profile.php?account=book");
 ?>

@@ -31,7 +31,6 @@
 	<script src="jquery/jquery-ui.min.js"></script>
 	
 	<Link rel="stylesheet" href="css/index_CSS.css">
-	<!-- A script that makes the fullcalendar work -->
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 			var calendarEl = document.getElementById('calendar');
@@ -42,7 +41,6 @@
 			calendar.render();
 		});
 	</script>
-	<!-- A script to format the information of the input calendar and display it in the jquery format -->
 	<script>
 		$.datepicker.regional[ "eng" ] = {
 			closeText: "Done",
@@ -156,7 +154,6 @@
 		<!--The content of the web page-->
 		<div class="content Center addMargin">
 			<?php
-			//php code to show a dialog if the insert variable exists and change the message depending of the value
 				if (isset($_GET["insert"])) {
 					if ($_GET["insert"]=="yes") {
 						printf("<div id='bookDialog' title='Extractor booked'><p>Your booking has been registered successfully</p></div>");
@@ -181,7 +178,6 @@
 						<th>AVAILABILITY</th>
 						<th>DATE AVAILABLE</th>
 					</tr>
-					<!-- PHP code that displays the metalbins information in a table-->
 					<?php
 					while($data=mysqli_fetch_array($result)){
 						if($data[2]==1){
@@ -233,9 +229,7 @@
 						$("#bookForm").toggle("1000");
 					});
 				</script>
-
 					<script>
-						//Script to show a dialog for that id
 					$( function() {
 						$( "#bookDialog" ).dialog();
 					} );
