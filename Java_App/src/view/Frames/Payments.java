@@ -60,11 +60,12 @@ public class Payments extends javax.swing.JFrame {
         jTextFieldID = new javax.swing.JTextField();
         jButtonReset = new view.frameComponents.Button();
         jLabelTime = new javax.swing.JLabel();
-        jButtonSearch = new view.frameComponents.Button();
+        jButtonNotification = new view.frameComponents.Button();
         jButtonPay = new view.frameComponents.ButtonInsert();
         button1 = new view.frameComponents.Button();
         jLabel3 = new javax.swing.JLabel();
         jLabelBalance = new javax.swing.JLabel();
+        jButtonSearch = new view.frameComponents.Button();
         jLabel6 = new javax.swing.JLabel();
 
         setUndecorated(true);
@@ -127,14 +128,19 @@ public class Payments extends javax.swing.JFrame {
         jLabelTime.setText("SDGSDG");
         getContentPane().add(jLabelTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 140, 30));
 
-        jButtonSearch.setBorder(null);
-        jButtonSearch.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonSearch.setText("SEARCH");
-        jButtonSearch.setGradientLineColor(java.awt.Color.magenta);
-        jButtonSearch.setLineColor(java.awt.Color.cyan);
-        jButtonSearch.setLinePainted(true);
-        jButtonSearch.setRounded(true);
-        getContentPane().add(jButtonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 190, 63, 24));
+        jButtonNotification.setBorder(null);
+        jButtonNotification.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonNotification.setText("SEND NOTIFICATION");
+        jButtonNotification.setGradientLineColor(java.awt.Color.magenta);
+        jButtonNotification.setLineColor(java.awt.Color.cyan);
+        jButtonNotification.setLinePainted(true);
+        jButtonNotification.setRounded(true);
+        jButtonNotification.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNotificationActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonNotification, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 220, 140, 24));
 
         jButtonPay.setBorder(null);
         jButtonPay.setForeground(new java.awt.Color(255, 255, 255));
@@ -167,6 +173,15 @@ public class Payments extends javax.swing.JFrame {
         jLabelBalance.setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().add(jLabelBalance, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 540, 150, 30));
 
+        jButtonSearch.setBorder(null);
+        jButtonSearch.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSearch.setText("SEARCH");
+        jButtonSearch.setGradientLineColor(java.awt.Color.magenta);
+        jButtonSearch.setLineColor(java.awt.Color.cyan);
+        jButtonSearch.setLinePainted(true);
+        jButtonSearch.setRounded(true);
+        getContentPane().add(jButtonSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 190, 63, 24));
+
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/panal3_.jpg"))); // NOI18N
@@ -179,6 +194,10 @@ public class Payments extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_button1ActionPerformed
+
+    private void jButtonNotificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNotificationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonNotificationActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,6 +240,7 @@ public static Payments createPayments() {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private view.frameComponents.Button button1;
+    public view.frameComponents.Button jButtonNotification;
     public view.frameComponents.ButtonInsert jButtonPay;
     public view.frameComponents.Button jButtonReset;
     public view.frameComponents.Button jButtonSearch;

@@ -199,6 +199,20 @@ public class Management {
 
         return done;
     }
+    
+    public boolean paymentNotify(int id){
+        String sql = "INSERT INTO notify(member_id,notification_id) VALUES(?,?)";
+        try ( Connection con = connect();  PreparedStatement pstmt = con.prepareStatement(sql)){
+            
+            pstmt.setInt(1, id);
+            pstmt.setInt(2, 5);
+            pstmt.executeUpdate();
+            System.out.println("notification sent");
+            return true;
+        }catch(Exception E){
+            return false;
+        }
+    }
 
     /**
      * A method that changes the boolean active of member to know if the count
