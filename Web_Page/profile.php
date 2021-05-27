@@ -345,6 +345,9 @@
 									<div class='RB'>
 										<label>CUANTITY:<br> <input type='text'required="required" name='import' min="1" autocomplete="off"></label>
 									</div>
+									<div class='RB'>
+										<label>PASSWORD: <br><input type="password" name="bcpass"></label>
+									</div>
 								</div>
 								<input class="BRB" type="submit" value="TRANSFER">
 							</form>
@@ -396,7 +399,7 @@
 						<?php
 						while($data=mysqli_fetch_array($result)){
 							/* information about each booking made by the member*/
-							if($data['total']==0){
+							if($data['total']==0 && $data['status']=='booked'){
 								printf("
 									<div class='rows'>
 									<div class='row'>%d</div>
@@ -433,7 +436,7 @@
 							
 							while($data2=mysqli_fetch_array($result2)){
 								/* information about the productions of the booking above*/
-								if ($data2[1]!=NULL) {			
+								if ($data2['metalbin_id']!=NULL) {			
 									printf("
 										<div class='rows production' style='background-color:rgb(255,255,255,0.5);color:black'>
 										<div class='row'>%d</div>
@@ -446,7 +449,7 @@
 									$result3=mysqli_query($link,$availability);
 									$data3=mysqli_fetch_array($result3);
 									/* if the production is finished*/
-									if($data3[0]==1){
+									if($data2["finished"]==1){
 										printf("<div class='row'>Finished</div>
 											</div>");
 										/* if the metalbin is still in use and the production going on*/
@@ -457,7 +460,7 @@
 									}
 								} else {
 									printf("
-										<div class='rows production'>
+										<div class='rows production' style='background-color:rgb(255,255,255,0.5);color:black'>
 										<div class='row'>yours</div>
 										<div class='row'>%s</div>
 										<div class='row'>%d</div>

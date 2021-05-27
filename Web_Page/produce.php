@@ -17,13 +17,20 @@
 	$sql3="INSERT INTO payment(description,total,member_id,pay_date) VALUES('production',-$total,$id,CURRENT_TIMESTAMP)";
 	// the SQL query to update the metalbins table and set the available to 1 (false) and calculate the data when it will be available
 	$sql4="UPDATE metalbin SET available=0, available_date=DATE_ADD(NOW(),INTERVAL 20 DAY) WHERE metalbin_id=$metal";
+
+	
 	//if the variable metal has an id the metalbin_id will be registered
 	if($metal!=null){
 		$tsql="SELECT * FROM metalbin WHERE metalbin_id = $metal";
 		$result = mysqli_query($link,$tsql);
 		$data=mysqli_fetch_array($result);
-		if($data['capacity'] >= $kilos){
-			$sql1="INSERT INTO production(kilos,total,booking_id,metalbin_id,production_date) VALUES('$kilos',$total,$book,$metal,CURRENT_TIMESTAMP)";
+
+		$tsql2="SELECT * FROM booking WHERE booking_id = $book";
+		$result2 = mysqli_query($link,$tsql2);
+		$data2=mysqli_fetch_array($result2);
+
+		if($data['capacity'] >= $kilos&&$data2["exitdate"]>=date("Y-m-d")){
+			$sql1="INSERT INTO production(kilos,total,booking_id,metalbin_id,production_date,finished) VALUES('$kilos',$total,$book,$metal,CURRENT_TIMESTAMP,false)";
 		}else{
 			header("Location:profile.php?account=book&capacity");
 		}
