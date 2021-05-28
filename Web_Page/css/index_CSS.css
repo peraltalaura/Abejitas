@@ -2,8 +2,7 @@
 body {
 	margin: 0;
 	padding: 0;
-	background: url(../images/honeyBlur.png) no-repeat;
-	background-size: cover;
+	background: url(../images/honeyBlur.png) repeat center;
 	color:rgb(255, 255, 255);
 }
 /*Size and alignment of the titles*/
@@ -146,7 +145,9 @@ a:hover{
 	align-items: flex-start; 
 	text-align:center;	
 }
-
+#forum .columns {
+	width: 75%;
+}
 /* class to modify the style of the title of the comments in the forum (name, surname, date))*/
 .forumR1 {
 	padding:1em;
