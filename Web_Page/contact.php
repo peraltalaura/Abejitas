@@ -105,7 +105,7 @@
 		?>	
 	</ul>
 	<!--End of menu web page-->
-	<div class="content Center addMargin">
+	<div id="contact" class="content Center addMargin">
 		<h1>Contact us</h1>
 		<div class="columns Center">
 			<div class="RB">
@@ -127,9 +127,6 @@
 		</div>
 	</div>
 
-	<div class="p-4">
-		<address></address>
-	</div>
 	<script>
 		/*Function to show or hide the sidenav when the mouse is clicked*/
 		$('.erlete').click(function(){
