@@ -2,8 +2,8 @@
 body {
 	margin: 0;
 	padding: 0;
-	background: url(../images/honeyBlur.png) no-repeat absolute;
-	background-color: black;
+	background: url(../images/honeyBlur.png) no-repeat;
+	background-size: cover;
 	color:rgb(255, 255, 255);
 }
 /*Size and alignment of the titles*/
@@ -296,11 +296,15 @@ input[type=number]::-webkit-outer-spin-button {
 /*End of modify form*/
 /*adjust the width of the video*/
 	iframe {
-		width: 100%;
+		width: 50em;
 		margin: auto;
+		height: 20em;
 	}
 	#profile img {
 		width: 20em;
+	}
+	.login {
+		width: 35%;
 	}
 /* style that will be applied to all the web page for Small devices like mobile tablets*/
 @media screen and (max-width: 1000px) {
@@ -400,6 +404,12 @@ input[type=number]::-webkit-outer-spin-button {
 		color: white;
 	}
 
+	iframe {
+		width: 40em;
+	}
+	.login {
+		width: 75%;
+	}
 /*Style that will be applied to even smaller devices*/
 @media screen and (max-width: 500px) {
 	.erlete {
@@ -440,7 +450,12 @@ input[type=number]::-webkit-outer-spin-button {
 		width:100%;
 		height: 100%;
 	}
-
+	iframe {
+		width: 100%;
+	}
+	.login {
+		width: 90%;
+	}
 }
 /*end of responsive navigation var*/
 

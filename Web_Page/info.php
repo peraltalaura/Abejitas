@@ -151,15 +151,17 @@
 				*We highly recommend to change the password the first time you login.</p><br>
 			</div>
 		</div>
-		<div class="RB columns">
-			<h2>RULES: HOW TO MANTAIN A POSITIVE COMMUNITY</h2>
-			<ol>
-				<li>To make use of our services you must become a member</li>
-				<li>The membership has an annual fee of 30€</li>
-				<li>Members must pay a fee of 0.25 cents per kg of honey they produce</li>
-				<li>It is also important to make a good use of the material and installations</li>
-				<li>You must also have a respectful attitude towards the rest of the members</li>
-			</ol>
+		<div class="columns">
+			<div class="RB">
+				<h2>RULES: HOW TO MANTAIN A POSITIVE COMMUNITY</h2>
+				<ol>
+					<li>To make use of our services you must become a member</li>
+					<li>The membership has an annual fee of 30€</li>
+					<li>Members must pay a fee of 0.25 cents per kg of honey they produce</li>
+					<li>It is also important to make a good use of the material and installations</li>
+					<li>You must also have a respectful attitude towards the rest of the members</li>
+				</ol>
+			</div>
 		</div>
 		
 		<div class="Center">

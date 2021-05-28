@@ -28,8 +28,8 @@
 			}
 		</style>
 	</head>
-	<body class="Center">
-		<div class="Center RB mt-4" style="width: 50%;">
+	<body class="Center pt-4">
+		<div class="Center RB mt-4 login">
 			<h1 class="mt-4">CHANGE PASSWORD</h1>
 				<form class="form-group form-group-sm Center pt-4" action="change_password.php?exec" method="POST">
 					<label>New Password:<br><br><input type="password" name="npass"></label><br>

@@ -32,7 +32,7 @@
 		}
 	</style>
 </head>
-<body class="Center">
+<body class="Center pt-4">
 	<!-- 
 		This messages will only be displayed when the information introduced is wrong or the account is disabled
 		PHP code which checks if the incorrect variable has been returned and exists: 
@@ -56,8 +56,8 @@
 
 	}
 	?>
-	<div class="Center RB pt-4 pb-4">
-		<h1>SIGN IN</h1>
+	<div class="Center RB login mt-4">
+		<h1 class="mt-4">SIGN IN</h1>
 		<!-- A form which asks the user for the email and password of the member account and then sends the information to the search_users.php-->
 		<form class="form-group form-group-sm Center" action="search_users.php" method="post">
 			<LABEL>E-MAIL:<br>
@@ -70,7 +70,7 @@
 				<b>You don't have an account?</b><a class="mt-4 mb-4 BRB" href="contact.php"> Contact us</a>
 				<!-- The link return redirects the user to the index.php page-->
 				<a href="index.php" class="BRB">RETURN</a>
-				<br>	
+				<br><br>	
 			</div>	
 		</body>
 		</html>	
