@@ -109,7 +109,7 @@
 	</ul>
 	<!--End of menu web page-->
 	<!--The content of the web page-->
-	<div class="content Center addMargin">
+	<div id="forum" class="content Center addMargin">
 		<h1>Latest discussions</h1><br>
 		<!--php code that makes a query of the comments of the members and displays them in the given format-->
 		<?php			

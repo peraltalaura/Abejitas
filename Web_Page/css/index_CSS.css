@@ -145,7 +145,7 @@ a:hover{
 	align-items: flex-start; 
 	text-align:center;	
 }
-#forum .columns {
+#forum .columns, #forum .columns2 {
 	width: 75%;
 }
 /* class to modify the style of the title of the comments in the forum (name, surname, date))*/

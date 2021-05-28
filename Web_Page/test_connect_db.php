@@ -2,7 +2,7 @@
 //a php function to connect to the database
 		function connectDataBase()
 		{
-			if (!($lotura=mysqli_connect("localhost","root","dam1")))
+			if (!($lotura=mysqli_connect("localhost","java","dam1")))
 			{
 				echo "There is an error connecting the server.";
 			exit();
